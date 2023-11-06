@@ -1,0 +1,28 @@
+<?php
+$conn = mysqli_connect('localhost','root','','developers');
+if(!$conn){
+	echo 'Connection failed';
+	}
+	if(isset($_POST['submit']))
+	{ $imageCount=count($_FILES['image']['name']);
+	  for($i=0;$i<$imageCount;$i++){
+	  $imageName=$_FILES['image']['name'][$i];
+	  $imageTempName=$_FILES['image']['tmp_name'][$i];
+	  $targetPath="./upload/".$imageName;
+	  if(move_uploaded_file($imageTempName,$targetPath)){
+		$sql="INSERT INTO propertyimg(image)VALUES('$imageName')";
+		$result=mysqli_query($conn,$sql);
+	  } //if submit
+	  }//for submit
+	if($result){header('location:index.php?msg=ins');}
+	}
+
+
+?>
+<div class="formdesign">
+    <form action="index.php" method="POST" enctype="multupart/form-data">
+    Please Select Image<br><br>
+    <input type="file" name="image[]" multiple><br><br>
+    <input type="submit" name="submit" value="Upload">
+</form>
+</div>
