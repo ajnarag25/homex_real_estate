@@ -1,9 +1,13 @@
 <?php
+    date_default_timezone_set('Asia/Manila');
+    $server = "localhost";
+    $user = "root";
+    $pass = "";
+    $database = "developers";
 
-	$con = mysqli_connect("localhost","root","","developers");
-	if (mysqli_connect_errno())
-	{
-		echo "Failed to connect to MySQL: " . mysqli_connect_error();
-	}
-	
+    $conn = mysqli_connect($server, $user, $pass, $database);
+
+    if (!$conn) {
+        die("<script>alert('Connection Failed.')</script>");
+    }
 ?>

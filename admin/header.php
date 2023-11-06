@@ -1,5 +1,6 @@
 <?php
 session_start();
+error_reporting(0);
 require("config.php");
 ////code
  
@@ -38,7 +39,7 @@ if(!isset($_SESSION['auser']))
 
 					
 					<!-- User Menu -->
-					<h4 style="color:white;margin-top:13px;text-transform:capitalize;"><?php echo $_SESSION['auser'];?></h4>
+					<h4 style="color:white;margin-top:13px;text-transform:capitalize;"><?php echo $_SESSION['auser']['auser']?></h4>
 					<li class="nav-item dropdown app-dropdown">
 						<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
 							<span class="user-img"><img class="rounded-circle" src="assets/img/profiles/avatar-01.png" width="31" alt="Ryan Taylor"></span>
@@ -50,7 +51,7 @@ if(!isset($_SESSION['auser']))
 									<img src="assets/img/profiles/avatar-01.png" alt="User Image" class="avatar-img rounded-circle">
 								</div>
 								<div class="user-text">
-									<h6><?php echo $_SESSION['auser'];?></h6>
+									<h6><?php echo $_SESSION['auser']['auser'];?></h6>
 									<p class="text-muted mb-0">Administrator</p>
 								</div>
 							</div>
@@ -82,7 +83,7 @@ if(!isset($_SESSION['auser']))
 								<a href="dashboard.php"><i class="fe fe-home"></i> <span>Dashboard</span></a>
 							</li>
 							
-							<li class="menu-title"> 
+							<!-- <li class="menu-title"> 
 								<span>Authentication</span>
 							</li>
 						
@@ -93,7 +94,7 @@ if(!isset($_SESSION['auser']))
 									<li><a href="register.php"> Register </a></li>
 									
 								</ul>
-							</li>
+							</li> -->
 							<li class="menu-title"> 
 								<span>Users</span>
 							</li>

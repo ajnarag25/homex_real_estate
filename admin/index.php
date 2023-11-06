@@ -1,32 +1,8 @@
 <?php 
 	session_start();
-	include("config.php");
-	$error="";
-	if(isset($_POST['login']))
-	{
-		$user=$_REQUEST['user'];
-		$pass=$_REQUEST['pass'];
-		
-		if(!empty($user) && !empty($pass))
-		{
-			$query = "SELECT auser, apass FROM admin WHERE auser='$user' AND apass='$pass'";
-			$result = mysqli_query($con,$query)or die(mysqli_error());
-			$num_row = mysqli_num_rows($result);
-			$row=mysqli_fetch_array($result);
-			if( $num_row ==1 )
-			{
-				$_SESSION['auser']=$user;
-				header("Location: dashboard.php");
-			}
-			else
-			{
-				$error='* Invalid User Name and Password';
-			}
-		}else{
-			$error="* Please Fill all the Fileds!";
-		}
-		
-	}   
+	if(isset($_SESSION['auser'])){
+        header('location: dashboard.php');
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -65,11 +41,10 @@
 							<div class="login-right-wrap">
 								<h1>Login</h1>
 								<p class="account-subtitle">Access to our dashboard</p>
-								<p style="color:red;"><?php echo $error; ?></p>
 								<!-- Form -->
-								<form method="post">
+								<form method="post" action="functions.php">
 									<div class="form-group">
-										<input class="form-control" name="user" type="text" placeholder="User Name">
+										<input class="form-control" name="user" type="text" placeholder="Username">
 									</div>
 									<div class="form-group">
 										<input class="form-control" type="password" name="pass" placeholder="Password">
@@ -85,13 +60,13 @@
 								</div>
 								
 								<!-- Social Login -->
-								<div class="social-login">
+								<!-- <div class="social-login">
 									<span>Login with</span>
 									<a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
 									<a href="#" class="google"><i class="fa fa-google"></i></a>
 									<a href="#" class="facebook"><i class="fa fa-twitter"></i></a>
 									<a href="#" class="google"><i class="fa fa-instagram"></i></a>
-								</div>
+								</div> -->
 								<!-- /Social Login -->
 								
 								<div class="text-center dont-have">Don't have an account? <a href="register.php">Register</a></div>
@@ -112,7 +87,32 @@
 		
 		<!-- Custom JS -->
 		<script src="assets/js/script.js"></script>
+
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+		<!-- Validation Messages -->
+		<?php 
+			if (isset($_SESSION['status']) && $_SESSION['status'] !='')
+			{
+		?>
+		<script>
+			$(document).ready(function(){
+				Swal.fire({
+					icon: '<?php echo $_SESSION['status_icon'] ?>',
+					title: '<?php echo $_SESSION['status'] ?>',
+					confirmButtonColor: 'rgb(0, 0, 0)',
+					confirmButtonText: 'Okay'
+				});
+				<?php  unset($_SESSION['status']); ?>
+			})
+		</script>
 		
+		<?php
+		}else{
+			unset($_SESSION['status']);
+		}
+		?>
     </body>
 
 </html>

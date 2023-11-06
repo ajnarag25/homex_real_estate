@@ -1,7 +1,6 @@
 <?php
 session_start();
 require("config.php");
-////code
  
 if(!isset($_SESSION['auser']))
 {
@@ -79,7 +78,7 @@ if(!isset($_SESSION['auser']))
 									<div class="dash-widget-info">
 										
 										<h3><?php $sql = "SELECT * FROM user WHERE utype = 'user'";
-										$query = $con->query($sql);
+										$query = $conn->query($sql);
                 						echo "$query->num_rows";?></h3>
 										
 										<h6 class="text-muted">Registered Users</h6>
@@ -102,7 +101,7 @@ if(!isset($_SESSION['auser']))
 									<div class="dash-widget-info">
 										
 									<h3><?php $sql = "SELECT * FROM user WHERE utype = 'agent'";
-										$query = $con->query($sql);
+										$query = $conn->query($sql);
                 						echo "$query->num_rows";?></h3>
 										
 										<h6 class="text-muted">Agents</h6>
@@ -125,7 +124,7 @@ if(!isset($_SESSION['auser']))
 									<div class="dash-widget-info">
 										
 									<h3><?php $sql = "SELECT * FROM user WHERE utype = 'builder'";
-										$query = $con->query($sql);
+										$query = $conn->query($sql);
                 						echo "$query->num_rows";?></h3>
 										
 										<h6 class="text-muted">Builder</h6>
@@ -148,7 +147,7 @@ if(!isset($_SESSION['auser']))
 									<div class="dash-widget-info">
 										
 									<h3><?php $sql = "SELECT * FROM property";
-										$query = $con->query($sql);
+										$query = $conn->query($sql);
                 						echo "$query->num_rows";?></h3>
 										
 										<h6 class="text-muted">Properties</h6>
@@ -175,7 +174,7 @@ if(!isset($_SESSION['auser']))
 									<div class="dash-widget-info">
 										
 									<h3><?php $sql = "SELECT * FROM property where type = 'apartment'";
-										$query = $con->query($sql);
+										$query = $conn->query($sql);
                 						echo "$query->num_rows";?></h3>
 										
 										<h6 class="text-muted">No. of Apartments</h6>
@@ -199,7 +198,7 @@ if(!isset($_SESSION['auser']))
 									<div class="dash-widget-info">
 										
 									<h3><?php $sql = "SELECT * FROM property where type = 'house'";
-										$query = $con->query($sql);
+										$query = $conn->query($sql);
                 						echo "$query->num_rows";?></h3>
 										
 										<h6 class="text-muted">No. of Houses</h6>
@@ -223,7 +222,7 @@ if(!isset($_SESSION['auser']))
 									<div class="dash-widget-info">
 										
 									<h3><?php $sql = "SELECT * FROM property where type = 'building'";
-										$query = $con->query($sql);
+										$query = $conn->query($sql);
                 						echo "$query->num_rows";?></h3>
 										
 										<h6 class="text-muted">No. of Buildings</h6>
@@ -247,7 +246,7 @@ if(!isset($_SESSION['auser']))
 									<div class="dash-widget-info">
 										
 									<h3><?php $sql = "SELECT * FROM property where type = 'flat'";
-										$query = $con->query($sql);
+										$query = $conn->query($sql);
                 						echo "$query->num_rows";?></h3>
 										
 										<h6 class="text-muted">No. of Flat</h6>
@@ -273,7 +272,7 @@ if(!isset($_SESSION['auser']))
 									<div class="dash-widget-info">
 										
 									<h3><?php $sql = "SELECT * FROM property where stype = 'sale'";
-										$query = $con->query($sql);
+										$query = $conn->query($sql);
                 						echo "$query->num_rows";?></h3>
 										
 										<h6 class="text-muted">On Sale</h6>
@@ -297,7 +296,7 @@ if(!isset($_SESSION['auser']))
 									<div class="dash-widget-info">
 										
 									<h3><?php $sql = "SELECT * FROM property where stype = 'rent'";
-										$query = $con->query($sql);
+										$query = $conn->query($sql);
                 						echo "$query->num_rows";?></h3>
 										
 										<h6 class="text-muted">Rentals</h6>

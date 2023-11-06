@@ -48,7 +48,7 @@ if(!isset($_SESSION['auser']))
 		
 		
 			<!-- Header -->
-				<?php include("header.php"); ?>
+			<?php include("header.php"); ?>
 			<!-- /Sidebar -->
 			
 			<!-- Page Wrapper -->
@@ -97,22 +97,45 @@ if(!isset($_SESSION['auser']))
                                         
                                             <tbody>
 											<?php
-													
-												$query=mysqli_query($con,"select * from admin");
-												$cnt=1;
-												while($row=mysqli_fetch_row($query))
-													{
+												$query = "SELECT * FROM admin";
+												$result = mysqli_query($conn, $query);
+												while ($row = mysqli_fetch_array($result)) {
+				
 											?>
                                                 <tr>
-                                                    <td><?php echo $cnt; ?></td>
-                                                    <td><?php echo $row['1']; ?></td>
-                                                    <td><?php echo $row['2']; ?></td>
-                                                    <td><?php echo $row['4']; ?></td>
-                                                    <td><?php echo $row['5']; ?></td>
-                                                    <td><a href="admindelete.php?id=<?php echo $row['0']; ?>">Delete</a></td>
+                                                    <td><?php echo $row['aid']; ?></td>
+                                                    <td><?php echo $row['auser']; ?></td>
+                                                    <td><?php echo $row['aemail']; ?></td>
+                                                    <td><?php echo $row['adob']; ?></td>
+                                                    <td><?php echo $row['aphone']; ?></td>
+                                                    <td><button class="btn btn-danger"  data-toggle="modal" data-target="#deleteAdmin<?php echo $row['aid'] ?>">Delete</button></td>
                                                 </tr>
+
+												<!-- Modal -->
+												<div class="modal fade" id="deleteAdmin<?php echo $row['aid'] ?>" tabindex="-1" role="dialog" aria-hidden="true">
+													<div class="modal-dialog" role="document">
+														<form action="functions.php" method="POST">
+															<div class="modal-content">
+																<div class="modal-header">
+																	<h5 class="modal-title" id="exampleModalLabel">Delete Admin</h5>
+																	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+																	<span aria-hidden="true">&times;</span>
+																	</button>
+																</div>
+																<div class="modal-body text-center">
+																	<h4>Are you sure to delete this current Administrator? <b><?php echo $row['auser'] ?></b></h4>
+																	<p>This action is irreversible and you will be automatically logout!</p>
+																</div>
+																<div class="modal-footer">
+																	<input type="hidden" name="del_id" value="<?php echo $row['aid'] ?>">
+																	<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+																	<button type="submit" name="deleteAdmin" class="btn btn-danger">Delete</button>
+																</div>
+															</div>
+														</form>
+													</div>
+												</div>
                                                 <?php
-												$cnt=$cnt+1;
 												} 
 												?>
                                                

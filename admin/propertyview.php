@@ -125,7 +125,7 @@ if(!isset($_SESSION['auser']))
                                             <tbody>
 												<?php
 													
-													$query=mysqli_query($con,"select * from property");
+													$query=mysqli_query($conn,"select * from property");
 													while($row=mysqli_fetch_row($query))
 													{
 												?>

@@ -17,7 +17,7 @@ if(isset($_POST['add']))
 	$pid=$_REQUEST['id'];
 	
 	$title=$_POST['title'];
-	$content=$_POST['content'];
+	$conntent=$_POST['content'];
 	$ptype=$_POST['ptype'];
 	$bhk=$_POST['bhk'];
 	$bed=$_POST['bed'];
@@ -69,14 +69,14 @@ if(isset($_POST['add']))
 	move_uploaded_file($temp_name7,"property/$fimage2");
 	
 	
-	$sql = "UPDATE property SET title= '{$title}', pcontent= '{$content}', type='{$ptype}', bhk='{$bhk}', stype='{$stype}',
+	$sql = "UPDATE property SET title= '{$title}', pcontent= '{$conntent}', type='{$ptype}', bhk='{$bhk}', stype='{$stype}',
 	bedroom='{$bed}', bathroom='{$bath}', balcony='{$balc}', kitchen='{$kitc}', hall='{$hall}', floor='{$floor}', 
 	size='{$asize}', price='{$price}', location='{$loc}', city='{$city}', state='{$state}', feature='{$feature}',
 	pimage='{$aimage}', pimage1='{$aimage1}', pimage2='{$aimage2}', pimage3='{$aimage3}', pimage4='{$aimage4}',
 	uid='{$uid}', status='{$status}', mapimage='{$fimage}', topmapimage='{$fimage1}', groundmapimage='{$fimage2}', 
 	totalfloor='{$totalfloor}' WHERE pid = {$pid}";
 	
-	$result=mysqli_query($con,$sql);
+	$result=mysqli_query($conn,$sql);
 	if($result == true)
 	{
 		$msg="<p class='alert alert-success'>Property Updated</p>";
@@ -153,7 +153,7 @@ if(isset($_POST['add']))
 								<?php
 									
 									$pid=$_REQUEST['id'];
-									$query=mysqli_query($con,"select * from property where pid='$pid'");
+									$query=mysqli_query($conn,"select * from property where pid='$pid'");
 									while($row=mysqli_fetch_row($query))
 									{
 								?>

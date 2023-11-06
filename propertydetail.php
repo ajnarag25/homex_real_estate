@@ -89,7 +89,7 @@ include("config.php");
 				
 					<?php
 						$id=$_REQUEST['pid']; 
-						$query=mysqli_query($con,"SELECT property.*, user.* FROM `property`,`user` WHERE property.uid=user.uid and pid='$id'");
+						$query=mysqli_query($conn,"SELECT property.*, user.* FROM `property`,`user` WHERE property.uid=user.uid and pid='$id'");
 						while($row=mysqli_fetch_array($query))
 						{
 					  ?>
@@ -217,37 +217,6 @@ include("config.php");
 					<?php } ?>
 					
                     <div class="col-lg-4">
-                        <!-- <h4 class="double-down-line-left text-secondary position-relative pb-4 mb-4 mt-md-50">Send Message</h4>
-                        <form method="post" action="#">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Enter Name">
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Enter Email">
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Enter Phone">
-                                    </div>
-                                </div>
-								<div class="col-md-12">
-                                    <div class="form-group">
-										<textarea class="form-control" placeholder="Enter Message"></textarea>
-                                    </div>
-                                </div>
-								
-                                <div class="col-md-12">
-                                    <div class="form-group mt-4">
-                                        <button type="submit" class="btn btn-success w-100">Search Property</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form> -->
                         <h4 class="double-down-line-left text-secondary position-relative pb-4 my-4">Instalment Calculator</h4>
                         <form class="d-inline-block w-100" action="calc.php" method="post">
                             <label class="sr-only">Property Amount</label>
@@ -277,7 +246,7 @@ include("config.php");
                         <ul class="property_list_widget">
 							
                             <?php 
-                            $query=mysqli_query($con,"SELECT * FROM `properties` WHERE `isFeatured` = 1; ORDER BY date DESC LIMIT 3");
+                            $query=mysqli_query($conn,"SELECT * FROM `properties` WHERE `isFeatured` = 1; ORDER BY date DESC LIMIT 3");
                                     while($row=mysqli_fetch_array($query))
                                     {
                             ?>
@@ -295,7 +264,7 @@ include("config.php");
                             <ul class="property_list_widget">
 							
 								<?php 
-								$query=mysqli_query($con,"SELECT * FROM `property` ORDER BY date DESC LIMIT 7");
+								$query=mysqli_query($conn,"SELECT * FROM `property` ORDER BY date DESC LIMIT 7");
 										while($row=mysqli_fetch_array($query))
 										{
 								?>

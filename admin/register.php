@@ -1,36 +1,6 @@
 <?php 
-include("config.php");
-$error="";
-$msg="";
-if(isset($_REQUEST['insert']))
-{
-	$name=$_REQUEST['name'];
-	$email=$_REQUEST['email'];
-	$pass=$_REQUEST['pass'];
-	$dob=$_REQUEST['dob'];
-	$phone=$_REQUEST['phone'];
-	
-	if(!empty($name) && !empty($email) && !empty($pass)  && !empty($dob) && !empty($phone))
-	{
-		$sql="insert into admin (auser,aemail,apass,adob,aphone) values('$name','$email','$pass','$dob','$phone')";
-		$result=mysqli_query($con,$sql);
-		if($result)
-			{
-				$msg='Admin Register Successfully';
-				
-						
-			}
-			else
-			{
-				$error='* Not Register Admin Try Again';
-			}
-	}
-	else{
-		$error="* Please Fill all the Fields!";
-	}
-	
-	
-}
+	session_start();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -69,27 +39,28 @@ if(isset($_REQUEST['insert']))
 							<div class="login-right-wrap">
 								<h1>Register</h1>
 								<p class="account-subtitle">Access to our dashboard</p>
-								<p style="color:red;"><?php echo $error; ?></p>
-								<p style="color:green;"><?php echo $msg; ?></p>
 								<!-- Form -->
-								<form method="post">
+								<form method="POST" action="functions.php">
 									<div class="form-group">
-										<input class="form-control" type="text" placeholder="Name" name="name">
+										<input class="form-control" type="text" placeholder="Username" name="name" required>
 									</div>
 									<div class="form-group">
-										<input class="form-control" type="email" placeholder="Email" name="email">
+										<input class="form-control" type="email" placeholder="Email" name="email" required>
 									</div>
 									<div class="form-group">
-										<input class="form-control" type="text" placeholder="Password" name="pass">
+										<input class="form-control" type="password" placeholder="Password" name="pass1" required>
 									</div>
 									<div class="form-group">
-										<input class="form-control" type="date" placeholder="Date of Birth" name="dob">
+										<input class="form-control" type="password" placeholder="Retype Password" name="pass2" required>
 									</div>
 									<div class="form-group">
-										<input class="form-control" type="text" placeholder="Phone" name="phone" maxlength="10">
+										<input class="form-control" type="date" placeholder="Date of Birth" name="dob" required>
+									</div>
+									<div class="form-group">
+										<input class="form-control" type="text" placeholder="Phone" name="phone" maxlength="10" required>
 									</div>
 									<div class="form-group mb-0">
-										<input class="btn btn-primary btn-block" type="submit" name="insert" Value="Register">
+										<input class="btn btn-primary btn-block" type="submit" name="register" Value="Register">
 									</div>
 								</form>
 								<!-- /Form -->
@@ -100,13 +71,13 @@ if(isset($_REQUEST['insert']))
 								</div>
 								
 								<!-- Social Login -->
-								<div class="social-login">
+								<!-- <div class="social-login">
 									<span>Register with</span>
 									<a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
 									<a href="#" class="google"><i class="fa fa-google"></i></a>
 									<a href="#" class="facebook"><i class="fa fa-twitter"></i></a>
 									<a href="#" class="google"><i class="fa fa-instagram"></i></a>
-								</div>
+								</div> -->
 								<!-- /Social Login -->
 								
 								<div class="text-center dont-have">Already have an account? <a href="index.php">Login</a></div>
@@ -128,6 +99,31 @@ if(isset($_REQUEST['insert']))
 		<!-- Custom JS -->
 		<script src="assets/js/script.js"></script>
 		
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+		<!-- Validation Messages -->
+		<?php 
+			if (isset($_SESSION['status']) && $_SESSION['status'] !='')
+			{
+		?>
+		<script>
+			$(document).ready(function(){
+				Swal.fire({
+					icon: '<?php echo $_SESSION['status_icon'] ?>',
+					title: '<?php echo $_SESSION['status'] ?>',
+					confirmButtonColor: 'rgb(0, 0, 0)',
+					confirmButtonText: 'Okay'
+				});
+				<?php  unset($_SESSION['status']); ?>
+			})
+		</script>
+		
+		<?php
+		}else{
+			unset($_SESSION['status']);
+		}
+		?>
     </body>
 
 </html>

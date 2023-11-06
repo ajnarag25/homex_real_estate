@@ -18,7 +18,8 @@ if(isset($_POST['add']))
 	$title=$_POST['title'];
 	$content=$_POST['content'];
 	$ptype=$_POST['ptype'];
-	$bhk=$_POST['bhk'];
+	$pstatus = $_POST['pstatus'];
+	// $bhk=$_POST['bhk'];
 	$bed=$_POST['bed'];
 	$balc=$_POST['balc'];
 	$hall=$_POST['hall'];
@@ -29,13 +30,15 @@ if(isset($_POST['add']))
 	$price=$_POST['price'];
 	$city=$_POST['city'];
 	$asize=$_POST['asize'];
-	$loc=$_POST['loc'];
+	// $loc=$_POST['loc'];
 	$region=$_POST['region'];
-	$status=$_POST['status'];
+	$province=$_POST['province'];
+	$barangay=$_POST['barangay'];
 	$uid=$_POST['uid'];
 	$feature=$_POST['feature'];
-	
-	$totalfloor=$_POST['totalfl'];
+	$status=$_POST['status'];
+
+	// $totalfloor=$_POST['totalfl'];
 	
 	$aimage=$_FILES['aimage']['name'];
 	$aimage1=$_FILES['aimage1']['name'];
@@ -67,10 +70,10 @@ if(isset($_POST['add']))
 	move_uploaded_file($temp_name6,"property/$fimage1");
 	move_uploaded_file($temp_name7,"property/$fimage2");
 	
-	$sql="insert into property (title,pcontent,type,pstatus,stype,bedroom,bathroom,balcony,kitchen,hall,floor,size,price,location,city,state,feature,pimage,pimage1,pimage2,pimage3,pimage4,uid,status,mapimage,topmapimage,groundmapimage,totalfloor)
-	values('$title','$content','$ptype','$pstatus','$stype','$bed','$bath','$balc','$kitc','$hall','$floor','$asize','$price',
-	'$loc','$city','$state','$feature','$aimage','$aimage1','$aimage2','$aimage3','$aimage4','$uid','$status','$fimage','$fimage1','$fimage2','$totalfloor')";
-	$result=mysqli_query($con,$sql);
+	$sql="insert into property (title,pcontent,type,pstatus,stype,bedroom,bathroom,balcony,kitchen,hall,floor,size,price,region,province,city,barangay,feature,pimage,pimage1,pimage2,pimage3,pimage4,uid,status,mapimage,topmapimage,groundmapimage)
+	values('$title','$content','$ptype','$pstatus','$stype','$bed','$bath','$balc','$kitc','$hall','$floor','$asize','$price','$region',
+	'$province','$city','$barangay','$feature','$aimage','$aimage1','$aimage2','$aimage3','$aimage4','$uid','$status','$fimage','$fimage1','$fimage2')";
+	$result=mysqli_query($conn,$sql);
 	if($result)
 		{
 			$msg="<p class='alert alert-success'>Property Inserted Successfully</p>";
@@ -256,35 +259,38 @@ if(isset($_POST['add']))
 														</select>
 													</div>
 												</div>-->
-												
-		<div>
-            <table>
-                <tr>
-                    <td>Region</td>
-                    <td><select id="region" value=>
-					<option value="">---</option> 
-					</select></td>
-                </tr>
-                <tr>
-                    <td>Province</td>
-                    <td><select id="province">
-					<option value="">---</option> 
-					</select></td>
-                </tr>
-                <tr>
-                    <td>City</td>
-                    <td><select id="city"><option value="">---</option> 
-					</select></td>
-                </tr>
-                <tr>
-                    <td>Barangay</td>
-                    <td><select id="barangay"><option value="">---</option> 
-					</select></td>
-                </tr>
-            </table>
+												<div>
+													<table>
+														<tr>
+															<td>Region</td>
+															<td><select id="region" value=>
+															<option value="">---</option> 
+															</select></td>
+															<input type="hidden" id="setRegion" name="region">
+														</tr>
+														<tr>
+															<td>Province</td>
+															<td><select id="province">
+															<option value="">---</option> 
+															</select></td>
+															<input type="hidden" id="setProvince" name="province">
+														</tr>
+														<tr>
+															<td>City</td>
+															<td><select id="city"><option value="">---</option> 
+															</select></td>
+															<input type="hidden" id="setCity" name="city">
+														</tr>
+														<tr>
+															<td>Barangay</td>
+															<td><select id="barangay"><option value="">---</option> 
+															</select></td>
+															<input type="hidden" id="setBarangay" name="barangay">
+														</tr>
+													</table>
 
-        </div>
-</br>
+												</div>
+												</br>
 												<div class="form-group row">	
 													<label class="col-lg-3 col-form-label">Price</label>
 													<div class="col-lg-9">
@@ -466,42 +472,66 @@ if(isset($_POST['add']))
         <!-- script type="text/javascript" src="../../jquery.ph-locations.js"></script -->
         <script type="text/javascript" src="https://f001.backblazeb2.com/file/buonzz-assets/jquery.ph-locations-v1.0.1.js"></script>
         <script type="text/javascript">
-            
-            var my_handlers = {
+       		var my_handlers = {
 
-                fill_provinces:  function(){
+				fill_provinces:  function(){
 
-                    var region_code = $(this).val();
-                    $('#province').ph_locations('fetch_list', [{"region_code": region_code}]);
-                    
-                },
+					var region_code = $(this).val();
+					$('#province').ph_locations('fetch_list', [{"region_code": region_code}]);
+					
+				},
 
-                fill_cities: function(){
+				fill_cities: function(){
 
-                    var province_code = $(this).val();
-                    $('#city').ph_locations( 'fetch_list', [{"province_code": province_code}]);
-                },
+					var province_code = $(this).val();
+					$('#city').ph_locations( 'fetch_list', [{"province_code": province_code}]);
+				},
 
 
-                fill_barangays: function(){
+				fill_barangays: function(){
 
-                    var city_code = $(this).val();
-                    $('#barangay').ph_locations('fetch_list', [{"city_code": city_code}]);
-                }
-            };
+					var city_code = $(this).val();
+					$('#barangay').ph_locations('fetch_list', [{"city_code": city_code}]);
+				}
+			};
 
-            $(function(){
-                $('#region').on('change', my_handlers.fill_provinces);
-                $('#province').on('change', my_handlers.fill_cities);
-                $('#city').on('change', my_handlers.fill_barangays);
+			$(function () {
+				$('#region').on('change', function () {
+					var region_text = $('#region option:selected').text();
+					console.log('Region: ' + region_text);
+					$('#setRegion').val(region_text);
+					my_handlers.fill_provinces.call(this);
+				});
 
-                $('#region').ph_locations({'location_type': 'regions'});
-                $('#province').ph_locations({'location_type': 'provinces'});
-                $('#city').ph_locations({'location_type': 'cities'});
-                $('#barangay').ph_locations({'location_type': 'barangays'});
+				$('#province').on('change', function () {
+					var province_text = $('#province option:selected').text();
+					console.log('Province: ' + province_text);
+					$('#setProvince').val(province_text);
+					my_handlers.fill_cities.call(this);
+				});
 
-                $('#region').ph_locations('fetch_list');
-            });
+				$('#city').on('change', function () {
+					var city_text = $('#city option:selected').text();
+					console.log('City: ' + city_text);
+					$('#setCity').val(city_text);
+					my_handlers.fill_barangays.call(this);
+				});
+
+				$('#barangay').on('change', function () {
+					var barangay_text = $('#barangay option:selected').text();
+					$('#setBarangay').val(barangay_text);
+					console.log('Barangay: ' + $('#barangay option:selected').text());
+				});
+
+				$('#region').ph_locations({ 'location_type': 'regions' });
+				$('#province').ph_locations({ 'location_type': 'provinces' });
+				$('#city').ph_locations({ 'location_type': 'cities' });
+				$('#barangay').ph_locations({ 'location_type': 'barangays' });
+
+				$('#region').ph_locations('fetch_list');
+			});
+
+
         </script>
 						
 		

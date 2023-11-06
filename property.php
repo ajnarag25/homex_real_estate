@@ -91,7 +91,7 @@ include("config.php");
                         <div class="row">
 						
 							<?php 
-							$query=mysqli_query($con,"SELECT property.*, user.uname,user.utype,user.uimage FROM `property`,`user` WHERE property.uid=user.uid");
+							$query=mysqli_query($conn,"SELECT property.*, user.uname,user.utype,user.uimage FROM `property`,`user` WHERE property.uid=user.uid");
 								while($row=mysqli_fetch_array($query))
 								{
 							?>
@@ -170,7 +170,7 @@ include("config.php");
                             <ul class="property_list_widget">
 							
 								<?php 
-								$query=mysqli_query($con,"SELECT * FROM `property` ORDER BY date DESC LIMIT 6");
+								$query=mysqli_query($conn,"SELECT * FROM `property` ORDER BY date DESC LIMIT 6");
 										while($row=mysqli_fetch_array($query))
 										{
 								?>
