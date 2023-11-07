@@ -89,7 +89,7 @@ if(!isset($_SESSION['auser']))
                                                     <th>Title</th>
                                                     <th>Description</th>
                                                     <th>Type</th>
-                                                    <th>BHK</th>
+                                                    <th>Property Status</th>
                                                     <th>Selling Type</th>
 													<th>Bedroom</th>
                                                     <th>Bathroom</th>
@@ -99,10 +99,10 @@ if(!isset($_SESSION['auser']))
                                                     <th>Floor</th>
 													<th>Area Size</th>
                                                     <th>Price</th>
-                                                    <th>Location</th>
+                                                    <th>Region</th>
+                                                    <th>Province</th>
                                                     <th>City</th>
-                                                    <th>State</th>
-                                                    <th>Feature</th>
+                                                    <th>Barangay</th>
 													<th>Image1</th>
                                                     <th>Image2</th>
                                                     <th>Image3</th>
@@ -149,18 +149,18 @@ if(!isset($_SESSION['auser']))
 													<td><?php echo $row['15']; ?></td>
                                                     <td><?php echo $row['16']; ?></td>
                                                     <td><?php echo $row['17']; ?></td>
-                                                    <td><img src="property/<?php echo $row['18']; ?>" alt="pimage" height="70px"width="70px"></td>
                                                     <td><img src="property/<?php echo $row['19']; ?>" alt="pimage" height="70px"width="70px"></td>
-													<td><img src="property/<?php echo $row['20']; ?>" alt="pimage" height="70px"width="70px"></td>
-                                                    <td><img src="property/<?php echo $row['21']; ?>" alt="pimage" height="70px"width="70px"></td>
+                                                    <td><img src="property/<?php echo $row['20']; ?>" alt="pimage" height="70px"width="70px"></td>
+													<td><img src="property/<?php echo $row['21']; ?>" alt="pimage" height="70px"width="70px"></td>
                                                     <td><img src="property/<?php echo $row['22']; ?>" alt="pimage" height="70px"width="70px"></td>
-                                                    <td><?php echo $row['23']; ?></td>
+                                                    <td><img src="property/<?php echo $row['23']; ?>" alt="pimage" height="70px"width="70px"></td>
                                                     <td><?php echo $row['24']; ?></td>
-													<td><img src="property/<?php echo $row['25']; ?>" alt="plan" height="70px"width="70px"></td>
-                                                    <td><img src="property/<?php echo $row['26']; ?>" alt="plan" height="70px"width="70px"></td>
-													<td><img src="property/<?php echo $row['27']; ?>" alt="plan" height="70px"width="70px"></td>
-                                                    <td><?php echo $row['28']; ?></td>
+                                                    <td><?php echo $row['25']; ?></td>
+													<td><img src="property/<?php echo $row['26']; ?>" alt="plan" height="70px"width="70px"></td>
+                                                    <td><img src="property/<?php echo $row['27']; ?>" alt="plan" height="70px"width="70px"></td>
+													<td><img src="property/<?php echo $row['28']; ?>" alt="plan" height="70px"width="70px"></td>
                                                     <td><?php echo $row['29']; ?></td>
+                                                    <td><?php echo $row['30']; ?></td>
 													<td><a href="propertyedit.php?id=<?php echo $row['0'];?>">Edit</a></td>
                                                     <td><a href="propertydelete.php?id=<?php echo $row['0'];?>">Delete</a></td>
                                                 </tr>

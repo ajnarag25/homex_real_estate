@@ -172,7 +172,7 @@ include("config.php");
                             <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home">
                                 <div class="row">
 								
-									<?php $query=mysqli_query($con,"SELECT property.*, user.uname,user.utype,user.uimage FROM `property`,`user` WHERE property.uid=user.uid ORDER BY date DESC LIMIT 9");
+									<?php $query=mysqli_query($conn,"SELECT property.*, user.uname,user.utype,user.uimage FROM `property`,`user` WHERE property.uid=user.uid ORDER BY date DESC LIMIT 9");
 										while($row=mysqli_fetch_array($query))
 										{
 									?>
@@ -304,13 +304,13 @@ include("config.php");
                         <div class="col-md-3">
                             <div class="count wow text-center  mb-sm-50" data-wow-duration="300ms"> <i class="flaticon-house flat-large text-white" aria-hidden="true"></i>
 								<?php
-										$query=mysqli_query($con,"SELECT count(pid) FROM property");
+										$query=mysqli_query($conn,"SELECT count(pid) FROM property");
 											while($row=mysqli_fetch_array($query))
 												{
 										?>
                                 <div class="count-num text-success my-4" data-speed="3000" data-stop="<?php 
 												$total = $row[0];
-												echo $total;?>">0</div>
+											?>"><?php echo $total; ?></div>
 								<?php } ?>
                                 <div class="text-white h5">Property Available</div>
                             </div>
@@ -318,13 +318,13 @@ include("config.php");
 						<div class="col-md-3">
                             <div class="count wow text-center  mb-sm-50" data-wow-duration="300ms"> <i class="flaticon-house flat-large text-white" aria-hidden="true"></i>
 								<?php
-										$query=mysqli_query($con,"SELECT count(pid) FROM property where stype='sale'");
+										$query=mysqli_query($conn,"SELECT count(pid) FROM property where stype='sale'");
 											while($row=mysqli_fetch_array($query))
 												{
 										?>
                                 <div class="count-num text-success my-4" data-speed="3000" data-stop="<?php 
 												$total = $row[0];
-												echo $total;?>">0</div>
+												?>"><?php echo $total; ?></div>
 								<?php } ?>
                                 <div class="text-white h5">Sale Property Available</div>
                             </div>
@@ -332,13 +332,13 @@ include("config.php");
 						<div class="col-md-3">
                             <div class="count wow text-center  mb-sm-50" data-wow-duration="300ms"> <i class="flaticon-house flat-large text-white" aria-hidden="true"></i>
 								<?php
-										$query=mysqli_query($con,"SELECT count(pid) FROM property where stype='rent'");
+										$query=mysqli_query($conn,"SELECT count(pid) FROM property where stype='rent'");
 											while($row=mysqli_fetch_array($query))
 												{
 										?>
                                 <div class="count-num text-success my-4" data-speed="3000" data-stop="<?php 
 												$total = $row[0];
-												echo $total;?>">0</div>
+												?>"><?php echo $total; ?></div>
 								<?php } ?>
                                 <div class="text-white h5">Rent Property Available</div>
                             </div>
@@ -346,13 +346,13 @@ include("config.php");
                         <div class="col-md-3">
                             <div class="count wow text-center  mb-sm-50" data-wow-duration="300ms"> <i class="flaticon-man flat-large text-white" aria-hidden="true"></i>
                                 <?php
-										$query=mysqli_query($con,"SELECT count(uid) FROM user");
+										$query=mysqli_query($conn,"SELECT count(uid) FROM user");
 											while($row=mysqli_fetch_array($query))
 												{
 										?>
                                 <div class="count-num text-success my-4" data-speed="3000" data-stop="<?php 
 												$total = $row[0];
-												echo $total;?>">0</div>
+												?>"><?php echo $total; ?></div>
 								<?php } ?>
                                 <div class="text-white h5">Registered Users</div>
                             </div>
@@ -376,7 +376,7 @@ include("config.php");
                             <div class="overflow-hidden position-relative overlay-secondary hover-zoomer mx-n13 z-index-9"> <img src="images/thumbnail4/1.jpg" alt="">
                                 <div class="text-white xy-center z-index-9 position-absolute text-center w-100">
 									<?php
-										$query=mysqli_query($con,"SELECT count(state), property.* FROM property where city='Olisphis'");
+										$query=mysqli_query($conn,"SELECT count(state), property.* FROM property where city='Olisphis'");
 											while($row=mysqli_fetch_array($query))
 												{
 										?>
@@ -391,7 +391,7 @@ include("config.php");
                             <div class="overflow-hidden position-relative overlay-secondary hover-zoomer mx-n13 z-index-9"> <img src="images/thumbnail4/2.jpg" alt="">
                                 <div class="text-white xy-center z-index-9 position-absolute text-center w-100">
 									<?php
-										$query=mysqli_query($con,"SELECT count(state), property.* FROM property where city='Awrerton'");
+										$query=mysqli_query($conn,"SELECT count(state), property.* FROM property where city='Awrerton'");
 											while($row=mysqli_fetch_array($query))
 												{
 										?>
@@ -406,7 +406,7 @@ include("config.php");
                             <div class="overflow-hidden position-relative overlay-secondary hover-zoomer mx-n13 z-index-9"> <img src="images/thumbnail4/3.jpg" alt="">
                                 <div class="text-white xy-center z-index-9 position-absolute text-center w-100">
                                     <?php
-										$query=mysqli_query($con,"SELECT count(state), property.* FROM property where city='Floson'");
+										$query=mysqli_query($conn,"SELECT count(state), property.* FROM property where city='Floson'");
 											while($row=mysqli_fetch_array($query))
 												{
 										?>
@@ -421,7 +421,7 @@ include("config.php");
                             <div class="overflow-hidden position-relative overlay-secondary hover-zoomer mx-n13 z-index-9"> <img src="images/thumbnail4/4.jpg" alt="">
                                 <div class="text-white xy-center z-index-9 position-absolute text-center w-100">
                                     <?php
-										$query=mysqli_query($con,"SELECT count(state), property.* FROM property where city='Ulmore'");
+										$query=mysqli_query($conn,"SELECT count(state), property.* FROM property where city='Ulmore'");
 											while($row=mysqli_fetch_array($query))
 												{
 										?>
@@ -450,7 +450,7 @@ include("config.php");
 									
 										<?php
 													
-												$query=mysqli_query($con,"select feedback.*, user.* from feedback,user where feedback.uid=user.uid and feedback.status='1'");
+												$query=mysqli_query($conn,"select feedback.*, user.* from feedback,user where feedback.uid=user.uid and feedback.status='1'");
 												while($row=mysqli_fetch_array($query))
 													{
 										?>

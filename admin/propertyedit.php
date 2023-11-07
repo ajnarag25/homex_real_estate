@@ -349,7 +349,7 @@ if(isset($_POST['add']))
 													<label class="col-lg-3 col-form-label">Image</label>
 													<div class="col-lg-9">
 														<input class="form-control" name="aimage" type="file" required="">
-														<img src="property/<?php echo $row['18'];?>" alt="pimage" height="150" width="180">
+														<img src="property/<?php echo $row['19'];?>" alt="pimage" height="150" width="180">
 													</div>
 												</div>
 												<div class="form-group row">
@@ -363,7 +363,7 @@ if(isset($_POST['add']))
 													<label class="col-lg-3 col-form-label">Image 4</label>
 													<div class="col-lg-9">
 														<input class="form-control" name="aimage4" type="file" required="">
-														<img src="property/<?php echo $row['22'];?>" alt="pimage" height="150" width="180">
+														<img src="property/<?php echo $row['21'];?>" alt="pimage" height="150" width="180">
 													</div>
 												</div>
 												<div class="form-group row">
@@ -410,7 +410,7 @@ if(isset($_POST['add']))
 													<label class="col-lg-3 col-form-label">Floor Plan Image</label>
 													<div class="col-lg-9">
 														<input class="form-control" name="fimage" type="file">
-														<img src="property/<?php echo $row['25'];?>" alt="pimage" height="150" width="180">
+														<img src="property/<?php echo $row['26'];?>" alt="pimage" height="150" width="180">
 													</div>
 												</div>
 												<div class="form-group row">

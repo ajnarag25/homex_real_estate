@@ -14,7 +14,9 @@ $error="";
 $msg="";
 if(isset($_POST['add']))
 {
-	
+	date_default_timezone_set('Asia/Manila');
+	$currentDate = date('Y-m-d');
+
 	$title=$_POST['title'];
 	$content=$_POST['content'];
 	$ptype=$_POST['ptype'];
@@ -35,7 +37,7 @@ if(isset($_POST['add']))
 	$province=$_POST['province'];
 	$barangay=$_POST['barangay'];
 	$uid=$_POST['uid'];
-	$feature=$_POST['feature'];
+	$feature=$_POST['pfeature'];
 	$status=$_POST['status'];
 
 	// $totalfloor=$_POST['totalfl'];
@@ -70,9 +72,9 @@ if(isset($_POST['add']))
 	move_uploaded_file($temp_name6,"property/$fimage1");
 	move_uploaded_file($temp_name7,"property/$fimage2");
 	
-	$sql="insert into property (title,pcontent,type,pstatus,stype,bedroom,bathroom,balcony,kitchen,hall,floor,size,price,region,province,city,barangay,feature,pimage,pimage1,pimage2,pimage3,pimage4,uid,status,mapimage,topmapimage,groundmapimage)
+	$sql="insert into property (title,pcontent,type,pstatus,stype,bedroom,bathroom,balcony,kitchen,hall,floor,size,price,region,province,city,barangay,feature,pimage,pimage1,pimage2,pimage3,pimage4,uid,status,mapimage,topmapimage,groundmapimage,date)
 	values('$title','$content','$ptype','$pstatus','$stype','$bed','$bath','$balc','$kitc','$hall','$floor','$asize','$price','$region',
-	'$province','$city','$barangay','$feature','$aimage','$aimage1','$aimage2','$aimage3','$aimage4','$uid','$status','$fimage','$fimage1','$fimage2')";
+	'$province','$city','$barangay','$feature','$aimage','$aimage1','$aimage2','$aimage3','$aimage4','$uid','$status','$fimage','$fimage1','$fimage2','$currentDate')";
 	$result=mysqli_query($conn,$sql);
 	if($result)
 		{
@@ -191,6 +193,16 @@ if(isset($_POST['add']))
 															<option value="">Select Status</option>
 															<option value="rent">Rent</option>
 															<option value="sale">Sale</option>
+														</select>
+													</div>
+												</div>
+												<div class="form-group row">
+													<label class="col-lg-3 col-form-label">Make it Featured</label>
+													<div class="col-lg-9">
+														<select class="form-control"  name="pfeature">
+															<option value="">Select</option>
+															<option value="yes">Yes</option>
+															<option value="no">No</option>
 														</select>
 													</div>
 												</div>

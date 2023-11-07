@@ -79,10 +79,10 @@ include("config.php");
         <div class="full-row">
             <div class="container">
                 
-				
+    
 				<?php 
 					
-					$query=mysqli_query($con,"SELECT * FROM about");
+					$query=mysqli_query($conn,"SELECT * FROM about");
 					while($row=mysqli_fetch_array($query))
 					{
 				?>

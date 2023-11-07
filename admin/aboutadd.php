@@ -23,7 +23,7 @@ if(isset($_POST['addabout']))
 	move_uploaded_file($temp_name1,"upload/$aimage");
 	
 	$sql="insert into about (title,content,image) values('$title','$content','$aimage')";
-	$result=mysqli_query($con,$sql);
+	$result=mysqli_query($conn,$sql);
 	if($result)
 		{
 			$msg="<p class='alert alert-success'>Inserted Successfully</p>";
