@@ -69,15 +69,19 @@ include("config.php");
                                 <div class="row">
                                     <div class="col-md-6 col-lg-2">
                                         <div class="form-group">
-                                            <select class="form-control" name="type">
+                                            <select class="form-control"  name="type">
                                                 <option value="">Select Type</option>
-												<option value="apartment">Apartment</option>
-												<option value="flat">Flat</option>
-												<option value="building">Building</option>
-												<option value="house">House</option>
-												<option value="villa">Villa</option>
-												<option value="office">Office</option>
-                                            </select>
+                                                <option value="bungalow">Bungalow</option>
+                                                <option value="commercial">Commercial</option>
+                                                <option value="condominium">Condominium</option>
+                                                <option value="land-property">Land Property</option>
+                                                <option value="lot">Lot</option>
+                                                <option value="residential">Residential</option>
+                                                <option value="row-house">Row House</option>
+                                                <option value="single-detached">Single Detached</option>
+                                                <option value="townhouse">Townhouse</option>
+
+                                        </select>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-lg-2">
@@ -172,15 +176,15 @@ include("config.php");
                             <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home">
                                 <div class="row">
 								
-									<?php $query=mysqli_query($conn,"SELECT property.*, user.uname,user.utype,user.uimage FROM `property`,`user` WHERE property.uid=user.uid ORDER BY date DESC LIMIT 9");
+									<?php 	$query=mysqli_query($conn,"SELECT * FROM `property` ORDER BY date DESC LIMIT 6");
 										while($row=mysqli_fetch_array($query))
 										{
 									?>
 								
                                     <div class="col-md-6 col-lg-4">
                                         <div class="featured-thumb hover-zoomer mb-4">
-                                            <div class="overlay-black overflow-hidden position-relative"> <img src="admin/property/<?php echo $row['18'];?>" alt="pimage">
-                                                <div class="featured bg-success text-white">New</div>
+                                            <div class="overlay-black overflow-hidden position-relative"> <img src="admin/property/<?php echo $row['19'];?>" alt="pimage">
+                                                <!-- <div class="featured bg-success text-white">New</div> -->
                                                 <div class="sale bg-success text-white text-capitalize">For <?php echo $row['5'];?></div>
                                                 <div class="price text-primary"><b>₱<?php echo $row['13'];?> </b><span class="text-white"><?php echo $row['12'];?> Sqft</span></div>
                                             </div>
@@ -199,7 +203,7 @@ include("config.php");
                                                     </ul>
                                                 </div>
                                                 <div class="p-4 d-inline-block w-100">
-                                                    <div class="float-left text-capitalize"><i class="fas fa-user text-success mr-1"></i>By : <?php echo $row['uname'];?></div>
+                                                    <div class="float-left text-capitalize"><i class="fas fa-user text-success mr-1"></i>By : Sample Agent</div>
                                                     <div class="float-right"><i class="far fa-calendar-alt text-success mr-1"></i> <?php echo date('d-m-Y', strtotime($row['date']));?></div> 
                                                 </div>
                                             </div>
@@ -255,49 +259,10 @@ include("config.php");
             </div>
         </div>
 		<!--	why choose us -->
-		
-		<!--	How it work -->
-        <div class="full-row">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h2 class="text-secondary double-down-line text-center mb-5">How It Work</h2>
-                        </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="icon-thumb-one text-center mb-5">
-                            <div class="bg-success text-white rounded-circle position-absolute z-index-9">1</div>
-                            <div class="left-arrow"><i class="flaticon-investor flat-medium icon-success" aria-hidden="true"></i></div>
-                            <h5 class="text-secondary mt-5 mb-4">Discussion</h5>
-                            <p>Nascetur cubilia sociosqu aliquet ut elit nascetur nullam duis tincidunt nisl non quisque vestibulum platea ornare ridiculus.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="icon-thumb-one text-center mb-5">
-                            <div class="bg-success text-white rounded-circle position-absolute z-index-9">2</div>
-                            <div class="left-arrow"><i class="flaticon-search flat-medium icon-success" aria-hidden="true"></i></div>
-                            <h5 class="text-secondary mt-5 mb-4">Files Review</h5>
-                            <p>Nascetur cubilia sociosqu aliquet ut elit nascetur nullam duis tincidunt nisl non quisque vestibulum platea ornare ridiculus.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="icon-thumb-one text-center mb-5">
-                            <div class="bg-success text-white rounded-circle position-absolute z-index-9">3</div>
-                            <div><i class="flaticon-handshake flat-medium icon-success" aria-hidden="true"></i></div>
-                            <h5 class="text-secondary mt-5 mb-4">Acquire</h5>
-                            <p>Nascetur cubilia sociosqu aliquet ut elit nascetur nullam duis tincidunt nisl non quisque vestibulum platea ornare ridiculus.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!--	How It Work -->
         
         <!--	Achievement
         ============================================================-->
-        <div class="full-row overlay-secondary" style="background-image: url('images/breadcromb.jpg'); background-size: cover; background-position: center center; background-repeat: no-repeat;">
+        <div class="full-row overlay-secondary mt-5" style="background-image: url('images/breadcromb.jpg'); background-size: cover; background-position: center center; background-repeat: no-repeat;">
             <div class="container">
                 <div class="fact-counter">
                     <div class="row">
@@ -363,8 +328,44 @@ include("config.php");
             </div>
         </div>
         
+        	<!--	Testonomial -->
+		<div class="full-row">
+            <div class="container">
+                <div class="row">
+					<div class="col-lg-12">
+						<div class="content-sidebar p-4">
+							<div class="mb-3 col-lg-12">
+								<h4 class="double-down-line-left text-secondary position-relative pb-4 mb-4">Testimonial</h4>
+									<div class="recent-review owl-carousel owl-dots-gray owl-dots-hover-success">
+									
+										<?php
+													
+												$query=mysqli_query($conn,"select feedback.*, user.* from feedback,user where feedback.uid=user.uid and feedback.status='1'");
+												while($row=mysqli_fetch_array($query))
+													{
+										?>
+										<div class="item">
+											<div class="p-4 bg-success down-angle-white position-relative">
+												<p class="text-white"><i class="fas fa-quote-left mr-2 text-white"></i><?php echo $row['2']; ?>. <i class="fas fa-quote-right mr-2 text-white"></i></p>
+											</div>
+											<div class="p-2 mt-4">
+												<span class="text-success d-table text-capitalize"><?php echo $row['uname']; ?></span> <span class="text-capitalize"><?php echo $row['utype']; ?></span>
+											</div>
+										</div>
+										<?php }  ?>
+										
+									</div>
+							</div>
+						 </div>
+					</div>
+				</div>
+			</div>
+		</div>
+        
+        <?php include("include/footer.php");?>
+        
         <!--	Popular Place -->
-        <div class="full-row bg-gray">
+        <!-- <div class="full-row bg-gray">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
@@ -375,31 +376,18 @@ include("config.php");
                         <div class="col-md-6 col-lg-3 pb-1">
                             <div class="overflow-hidden position-relative overlay-secondary hover-zoomer mx-n13 z-index-9"> <img src="images/thumbnail4/1.jpg" alt="">
                                 <div class="text-white xy-center z-index-9 position-absolute text-center w-100">
-									<?php
-										$query=mysqli_query($conn,"SELECT count(state), property.* FROM property where city='Olisphis'");
-											while($row=mysqli_fetch_array($query))
-												{
-										?>
-                                    <h4 class="hover-text-success text-capitalize"><a href="stateproperty.php?id=<?php echo $row['17']?>"><?php echo $row['state'];?></a></h4>
-                                    <span><?php 
-												$total = $row[0];
-												echo $total;?> Properties Listed</span> </div>
-									<?php } ?>
+						
+                                    <h4 class="hover-text-success text-capitalize"><a href="">dasdasd</a></h4>
+                                    <span>
                             </div>
                         </div>
                         <div class="col-md-6 col-lg-3 pb-1">
                             <div class="overflow-hidden position-relative overlay-secondary hover-zoomer mx-n13 z-index-9"> <img src="images/thumbnail4/2.jpg" alt="">
                                 <div class="text-white xy-center z-index-9 position-absolute text-center w-100">
-									<?php
-										$query=mysqli_query($conn,"SELECT count(state), property.* FROM property where city='Awrerton'");
-											while($row=mysqli_fetch_array($query))
-												{
-										?>
-                                    <h4 class="hover-text-success text-capitalize"><a href="stateproperty.php?id=<?php echo $row['17']?>"><?php echo $row['state'];?></a></h4>
-                                    <span><?php 
-												$total = $row[0];
-												echo $total;?> Properties Listed</span> </div>
-									<?php } ?>
+				
+								
+                                    <h4 class="hover-text-success text-capitalize"><a href=""><?php echo $row['state'];?></a></h4>
+                                    <span>
                             </div>
                         </div>
                         <div class="col-md-6 col-lg-3 pb-1">
@@ -435,48 +423,10 @@ include("config.php");
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!--	Popular Places -->
 		
-		<!--	Testonomial -->
-		<div class="full-row">
-            <div class="container">
-                <div class="row">
-					<div class="col-lg-12">
-						<div class="content-sidebar p-4">
-							<div class="mb-3 col-lg-12">
-								<h4 class="double-down-line-left text-secondary position-relative pb-4 mb-4">Testimonial</h4>
-									<div class="recent-review owl-carousel owl-dots-gray owl-dots-hover-success">
-									
-										<?php
-													
-												$query=mysqli_query($conn,"select feedback.*, user.* from feedback,user where feedback.uid=user.uid and feedback.status='1'");
-												while($row=mysqli_fetch_array($query))
-													{
-										?>
-										<div class="item">
-											<div class="p-4 bg-success down-angle-white position-relative">
-												<p class="text-white"><i class="fas fa-quote-left mr-2 text-white"></i><?php echo $row['2']; ?>. <i class="fas fa-quote-right mr-2 text-white"></i></p>
-											</div>
-											<div class="p-2 mt-4">
-												<span class="text-success d-table text-capitalize"><?php echo $row['uname']; ?></span> <span class="text-capitalize"><?php echo $row['utype']; ?></span>
-											</div>
-										</div>
-										<?php }  ?>
-										
-									</div>
-							</div>
-						 </div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!--	Testonomial -->
 		
-		
-        <!--	Footer   start-->
-		<?php include("include/footer.php");?>
-		<!--	Footer   start-->
         
         
         <!-- Scroll to top --> 

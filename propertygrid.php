@@ -99,7 +99,6 @@ include("config.php");
 								$type=$_REQUEST['type'];
 								$stype=$_REQUEST['stype'];
 								$city=$_REQUEST['city'];
-								
 								$sql="SELECT * FROM property WHERE type='{$type}' and stype='{$stype}' and city='{$city}'";
 								//SELECT * FROM `property` WHERE type='office' or type='office' and stype='sale' or stype='rent' and city='valsad' OR state='mumbai'
 								//SELECT * FROM `property` WHERE type='office' and stype='sale'  and city='valsad' OR state='mumbai'
@@ -115,7 +114,7 @@ include("config.php");
 									
                             <div class="col-md-6">
                                 <div class="featured-thumb hover-zoomer mb-4">
-                                    <div class="overlay-black overflow-hidden position-relative"> <img src="admin/property/<?php echo $row['18'];?>" alt="pimage">
+                                    <div class="overlay-black overflow-hidden position-relative"> <img src="admin/property/<?php echo $row['19'];?>" alt="pimage">
                                         
                                         <div class="sale bg-secondary text-white">For <?php echo $row['5'];?></div>
                                         <div class="price text-primary text-capitalize">php<?php echo $row['13'];?> <span class="text-white"><?php echo $row['12'];?> Sqft</span></div>
@@ -126,7 +125,7 @@ include("config.php");
                                             <h5 class="text-secondary hover-text-primary mb-2 text-capitalize"><a href="propertydetail.php?pid=<?php echo $row['0'];?>"><?php echo $row['1'];?></a></h5>
                                             <span class="location text-capitalize"><i class="fas fa-map-marker-alt text-primary"></i> <?php echo $row['14'];?></span> </div>
                                         <div class="px-4 pb-4 d-inline-block w-100">
-                                            <div class="float-left text-capitalize"><i class="fas fa-user text-primary mr-1"></i>By : <?php echo $row['uname'];?></div>
+                                            <div class="float-left text-capitalize"><i class="fas fa-user text-primary mr-1"></i>By : Sample Agent</div>
                                             <div class="float-right"><i class="far fa-calendar-alt text-primary mr-1"></i> 6 Months Ago</div>
                                         </div>
                                     </div>
@@ -166,7 +165,7 @@ include("config.php");
                     </div>
 					
                     <div class="col-lg-4">
-                        <div class="sidebar-widget">
+                        <!-- <div class="sidebar-widget">
                             <h4 class="double-down-line-left text-secondary position-relative pb-4 my-4">Instalment Calculator</h4>
 						<form class="d-inline-block w-100" action="calc.php" method="post">
                             <label class="sr-only">Property Amount</label>
@@ -192,7 +191,7 @@ include("config.php");
                             </div>
                             <button type="submit" value="submit" name="calc" class="btn btn-primary mt-4">Calclute Instalment</button>
                         </form>
-                        </div>
+                        </div> -->
                         
                         <div class="sidebar-widget mt-5">
                             <h4 class="double-down-line-left text-secondary position-relative pb-4 mb-4">Recent Property Add</h4>

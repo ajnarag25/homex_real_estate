@@ -165,7 +165,7 @@ if(isset($_REQUEST['reg']))
 										<input class="form-control" name="uimage" type="file">
 									</div>
 									
-									<button class="btn btn-primary" name="reg" value="Register" type="submit">Register</button>
+									<button class="btn btn-primary w-100" name="reg" value="Register" type="submit">Register</button>
 									
 								</form>
 								
@@ -175,13 +175,13 @@ if(isset($_REQUEST['reg']))
 								</div>
 								
 								<!-- Social Login -->
-								<div class="social-login">
+								<!-- <div class="social-login">
 									<span>Register with</span>
-									<a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
+					 				<a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
 									<a href="#" class="google"><i class="fab fa-google"></i></a>
 									<a href="#" class="facebook"><i class="fab fa-twitter"></i></a>
 									<a href="#" class="google"><i class="fab fa-instagram"></i></a>
-								</div>
+								</div> -->
 								<!-- /Social Login -->
 								
 								<div class="text-center dont-have">Already have an account? <a href="login.php">Login</a></div>

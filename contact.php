@@ -14,7 +14,7 @@ if(isset($_POST['send']))
 	{
 		
 		$sql="INSERT INTO contact (name,email,phone,subject,message) VALUES ('$name','$email','$phone','$subject','$message')";
-		   $result=mysqli_query($con, $sql);
+		   $result=mysqli_query($conn, $sql);
 		   if($result){
 			   $msg = "<p class='alert alert-success'>Message Send Successfully</p> ";
 		   }

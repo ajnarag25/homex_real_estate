@@ -124,7 +124,7 @@ if(isset($_REQUEST['login']))
 										<input type="password" name="pass"  class="form-control" placeholder="Your Password">
 									</div>
 									
-										<button class="btn btn-primary" name="login" value="Login" type="submit">Login</button>
+										<button class="btn btn-primary w-100" name="login" value="Login" type="submit">Login</button>
 									
 								</form>
 								
@@ -134,13 +134,13 @@ if(isset($_REQUEST['login']))
 								</div>
 								
 								<!-- Social Login -->
-								<div class="social-login">
+								<!-- <div class="social-login">
 									<span>Login with</span>
 									<a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
 									<a href="#" class="google"><i class="fab fa-google"></i></a>
 									<a href="#" class="facebook"><i class="fab fa-twitter"></i></a>
 									<a href="#" class="google"><i class="fab fa-instagram"></i></a>
-								</div>
+								</div> -->
 								<!-- /Social Login -->
 								
 								<div class="text-center dont-have">Don't have an account? <a href="register.php">Register</a></div>

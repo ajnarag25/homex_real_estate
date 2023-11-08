@@ -109,7 +109,7 @@ include("config.php");
                                             <h5 class="text-secondary hover-text-primary mb-2 text-capitalize"><a href="propertydetail.php?>"></a></h5>
                                             <span class="location text-capitalize"><i class="fas fa-map-marker-alt text-primary"></i></span> <?php echo $row['16'];?>, <?php echo $row['17'];?>, <?php echo $row['15'];?></div>
                                         <div class="px-4 pb-4 d-inline-block w-100">
-                                            <div class="float-left text-capitalize"><i class="fas fa-user text-primary mr-1"></i>By : asdasd</div>
+                                            <div class="float-left text-capitalize"><i class="fas fa-user text-primary mr-1"></i>By : Sample Agent</div>
                                             <div class="float-right"><i class="far fa-calendar-alt text-primary mr-1"></i> <?php echo $row['30'];?></div>
                                         </div>
                                     </div>
