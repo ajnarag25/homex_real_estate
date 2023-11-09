@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 08, 2023 at 03:00 PM
+-- Generation Time: Nov 09, 2023 at 03:36 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -196,15 +196,17 @@ CREATE TABLE `user` (
   `uphone` varchar(20) NOT NULL,
   `upass` varchar(50) NOT NULL,
   `utype` varchar(50) NOT NULL,
-  `uimage` varchar(300) NOT NULL
+  `uimage` varchar(300) NOT NULL,
+  `ustatus` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`uid`, `uname`, `uemail`, `uphone`, `upass`, `utype`, `uimage`) VALUES
-(1, 'AVOR JOHN', 'ajnarag25@gmail.com', '9089637505', 'trypass123', 'agent', '75765de73bfae5b6ac0e437af2bc4c77.jpg');
+INSERT INTO `user` (`uid`, `uname`, `uemail`, `uphone`, `upass`, `utype`, `uimage`, `ustatus`) VALUES
+(1, 'AVOR JOHN', 'ajnarag25@gmail.com', '9089637505', '$2y$10$/wz3QJjjB4QNALhKo.f4z.27hNMMOc5EiTN.slSokz3', 'agent', 'png-clipart-indian-cuisine-organic-food-pav-bhaji-cooking-cooking-food-recipe-removebg-preview.png', 'Verified'),
+(2, 'Mark Zelon Narag', 'ajnarag25@gmail.com', '9089637505', '$2y$10$/OZA9EMPQ3gwo.Xgba1raurEGvyBU6dAN2R7w/tal5E', 'user', 'da73b79bf4ecf3d5fe87649436dd708a-removebg-preview.png', 'Unverified');
 
 --
 -- Indexes for dumped tables
@@ -308,7 +310,7 @@ ALTER TABLE `region`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `uid` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `uid` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
