@@ -104,7 +104,6 @@ if(!isset($_SESSION['auser']))
 									<li><a href="adminlist.php"> Admin </a></li>
 									<li><a href="userlist.php"> Users </a></li>
 									<li><a href="useragent.php"> Agent </a></li>
-									<li><a href="userbuilder.php"> Builder </a></li>
 								</ul>
 							</li>
 						
@@ -120,18 +119,7 @@ if(!isset($_SESSION['auser']))
 								</ul>
 							</li>
 							
-							<li class="menu-title"> 
-								<span>State & City</span>
-							</li>
-						
-							<li class="submenu">
-								<a href="#"><i class="fe fe-user"></i> <span>State & City</span> <span class="menu-arrow"></span></a>
-								<ul style="display: none;">
-									<li><a href="stateadd.php"> State </a></li>
-									<li><a href="cityadd.php"> City </a></li>
-								</ul>
-							</li>
-							
+	
 							<li class="menu-title"> 
 								<span>Query</span>
 							</li>

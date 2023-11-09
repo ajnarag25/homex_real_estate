@@ -70,6 +70,8 @@
 								<!-- /Social Login -->
 								
 								<div class="text-center dont-have">Don't have an account? <a href="register.php">Register</a></div>
+								<hr>
+								<div class="text-center">Go back to the main page? <a href="../index.php">Main Page</a></div>
 								
 							</div>
                         </div>

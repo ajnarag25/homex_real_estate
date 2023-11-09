@@ -79,6 +79,121 @@
         
     }
 
+    // delete user
+    if (isset($_POST['deleteUser'])) {
+        $id = $_POST['del_user_id'];
+        if ($id != null){
+            $conn->query("DELETE FROM user WHERE uid = '$id'") or die($conn->error);
+            $_SESSION['status'] = 'Successfully Deleted!';
+            $_SESSION['status_icon'] = 'success';
+            header('location:userlist.php');
+        }else{
+            $_SESSION['status'] = 'An Error Occured!';
+            $_SESSION['status_icon'] = 'error';
+            header('location:userlist.php');
+        }
+        
+    }
+
+    // verify account user
+    if (isset($_POST['verify_user'])) {
+        $id = $_POST['id'];
+        $messages = $_POST['msg'];
+        $emails = $_POST['email'];
+        
+        if ($id != ''){
+            $conn->query("UPDATE user SET ustatus='Verified' WHERE uid='$id'") or die($conn->error);
+            include 'verify_email.php';
+            $_SESSION['status'] = 'Successfully Verified Account!';
+            $_SESSION['status_icon'] = 'success';
+            header('location:userlist.php');
+        }else{
+            $_SESSION['status'] = 'An Error Occured!';
+            $_SESSION['status_icon'] = 'danger';
+            header('location:userlist.php');
+        }
+
+    
+    }
+
+    // unverify account user
+    if (isset($_POST['unverify_user'])) {
+        $id = $_POST['id'];
+        $messages = $_POST['msg'];
+        $emails = $_POST['email'];
+        
+        if ($id != ''){
+            $conn->query("UPDATE user SET ustatus='Unverified' WHERE uid='$id'") or die($conn->error);
+            include 'unverify_email.php';
+            $_SESSION['status'] = 'Account Unverified!';
+            $_SESSION['status_icon'] = 'success';
+            header('location:userlist.php');
+        }else{
+            $_SESSION['status'] = 'An Error Occured!';
+            $_SESSION['status_icon'] = 'danger';
+            header('location:userlist.php');
+        }
+
+        
+    }
+
+    // delete agent
+    if (isset($_POST['deleteAgent'])) {
+        $id = $_POST['del_agent_id'];
+        if ($id != null){
+            $conn->query("DELETE FROM user WHERE uid = '$id'") or die($conn->error);
+            $_SESSION['status'] = 'Successfully Deleted!';
+            $_SESSION['status_icon'] = 'success';
+            header('location:userlist.php');
+        }else{
+            $_SESSION['status'] = 'An Error Occured!';
+            $_SESSION['status_icon'] = 'error';
+            header('location:useragent.php');
+        }
+        
+    }
+
+    // verify account agent
+    if (isset($_POST['verify_agent'])) {
+        $id = $_POST['id'];
+        $messages = $_POST['msg'];
+        $emails = $_POST['email'];
+        
+        if ($id != ''){
+            $conn->query("UPDATE user SET ustatus='Verified' WHERE uid='$id'") or die($conn->error);
+            include 'verify_email.php';
+            $_SESSION['status'] = 'Successfully Verified Account!';
+            $_SESSION['status_icon'] = 'success';
+            header('location:useragent.php');
+        }else{
+            $_SESSION['status'] = 'An Error Occured!';
+            $_SESSION['status_icon'] = 'danger';
+            header('location:useragent.php');
+        }
+
+    
+    }
+
+    // unverify account agent
+    if (isset($_POST['unverify_agent'])) {
+        $id = $_POST['id'];
+        $messages = $_POST['msg'];
+        $emails = $_POST['email'];
+        
+        if ($id != ''){
+            $conn->query("UPDATE user SET ustatus='Unverified' WHERE uid='$id'") or die($conn->error);
+            include 'unverify_email.php';
+            $_SESSION['status'] = 'Account Unverified!';
+            $_SESSION['status_icon'] = 'success';
+            header('location:useragent.php');
+        }else{
+            $_SESSION['status'] = 'An Error Occured!';
+            $_SESSION['status_icon'] = 'danger';
+            header('location:useragent.php');
+        }
+
+        
+    }
 
 
 ?>

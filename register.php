@@ -7,7 +7,8 @@ if(isset($_REQUEST['reg']))
 	$name=$_REQUEST['name'];
 	$email=$_REQUEST['email'];
 	$phone=$_REQUEST['phone'];
-	$pass=$_REQUEST['pass'];
+	$pass1=$_REQUEST['pass1'];
+	$pass2=$_REQUEST['pass2'];
 	$utype=$_REQUEST['utype'];
 	
 	$uimage=$_FILES['uimage']['name'];
@@ -23,15 +24,14 @@ if(isset($_REQUEST['reg']))
 	}
 	else
 	{
-		
-		if(!empty($name) && !empty($email) && !empty($phone) && !empty($pass) && !empty($uimage))
-		{
-			
-			$sql="INSERT INTO user (uname,uemail,uphone,upass,utype,uimage) VALUES ('$name','$email','$phone','$pass','$utype','$uimage')";
+		if($pass1 != $pass2){
+			$msg = "<p class='alert alert-danger'>Password does not match!</p> ";
+		}elseif(!empty($name) && !empty($email) && !empty($phone) && !empty($pass1) && !empty($uimage)){
+			$sql="INSERT INTO user (uname,uemail,uphone,upass,utype,uimage,ustatus) VALUES ('$name','$email','$phone','".password_hash($pass1, PASSWORD_DEFAULT)."','$utype','$uimage','Unverified')";
 			$result=mysqli_query($conn, $sql);
 			move_uploaded_file($temp_name1,"admin/user/$uimage");
 			   if($result){
-				   $msg = "<p class='alert alert-success'>Register Successfully</p> ";
+				   $msg = "<p class='alert alert-success'>Register Successfully! Please wait for the approval of your account...</p> ";
 			   }
 			   else{
 				   $error = "<p class='alert alert-warning'>Register Not Successfully</p> ";
@@ -141,7 +141,10 @@ if(isset($_REQUEST['reg']))
 										<input type="text"  name="phone" class="form-control" placeholder="Your Phone*" maxlength="10">
 									</div>
 									<div class="form-group">
-										<input type="text" name="pass"  class="form-control" placeholder="Your Password*">
+										<input type="password" name="pass1"  class="form-control" placeholder="Your Password*">
+									</div>
+									<div class="form-group">
+										<input type="password" name="pass2"  class="form-control" placeholder="Retype Password*">
 									</div>
 
 									 <div class="form-check-inline">
@@ -154,11 +157,11 @@ if(isset($_REQUEST['reg']))
 										<input type="radio" class="form-check-input" name="utype" value="agent">Agent
 									  </label>
 									</div>
-									<div class="form-check-inline disabled">
+									<!-- <div class="form-check-inline disabled">
 									  <label class="form-check-label">
 										<input type="radio" class="form-check-input" name="utype" value="builder">Builder
 									  </label>
-									</div> 
+									</div>  -->
 									
 									<div class="form-group">
 										<label class="col-form-label"><b>User Image</b></label>
