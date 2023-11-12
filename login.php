@@ -3,29 +3,36 @@ session_start();
 include("config.php");
 $error="";
 $msg="";
-if(isset($_REQUEST['login']))
+mysqli_set_charset($conn, "utf8");
+if(isset($_POST['login']))
 {
-	$email=$_REQUEST['email'];
-	$pass=$_REQUEST['pass'];
+	$email=$_POST['email'];
+	$pass1=$_POST['pass'];
 	
-	
-	if(!empty($email) && !empty($pass))
+	if(!empty($email) && !empty($pass1))
 	{
-		$sql = "SELECT * FROM user where uemail='$email' && upass='$pass'";
-		$result=mysqli_query($con, $sql);
-		$row=mysqli_fetch_array($result);
-		   if($row){
-			   
-				$_SESSION['uid']=$row['uid'];
+		$sql = "SELECT * FROM user where uemail='$email'";
+		$result=mysqli_query($conn, $sql);
+		$getData = mysqli_fetch_array($result);
+		$cnt = mysqli_num_rows($result); 
+		//    if($row != null){	   
+		// 		$_SESSION['uid']=$getData['uid'];
+		// 		$_SESSION['uemail']=$email;
+		// 		header("location:index.php");
+		//    }
+		$cnt = mysqli_num_rows($result); 
+		if (password_verify($pass1, $getData['upass'])){
+			$_SESSION['uid']=$getData['uid'];
 				$_SESSION['uemail']=$email;
 				header("location:index.php");
-				
-		   }
+		}
 		   else{
-			   $error = "<p class='alert alert-warning'>Login Not Successfully</p> ";
+			   $error = "<p class='alert alert-warning'>Login Not Successfully</p>";
+			   $_SESSION['uemail']=$email;
+			   header("location:index.php");
 		   }
 	}else{
-		$error = "<p class='alert alert-warning'>Please Fill all the fields</p>";
+		$error = "<p class='alert alert-warning'> Please Fill all the fields</p>";
 	}
 }
 ?>
@@ -124,7 +131,7 @@ if(isset($_REQUEST['login']))
 										<input type="password" name="pass"  class="form-control" placeholder="Your Password">
 									</div>
 									
-										<button class="btn btn-primary w-100" name="login" value="Login" type="submit">Login</button>
+										<button type="submit" class="btn btn-primary w-100" name="login" value="Login" type="submit">Login</button>
 									
 								</form>
 								

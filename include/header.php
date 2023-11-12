@@ -3,10 +3,6 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-8">
-                            <ul class="top-contact list-text-white  d-table">
-                                <li><a href="#"><i class="fas fa-phone-alt text-primary mr-1"></i>(012) 345 678 102</a></li>
-                                <li><a href="#"><i class="fas fa-envelope text-primary mr-1"></i>office@example.com</a></li>
-                            </ul>
                         </div>
                         <div class="col-md-4">
                             <div class="top-contact float-right">
@@ -15,10 +11,14 @@
 								<?php  if(isset($_SESSION['uemail']))
 								{ ?>
 								<a href="logout.php">Logout</a>&nbsp;&nbsp;<?php } else { ?>
+                
 								<a href="login.php">Login</a>&nbsp;&nbsp;
+                                | </li>
+
+                                <li><i class="fas fa-user text-primary mr-1"></i><a href="register.php"> Register</li>
 								<?php } ?>
-								| </li>
-								<li><i class="fas fa-user text-primary mr-1"></i><a href="register.php"> Register</li>
+								
+								
 								</ul>
                             </div>
                         </div>
@@ -55,12 +55,12 @@
                                         </li>
 										<?php } else { ?>
 										<li class="nav-item"> <a class="nav-link" href="login.php">Login/Register</a> </li>
-										<?php } ?>
+										<?php } ?>  
 										
                                     </ul>
                                     
 									
-									<a class="btn btn-primary d-none d-xl-block" href="submitproperty.php">Submit Peoperty</a> 
+									
                                 </div>
                             </nav>
                         </div>

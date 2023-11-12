@@ -2,14 +2,14 @@
 include("config.php");
 $error="";
 $msg="";
-if(isset($_REQUEST['reg']))
+if(isset($_POST['reg']))
 {
-	$name=$_REQUEST['name'];
-	$email=$_REQUEST['email'];
-	$phone=$_REQUEST['phone'];
-	$pass1=$_REQUEST['pass1'];
-	$pass2=$_REQUEST['pass2'];
-	$utype=$_REQUEST['utype'];
+	$name=$_POST['name'];
+	$email=$_POST['email'];
+	$phone=$_POST['phone'];
+	$pass1=$_POST['pass1'];
+	$pass2=$_POST['pass2'];
+	$utype=$_POST['utype'];
 	
 	$uimage=$_FILES['uimage']['name'];
 	$temp_name1 = $_FILES['uimage']['tmp_name'];

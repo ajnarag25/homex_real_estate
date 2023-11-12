@@ -329,7 +329,7 @@ include("config.php");
         </div>
         
         	<!--	Testonomial -->
-		<div class="full-row">
+		<!-- <div class="full-row">
             <div class="container">
                 <div class="row">
 					<div class="col-lg-12">
@@ -360,7 +360,7 @@ include("config.php");
 					</div>
 				</div>
 			</div>
-		</div>
+		</div> -->
         
         <?php include("include/footer.php");?>
         

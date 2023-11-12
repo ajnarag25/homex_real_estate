@@ -1,6 +1,6 @@
 <footer class="full-row bg-secondary p-0">
             <div class="container">
-                <div  class="row">
+                <!-- <div  class="row">
                     <div class="col-lg-12">
                         <div class="divider py-40">
                             <div class="row">
@@ -56,7 +56,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div class="row copyright">
                     <div class="col-sm-6"> <span class="text-white">© 2023 Home Dreamers Realty and Development Corporation</span> </div>
                     <div class="col-sm-6">
