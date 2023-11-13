@@ -91,22 +91,17 @@ include("config.php");
 								<p class="account-subtitle">Access to our dashboard</p>
 								
 								<!-- Form -->
-								<form method="post" action="functions.php" enctype="multipart/form-data">
+								<form method="post" action="functions.php">
 									<div class="form-group">
-										<input type="email"  name="email" class="form-control" placeholder="Your Email*">
+										<input class="form-control" name="email" type="text" placeholder="Email">
 									</div>
 									<div class="form-group">
-										<input type="password" name="pass"  class="form-control" placeholder="Your Password">
+										<input class="form-control" type="password" name="pass" placeholder="Password">
 									</div>
-									
-										<button type="submit" class="btn btn-primary w-100" name="login" value="Login" type="submit">Login</button>
-									
+									<div class="form-group">
+										<button class="btn btn-primary btn-block" name="login" type="submit">Login</button>
+									</div>
 								</form>
-								
-								<div class="login-or">
-									<span class="or-line"></span>
-									<span class="span-or">or</span>
-								</div>
 								
 								<!-- Social Login -->
 								<!-- <div class="social-login">

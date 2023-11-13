@@ -1,36 +1,30 @@
 <?php 
     session_start();
     include("config.php");
-    if(isset($_POST['login']))
-    {
-        $email=$_POST['email'];
-        $pass=$_POST['pass'];
+
+    // login
+    if (isset($_POST['login'])) {
+        $email = $_POST['email'];
+        $pass = $_POST['pass'];
+    
+        $login = "SELECT * FROM user WHERE uemail='$email' AND ustatus='Verified'";
+        $prompt = mysqli_query($conn, $login);
+        $getData = mysqli_fetch_array($prompt);
         
-        if(!empty($email) && !empty($pass))
-        {
-            $sql = "SELECT * FROM user where uemail='$email'";
-            $result=mysqli_query($conn, $sql);
-            $getData = mysqli_fetch_array($result);
-            $cnt = mysqli_num_rows($result); 
-            if ($getData !== null) {
-                if (password_verify($pass, $getData['upass'])) {
-                    $_SESSION['uemail'] = $getData;
-                    unset($_SESSION['status']);
-                    header('location:index.php');
-                } else {
-                    $_SESSION['status'] = 'Invalid Credentials';
-                    $_SESSION['status_icon'] = 'error';
-                    header('location:login.php');
-                }
+        if ($getData !== null) {
+            if (password_verify($pass, $getData['upass'])) {
+                $_SESSION['uemail'] = $getData;
+                unset($_SESSION['status']);
+                header('location:index.php');
             } else {
-                $_SESSION['status'] = 'Invalid Credentials';
+                $_SESSION['status'] = 'Invalid Password';
                 $_SESSION['status_icon'] = 'error';
                 header('location:login.php');
             }
-        }else{
-                $_SESSION['status'] = 'Please Fill out all the necessary fields';
-                $_SESSION['status_icon'] = 'error';
-                header('location:login.php');
+        } else {
+            $_SESSION['status'] = 'Invalid Credentials or your account still unverified';
+            $_SESSION['status_icon'] = 'error';
+            header('location:login.php');
         }
     }
 
@@ -68,7 +62,7 @@
                    if($result){
                         $_SESSION['status'] = 'Register Successfully! Please wait for the approval of your account...';
                         $_SESSION['status_icon'] = 'success';
-                        header('location:register.php');
+                        header('location:login.php');
                    }
                    else{
                         $_SESSION['status'] = 'Register Not Successfully';
