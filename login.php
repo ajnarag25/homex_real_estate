@@ -93,10 +93,10 @@ include("config.php");
 								<!-- Form -->
 								<form method="post" action="functions.php">
 									<div class="form-group">
-										<input class="form-control" name="email" type="text" placeholder="Email">
+										<input class="form-control" name="email" type="text" placeholder="Email" required>
 									</div>
 									<div class="form-group">
-										<input class="form-control" type="password" name="pass" placeholder="Password">
+										<input class="form-control" type="password" name="pass" placeholder="Password" required>
 									</div>
 									<div class="form-group">
 										<button class="btn btn-primary btn-block" name="login" type="submit">Login</button>
