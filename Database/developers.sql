@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 13, 2023 at 02:32 PM
+-- Generation Time: Nov 13, 2023 at 02:45 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -190,7 +190,7 @@ CREATE TABLE `region` (
 --
 
 CREATE TABLE `user` (
-  `id` int(50) NOT NULL,
+  `uid` int(50) NOT NULL,
   `uname` varchar(100) NOT NULL,
   `uemail` varchar(100) NOT NULL,
   `uphone` varchar(20) NOT NULL,
@@ -204,7 +204,7 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `uname`, `uemail`, `uphone`, `upass`, `utype`, `uimage`, `ustatus`) VALUES
+INSERT INTO `user` (`uid`, `uname`, `uemail`, `uphone`, `upass`, `utype`, `uimage`, `ustatus`) VALUES
 (1, 'Avor John Atienza', 'ajnarag25@gmail.com', '9089637505', '$2y$10$XTGKpgAShvymueJ3sLp8N.lvZYA20V8xZaMVqj0n73lIbvAlTS4I2', 'user', '75765de73bfae5b6ac0e437af2bc4c77.jpg', 'Verified'),
 (2, 'Mark Zelon Narag', 'marknarag25@gmail.com', '9089637505', '$2y$10$NdzcASZHVKeBNFXUo2Ncx.Wnj5sQYZu6dawycIPabRk4GEKV87dNS', 'user', 'da73b79bf4ecf3d5fe87649436dd708a.jpg', 'Unverified');
 
@@ -258,7 +258,7 @@ ALTER TABLE `region`
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`uid`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -310,7 +310,7 @@ ALTER TABLE `region`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `uid` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
