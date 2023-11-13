@@ -1,40 +1,8 @@
 <?php 
+ini_set('session.cache_limiter','public');
+session_cache_limiter(false);
 session_start();
-include("config.php");
-$error="";
-$msg="";
-mysqli_set_charset($conn, "utf8");
-if(isset($_POST['login']))
-{
-	$email=$_POST['email'];
-	$pass1=$_POST['pass'];
-	
-	if(!empty($email) && !empty($pass1))
-	{
-		$sql = "SELECT * FROM user where uemail='$email'";
-		$result=mysqli_query($conn, $sql);
-		$getData = mysqli_fetch_array($result);
-		$cnt = mysqli_num_rows($result); 
-		//    if($row != null){	   
-		// 		$_SESSION['uid']=$getData['uid'];
-		// 		$_SESSION['uemail']=$email;
-		// 		header("location:index.php");
-		//    }
-		$cnt = mysqli_num_rows($result); 
-		if (password_verify($pass1, $getData['upass'])){
-			$_SESSION['uid']=$getData['uid'];
-				$_SESSION['uemail']=$email;
-				header("location:index.php");
-		}
-		   else{
-			   $error = "<p class='alert alert-warning'>Login Not Successfully</p>";
-			   $_SESSION['uemail']=$email;
-			   header("location:index.php");
-		   }
-	}else{
-		$error = "<p class='alert alert-warning'> Please Fill all the fields</p>";
-	}
-}
+include("config.php");					
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -121,9 +89,9 @@ if(isset($_POST['login']))
 							<div class="login-right-wrap">
 								<h1>Login</h1>
 								<p class="account-subtitle">Access to our dashboard</p>
-								<?php echo $error; ?><?php echo $msg; ?>
+								
 								<!-- Form -->
-								<form method="post">
+								<form method="post" action="functions.php" enctype="multipart/form-data">
 									<div class="form-group">
 										<input type="email"  name="email" class="form-control" placeholder="Your Email*">
 									</div>
@@ -189,5 +157,28 @@ if(isset($_POST['login']))
 <script src="js/jquery.slider.js"></script> 
 <script src="js/wow.js"></script> 
 <script src="js/custom.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!-- Validation Messages -->
+<?php 
+			if (isset($_SESSION['status']) && $_SESSION['status'] !='')
+			{
+		?>
+		<script>
+			$(document).ready(function(){
+				Swal.fire({
+					icon: '<?php echo $_SESSION['status_icon'] ?>',
+					title: '<?php echo $_SESSION['status'] ?>',
+					confirmButtonColor: 'rgb(0, 0, 0)',
+					confirmButtonText: 'Okay'
+				});
+				<?php  unset($_SESSION['status']); ?>
+			})
+		</script>
+		
+		<?php
+		}else{
+			unset($_SESSION['status']);
+		}
+		?>
 </body>
 </html>

@@ -1,47 +1,5 @@
 <?php 
-include("config.php");
-$error="";
-$msg="";
-if(isset($_POST['reg']))
-{
-	$name=$_POST['name'];
-	$email=$_POST['email'];
-	$phone=$_POST['phone'];
-	$pass1=$_POST['pass1'];
-	$pass2=$_POST['pass2'];
-	$utype=$_POST['utype'];
-	
-	$uimage=$_FILES['uimage']['name'];
-	$temp_name1 = $_FILES['uimage']['tmp_name'];
-	
-	$query = "SELECT * FROM user where uemail='$email'";
-	$res=mysqli_query($conn, $query);
-	$num=mysqli_num_rows($res);
-	
-	if($num == 1)
-	{
-		$error = "<p class='alert alert-warning'>Email Id already Exist</p> ";
-	}
-	else
-	{
-		if($pass1 != $pass2){
-			$msg = "<p class='alert alert-danger'>Password does not match!</p> ";
-		}elseif(!empty($name) && !empty($email) && !empty($phone) && !empty($pass1) && !empty($uimage)){
-			$sql="INSERT INTO user (uname,uemail,uphone,upass,utype,uimage,ustatus) VALUES ('$name','$email','$phone','".password_hash($pass1, PASSWORD_DEFAULT)."','$utype','$uimage','Unverified')";
-			$result=mysqli_query($conn, $sql);
-			move_uploaded_file($temp_name1,"admin/user/$uimage");
-			   if($result){
-				   $msg = "<p class='alert alert-success'>Register Successfully! Please wait for the approval of your account...</p> ";
-			   }
-			   else{
-				   $error = "<p class='alert alert-warning'>Register Not Successfully</p> ";
-			   }
-		}else{
-			$error = "<p class='alert alert-warning'>Please Fill all the fields</p>";
-		}
-	}
-	
-}
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -128,9 +86,8 @@ if(isset($_POST['reg']))
 							<div class="login-right-wrap">
 								<h1>Register</h1>
 								<p class="account-subtitle">Access to our dashboard</p>
-								<?php echo $error; ?><?php echo $msg; ?>
 								<!-- Form -->
-								<form method="post" enctype="multipart/form-data">
+								<form method="post" action="functions.php" enctype="multipart/form-data">
 									<div class="form-group">
 										<input type="text"  name="name" class="form-control" placeholder="Your Name*">
 									</div>
@@ -226,5 +183,28 @@ if(isset($_POST['reg']))
 <script src="js/jquery.slider.js"></script> 
 <script src="js/wow.js"></script> 
 <script src="js/custom.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!-- Validation Messages -->
+<?php 
+			if (isset($_SESSION['status']) && $_SESSION['status'] !='')
+			{
+		?>
+		<script>
+			$(document).ready(function(){
+				Swal.fire({
+					icon: '<?php echo $_SESSION['status_icon'] ?>',
+					title: '<?php echo $_SESSION['status'] ?>',
+					confirmButtonColor: 'rgb(0, 0, 0)',
+					confirmButtonText: 'Okay'
+				});
+				<?php  unset($_SESSION['status']); ?>
+			})
+		</script>
+		
+		<?php
+		}else{
+			unset($_SESSION['status']);
+		}
+		?>
 </body>
 </html>
