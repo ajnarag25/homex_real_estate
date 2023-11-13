@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 13, 2023 at 02:20 AM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Generation Time: Nov 13, 2023 at 02:32 PM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -32,7 +32,7 @@ CREATE TABLE `about` (
   `title` varchar(100) NOT NULL,
   `content` longtext NOT NULL,
   `image` varchar(300) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `about`
@@ -54,15 +54,14 @@ CREATE TABLE `admin` (
   `apass` varchar(255) NOT NULL,
   `adob` date NOT NULL,
   `aphone` varchar(15) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `admin`
 --
 
 INSERT INTO `admin` (`aid`, `auser`, `aemail`, `apass`, `adob`, `aphone`) VALUES
-(3, 'ajnarag25', 'ajnarag25@gmail.com', '$2y$10$IBL0F4rsvG0A4r.UlSfiQe84innN8fIgO6tCihZxYioPLwL3bAezW', '2023-11-08', '0908963750'),
-(4, 'Michael', 'micorilan1999@gmail.com', '$2y$10$iO1BPP6H1MUMQaY9dAYOMuvDbAyP/1ZoJVEDcV5jlqyOwU55PUYIy', '2023-11-12', '4324234234');
+(3, 'ajnarag25', 'ajnarag25@gmail.com', '$2y$10$IBL0F4rsvG0A4r.UlSfiQe84innN8fIgO6tCihZxYioPLwL3bAezW', '2023-11-08', '0908963750');
 
 -- --------------------------------------------------------
 
@@ -74,7 +73,7 @@ CREATE TABLE `city` (
   `cid` int(50) NOT NULL,
   `cname` varchar(100) NOT NULL,
   `sid` int(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -89,7 +88,7 @@ CREATE TABLE `contact` (
   `phone` varchar(20) NOT NULL,
   `subject` varchar(100) NOT NULL,
   `message` varchar(250) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `contact`
@@ -110,7 +109,7 @@ CREATE TABLE `feedback` (
   `fdescription` varchar(300) NOT NULL,
   `status` int(1) NOT NULL,
   `date` date NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -150,18 +149,17 @@ CREATE TABLE `property` (
   `groundmapimage` varchar(300) NOT NULL,
   `totalfloor` varchar(50) NOT NULL,
   `date` date NOT NULL,
-  `ptype` varchar(250) NOT NULL,
-  `agent_admin_name` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `ptype` varchar(250) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `property`
 --
 
-INSERT INTO `property` (`pid`, `title`, `pcontent`, `type`, `pstatus`, `stype`, `bedroom`, `bathroom`, `balcony`, `kitchen`, `hall`, `floor`, `size`, `price`, `region`, `province`, `city`, `barangay`, `feature`, `pimage`, `pimage1`, `pimage2`, `pimage3`, `pimage4`, `uid`, `status`, `mapimage`, `topmapimage`, `groundmapimage`, `totalfloor`, `date`, `ptype`, `agent_admin_name`) VALUES
-(4, 'New Property', '<p>New house</p>', 'bungalow', 'new', 'sale', 1, 4, 3, 2, 1, '2', 15, 1000000, 'REGION IV-A (CALABARZON)', 'CAVITE', 'BACOOR CITY', 'Molino IV', 'yes', '01.jpg', '02.jpg', '2.png', '1.jpg', '03.jpg', 12345, 'available', '04.jpg', '3.jpg', '2.jpg', '', '2023-11-07', '', ''),
-(8, 'New House', '<p>New Build House&nbsp;</p>', 'commercial', 'pre-owned', 'rent', 3, 1, 2, 1, 1, '4', 15, 1500000, 'REGION VI (WESTERN VISAYAS)', 'ANTIQUE', 'PANDAN', 'Duyong', 'no', '03.jpg', '04.jpg', '02.jpg', '3.jpg', '02.jpg', 12345, 'sold out', '2.jpg', '01.jpg', '04.jpg', '', '2023-11-07', '', ''),
-(9, 'Test Property', '<p>For Testing</p>', 'commercial', 'pre-selling', 'rent', 5, 3, 5, 4, 3, '16', 25, 5000000, 'REGION II (CAGAYAN VALLEY)', 'CAGAYAN', 'CAMALANIUGAN', 'Bulala', 'yes', '02.jpg', '01.jpg', '1.jpg', '04.jpg', '3.jpg', 12345, 'available', '3.jpg', '2.png', '03.jpg', '', '2023-11-08', '', '');
+INSERT INTO `property` (`pid`, `title`, `pcontent`, `type`, `pstatus`, `stype`, `bedroom`, `bathroom`, `balcony`, `kitchen`, `hall`, `floor`, `size`, `price`, `region`, `province`, `city`, `barangay`, `feature`, `pimage`, `pimage1`, `pimage2`, `pimage3`, `pimage4`, `uid`, `status`, `mapimage`, `topmapimage`, `groundmapimage`, `totalfloor`, `date`, `ptype`) VALUES
+(4, 'New Property', '<p>New house</p>', 'bungalow', 'new', 'sale', 1, 4, 3, 2, 1, '2', 15, 1000000, 'REGION IV-A (CALABARZON)', 'CAVITE', 'BACOOR CITY', 'Molino IV', 'yes', '01.jpg', '02.jpg', '2.png', '1.jpg', '03.jpg', 12345, 'available', '04.jpg', '3.jpg', '2.jpg', '', '2023-11-07', ''),
+(8, 'New House', '<p>New Build House&nbsp;</p>', 'commercial', 'pre-owned', 'rent', 3, 1, 2, 1, 1, '4', 15, 1500000, 'REGION VI (WESTERN VISAYAS)', 'ANTIQUE', 'PANDAN', 'Duyong', 'no', '03.jpg', '04.jpg', '02.jpg', '3.jpg', '02.jpg', 12345, 'sold out', '2.jpg', '01.jpg', '04.jpg', '', '2023-11-07', ''),
+(9, 'Test Property', '<p>For Testing</p>', 'commercial', 'pre-selling', 'rent', 5, 3, 5, 4, 3, '16', 25, 5000000, 'REGION II (CAGAYAN VALLEY)', 'CAGAYAN', 'CAMALANIUGAN', 'Bulala', 'yes', '02.jpg', '01.jpg', '1.jpg', '04.jpg', '3.jpg', 12345, 'available', '3.jpg', '2.png', '03.jpg', '', '2023-11-08', '');
 
 -- --------------------------------------------------------
 
@@ -172,7 +170,7 @@ INSERT INTO `property` (`pid`, `title`, `pcontent`, `type`, `pstatus`, `stype`, 
 CREATE TABLE `propertyimg` (
   `id` int(11) NOT NULL,
   `image` varchar(250) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -183,7 +181,7 @@ CREATE TABLE `propertyimg` (
 CREATE TABLE `region` (
   `sid` int(50) NOT NULL,
   `sname` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -192,24 +190,23 @@ CREATE TABLE `region` (
 --
 
 CREATE TABLE `user` (
-  `uid` int(50) NOT NULL,
+  `id` int(50) NOT NULL,
   `uname` varchar(100) NOT NULL,
   `uemail` varchar(100) NOT NULL,
   `uphone` varchar(20) NOT NULL,
-  `upass` varchar(50) NOT NULL,
+  `upass` varchar(255) NOT NULL,
   `utype` varchar(50) NOT NULL,
   `uimage` varchar(300) NOT NULL,
   `ustatus` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`uid`, `uname`, `uemail`, `uphone`, `upass`, `utype`, `uimage`, `ustatus`) VALUES
-(1, 'AVOR JOHN', 'ajnarag25@gmail.com', '9089637505', '$2y$10$/wz3QJjjB4QNALhKo.f4z.27hNMMOc5EiTN.slSokz3', 'agent', 'png-clipart-indian-cuisine-organic-food-pav-bhaji-cooking-cooking-food-recipe-removebg-preview.png', 'Verified'),
-(2, 'Mark Zelon Narag', 'ajnarag25@gmail.com', '9089637505', '$2y$10$/OZA9EMPQ3gwo.Xgba1raurEGvyBU6dAN2R7w/tal5E', 'user', 'da73b79bf4ecf3d5fe87649436dd708a-removebg-preview.png', 'Unverified'),
-(8, 'Michael', 'micorilan1999@gmail.com', '4324234234', '$2y$10$/vekL.i09hlzPCynotXxxeSTwAuQ9I72Efwu8R5oPw2', 'agent', 'Screenshot 2023-11-04 091736.png', 'Unverified');
+INSERT INTO `user` (`id`, `uname`, `uemail`, `uphone`, `upass`, `utype`, `uimage`, `ustatus`) VALUES
+(1, 'Avor John Atienza', 'ajnarag25@gmail.com', '9089637505', '$2y$10$XTGKpgAShvymueJ3sLp8N.lvZYA20V8xZaMVqj0n73lIbvAlTS4I2', 'user', '75765de73bfae5b6ac0e437af2bc4c77.jpg', 'Verified'),
+(2, 'Mark Zelon Narag', 'marknarag25@gmail.com', '9089637505', '$2y$10$NdzcASZHVKeBNFXUo2Ncx.Wnj5sQYZu6dawycIPabRk4GEKV87dNS', 'user', 'da73b79bf4ecf3d5fe87649436dd708a.jpg', 'Unverified');
 
 --
 -- Indexes for dumped tables
@@ -261,7 +258,7 @@ ALTER TABLE `region`
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`uid`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -277,7 +274,7 @@ ALTER TABLE `about`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `aid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `aid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `city`
@@ -313,7 +310,7 @@ ALTER TABLE `region`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `uid` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
