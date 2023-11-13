@@ -1,33 +1,8 @@
 <?php 
+ini_set('session.cache_limiter','public');
+session_cache_limiter(false);
 session_start();
-include("config.php");
-$error="";
-$msg="";
-if(isset($_REQUEST['login']))
-{
-	$email=$_REQUEST['email'];
-	$pass=$_REQUEST['pass'];
-	
-	
-	if(!empty($email) && !empty($pass))
-	{
-		$sql = "SELECT * FROM user where uemail='$email' && upass='$pass'";
-		$result=mysqli_query($con, $sql);
-		$row=mysqli_fetch_array($result);
-		   if($row){
-			   
-				$_SESSION['uid']=$row['uid'];
-				$_SESSION['uemail']=$email;
-				header("location:index.php");
-				
-		   }
-		   else{
-			   $error = "<p class='alert alert-warning'>Login Not Successfully</p> ";
-		   }
-	}else{
-		$error = "<p class='alert alert-warning'>Please Fill all the fields</p>";
-	}
-}
+include("config.php");					
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -114,9 +89,9 @@ if(isset($_REQUEST['login']))
 							<div class="login-right-wrap">
 								<h1>Login</h1>
 								<p class="account-subtitle">Access to our dashboard</p>
-								<?php echo $error; ?><?php echo $msg; ?>
+								
 								<!-- Form -->
-								<form method="post">
+								<form method="post" action="functions.php" enctype="multipart/form-data">
 									<div class="form-group">
 										<input type="email"  name="email" class="form-control" placeholder="Your Email*">
 									</div>
@@ -124,7 +99,7 @@ if(isset($_REQUEST['login']))
 										<input type="password" name="pass"  class="form-control" placeholder="Your Password">
 									</div>
 									
-										<button class="btn btn-primary w-100" name="login" value="Login" type="submit">Login</button>
+										<button type="submit" class="btn btn-primary w-100" name="login" value="Login" type="submit">Login</button>
 									
 								</form>
 								
@@ -182,5 +157,28 @@ if(isset($_REQUEST['login']))
 <script src="js/jquery.slider.js"></script> 
 <script src="js/wow.js"></script> 
 <script src="js/custom.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!-- Validation Messages -->
+<?php 
+			if (isset($_SESSION['status']) && $_SESSION['status'] !='')
+			{
+		?>
+		<script>
+			$(document).ready(function(){
+				Swal.fire({
+					icon: '<?php echo $_SESSION['status_icon'] ?>',
+					title: '<?php echo $_SESSION['status'] ?>',
+					confirmButtonColor: 'rgb(0, 0, 0)',
+					confirmButtonText: 'Okay'
+				});
+				<?php  unset($_SESSION['status']); ?>
+			})
+		</script>
+		
+		<?php
+		}else{
+			unset($_SESSION['status']);
+		}
+		?>
 </body>
 </html>
