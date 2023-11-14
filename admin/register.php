@@ -41,6 +41,9 @@
 								<p class="account-subtitle">Access to our dashboard</p>
 								<!-- Form -->
 								<form method="POST" action="functions.php">
+								<div class="form-group">
+										<input class="form-control" type="text" placeholder="Fullname" name="fname" required>
+									</div>
 									<div class="form-group">
 										<input class="form-control" type="text" placeholder="Username" name="name" required>
 									</div>

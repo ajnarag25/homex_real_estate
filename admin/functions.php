@@ -32,6 +32,7 @@
     // register
     if(isset($_POST['register']))
     {
+        $fname = $_POST['fname'];
         $user=$_POST['name'];
         $email=$_POST['email'];
         $pass1=$_POST['pass1'];
@@ -52,7 +53,7 @@
             header('location:register.php');
         }else{
             if (!$result->num_rows > 0) {
-                $conn->query("INSERT INTO admin (auser,aemail,apass,adob,aphone) VALUES('$user','$email','".password_hash($pass1, PASSWORD_DEFAULT)."','$dob','$phone')") or die($conn->error);
+                $conn->query("INSERT INTO admin (auser,aemail,apass,adob,fname,aphone) VALUES('$user','$email','".password_hash($pass1, PASSWORD_DEFAULT)."','$dob','$fname','$phone')") or die($conn->error);
                 $_SESSION['status'] = 'Successfully Created the Account';
                 $_SESSION['status_icon'] = 'success';
                 header('location:index.php');

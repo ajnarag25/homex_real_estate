@@ -24,7 +24,7 @@ if(isset($_POST['insert']))
 	{
 		
 		$sql="INSERT INTO feedback (uid,fdescription,status) VALUES ('$uid','$content','0')";
-		   $result=mysqli_query($con, $sql);
+		   $result=mysqli_query($conn, $sql);
 		   if($result){
 			   $msg = "<p class='alert alert-success'>Feedback Send Successfully</p> ";
 		   }
@@ -146,8 +146,8 @@ if(isset($_POST['insert']))
                             <div class="col-lg-1"></div>
                             <div class="col-lg-5 col-md-12">
 								<?php 
-									$uid=$_SESSION['uid'];
-									$query=mysqli_query($con,"SELECT * FROM `user` WHERE uid='$uid'");
+									$uid=$_SESSION['get_data']['uid'];
+									$query=mysqli_query($conn,"SELECT * FROM `user` WHERE uid='$uid'");
 									while($row=mysqli_fetch_array($query))
 									{
 								?>
