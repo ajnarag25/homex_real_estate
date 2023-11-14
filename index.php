@@ -203,7 +203,7 @@ include("config.php");
                                                     </ul>
                                                 </div>
                                                 <div class="p-4 d-inline-block w-100">
-                                                    <div class="float-left text-capitalize"><i class="fas fa-user text-success mr-1"></i>By : Sample Agent</div>
+                                                    <div class="float-left text-capitalize"><i class="fas fa-user text-success mr-1"></i>By : <?php echo $row['useragent'];?></div>
                                                     <div class="float-right"><i class="far fa-calendar-alt text-success mr-1"></i> <?php echo date('d-m-Y', strtotime($row['date']));?></div> 
                                                 </div>
                                             </div>

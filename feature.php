@@ -111,8 +111,8 @@ if(!isset($_SESSION['uemail']))
                         <tbody>
 						
 							<?php 
-							$uid=$_SESSION['uid'];
-							$query=mysqli_query($con,"SELECT * FROM `property` WHERE uid='$uid'");
+							$uid=$_SESSION['get_data']['uid'];
+							$query=mysqli_query($conn,"SELECT * FROM `property` WHERE uid='$uid'");
 								while($row=mysqli_fetch_array($query))
 								{
 							?>
