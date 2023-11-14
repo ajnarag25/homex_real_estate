@@ -33,6 +33,33 @@
                                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
                                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                     <ul class="navbar-nav mr-auto">
+                                    <?php  if(isset($_SESSION['uemail']))
+										{ ?>
+
+                                       <?php if($_SESSION['get_data']['utype'] == 'agent')
+                                       {
+                                       ?>
+                                        <li class="nav-item dropdown"> <a class="nav-link" href="index.php" role="button" aria-haspopup="true" aria-expanded="false">Home</a></li>
+										
+										<li class="nav-item"> <a class="nav-link" href="about.php">About</a> </li>
+										
+										<!-- <li class="nav-item"> <a class="nav-link" href="agent.php">Agent</a> </li> -->
+										
+										<li class="nav-item"> <a class="nav-link" href="property.php">Properties</a> </li>
+                                        <!-- <li class="nav-item"> <a class="nav-link" href="contact.php">Contact</a> </li> -->
+
+                                        <?php }else{?>
+                                            <li class="nav-item dropdown"> <a class="nav-link" href="index.php" role="button" aria-haspopup="true" aria-expanded="false">Home</a></li>
+										
+										<li class="nav-item"> <a class="nav-link" href="about.php">About</a> </li>
+										
+										<li class="nav-item"> <a class="nav-link" href="agent.php">Agent</a> </li>
+										
+										<li class="nav-item"> <a class="nav-link" href="property.php">Properties</a> </li>
+                                        <li class="nav-item"> <a class="nav-link" href="contact.php">Contact</a> </li>
+                                            <?php }?>
+                                        <?php }else {   
+                                        ?>
                                         <li class="nav-item dropdown"> <a class="nav-link" href="index.php" role="button" aria-haspopup="true" aria-expanded="false">Home</a></li>
 										
 										<li class="nav-item"> <a class="nav-link" href="about.php">About</a> </li>
@@ -41,7 +68,7 @@
 										
 										<li class="nav-item"> <a class="nav-link" href="property.php">Properties</a> </li>
                                         <li class="nav-item"> <a class="nav-link" href="contact.php">Contact</a> </li>
-										
+                                        <?php }?>
 										<?php  if(isset($_SESSION['uemail']))
 										{ ?>
 										<li class="nav-item dropdown">

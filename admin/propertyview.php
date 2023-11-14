@@ -91,11 +91,11 @@ if(!isset($_SESSION['auser']))
                                                     <th>Type</th>
                                                     <th>Property Status</th>
                                                     <th>Selling Type</th>
-													<th>Bedroom</th>
+													<!-- <th>Bedroom</th>
                                                     <th>Bathroom</th>
                                                     <th>Balcony</th>
                                                     <th>Kitchen</th>
-                                                    <th>Hall</th>
+                                                    <th>Hall</th> -->
                                                     <th>Floor</th>
 													<th>Area Size</th>
                                                     <th>Price</th>
@@ -137,11 +137,6 @@ if(!isset($_SESSION['auser']))
                                                     <td><?php echo $row['3']; ?></td>
                                                     <td><?php echo $row['4']; ?></td>
                                                     <td><?php echo $row['5']; ?></td>
-                                                    <td><?php echo $row['6']; ?></td>
-                                                    <td><?php echo $row['7']; ?></td>
-                                                    <td><?php echo $row['8']; ?></td>
-                                                    <td><?php echo $row['9']; ?></td>
-													<td><?php echo $row['10']; ?></td>
                                                     <td><?php echo $row['11']; ?></td>
                                                     <td><?php echo $row['12']; ?></td>
                                                     <td><?php echo $row['13']; ?></td>

@@ -14,6 +14,7 @@
         if ($getData !== null) {
             if (password_verify($pass, $getData['upass'])) {
                 $_SESSION['uemail'] = $getData;
+                $_SESSION['get_data'] = $getData;
                 unset($_SESSION['status']);
                 header('location:index.php');
             } else {
