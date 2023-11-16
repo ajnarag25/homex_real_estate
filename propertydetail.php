@@ -123,48 +123,7 @@ include("config.php");
                                 <h4 class="mt-4 text-secondary text-capitalize"><?php echo $row['1'];?></h4>
                                 <span class="mb-sm-20 d-block text-capitalize"><i class="fas fa-map-marker-alt text-success font-12"></i> &nbsp;<?php echo $row['16'];?>, <?php echo $row['17'];?>, <?php echo $row['15'];?></span>
 							</div>
-                            <div class="col-md-4">
-                                <!-- Inquire Modal -->
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Inquire</button>
-                            <!-- Modal -->
-                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Inquire Property</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <form action="functions.php" method="post">
-                                        <div class="form-group">
-                                            
-                                            <input type="text" name="property_id" value="<?php echo $_GET['pid']?>" hidden>
-                                            <input type="text" name =  'admin_agent_id' value = "<?php echo $row['34'];?>">
-                                            <label for="" class="col-form-label">Name:</label>
-                                            <input type="text" name="fname" class="form-control" value="<?php echo $_SESSION['get_data']['uname'];?>" readonly>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="" class="col-form-label">Email:</label>
-                                            <input type="text" name="email" class="form-control" value="<?php echo $_SESSION['get_data']['uemail'];?>" readonly>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="" class="col-form-label">Contact Number:</label>
-                                            <input type="text" name="cnum" class="form-control" value="<?php echo $_SESSION['get_data']['uphone'];?>" readonly>
-                                        </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="submit" name="submit_inquire" class="btn btn-primary">Save changes</button>
-                                </div>
-                                </form>
-                                </div>
-                            </div>
-                            </div>
-
-							</div>
-                            <div class="col-md-4">
+                            <div class="col-md-8">
                                 <div class="text-success text-left h5 my-2 text-md-right">P <?php echo $row['13'];?></div>
                                 <div class="text-left text-md-right">Price</div>
                             </div>

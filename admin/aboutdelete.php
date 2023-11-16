@@ -4,7 +4,7 @@ $aid = $_GET['id'];
 
 // view code//
 $sql = "SELECT * FROM about where id='$aid'";
-$result = mysqli_query($con, $sql);
+$result = mysqli_query($conn, $sql);
 while($row = mysqli_fetch_array($result))
 	{
 	  $img=$row["image"];
@@ -16,7 +16,7 @@ while($row = mysqli_fetch_array($result))
 
 $msg="";
 $sql = "DELETE FROM about WHERE id = {$aid}";
-$result = mysqli_query($con, $sql);
+$result = mysqli_query($conn, $sql);
 if($result == true)
 {
 	$msg="<p class='alert alert-success'>About Deleted</p>";
@@ -28,5 +28,5 @@ else
 		header("Location:aboutview.php?msg=$msg");
 }
 
-mysqli_close($con);
+mysqli_close($conn);
 ?>

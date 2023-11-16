@@ -16,7 +16,7 @@ if(isset($_POST['update']))
 	$status=$_POST['status'];
 		
 	$sql="UPDATE feedback SET status = '{$status}' WHERE fid = {$fid}";
-	$result=mysqli_query($con,$sql);
+	$result=mysqli_query($conn,$sql);
 	if($result == true)
 		{
 			$msg="<p class='alert alert-success'>Feedback Updated Successfully</p>";
@@ -97,7 +97,7 @@ if(isset($_POST['update']))
 								<?php 
 								$fid = $_GET['id'];
 								$sql = "SELECT * FROM feedback where fid = {$fid}";
-								$result = mysqli_query($con, $sql);
+								$result = mysqli_query($conn, $sql);
 								while($row = mysqli_fetch_row($result))
 								{
 								?>
