@@ -38,7 +38,7 @@
         $pass1=$_POST['pass1'];
         $pass2=$_POST['pass2'];
         $utype=$_POST['utype'];
-        
+        $idnum = $_POST['idnum'];
         $uimage=$_FILES['uimage']['name'];
         $temp_name1 = $_FILES['uimage']['tmp_name'];
         
@@ -57,7 +57,7 @@
             if($pass1 != $pass2){
                 $msg = "<p class='alert alert-danger'>Password does not match!</p> ";
             }elseif(!empty($name) && !empty($email) && !empty($phone) && !empty($pass1) && !empty($uimage)){
-                $sql="INSERT INTO user (uname,uemail,uphone,upass,utype,uimage,ustatus) VALUES ('$name','$email','$phone','".password_hash($pass1, PASSWORD_DEFAULT)."','$utype','$uimage','Unverified')";
+                $sql="INSERT INTO user (uname,uemail,uphone,upass,utype,uimage,ustatus,idnum) VALUES ('$name','$email','$phone','".password_hash($pass1, PASSWORD_DEFAULT)."','$utype','$uimage','Unverified','$idnum')";
                 $result=mysqli_query($conn, $sql);
                 move_uploaded_file($temp_name1,"admin/user/$uimage");
                    if($result){

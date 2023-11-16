@@ -34,7 +34,7 @@ session_start();
 
 <!--	Title
 	=========================================================-->
-<title>Homex - Real Estate Template</title>
+<title>Home Dreamers Realty and Development Corporation</title>
 </head>
 <body>
 
@@ -88,6 +88,9 @@ session_start();
 								<p class="account-subtitle">Access to our dashboard</p>
 								<!-- Form -->
 								<form method="post" action="functions.php" enctype="multipart/form-data">
+									<div class="form-group" id="idNumberField" style = "display:none;">
+										<input type="text"  name="idnum" class="form-control" placeholder="ID Number*" maxlength="10">
+									</div>
 									<div class="form-group">
 										<input type="text"  name="name" class="form-control" placeholder="Your Name*">
 									</div>
@@ -97,6 +100,7 @@ session_start();
 									<div class="form-group">
 										<input type="text"  name="phone" class="form-control" placeholder="Your Phone*" maxlength="10">
 									</div>
+									
 									<div class="form-group">
 										<input type="password" name="pass1"  class="form-control" placeholder="Your Password*">
 									</div>
@@ -106,12 +110,12 @@ session_start();
 
 									 <div class="form-check-inline">
 									  <label class="form-check-label">
-										<input type="radio" class="form-check-input" name="utype" value="user" checked>User
+										<input type="radio" class="form-check-input" name="utype" value="user" checked onclick="hideIdNumber()">User
 									  </label>
 									</div>
 									<div class="form-check-inline">
 									  <label class="form-check-label">
-										<input type="radio" class="form-check-input" name="utype" value="agent">Agent
+										<input type="radio" class="form-check-input" name="utype" value="agent" onclick="showIdNumber()">Agent
 									  </label>
 									</div>
 									<!-- <div class="form-check-inline disabled">
@@ -184,6 +188,15 @@ session_start();
 <script src="js/wow.js"></script> 
 <script src="js/custom.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    function showIdNumber() {
+        document.getElementById("idNumberField").style.display = "block";
+    }
+
+    function hideIdNumber() {
+        document.getElementById("idNumberField").style.display = "none";
+    }
+</script>
 <!-- Validation Messages -->
 <?php 
 			if (isset($_SESSION['status']) && $_SESSION['status'] !='')
