@@ -88,6 +88,16 @@ session_start();
 								<p class="account-subtitle">Access to our dashboard</p>
 								<!-- Form -->
 								<form method="post" action="functions.php" enctype="multipart/form-data">
+									<div class="form-check-inline">
+									  <label class="form-check-label">
+										<input type="radio" class="form-check-input" name="utype" value="user" checked onclick="hideIdNumber()">User
+									  </label>
+									</div>
+									<div class="form-check-inline">
+									  <label class="form-check-label">
+										<input type="radio" class="form-check-input" name="utype" value="agent" onclick="showIdNumber()">Agent
+									  </label>
+									</div>
 									<div class="form-group" id="idNumberField" style = "display:none;">
 										<input type="text"  name="idnum" class="form-control" placeholder="ID Number*" maxlength="10">
 									</div>
@@ -108,16 +118,7 @@ session_start();
 										<input type="password" name="pass2"  class="form-control" placeholder="Retype Password*">
 									</div>
 
-									 <div class="form-check-inline">
-									  <label class="form-check-label">
-										<input type="radio" class="form-check-input" name="utype" value="user" checked onclick="hideIdNumber()">User
-									  </label>
-									</div>
-									<div class="form-check-inline">
-									  <label class="form-check-label">
-										<input type="radio" class="form-check-input" name="utype" value="agent" onclick="showIdNumber()">Agent
-									  </label>
-									</div>
+									 
 									<!-- <div class="form-check-inline disabled">
 									  <label class="form-check-label">
 										<input type="radio" class="form-check-input" name="utype" value="builder">Builder
