@@ -37,7 +37,7 @@ include("config.php");
 
 <!--	Title
 	=========================================================-->
-<title>Homex - Real Estate Template</title>
+<title>Home Dreamers Realty and Development Corporation</title>
 </head>
 <body>
 

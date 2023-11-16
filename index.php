@@ -37,7 +37,7 @@ include("config.php");
 
 <!--	Title
 	=========================================================-->
-<title>Real Estate PHP</title>
+<title>Home Dreamers Realty and Development Corporation</title>
 </head>
 <body>
 
