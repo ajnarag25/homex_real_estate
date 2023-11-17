@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 16, 2023 at 07:55 AM
+-- Generation Time: Nov 17, 2023 at 02:45 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -124,8 +124,20 @@ CREATE TABLE `inquire` (
   `email` varchar(255) DEFAULT NULL,
   `cnum` varchar(255) DEFAULT NULL,
   `property_id` varchar(4) NOT NULL,
-  `admin_agent_id` varchar(4) NOT NULL
+  `admin_agent_id` varchar(4) NOT NULL,
+  `uid` varchar(255) NOT NULL,
+  `date_inquired` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `inquire`
+--
+
+INSERT INTO `inquire` (`id`, `fname`, `email`, `cnum`, `property_id`, `admin_agent_id`, `uid`, `date_inquired`) VALUES
+(10, 'Michael', 'micorilan1999@gmail.com', '4324234234', '8', '', '3', '2023-11-17'),
+(11, 'zxcv1234', 'aaa@gmail.com', '4324234234', '4', '', '5', '2023-11-17'),
+(12, 'asdf', 'asdf@gmail.com', '12345', '10', '1', '', '2023-11-17'),
+(13, 'Michael', 'micorilan1999@gmail.com', '4324234234', '11', '3', '3', '2023-11-17');
 
 -- --------------------------------------------------------
 
@@ -168,18 +180,22 @@ CREATE TABLE `property` (
   `ptype` varchar(250) NOT NULL,
   `useragent` varchar(255) NOT NULL,
   `user_type` varchar(255) NOT NULL,
-  `user_id` varchar(255) NOT NULL
+  `user_id` varchar(255) NOT NULL,
+  `bhk` varchar(255) NOT NULL,
+  `assign_to` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `property`
 --
 
-INSERT INTO `property` (`pid`, `title`, `pcontent`, `type`, `pstatus`, `stype`, `bedroom`, `bathroom`, `balcony`, `kitchen`, `hall`, `floor`, `size`, `price`, `region`, `province`, `city`, `barangay`, `feature`, `pimage`, `pimage1`, `pimage2`, `pimage3`, `pimage4`, `uid`, `status`, `mapimage`, `topmapimage`, `groundmapimage`, `totalfloor`, `date`, `ptype`, `useragent`, `user_type`, `user_id`) VALUES
-(4, 'New Property', '<p>New house</p>', 'bungalow', 'new', 'sale', 1, 4, 3, 2, 1, '2', 15, 1000000, 'REGION IV-A (CALABARZON)', 'CAVITE', 'BACOOR CITY', 'Molino IV', 'yes', '01.jpg', '02.jpg', '2.png', '1.jpg', '03.jpg', 12345, 'available', '04.jpg', '3.jpg', '2.jpg', '', '2023-11-07', '', 'sdasd', '', ''),
-(8, 'New House', '<p>New Build House&nbsp;</p>', 'commercial', 'pre-owned', 'rent', 3, 1, 2, 1, 1, '4', 15, 1500000, 'REGION VI (WESTERN VISAYAS)', 'ANTIQUE', 'PANDAN', 'Duyong', 'no', '03.jpg', '04.jpg', '02.jpg', '3.jpg', '02.jpg', 12345, 'sold out', '2.jpg', '01.jpg', '04.jpg', '', '2023-11-07', '', 'asdasd', '', ''),
-(9, 'Test Property', '<p>For Testing</p>', 'commercial', 'pre-selling', 'rent', 5, 3, 5, 4, 3, '16', 25, 5000000, 'REGION II (CAGAYAN VALLEY)', 'CAGAYAN', 'CAMALANIUGAN', 'Bulala', 'yes', '02.jpg', '01.jpg', '1.jpg', '04.jpg', '3.jpg', 12345, 'available', '3.jpg', '2.png', '03.jpg', '', '2023-11-08', '', 'asdd', '', ''),
-(10, 'BEDROOM', '<p>WALA LANG&nbsp;</p>', 'commercial', 'new', 'rent', 2, 1, 1, 1, 1, '12', 12, 0, '', '', '', '', 'yes', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', 1, 'available', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', '', '2023-11-14', '', 'Avor John Narag', 'admin', '1');
+INSERT INTO `property` (`pid`, `title`, `pcontent`, `type`, `pstatus`, `stype`, `bedroom`, `bathroom`, `balcony`, `kitchen`, `hall`, `floor`, `size`, `price`, `region`, `province`, `city`, `barangay`, `feature`, `pimage`, `pimage1`, `pimage2`, `pimage3`, `pimage4`, `uid`, `status`, `mapimage`, `topmapimage`, `groundmapimage`, `totalfloor`, `date`, `ptype`, `useragent`, `user_type`, `user_id`, `bhk`, `assign_to`) VALUES
+(4, 'New Property', '<p>New house</p>', 'bungalow', 'new', 'sale', 1, 4, 3, 2, 1, '2', 15, 1000000, 'REGION IV-A (CALABARZON)', 'CAVITE', 'BACOOR CITY', 'Molino IV', 'yes', '01.jpg', '02.jpg', '2.png', '1.jpg', '03.jpg', 12345, 'available', '04.jpg', '3.jpg', '2.jpg', '', '2023-11-07', '', 'sdasd', '', '', '', ''),
+(8, 'New House', '<p>New Build House&nbsp;</p>', 'commercial', 'pre-owned', 'rent', 3, 1, 2, 1, 1, '4', 15, 1500000, 'REGION VI (WESTERN VISAYAS)', 'ANTIQUE', 'PANDAN', 'Duyong', 'no', '03.jpg', '04.jpg', '02.jpg', '3.jpg', '02.jpg', 12345, 'sold out', '2.jpg', '01.jpg', '04.jpg', '', '2023-11-07', '', 'asdasd', '', '', '', ''),
+(9, 'Test Property', '<p>For Testingasasas</p>', 'appartment', 'pre-selling', 'rent', 5, 3, 5, 4, 3, '5th Floor', 25, 5000000, 'REGION II (CAGAYAN VALLEY)', 'CAGAYAN', 'CAGAYAN', 'Bulala', '<p>Bulalaasasas</p>', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', 3, 'available', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', '15 Floor', '2023-11-08', '', 'asdd', 'agent', '3', '1 BHK', ''),
+(10, 'BEDROOM', '<p>WALA LANG&nbsp;</p>', 'commercial', 'new', 'rent', 2, 1, 1, 1, 1, '12', 12, 0, '', '', '', '', 'yes', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', 1, 'available', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', '', '2023-11-14', '', 'Avor John Narag', 'admin', '1', '1 BHK', '3'),
+(11, 'testing', '<p>fsfsd</p>', 'appartment', '', 'rent', 1, 1, 1, 1, 1, '1st Floor', 1234, 12345, '1234', '', 'bacoor', '', '<p>fsdafsfd</p>', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', 0, 'Available', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', '3 Floor', '0000-00-00', '', '', '', '3', '2 BHK', ''),
+(12, 'ZXCV', '<p>ZXCV</p>', 'flat', '', 'rent', 1, 1, 1, 1, 1, '1st Floor', 1, 1, '1', '', '1', '', '<p>ZXCV</p>', 'Screenshot 2023-10-24 092240.png', 'Screenshot 2023-10-23 113328.png', 'Screenshot 2023-10-23 113328.png', 'Screenshot 2023-10-23 113328.png', 'Screenshot 2023-10-24 092240.png', 0, 'Available', 'Screenshot 2023-10-23 113143.png', 'Screenshot 2023-10-23 113328.png', 'Screenshot 2023-10-23 113143.png', '10 Floor', '0000-00-00', '', '', '', '3', '5 BHK', '');
 
 -- --------------------------------------------------------
 
@@ -328,13 +344,13 @@ ALTER TABLE `feedback`
 -- AUTO_INCREMENT for table `inquire`
 --
 ALTER TABLE `inquire`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `property`
 --
 ALTER TABLE `property`
-  MODIFY `pid` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `pid` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `region`

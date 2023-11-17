@@ -2,6 +2,7 @@
 ini_set('session.cache_limiter','public');
 session_cache_limiter(false);
 session_start();
+error_reporting(0);
 include("config.php");
 								
 ?>
@@ -125,7 +126,25 @@ include("config.php");
 							</div>
                             <div class="col-md-4">
                                 <!-- Inquire Modal -->
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Inquire</button>
+                                <?php
+                                $uid = $_SESSION['get_data']['uid'];
+                                $property_id = $_GET['pid'];
+                                $check_if_inquired = mysqli_query($conn,"SELECT * FROM inquire WHERE uid='$uid' AND property_id = '$property_id';");
+                                $cnt = mysqli_num_rows($check_if_inquired);
+                                if ($cnt > 0){
+                                    // DISPLAY NOTHING
+                                }else{
+                                ?>
+                                <?php 
+                                if ($_SESSION['get_data']['uid'] == $row['34'] && $row['33'] == 'agent') {
+                                        // DISPLAY NOTHING
+                                }else{
+                                ?>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Inquire</button>
+                                <?php 
+                                }
+                            }
+                                ?>
                             <!-- Modal -->
                             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -138,11 +157,16 @@ include("config.php");
                                 </div>
                                 <div class="modal-body">
                                     <form action="functions.php" method="post">
+                                        <?php 
+                                        echo $uid;
+                                        if ($uid >0) {  
+                                        ?>
                                         <div class="form-group">
-                                            
                                             <input type="text" name="property_id" value="<?php echo $_GET['pid']?>" hidden>
-                                            <input type="text" name =  'admin_agent_id' value = "<?php echo $row['34'];?>">
-                                            <label for="" class="col-form-label">Name:</label>
+                                            <input type="text" name =  'admin_agent_id' value = "<?php echo $row['34'];?>" hidden>
+                                            <input type="text" name =  'uid' value = "<?php echo $_SESSION['get_data']['uid'];?>" hidden>
+
+                                            <label for="" class="form-label">Name:</label>
                                             <input type="text" name="fname" class="form-control" value="<?php echo $_SESSION['get_data']['uname'];?>" readonly>
                                         </div>
                                         <div class="form-group">
@@ -153,12 +177,37 @@ include("config.php");
                                             <label for="" class="col-form-label">Contact Number:</label>
                                             <input type="text" name="cnum" class="form-control" value="<?php echo $_SESSION['get_data']['uphone'];?>" readonly>
                                         </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="submit" name="submit_inquire" class="btn btn-primary">Save changes</button>
-                                </div>
-                                </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button type="submit" name="submit_inquire" class="btn btn-primary">Send Inquiry</button>
+                                        </div>
+                                        <?php
+                                        }else{
+                                        ?>
+                                        <div class="form-group">
+                                            <input type="text" name="property_id" value="<?php echo $_GET['pid']?>" >
+                                            <input type="text" name =  'admin_agent_id' value = "<?php echo $row['34'];?>" >
+
+                                            <label for="" class="form-label">Name:</label>
+                                            <input type="text" name="fname" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="" class="col-form-label">Email:</label>
+                                            <input type="text" name="email" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="" class="col-form-label">Contact Number:</label>
+                                            <input type="text" name="cnum" class="form-control">
+                                        </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button type="submit" name="submit_inquire" class="btn btn-primary">Send Inquiry</button>
+                                        </div>
+
+                                        <?php }?>
+                                    </form>
                                 </div>
                             </div>
                             </div>
@@ -349,7 +398,29 @@ include("config.php");
 <script src="js/jquery.slider.js"></script> 
 <script src="js/wow.js"></script> 
 <script src="js/custom.js"></script> 
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!-- Validation Messages -->
+<?php 
+			if (isset($_SESSION['status']) && $_SESSION['status'] !='')
+			{
+		?>
+		<script>
+			$(document).ready(function(){
+				Swal.fire({
+					icon: '<?php echo $_SESSION['status_icon'] ?>',
+					title: '<?php echo $_SESSION['status'] ?>',
+					confirmButtonColor: 'rgb(0, 0, 0)',
+					confirmButtonText: 'Okay'
+				});
+				<?php  unset($_SESSION['status']); ?>
+			})
+		</script>
+		
+		<?php
+		}else{
+			unset($_SESSION['status']);
+		}
+		?>
 </body>
 
 </html>
