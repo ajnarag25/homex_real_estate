@@ -2,6 +2,7 @@
 ini_set('session.cache_limiter','public');
 session_cache_limiter(false);
 session_start();
+error_reporting(0);
 include("config.php");
 ///code								
 ?>
@@ -92,7 +93,8 @@ include("config.php");
 						
 				
                              <?php 
-								$query=mysqli_query($conn,"SELECT * FROM `property` ORDER BY date DESC LIMIT 6");
+                                $uid = $_SESSION['get_data']['uid'];
+								$query=mysqli_query($conn,"SELECT * FROM `property` WHERE user_id <> '$uid'  ORDER BY date DESC");
                                 while($row=mysqli_fetch_array($query))
                                 {
 								?>
@@ -191,8 +193,30 @@ include("config.php");
 <script src="js/draggable-0.1.js"></script> 
 <script src="js/jquery.slider.js"></script> 
 <script src="js/wow.js"></script> 
-
 <script src="js/custom.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!-- Validation Messages -->
+<?php 
+			if (isset($_SESSION['status']) && $_SESSION['status'] !='')
+			{
+		?>
+		<script>
+			$(document).ready(function(){
+				Swal.fire({
+					icon: '<?php echo $_SESSION['status_icon'] ?>',
+					title: '<?php echo $_SESSION['status'] ?>',
+					confirmButtonColor: 'rgb(0, 0, 0)',
+					confirmButtonText: 'Okay'
+				});
+				<?php  unset($_SESSION['status']); ?>
+			})
+		</script>
+		
+		<?php
+		}else{
+			unset($_SESSION['status']);
+		}
+		?>
 </body>
 
 </html>

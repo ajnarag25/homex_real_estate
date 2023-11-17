@@ -42,6 +42,7 @@
                                         <li class="nav-item dropdown"> <a class="nav-link" href="index.php" role="button" aria-haspopup="true" aria-expanded="false">Home</a></li>
 										
 										<li class="nav-item"> <a class="nav-link" href="about.php">About</a> </li>
+										<li class="nav-item"> <a class="nav-link" href="history.php">Inquire History</a> </li>
 										
 										<!-- <li class="nav-item"> <a class="nav-link" href="agent.php">Agent</a> </li> -->
 										
@@ -52,8 +53,8 @@
                                             <li class="nav-item dropdown"> <a class="nav-link" href="index.php" role="button" aria-haspopup="true" aria-expanded="false">Home</a></li>
 										
 										<li class="nav-item"> <a class="nav-link" href="about.php">About</a> </li>
-										
-										<li class="nav-item"> <a class="nav-link" href="agent.php">Agent</a> </li>
+										<li class="nav-item"> <a class="nav-link" href="history.php">Inquire History</a> </li>
+										<!-- <li class="nav-item"> <a class="nav-link" href="agent.php">Agent</a> </li> -->
 										
 										<li class="nav-item"> <a class="nav-link" href="property.php">Properties</a> </li>
                                         <li class="nav-item"> <a class="nav-link" href="contact.php">Contact</a> </li>
@@ -74,15 +75,24 @@
 										<li class="nav-item dropdown">
 											<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">My Account</a>
 											<ul class="dropdown-menu">
+                                            <?php if($_SESSION['get_data']['utype'] == 'agent'){
+                                            ?>
 												<li class="nav-item"> <a class="nav-link" href="profile.php">Profile</a> </li>
-												<li class="nav-item"> <a class="nav-link" href="feature.php">Your Property</a> </li>
+												<li class="nav-item"> <a class="nav-link" href="feature.php">My Property</a> </li>
+                                                <li class="nav-item"> <a class="nav-link" href="featureadmin.php">Admin Assigned Property</a> </li>
 												<li class="nav-item"> <a class="nav-link" href="logout.php">Logout</a> </li>	
-											</ul>
+											<?php 
+                                             }else{
+                                            ?>
+                                                <li class="nav-item"> <a class="nav-link" href="profile.php">Profile</a> </li>
+												<li class="nav-item"> <a class="nav-link" href="logout.php">Logout</a> </li>	
+
+                                            <?php }?>
+                                            </ul>
                                         </li>
 										<?php } else { ?>
 										<li class="nav-item"> <a class="nav-link" href="login.php">Login/Register</a> </li>
 										<?php } ?>  
-										
                                     </ul>
                                     
 									
