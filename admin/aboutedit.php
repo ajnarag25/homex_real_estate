@@ -9,7 +9,7 @@ if(isset($_POST['update']))
 {
 	$aid = $_GET['id'];
 	$title=$_POST['utitle'];
-	$content=$_POST['ucontent'];
+	$conntent=$_POST['ucontent'];
 	
 	$aimage=$_FILES['aimage']['name'];
 	
@@ -18,8 +18,8 @@ if(isset($_POST['update']))
 
 	move_uploaded_file($temp_name1,"upload/$aimage");
 	
-	$sql = "UPDATE about SET title = '{$title}' , content = '{$content}', image ='{$aimage}' WHERE id = {$aid}";
-	$result=mysqli_query($con,$sql);
+	$sql = "UPDATE about SET title = '{$title}' , content = '{$conntent}', image ='{$aimage}' WHERE id = {$aid}";
+	$result=mysqli_query($conn,$sql);
 	if($result == true)
 	{
 		$msg="<p class='alert alert-success'>About Updated</p>";
@@ -100,7 +100,7 @@ if(isset($_POST['update']))
 								<?php 
 								$aid = $_GET['id'];
 								$sql = "SELECT * FROM about where id = {$aid}";
-								$result = mysqli_query($con, $sql);
+								$result = mysqli_query($conn, $sql);
 								while($row = mysqli_fetch_row($result))
 								{
 								?>

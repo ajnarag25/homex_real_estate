@@ -95,7 +95,7 @@ include("config.php");
                                     </div>
                                     <div class="col-md-8 col-lg-6">
                                         <div class="form-group">
-                                            <input type="text" class="form-control" name="city" placeholder="Enter City" required>
+                                            <input type="text" class="form-control" name="city" placeholder="Enter Place" required>
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-lg-2">
