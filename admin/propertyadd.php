@@ -72,7 +72,7 @@ if(isset($_POST['add']))
 	move_uploaded_file($temp_name6,"property/$fimage1");
 	move_uploaded_file($temp_name7,"property/$fimage2");
 	$user_agent = $_SESSION['auser']['fullname'];
-	$user_id = $_SESSION['auser']['id'];
+	$user_id = $_SESSION['auser']['aid'];
 	$user_type = 'admin';
 	$sql="insert into property (title,pcontent,type,pstatus,stype,bedroom,bathroom,balcony,kitchen,hall,floor,size,price,region,province,city,barangay,feature,pimage,pimage1,pimage2,pimage3,pimage4,uid,status,mapimage,topmapimage,groundmapimage,date,useragent,user_type,user_id)
 	values('$title','$content','$ptype','$pstatus','$stype','$bed','$bath','$balc','$kitc','$hall','$floor','$asize','$price','$region',

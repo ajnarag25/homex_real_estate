@@ -155,7 +155,7 @@ if(!isset($_SESSION['uemail']))
 												
 											</div>   
 											<div class="col-xl-6">
-												<div class="form-group row mb-3">
+												<!-- <div class="form-group row mb-3">
 													<label class="col-lg-3 col-form-label">BHK</label>
 													<div class="col-lg-9">
 														<select class="form-control" required name="bhk">
@@ -170,7 +170,7 @@ if(!isset($_SESSION['uemail']))
 															<option value="2,3,4 BHK">2,3,4 BHK</option>
 														</select>
 													</div>
-												</div>
+												</div> -->
 												<div class="form-group row">
 													<label class="col-lg-3 col-form-label">Bedroom</label>
 													<div class="col-lg-9">
