@@ -176,7 +176,7 @@ include("config.php");
                             <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home">
                                 <div class="row">
 								
-									<?php 	$query=mysqli_query($conn,"SELECT * FROM `property` ORDER BY date DESC LIMIT 6");
+									<?php 	$query=mysqli_query($conn,"SELECT * FROM `property` WHERE is_approved = true ORDER BY date DESC LIMIT 6");
 										while($row=mysqli_fetch_array($query))
 										{
 									?>

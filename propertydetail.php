@@ -158,13 +158,13 @@ include("config.php");
                                 <div class="modal-body">
                                     <form action="functions.php" method="post">
                                         <?php 
-                                        echo $uid;
-                                        if ($uid >0) {  
+                                        if ($uid >0) {
                                         ?>
                                         <div class="form-group">
                                             <input type="text" name="property_id" value="<?php echo $_GET['pid']?>" hidden>
                                             <input type="text" name =  'admin_agent_id' value = "<?php echo $row['34'];?>" hidden>
                                             <input type="text" name =  'uid' value = "<?php echo $_SESSION['get_data']['uid'];?>" hidden>
+                                            <input type="text" name =  'utype' value = "<?php echo $row['33'];?>" hidden>
 
                                             <label for="" class="form-label">Name:</label>
                                             <input type="text" name="fname" class="form-control" value="<?php echo $_SESSION['get_data']['uname'];?>" readonly>
@@ -177,6 +177,10 @@ include("config.php");
                                             <label for="" class="col-form-label">Contact Number:</label>
                                             <input type="text" name="cnum" class="form-control" value="<?php echo $_SESSION['get_data']['uphone'];?>" readonly>
                                         </div>
+                                        <div class="form-group">
+                                            <label for="" class="col-form-label">Message(Optional):</label>
+                                            <textarea class="tinymce form-control" name="message" rows="3" cols="10"></textarea>
+                                        </div>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -186,19 +190,25 @@ include("config.php");
                                         }else{
                                         ?>
                                         <div class="form-group">
-                                            <input type="text" name="property_id" value="<?php echo $_GET['pid']?>" >
-                                            <input type="text" name =  'admin_agent_id' value = "<?php echo $row['34'];?>" >
+                                            <input type="text" name="property_id" value="<?php echo $_GET['pid']?>" hidden>
+                                            <input type="text" name =  'admin_agent_id' value = "<?php echo $row['34'];?>" hidden>
+                                            <input type="text" name =  'uid' value = "<?php echo $_SESSION['get_data']['uid'];?>" hidden>
 
                                             <label for="" class="form-label">Name:</label>
-                                            <input type="text" name="fname" class="form-control">
+                                            <input type="text" name="fname" class="form-control" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="" class="col-form-label">Email:</label>
-                                            <input type="text" name="email" class="form-control">
+                                            <input type="text" name="email" class="form-control" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="" class="col-form-label">Contact Number:</label>
-                                            <input type="text" name="cnum" class="form-control">
+                                            <input type="text" name="cnum" class="form-control" required>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="" class="col-form-label">Message(Optional):</label>
+                                            <textarea class="tinymce form-control" name="content" rows="10" cols="30"></textarea>
                                         </div>
                                         </div>
                                         <div class="modal-footer">

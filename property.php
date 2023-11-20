@@ -90,11 +90,10 @@ include("config.php");
 				
 					<div class="col-lg-8">
                         <div class="row">
-						
-				
+					
                              <?php 
                                 $uid = $_SESSION['get_data']['uid'];
-								$query=mysqli_query($conn,"SELECT * FROM `property` WHERE user_id <> '$uid'  ORDER BY date DESC");
+								$query=mysqli_query($conn,"SELECT * FROM `property` WHERE user_id <> '$uid' and is_approved = true  ORDER BY date DESC");
                                 while($row=mysqli_fetch_array($query))
                                 {
 								?>
@@ -146,7 +145,7 @@ include("config.php");
                             <ul class="property_list_widget">
 							
 								<?php 
-								$query=mysqli_query($conn,"SELECT * FROM `property` ORDER BY date DESC LIMIT 6");
+								$query=mysqli_query($conn,"SELECT * FROM `property` where is_approved = true ORDER BY date DESC LIMIT 6");
 										while($row=mysqli_fetch_array($query))
 										{
 								?>

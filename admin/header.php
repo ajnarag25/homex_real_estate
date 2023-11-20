@@ -104,6 +104,7 @@ if(!isset($_SESSION['auser']))
 									<li><a href="adminlist.php"> Admin </a></li>
 									<li><a href="userlist.php"> Users </a></li>
 									<li><a href="useragent.php"> Agent </a></li>
+									
 								</ul>
 							</li>
 						
@@ -115,7 +116,8 @@ if(!isset($_SESSION['auser']))
 								<ul style="display: none;">
 									<li><a href="propertyadd.php"> Add Property</a></li>
 									<li><a href="propertyview.php"> View Property </a></li>
-									
+									<li><a href="propertyapprove.php"> Approve Property </a></li>
+									<li><a href="assign_agent.php"> Assign Agent </a></li>
 								</ul>
 							</li>
 							

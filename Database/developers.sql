@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 17, 2023 at 02:45 PM
+-- Generation Time: Nov 20, 2023 at 08:20 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -91,13 +91,6 @@ CREATE TABLE `contact` (
   `message` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `contact`
---
-
-INSERT INTO `contact` (`cid`, `name`, `email`, `phone`, `subject`, `message`) VALUES
-(1, 'AVOR JOHN', 'ajnarag25@gmail.com', '9089637505', 'Message', 'Goods');
-
 -- --------------------------------------------------------
 
 --
@@ -126,18 +119,18 @@ CREATE TABLE `inquire` (
   `property_id` varchar(4) NOT NULL,
   `admin_agent_id` varchar(4) NOT NULL,
   `uid` varchar(255) NOT NULL,
-  `date_inquired` date NOT NULL DEFAULT current_timestamp()
+  `date_inquired` date NOT NULL DEFAULT current_timestamp(),
+  `message` varchar(255) NOT NULL,
+  `utype` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `inquire`
 --
 
-INSERT INTO `inquire` (`id`, `fname`, `email`, `cnum`, `property_id`, `admin_agent_id`, `uid`, `date_inquired`) VALUES
-(10, 'Michael', 'micorilan1999@gmail.com', '4324234234', '8', '', '3', '2023-11-17'),
-(11, 'zxcv1234', 'aaa@gmail.com', '4324234234', '4', '', '5', '2023-11-17'),
-(12, 'asdf', 'asdf@gmail.com', '12345', '10', '1', '', '2023-11-17'),
-(13, 'Michael', 'micorilan1999@gmail.com', '4324234234', '11', '3', '3', '2023-11-17');
+INSERT INTO `inquire` (`id`, `fname`, `email`, `cnum`, `property_id`, `admin_agent_id`, `uid`, `date_inquired`, `message`, `utype`) VALUES
+(18, 'Michael', 'micorilan1999@gmail.com', '4324234234', '9', '1', '3', '2023-11-21', 'hm po thank you', 'agent'),
+(19, 'Michael', 'micorilan1999@gmail.com', '4324234234', '14', '1', '3', '2023-11-21', 'hm po thanks', 'agent');
 
 -- --------------------------------------------------------
 
@@ -181,21 +174,18 @@ CREATE TABLE `property` (
   `useragent` varchar(255) NOT NULL,
   `user_type` varchar(255) NOT NULL,
   `user_id` varchar(255) NOT NULL,
-  `bhk` varchar(255) NOT NULL,
-  `assign_to` varchar(255) NOT NULL
+  `assign_to` varchar(255) NOT NULL,
+  `is_approved` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `property`
 --
 
-INSERT INTO `property` (`pid`, `title`, `pcontent`, `type`, `pstatus`, `stype`, `bedroom`, `bathroom`, `balcony`, `kitchen`, `hall`, `floor`, `size`, `price`, `region`, `province`, `city`, `barangay`, `feature`, `pimage`, `pimage1`, `pimage2`, `pimage3`, `pimage4`, `uid`, `status`, `mapimage`, `topmapimage`, `groundmapimage`, `totalfloor`, `date`, `ptype`, `useragent`, `user_type`, `user_id`, `bhk`, `assign_to`) VALUES
-(4, 'New Property', '<p>New house</p>', 'bungalow', 'new', 'sale', 1, 4, 3, 2, 1, '2', 15, 1000000, 'REGION IV-A (CALABARZON)', 'CAVITE', 'BACOOR CITY', 'Molino IV', 'yes', '01.jpg', '02.jpg', '2.png', '1.jpg', '03.jpg', 12345, 'available', '04.jpg', '3.jpg', '2.jpg', '', '2023-11-07', '', 'sdasd', '', '', '', ''),
-(8, 'New House', '<p>New Build House&nbsp;</p>', 'commercial', 'pre-owned', 'rent', 3, 1, 2, 1, 1, '4', 15, 1500000, 'REGION VI (WESTERN VISAYAS)', 'ANTIQUE', 'PANDAN', 'Duyong', 'no', '03.jpg', '04.jpg', '02.jpg', '3.jpg', '02.jpg', 12345, 'sold out', '2.jpg', '01.jpg', '04.jpg', '', '2023-11-07', '', 'asdasd', '', '', '', ''),
-(9, 'Test Property', '<p>For Testingasasas</p>', 'appartment', 'pre-selling', 'rent', 5, 3, 5, 4, 3, '5th Floor', 25, 5000000, 'REGION II (CAGAYAN VALLEY)', 'CAGAYAN', 'CAGAYAN', 'Bulala', '<p>Bulalaasasas</p>', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', 3, 'available', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', '15 Floor', '2023-11-08', '', 'asdd', 'agent', '3', '1 BHK', ''),
-(10, 'BEDROOM', '<p>WALA LANG&nbsp;</p>', 'commercial', 'new', 'rent', 2, 1, 1, 1, 1, '12', 12, 0, '', '', '', '', 'yes', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', 1, 'available', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', '', '2023-11-14', '', 'Avor John Narag', 'admin', '1', '1 BHK', '3'),
-(11, 'testing', '<p>fsfsd</p>', 'appartment', '', 'rent', 1, 1, 1, 1, 1, '1st Floor', 1234, 12345, '1234', '', 'bacoor', '', '<p>fsdafsfd</p>', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', 0, 'Available', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', '3 Floor', '0000-00-00', '', '', '', '3', '2 BHK', ''),
-(12, 'ZXCV', '<p>ZXCV</p>', 'flat', '', 'rent', 1, 1, 1, 1, 1, '1st Floor', 1, 1, '1', '', '1', '', '<p>ZXCV</p>', 'Screenshot 2023-10-24 092240.png', 'Screenshot 2023-10-23 113328.png', 'Screenshot 2023-10-23 113328.png', 'Screenshot 2023-10-23 113328.png', 'Screenshot 2023-10-24 092240.png', 0, 'Available', 'Screenshot 2023-10-23 113143.png', 'Screenshot 2023-10-23 113328.png', 'Screenshot 2023-10-23 113143.png', '10 Floor', '0000-00-00', '', '', '', '3', '5 BHK', '');
+INSERT INTO `property` (`pid`, `title`, `pcontent`, `type`, `pstatus`, `stype`, `bedroom`, `bathroom`, `balcony`, `kitchen`, `hall`, `floor`, `size`, `price`, `region`, `province`, `city`, `barangay`, `feature`, `pimage`, `pimage1`, `pimage2`, `pimage3`, `pimage4`, `uid`, `status`, `mapimage`, `topmapimage`, `groundmapimage`, `totalfloor`, `date`, `ptype`, `useragent`, `user_type`, `user_id`, `assign_to`, `is_approved`) VALUES
+(10, 'BEDROOM', '<p>WALA LANG&nbsp;</p>', 'commercial', 'new', 'rent', 2, 1, 1, 1, 1, '12', 12, 0, '', '', '', '', 'yes', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', 1, 'available', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', '', '2023-11-14', '', 'Avor John Narag', 'admin', '3', '3', 1),
+(14, 'aaaa', '<p>aaaaa</p>', 'appartment', '', 'rent', 1, 1, 1, 1, 1, '2nd Floor', 12, 11, '12', '', 'bacoor', '', '<p>fsdffdsf</p>', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', 0, 'Available', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', '8 Floor', '0000-00-00', '', '', 'agent', '1', '', 1),
+(15, 'zzzz', '', 'flat', '', 'rent', 11, 11, 11, 11, 11, '1st Floor', 0, 11, 'asd', '', 'dsdsd', '', '', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', 0, 'Available', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', '7 Floor', '0000-00-00', '', 'Michael', 'agent', '3', '', 1);
 
 -- --------------------------------------------------------
 
@@ -242,7 +232,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`uid`, `uname`, `uemail`, `uphone`, `upass`, `utype`, `uimage`, `ustatus`, `idnum`) VALUES
-(1, 'Avor John Atienza', 'ajnarag25@gmail.com', '9089637505', '$2y$10$XTGKpgAShvymueJ3sLp8N.lvZYA20V8xZaMVqj0n73lIbvAlTS4I2', 'user', '75765de73bfae5b6ac0e437af2bc4c77.jpg', 'Verified', ''),
+(1, 'Avor John Atienza', 'ajnarag25@gmail.com', '9089637505', '$2y$10$XTGKpgAShvymueJ3sLp8N.lvZYA20V8xZaMVqj0n73lIbvAlTS4I2', 'agent', '75765de73bfae5b6ac0e437af2bc4c77.jpg', 'Verified', ''),
 (2, 'Mark Zelon Narag', 'marknarag25@gmail.com', '9089637505', '$2y$10$NdzcASZHVKeBNFXUo2Ncx.Wnj5sQYZu6dawycIPabRk4GEKV87dNS', 'user', 'da73b79bf4ecf3d5fe87649436dd708a.jpg', 'Verified', ''),
 (3, 'Michael', 'micorilan1999@gmail.com', '4324234234', '$2y$10$fSXUxSNbD2Ze/ORyec1gHuM5I8E32RVGT/imzlIXNTUhdLvY/Z6h.', 'agent', 'Screenshot 2023-11-04 091736.png', 'Verified', '4332424'),
 (4, 'sampleuser', 'micorilan@gmail.com', '4324234234', '$2y$10$4zr2Y/LwG.7RSYExXV9qwOHJKOA2Bc1cQtqDvDUjpztN9LRmMSkpm', 'user', 'Screenshot 2023-11-04 091736.png', 'Verified', ''),
@@ -344,13 +334,13 @@ ALTER TABLE `feedback`
 -- AUTO_INCREMENT for table `inquire`
 --
 ALTER TABLE `inquire`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `property`
 --
 ALTER TABLE `property`
-  MODIFY `pid` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `pid` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `region`

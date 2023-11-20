@@ -101,18 +101,25 @@
         $cnum = $_POST['cnum'];
         $admin_agent_id = $_POST['admin_agent_id'];
         $uid = $_POST['uid'];
+        $utype = $_POST['utype'];
+        $message = $_POST['message'];
+        if($uid == ''){
+            $uid = 'None';
+        }
 
-        $conn->query("INSERT INTO inquire (fname,email,cnum,property_id,admin_agent_id,uid	) 
-                VALUES('$fname', '$email','$cnum','$property_id','$admin_agent_id', '$uid')") or die($conn->error);
-        $_SESSION['status'] = 'Request for inquiry Successfully Saved!';
+        $conn->query("INSERT INTO inquire (fname,email,cnum,property_id,admin_agent_id,uid,message,utype) 
+                VALUES('$fname', '$email','$cnum','$property_id','$admin_agent_id', '$uid','$message','$utype')") or die($conn->error);
+        $_SESSION['status'] = 'Request for inquiry Successfully Sent!';
         $_SESSION['status_icon'] = 'success';
         header('location:property.php');
     }
+
+
     if(isset($_POST['addProperty'])) {
         $title=$_POST['title'];
         $content=$_POST['content'];
         $ptype=$_POST['ptype'];
-        $bhk=$_POST['bhk'];
+        // $bhk=$_POST['bhk'];
         $bed=$_POST['bed'];
         $balc=$_POST['balc'];
         $hall=$_POST['hall'];
@@ -126,6 +133,8 @@
         $loc=$_POST['loc'];
         $status='Available';
         $uid=$_SESSION['get_data']['uid'];
+        $utype=$_SESSION['get_data']['utype'];
+        $uname = $_SESSION['get_data']['uname'];
         $feature=$_POST['feature'];
         
         $totalfloor=$_POST['totalfl'];
@@ -160,9 +169,9 @@
         move_uploaded_file($temp_name6,"admin/property/$fimage1");
         move_uploaded_file($temp_name7,"admin/property/$fimage2");
 
-        $conn->query("INSERT INTO property (title, pcontent, type, bhk, stype,bedroom, bathroom, balcony, kitchen, hall, floor, size, price, region, city, feature,
+        $conn->query("INSERT INTO property (title, pcontent, type, stype,bedroom, bathroom, balcony, kitchen, hall, floor, size, price, region, city, feature,
         pimage, pimage1, pimage2, pimage3, pimage4,user_id, status, mapimage, topmapimage, groundmapimage, 
-        totalfloor)VALUES('$title','$content','$ptype', '$bhk', '$stype','$bed','$bath','$balc','$kitc', '$hall', '$floor', '$asize', '$price', '$loc', '$city', '$feature','$aimage','$aimage1','$aimage2','$aimage3','$aimage4','$uid','$status', '$fimage','$fimage1','$fimage2','$totalfloor')") or die($conn->error);
+        totalfloor,user_type,useragent)VALUES('$title','$content','$ptype', '$stype','$bed','$bath','$balc','$kitc', '$hall', '$floor', '$asize', '$price', '$loc', '$city', '$feature','$aimage','$aimage1','$aimage2','$aimage3','$aimage4','$uid','$status', '$fimage','$fimage1','$fimage2','$totalfloor','$utype','$uname')") or die($conn->error);
         
         $_SESSION['status'] = 'Property Added Successfully!';
         $_SESSION['status_icon'] = 'success';
