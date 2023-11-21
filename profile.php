@@ -18,7 +18,7 @@ if(isset($_POST['insert']))
 
 	$content=$_POST['content'];
 	
-	$uid=$_SESSION['uid'];
+	$uid=$_POST['uid'];
 	
 	if(!empty($name) && !empty($phone) && !empty($content))
 	{
@@ -42,29 +42,33 @@ if(isset($_POST['insert']))
 <head>
 <!-- Required meta tags -->
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Meta Tags -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="Homex template">
+<meta name="keywords" content="">
+<meta name="author" content="Unicoder">
+<link rel="shortcut icon" href="images/favicon.ico">
+
+<!--	Fonts
+	========================================================-->
+<link href="https://fonts.googleapis.com/css?family=Muli:400,400i,500,600,700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Comfortaa:400,700" rel="stylesheet">
+
+<!--	Css Link
+	========================================================-->
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/bootstrap-slider.css">
+<link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="css/layerslider.css">
+<link rel="stylesheet" type="text/css" href="css/color.css" id="color-change">
+<link rel="stylesheet" type="text/css" href="css/owl.carousel.min.css">
+<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="fonts/flaticon/flaticon.css">
+<link rel="stylesheet" type="text/css" href="css/style.css">
 <title>Home Dreamers Realty and Development Corporation</title>
-
-<!-- Favicon -->
-<link rel="shortcut icon" type="image/x-icon" href="assets/favicon.ico">
-
-<!-- Bootstrap CSS -->
-<link rel="stylesheet" href="assets/css/bootstrap.min.css">
-
-<!-- Fontawesome CSS -->
-<link rel="stylesheet" href="assets/css/font-awesome.min.css">
-
-<!-- Feathericon CSS -->
-<link rel="stylesheet" href="assets/css/feathericon.min.css">
-
-<!-- Datatables CSS -->
-<link rel="stylesheet" href="assets/plugins/datatables/dataTables.bootstrap4.min.css">
-<link rel="stylesheet" href="assets/plugins/datatables/responsive.bootstrap4.min.css">
-<link rel="stylesheet" href="assets/plugins/datatables/select.bootstrap4.min.css">
-<link rel="stylesheet" href="assets/plugins/datatables/buttons.bootstrap4.min.css">
-
-<!-- Main CSS -->
-<link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
@@ -121,23 +125,31 @@ if(isset($_POST['insert']))
 						<?php echo $msg; ?><?php echo $error; ?>
                         <div class="row">
                             <div class="col-lg-6 col-md-12">
+                                <?php 
+									$uid=$_SESSION['get_data']['uid'];
+									$query=mysqli_query($conn,"SELECT * FROM `user` WHERE uid='$uid'");
+									while($row=mysqli_fetch_array($query))
+									{
+								?>
                                 <div class="form-group">
                                     <label for="user-id">Name</label>
-                                    <input type="text" name="name" class="form-control" placeholder="Enter Name">
+                                    <input type="text" name="name" class="form-control" value="<?php echo $row['1'];?>" placeholder="Enter Name" readonly>
                                 </div>                
                                 
                                 <div class="form-group">
                                     <label for="phone">Phone Number</label>
-                                    <input type="text" name="phone"  class="form-control" placeholder="Enter Phone" maxlength="10">
+                                    <input type="text" name="phone"  class="form-control" value="<?php echo $row['3'];?>" placeholder="Enter Phone" maxlength="10" readonly>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="about-me">Description</label>
                                     <textarea class="form-control" name="content" rows="7" placeholder="Enter Description"></textarea>
                                 </div>
+                                <input type="hidden" value="<?php echo $row['0'];?>" name="uid">
                                 <input type="submit" class="btn btn-primary mb-4" name="insert" value="Send">
                             </div>
 							</form>
+                            <?php } ?>
                             <div class="col-lg-1"></div>
                             <div class="col-lg-5 col-md-12">
 								<?php 

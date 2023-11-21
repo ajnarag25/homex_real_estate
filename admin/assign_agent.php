@@ -176,10 +176,10 @@ if(!isset($_SESSION['auser']))
                                                         <div class="modal-body">
                                                         
                                                         <div class="form-group">
-                                                            <label for="supplier_name">Status:</label>
+                                                            <label for="supplier_name">Select Agent:</label>
                                                             <input type="text" name="pid" value="<?php echo $pid;?>" hidden>
                                                             
-                                                            <select name= "agent" class="form-select" id="status" name="status" required >
+                                                            <select name= "agent" class="form-control" id="status" name="status" required >
                                                                 <?php 
                                                                     $queryagent=mysqli_query($conn,"SELECT * FROM USER WHERE utype = 'agent'");
                                                                     while($rowagent=mysqli_fetch_row($queryagent)){

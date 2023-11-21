@@ -38,7 +38,7 @@ if(!isset($_SESSION['uemail']))
 <link rel="stylesheet" type="text/css" href="fonts/flaticon/flaticon.css">
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <link rel="stylesheet" type="text/css" href="css/login.css">
-
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
 <!--	Title
 	=========================================================-->
 <title>Home Dreamers Realty and Development Corporation</title>
@@ -100,7 +100,7 @@ if(!isset($_SESSION['uemail']))
                         <a href="submitpropertyadd.php" class = "btn btn-secondary">+ Add Property</a>
                     </div>
                     
-					<table class="items-list col-lg-12" style="border-collapse:inherit;">
+					<table class="items-list col-lg-12" style="border-collapse:inherit;" id="myproperty">
                         <thead>
                              <tr  class="bg-primary">
                                 <!-- <th class="text-white font-weight-bolder">Properties</th>
@@ -183,5 +183,9 @@ if(!isset($_SESSION['uemail']))
 <script src="js/jquery.slider.js"></script> 
 <script src="js/wow.js"></script> 
 <script src="js/custom.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
+<script>
+    $('#myproperty').DataTable()
+</script>
 </body>
 </html>
