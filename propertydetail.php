@@ -220,9 +220,93 @@ include("config.php");
                                     </form>
                                 </div>
                             </div>
+                            
                             </div>
+                            <?php
+                                $uid = $_SESSION['get_data']['uid'];
+                                $property_id = $_GET['pid'];
+                                $check_if_reserved = mysqli_query($conn,"SELECT * FROM reservation WHERE uid='$uid' AND property_id = '$property_id';");
+                                $cnt = mysqli_num_rows($check_if_reserved);
+
+                                if ($cnt){
+                                    // display none
+                                    ?>
+                                    <?php 
+                                }else{
+                                    ?>
+                                    
+                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#reserve">Reserve</button>
+                                    <?php
+                                }
+                            ?>
+
 
 							</div>
+                            <!-- Modal Reserve-->
+                            <div class="modal fade" id="reserve" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog  modal-lg modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Reserve Property</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                    <div class="modal-body">
+                                        <form action="functions.php" method="post">
+                                            <input type="text" name="property_id" value="<?php echo $_GET['pid']?>" hidden>
+                                            <input type="text" name =  'admin_agent_id' value = "<?php echo $row['34'];?>" hidden>
+                                            <input type="text" name =  'uid' value = "<?php echo $_SESSION['get_data']['uid'];?>" hidden>
+                                            <input type="text" name =  'utype' value = "<?php echo $row['33'];?>" hidden>
+                                            <input type="hidden" name="name" value="<?php echo $_SESSION['get_data']['uname'];?>">
+                                            <input type="hidden" name="email" value="<?php echo $_SESSION['get_data']['uemail'];?>">
+                                            <input type="hidden" name="phone" value="<?php echo $_SESSION['get_data']['uphone'];?>">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <ul>
+                                                    <label for="">User Information:</label>
+                                                        <li>Name: <?php echo $_SESSION['get_data']['uname'];?></li>
+                                                        <li>Email: <?php echo $_SESSION['get_data']['uemail'];?></li>
+                                                        <li>Contact No: <?php echo $_SESSION['get_data']['uphone'];?></li>
+                                                    </ul>
+                                                    <hr>
+                                                    <ul>
+                                                    <label for="">Initial Requirements:</label>
+                                                    <li><b>Photocopy of Company ID (Back & Back)</b> </li>
+                                                    <li><b>1 Month Payslip ( a must for reservation) </b></li>
+                                                    <li><b>Reservation Fee</b></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="col">
+                                                    <ul>
+                                                        <label for="">Bank Requirements:</label>
+                                                        <li><b>2 Government Valid IDs</b></li>
+                                                        <li><b>ID Pics 1x1</b></li>
+                                                        <li><b>Proof of Billing/Remittance</b></li>
+                                                        <li><b>Payslip</b> </li>
+                                                        <li><b>Birth/Marriage </b></li>
+                                                        <li><b>Certificate of Employment/Job Contract</b></li> 
+                                                        <li><b>TIN/Passport</b> </li>
+                                                        <li><b>SPA (IF NEEDED, especially for OFW)</b></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <label for="">Select Payment Method:</label>
+                                            <select class="form-control" name="paymethod" id="">
+                                                <option value="cash">Cash</option>
+                                                <option value="bank">Bank</option>
+                                                <option value="loan">Loan</option>
+                                            </select>
+                                            </div>
+                                            <div class="modal-footer justify-content-center">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <button type="submit" name="submit_reserve" class="btn btn-danger">Reserve Property</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="col-md-4">
                                 <div class="text-success text-left h5 my-2 text-md-right">P <?php echo $row['13'];?></div>
                                 <div class="text-left text-md-right">Price</div>

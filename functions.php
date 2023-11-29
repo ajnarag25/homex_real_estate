@@ -109,9 +109,9 @@
 
         $conn->query("INSERT INTO inquire (fname,email,cnum,property_id,admin_agent_id,uid,message,utype) 
                 VALUES('$fname', '$email','$cnum','$property_id','$admin_agent_id', '$uid','$message','$utype')") or die($conn->error);
-        $_SESSION['status'] = 'Request for inquiry Successfully Sent!';
+        $_SESSION['status'] = 'Request for Inquiry Successfully Sent!';
         $_SESSION['status_icon'] = 'success';
-        header('location:property.php');
+        header('location:history.php');
     }
 
 
@@ -178,5 +178,25 @@
         header('location:property.php');
 
         
+    }
+
+    if (isset($_POST['submit_reserve'])) {
+        $property_id = $_POST['property_id'];
+        $name = $_POST['name'];
+        $email = $_POST['email'];
+        $phone = $_POST['phone'];
+        $admin_agent_id = $_POST['admin_agent_id'];
+        $uid = $_POST['uid'];
+        $utype = $_POST['utype'];
+        $pay = $_POST['paymethod'];
+        if($uid == ''){
+            $uid = 'None';
+        }
+
+        $conn->query("INSERT INTO reservation (name,email,phone,property_id,admin_agent_id,uid,payment_method, status,utype) 
+                VALUES('$name', '$email','$phone','$property_id','$admin_agent_id', '$uid','$pay','New','$utype')") or die($conn->error);
+        $_SESSION['status'] = 'Request for Reservation Successfully Sent!';
+        $_SESSION['status_icon'] = 'success';
+        header('location:reservation.php');
     }
 ?>

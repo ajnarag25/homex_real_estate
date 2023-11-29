@@ -68,13 +68,13 @@ if(!isset($_SESSION['uemail']))
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
-                        <h2 class="page-name float-left text-white text-uppercase mt-1 mb-0"><b>Inquire History</b></h2>
+                        <h2 class="page-name float-left text-white text-uppercase mt-1 mb-0"><b>Reservation Details</b></h2>
                     </div>
                     <div class="col-md-6">
                         <nav aria-label="breadcrumb" class="float-left float-md-right">
                             <ol class="breadcrumb bg-transparent m-0 p-0">
                                 <li class="breadcrumb-item text-white"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Inquire History</li>
+                                <li class="breadcrumb-item active">Reservation Details</li>
                             </ol>
                         </nav>
                     </div>
@@ -89,7 +89,7 @@ if(!isset($_SESSION['uemail']))
             <div class="container">
                     <div class="row mb-5">
 						<div class="col-lg-12">
-							<h2 class="text-secondary double-down-line text-center">Inquire History</h2>
+							<h2 class="text-secondary double-down-line text-center">Reservation Details</h2>
 							<?php 
 								if(isset($_GET['msg']))	
 								echo $_GET['msg'];	
@@ -111,7 +111,11 @@ if(!isset($_SESSION['uemail']))
                                 <th class="text-white font-weight-bolder">Property Type</th>
                                 <th class="text-white font-weight-bolder">Property Status</th>
                                 <th class="text-white font-weight-bolder">Sale Type</th>
-                                <th class="text-white font-weight-bolder">Date Inquired</th>
+                                <th class="text-white font-weight-bolder">Property Price</th>
+                                <th class="text-white font-weight-bolder">Payment Method</th>
+                                <th class="text-white font-weight-bolder">Discount / Equity</th>
+                                <th class="text-white font-weight-bolder">Date Reserved</th>
+                                <th class="text-white font-weight-bolder">Action</th>
                                 
                             
                              </tr>
@@ -120,24 +124,33 @@ if(!isset($_SESSION['uemail']))
 						
 							<?php 
 							$uid=$_SESSION['get_data']['uid'];
-							$query=mysqli_query($conn,"SELECT pt.title, pt.region, pt.price, pt.type, pt.pstatus, pt.stype, it.date_inquired FROM PROPERTY pt JOIN INQUIRE it ON pt.pid = it.property_id WHERE it.uid = '$uid';");
-								while($row=mysqli_fetch_array($query))
-								{
+                    
+                            $query = "SELECT p.*, r.* FROM property AS p
+                            INNER JOIN reservation AS r ON p.pid = r.property_id
+                            WHERE r.uid = $uid";
+                            $result = mysqli_query($conn, $query);
+                            while ($row = mysqli_fetch_array($result)) {
 							?>
                             <tr>
-                                <td>
-                                    <div class="property-info d-table">
-                                        <h5 class="text-secondary text-capitalize"><?php echo $row['0'];?></h5>
-                                        <span class="font-14 text-capitalize"><i class="fas fa-map-marker-alt text-primary font-13"></i>&nbsp; <?php echo $row['1'];?></span>
-                                        <div class="price mt-3">
-											<span class="text-primary">P&nbsp;<?php echo $row['2'];?></span>
-										</div>
-                                    </div>
-								</td>
-                                <td><?php echo $row['3'];?></td>
-                                <td class="text-capitalize">For <?php echo $row['4'];?></td>
-                                <td class="text-capitalize">For <?php echo $row['5'];?></td>
-								<td class="text-capitalize"><?php echo $row['6'];?></td>
+                                <td class="text-capitalize"><?php echo $row['title'];?></td>				
+                                <td class="text-capitalize"><?php echo $row['type'];?></td>
+                                <td class="text-capitalize">For <?php echo $row['pstatus'];?></td>
+                                <td class="text-capitalize">For <?php echo $row['stype'];?></td>
+                                <td class="text-capitalize">P<?php echo $row['price'];?></td>
+                                <td class="text-capitalize"><?php echo $row['payment_method'];?></td>
+                                <td class="text-capitalize">
+                                    <?php 
+                                    if($row['payment_method'] == 'cash' || $row['payment_method'] == 'bank'){
+                                        echo 'P'.$row['price'] * 0.20 . ' - less 20%';
+                                    }else{
+                                        echo 'No discount for loan';
+                                    }
+                                    ?>
+                                </td>
+								<td class="text-capitalize"><?php echo $row['date_reserved'];?></td>
+                                <td class="text-capitalize">
+                                    <button class="btn btn-primary">View</button>
+                                </td>
                             </tr>
 							<?php } ?>
 							

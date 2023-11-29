@@ -54,7 +54,7 @@
 										
 										<li class="nav-item"> <a class="nav-link" href="about.php">About</a> </li>
 										<li class="nav-item"> <a class="nav-link" href="history.php">Inquire History</a> </li>
-										<!-- <li class="nav-item"> <a class="nav-link" href="agent.php">Agent</a> </li> -->
+										<li class="nav-item"> <a class="nav-link" href="reservation.php">Reservation</a> </li>
 										
 										<li class="nav-item"> <a class="nav-link" href="property.php">Properties</a> </li>
                                         <li class="nav-item"> <a class="nav-link" href="contact.php">Contact</a> </li>

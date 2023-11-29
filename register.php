@@ -108,7 +108,7 @@ session_start();
 										<input type="email"  name="email" class="form-control" placeholder="Your Email*">
 									</div>
 									<div class="form-group">
-										<input type="text"  name="phone" class="form-control" placeholder="Your Phone*" maxlength="10">
+										<input type="text"  name="phone" class="form-control" placeholder="Your Phone*" maxlength="11">
 									</div>
 									
 									<div class="form-group">
