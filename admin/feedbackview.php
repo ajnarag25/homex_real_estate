@@ -89,8 +89,8 @@ if(!isset($_SESSION['auser']))
                                                     <th>Name</th>
                                                     <th>Email</th>
                                                     <th>Feedback</th>
-													<th>Status</th>
-                                                    <th>Edit</th>
+													<!-- <th>Status</th> -->
+                                                    <!-- <th>Edit</th> -->
                                                     <th>Delete</th>
                                                 </tr>
                                             </thead>
@@ -109,8 +109,8 @@ if(!isset($_SESSION['auser']))
                                                     <td><?php echo $row['uname']; ?></td>
                                                     <td><?php echo $row['uemail']; ?></td>
                                                     <td><?php echo $row['2']; ?></td>
-                                                    <td><?php echo $row['3']; ?></td>
-													<td><a href="feedbackedit.php?id=<?php echo $row['0']; ?>">Edit</a></td>
+                                                    <!-- <td><?php echo $row['3']; ?></td> -->
+													<!-- <td><a href="feedbackedit.php?id=<?php echo $row['0']; ?>">Edit</a></td> -->
                                                     <td><a href="feedbackdelete.php?id=<?php echo $row['0']; ?>">Delete</a></td>
                                                 </tr>
                                                 <?php
