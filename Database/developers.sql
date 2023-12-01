@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 20, 2023 at 08:20 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Generation Time: Dec 01, 2023 at 01:27 AM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -32,7 +32,7 @@ CREATE TABLE `about` (
   `title` varchar(100) NOT NULL,
   `content` longtext NOT NULL,
   `image` varchar(300) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `about`
@@ -55,14 +55,7 @@ CREATE TABLE `admin` (
   `adob` date NOT NULL,
   `aphone` varchar(15) NOT NULL,
   `fullname` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `admin`
---
-
-INSERT INTO `admin` (`aid`, `auser`, `aemail`, `apass`, `adob`, `aphone`, `fullname`) VALUES
-(3, 'ajnarag25', 'ajnarag25@gmail.com', '$2y$10$IBL0F4rsvG0A4r.UlSfiQe84innN8fIgO6tCihZxYioPLwL3bAezW', '2023-11-08', '0908963750', 'Avor John Narag');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -74,7 +67,7 @@ CREATE TABLE `city` (
   `cid` int(50) NOT NULL,
   `cname` varchar(100) NOT NULL,
   `sid` int(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -89,7 +82,7 @@ CREATE TABLE `contact` (
   `phone` varchar(20) NOT NULL,
   `subject` varchar(100) NOT NULL,
   `message` varchar(250) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -103,7 +96,7 @@ CREATE TABLE `feedback` (
   `fdescription` varchar(300) NOT NULL,
   `status` int(1) NOT NULL,
   `date` date NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -122,15 +115,7 @@ CREATE TABLE `inquire` (
   `date_inquired` date NOT NULL DEFAULT current_timestamp(),
   `message` varchar(255) NOT NULL,
   `utype` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `inquire`
---
-
-INSERT INTO `inquire` (`id`, `fname`, `email`, `cnum`, `property_id`, `admin_agent_id`, `uid`, `date_inquired`, `message`, `utype`) VALUES
-(18, 'Michael', 'micorilan1999@gmail.com', '4324234234', '9', '1', '3', '2023-11-21', 'hm po thank you', 'agent'),
-(19, 'Michael', 'micorilan1999@gmail.com', '4324234234', '14', '1', '3', '2023-11-21', 'hm po thanks', 'agent');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -176,16 +161,7 @@ CREATE TABLE `property` (
   `user_id` varchar(255) NOT NULL,
   `assign_to` varchar(255) NOT NULL,
   `is_approved` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `property`
---
-
-INSERT INTO `property` (`pid`, `title`, `pcontent`, `type`, `pstatus`, `stype`, `bedroom`, `bathroom`, `balcony`, `kitchen`, `hall`, `floor`, `size`, `price`, `region`, `province`, `city`, `barangay`, `feature`, `pimage`, `pimage1`, `pimage2`, `pimage3`, `pimage4`, `uid`, `status`, `mapimage`, `topmapimage`, `groundmapimage`, `totalfloor`, `date`, `ptype`, `useragent`, `user_type`, `user_id`, `assign_to`, `is_approved`) VALUES
-(10, 'BEDROOM', '<p>WALA LANG&nbsp;</p>', 'commercial', 'new', 'rent', 2, 1, 1, 1, 1, '12', 12, 0, '', '', '', '', 'yes', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', 1, 'available', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', '', '2023-11-14', '', 'Avor John Narag', 'admin', '3', '3', 1),
-(14, 'aaaa', '<p>aaaaa</p>', 'appartment', '', 'rent', 1, 1, 1, 1, 1, '2nd Floor', 12, 11, '12', '', 'bacoor', '', '<p>fsdffdsf</p>', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', 0, 'Available', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', '8 Floor', '0000-00-00', '', '', 'agent', '1', '', 1),
-(15, 'zzzz', '', 'flat', '', 'rent', 11, 11, 11, 11, 11, '1st Floor', 0, 11, 'asd', '', 'dsdsd', '', '', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', 0, 'Available', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', 'Screenshot 2023-11-04 091736.png', '7 Floor', '0000-00-00', '', 'Michael', 'agent', '3', '', 1);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -196,7 +172,7 @@ INSERT INTO `property` (`pid`, `title`, `pcontent`, `type`, `pstatus`, `stype`, 
 CREATE TABLE `propertyimg` (
   `id` int(11) NOT NULL,
   `image` varchar(250) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -207,7 +183,28 @@ CREATE TABLE `propertyimg` (
 CREATE TABLE `region` (
   `sid` int(50) NOT NULL,
   `sname` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `reservation`
+--
+
+CREATE TABLE `reservation` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `phone` int(11) NOT NULL,
+  `property_id` int(11) NOT NULL,
+  `admin_agent_id` int(11) NOT NULL,
+  `uid` int(11) NOT NULL,
+  `date_reserved` timestamp NOT NULL DEFAULT current_timestamp(),
+  `payment_method` varchar(255) NOT NULL,
+  `status` varchar(255) NOT NULL,
+  `utype` varchar(255) NOT NULL,
+  `message` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -225,18 +222,7 @@ CREATE TABLE `user` (
   `uimage` varchar(300) NOT NULL,
   `ustatus` varchar(50) NOT NULL,
   `idnum` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `user`
---
-
-INSERT INTO `user` (`uid`, `uname`, `uemail`, `uphone`, `upass`, `utype`, `uimage`, `ustatus`, `idnum`) VALUES
-(1, 'Avor John Atienza', 'ajnarag25@gmail.com', '9089637505', '$2y$10$XTGKpgAShvymueJ3sLp8N.lvZYA20V8xZaMVqj0n73lIbvAlTS4I2', 'agent', '75765de73bfae5b6ac0e437af2bc4c77.jpg', 'Verified', ''),
-(2, 'Mark Zelon Narag', 'marknarag25@gmail.com', '9089637505', '$2y$10$NdzcASZHVKeBNFXUo2Ncx.Wnj5sQYZu6dawycIPabRk4GEKV87dNS', 'user', 'da73b79bf4ecf3d5fe87649436dd708a.jpg', 'Verified', ''),
-(3, 'Michael', 'micorilan1999@gmail.com', '4324234234', '$2y$10$fSXUxSNbD2Ze/ORyec1gHuM5I8E32RVGT/imzlIXNTUhdLvY/Z6h.', 'agent', 'Screenshot 2023-11-04 091736.png', 'Verified', '4332424'),
-(4, 'sampleuser', 'micorilan@gmail.com', '4324234234', '$2y$10$4zr2Y/LwG.7RSYExXV9qwOHJKOA2Bc1cQtqDvDUjpztN9LRmMSkpm', 'user', 'Screenshot 2023-11-04 091736.png', 'Verified', ''),
-(5, 'zxcv1234', 'aaa@gmail.com', '4324234234', '$2y$10$jJtTToM1.TYRO5VrZrdi6.lWycDZcCIZov2oYx6ciqHOUBrsEm36.', 'user', 'Screenshot 2023-11-04 091736.png', 'Verified', '');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Indexes for dumped tables
@@ -291,6 +277,12 @@ ALTER TABLE `region`
   ADD PRIMARY KEY (`sid`);
 
 --
+-- Indexes for table `reservation`
+--
+ALTER TABLE `reservation`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -310,7 +302,7 @@ ALTER TABLE `about`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `aid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `aid` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `city`
@@ -322,25 +314,25 @@ ALTER TABLE `city`
 -- AUTO_INCREMENT for table `contact`
 --
 ALTER TABLE `contact`
-  MODIFY `cid` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `cid` int(50) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `fid` int(50) NOT NULL AUTO_INCREMENT;
+  MODIFY `fid` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `inquire`
 --
 ALTER TABLE `inquire`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `property`
 --
 ALTER TABLE `property`
-  MODIFY `pid` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `pid` int(50) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `region`
@@ -349,10 +341,16 @@ ALTER TABLE `region`
   MODIFY `sid` int(50) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `reservation`
+--
+ALTER TABLE `reservation`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `uid` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `uid` int(50) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
