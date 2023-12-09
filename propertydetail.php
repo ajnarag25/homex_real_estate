@@ -223,22 +223,22 @@ include("config.php");
                             
                             </div>
                             <?php
-                                $uid = $_SESSION['get_data']['uid'];
-                                $property_id = $_GET['pid'];
-                                $check_if_reserved = mysqli_query($conn,"SELECT * FROM reservation WHERE uid='$uid' AND property_id = '$property_id';");
+                                $uid = isset($_SESSION['get_data']['uid']) ? $_SESSION['get_data']['uid'] : '';
+                                $property_id = isset($_GET['pid']) ? $_GET['pid'] : '';
+                                $check_if_reserved = mysqli_query($conn, "SELECT * FROM reservation WHERE uid='$uid' AND property_id = '$property_id';");
                                 $cnt = mysqli_num_rows($check_if_reserved);
 
-                                if ($cnt){
-                                    // display none
+                                if ($cnt > 0 || empty($uid)) {
+                                    // Property is reserved or user is not logged in
+                                    // Display none or perform other actions
+                                    // You can use this space for additional logic or leave it blank
+                                } else {
                                     ?>
-                                    <?php 
-                                }else{
-                                    ?>
-                                    
                                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#reserve">Reserve</button>
                                     <?php
                                 }
-                            ?>
+                                ?>
+
 
 
 							</div>
@@ -253,7 +253,7 @@ include("config.php");
                                             </button>
                                         </div>
                                     <div class="modal-body">
-                                        <form action="functions.php" method="post">
+                                        <form action="functions.php" method="post"  enctype="multipart/form-data">
                                             <input type="text" name="property_id" value="<?php echo $_GET['pid']?>" hidden>
                                             <input type="text" name =  'admin_agent_id' value = "<?php echo $row['34'];?>" hidden>
                                             <input type="text" name =  'uid' value = "<?php echo $_SESSION['get_data']['uid'];?>" hidden>
@@ -271,23 +271,33 @@ include("config.php");
                                                     </ul>
                                                     <hr>
                                                     <ul>
-                                                    <label for="">Initial Requirements:</label>
-                                                    <li><b>Photocopy of Company ID (Back & Back)</b> </li>
-                                                    <li><b>1 Month Payslip ( a must for reservation) </b></li>
-                                                    <li><b>Reservation Fee</b></li>
+                                                    <label for="">Upload Requirements:</label>
+                                                    <li><b>Photocopy of Company ID (Front & Back)</b> </li>
+                                                    <li><input type="file" name="company_id" required></li>
+                                                    <li><b>Payslip ( a must for reservation) </b></li>
+                                                    <li><input type="file" name="payslip" required></li>
+                                                    <li><b>2 Government Valid IDs</b></li>
+                                                    <li><input type="file" name="govern1" required></li>
+                                                    <br>
+                                                    <li><input type="file" name="govern2" required></li>
                                                     </ul>
                                                 </div>
                                                 <div class="col">
                                                     <ul>
-                                                        <label for="">Bank Requirements:</label>
-                                                        <li><b>2 Government Valid IDs</b></li>
                                                         <li><b>ID Pics 1x1</b></li>
+                                                        <li><input type="file" name="id_pic" required></li>
                                                         <li><b>Proof of Billing/Remittance</b></li>
-                                                        <li><b>Payslip</b> </li>
-                                                        <li><b>Birth/Marriage </b></li>
+                                                        <li><input type="file" name="billing" required></li>
+                                                        <li><b>Birth/Marriage Certificate</b></li>
+                                                        <li><input type="file" name="bertmarriage" required></li>
                                                         <li><b>Certificate of Employment/Job Contract</b></li> 
+                                                        <li><input type="file" name="coe" required></li>
+                                                        <hr>
+                                                        <label for="">Requirements if necessary needed:</label>
                                                         <li><b>TIN/Passport</b> </li>
+                                                        <li><input type="file" name="tinpass" ></li>
                                                         <li><b>SPA (IF NEEDED, especially for OFW)</b></li>
+                                                        <li><input type="file" name="spa" ></li>
                                                     </ul>
                                                 </div>
                                             </div>

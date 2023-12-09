@@ -189,14 +189,59 @@
         $uid = $_POST['uid'];
         $utype = $_POST['utype'];
         $pay = $_POST['paymethod'];
+
+        $uploadDirectory = 'uploads/';
+
+        $company_id = uploadFile('company_id', $uploadDirectory);
+        $payslip = uploadFile('payslip', $uploadDirectory);
+        $govern1 = uploadFile('govern1', $uploadDirectory);
+        $govern2 = uploadFile('govern2', $uploadDirectory);
+        $id_pic = uploadFile('id_pic', $uploadDirectory);
+        $billing = uploadFile('billing', $uploadDirectory);
+        $bertmarriage = uploadFile('bertmarriage', $uploadDirectory);
+        $coe = uploadFile('coe', $uploadDirectory);
+        $tinpass = uploadFile('tinpass', $uploadDirectory);
+        $spa = uploadFile('spa', $uploadDirectory);
+
         if($uid == ''){
             $uid = 'None';
         }
 
-        $conn->query("INSERT INTO reservation (name,email,phone,property_id,admin_agent_id,uid,payment_method, status,utype) 
-                VALUES('$name', '$email','$phone','$property_id','$admin_agent_id', '$uid','$pay','New','$utype')") or die($conn->error);
+        // Insert data into the database with file paths
+        $conn->query("INSERT INTO reservation (name,email,phone,property_id,admin_agent_id,uid,payment_method, status,utype, company_id, payslip, government_id_1, government_id_2, id_pics, billing, birth_marriage_cert, employment_job_cert, tin_passport, spa) 
+                VALUES('$name', '$email','$phone','$property_id','$admin_agent_id', '$uid','$pay','New','$utype', '$company_id', '$payslip', '$govern1', '$govern2', '$id_pic', '$billing', '$bertmarriage', '$coe', '$tinpass', '$spa')") or die($conn->error);
+
         $_SESSION['status'] = 'Request for Reservation Successfully Sent!';
         $_SESSION['status_icon'] = 'success';
         header('location:reservation.php');
     }
+
+    function uploadFile($inputName, $uploadDirectory) {
+        $targetFile = $uploadDirectory . basename($_FILES[$inputName]['name']);
+        move_uploaded_file($_FILES[$inputName]['tmp_name'], $targetFile);
+        return $targetFile;
+    }
+
+    // send email agent
+    if (isset($_POST['agent_msg'])) {
+        $id = $_POST['user_id'];
+        $messages = $_POST['msg'];
+        $emails = $_POST['email'];
+        
+        if ($id != ''){
+            $conn->query("UPDATE reservation SET message='$messages' WHERE id='$id'") or die($conn->error);
+            include 'agent_send_email.php';
+            $_SESSION['status'] = 'Successfully Sent the Message!';
+            $_SESSION['status_icon'] = 'success';
+            header('location:custreservervation.php');
+        }else{
+            $_SESSION['status'] = 'An Error Occured!';
+            $_SESSION['status_icon'] = 'danger';
+            header('location:custreservervation.php');
+        }
+
+        
+    }
+
+    
 ?>

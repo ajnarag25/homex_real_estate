@@ -107,6 +107,7 @@ if(!isset($_SESSION['uemail']))
 								<th class="text-white font-weight-bolder">Status</th>
                                 <th class="text-white font-weight-bolder">Update</th>
 								<th class="text-white font-weight-bolder">Delete</th> -->
+                                <th class="text-white font-weight-bolder">Customer Name</th>
                                 <th class="text-white font-weight-bolder">Property Title</th>
                                 <th class="text-white font-weight-bolder">Property Type</th>
                                 <th class="text-white font-weight-bolder">Property Status</th>
@@ -132,6 +133,7 @@ if(!isset($_SESSION['uemail']))
                             while ($row = mysqli_fetch_array($result)) {
 							?>
                             <tr>
+                                <td class="text-capitalize"><?php echo $row['name'];?></td>		
                                 <td class="text-capitalize"><?php echo $row['title'];?></td>				
                                 <td class="text-capitalize"><?php echo $row['type'];?></td>
                                 <td class="text-capitalize">For <?php echo $row['pstatus'];?></td>
@@ -150,12 +152,13 @@ if(!isset($_SESSION['uemail']))
 								<td class="text-capitalize"><?php echo $row['date_reserved'];?></td>
                                 <td class="text-capitalize">
                                     <button class="btn btn-secondary w-100" data-toggle="modal" data-target="#view<?php echo $row['id']; ?>">View</button>
+                                    <button class="btn btn-primary w-100" data-toggle="modal" data-target="#compose<?php echo $row['id']; ?>">Compose</button>
                                 </td>
                             </tr>
 
 
                             <div class="modal fade" id="view<?php echo $row['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog " role="document">
+                                <div class="modal-dialog  modal-lg modal-dialog-centered" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="exampleModalLabel">Reservation Details</h5>
@@ -165,23 +168,64 @@ if(!isset($_SESSION['uemail']))
                                         </div>
                                     <div class="modal-body">
                                         <form action="functions.php" method="post">
-                                            <div class="modal-body">
-                                  
-                                                    <ul class="text-center">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <ul>
                                                     <label for="">User Information:</label>
                                                         <li>Name: <?php echo $row['name'];?></li>
                                                         <li>Email: <?php echo $row['email'];?></li>
                                                         <li>Contact No: <?php echo $row['phone'];?></li>
                                                     </ul>
                                                     <hr>
-                                     
-                           
-                                                   <label for="">Agent Message:</label>
-                                                   <textarea class="form-control" name="" id="" cols="10" rows="5" readonly><?php echo $row['message'] ?></textarea>
-                                         
+                                                    <ul>
+                                                        <label for="">Requirements:</label>
+                                                        <li><a href="<?php echo $row['company_id'] ?>" target="_blank">Photocopy of Company ID (Front & Back)</a> </li>
+                                                        <li><a href="<?php echo $row['payslip'] ?>" target="_blank">Payslip</a> </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="col">
+                                                    <ul>
+                                                        <li>2 Government Valid IDs</li>
+                                                        <li>- <a href="<?php echo $row['government_id_1'] ?>" target="_blank">Government I.D - 1</a></li>
+                                                        <li>- <a href="government_id_2">Government I.D - 2</a></li>
+                                                        <li><a href="<?php echo $row['id_pics'] ?>" target="_blank">ID Pics 1x1</a></li>
+                                                        <li><a href="<?php echo $row['billing'] ?>" target="_blank">Proof of Billing/Remittance</a></li>
+                                                        <li><a href="<?php echo $row['birth_marriage_cert'] ?>" target="_blank">Birth/Marriage</a> </li>
+                                                        <li><a href="<?php echo $row['employment_job_cert'] ?>" target="_blank">Certificate of Employment/Job Contract</a></li> 
+                                                        <li><a href="<?php echo $row['tin_passport'] ?>" target="_blank">TIN/Passport</a> </li>
+                                                        <li><a href="<?php echo $row['spa'] ?>" target="_blank">SPA (IF NEEDED, especially for OFW)</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                      
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="modal fade" id="compose<?php echo $row['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog  modal-lg modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Compose Message</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                    <div class="modal-body">
+                                        <form action="functions.php" method="post">
+                                            <div class="modal-body">
+                                                <input type="hidden" name="user_id" value="<?php echo $row['id']; ?>">
+                                                <input type="hidden" name="email" value="<?php echo $row['email']; ?>">
+                                                <textarea class="form-control" placeholder="Enter your message here..." name="msg" id="" cols="20" rows="5" required></textarea>
                                             </div>
                                       
                                             <div class="modal-footer">
+                                                <button type="submit" class="btn btn-primary" name="agent_msg">Send Message</button>
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                             </div>
                                         </form>
