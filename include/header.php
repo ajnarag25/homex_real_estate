@@ -44,6 +44,7 @@
 										<li class="nav-item"> <a class="nav-link" href="about.php">About</a> </li>
 										<!-- <li class="nav-item"> <a class="nav-link" href="history.php">Inquire History</a> </li> -->
 										<li class="nav-item"> <a class="nav-link" href="custinquiries.php">Customer Inquiries</a> </li>
+                                        <li class="nav-item"> <a class="nav-link" href="custbooking.php">Customer Book Schedule</a> </li>
                                         <li class="nav-item"> <a class="nav-link" href="custreservervation.php">Customer Reservations</a> </li>
 										<!-- <li class="nav-item"> <a class="nav-link" href="agent.php">Agent</a> </li> -->
 										
@@ -55,6 +56,7 @@
 										
 										<li class="nav-item"> <a class="nav-link" href="about.php">About</a> </li>
 										<li class="nav-item"> <a class="nav-link" href="history.php">Inquire</a> </li>
+                                        <li class="nav-item"> <a class="nav-link" href="schedule.php">Schedule</a> </li>
 										<li class="nav-item"> <a class="nav-link" href="reservation.php">Reservation</a> </li>
 										
 										<li class="nav-item"> <a class="nav-link" href="property.php">Properties</a> </li>

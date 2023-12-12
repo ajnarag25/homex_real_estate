@@ -243,5 +243,48 @@
         
     }
 
+    // submit sched booking
+    if (isset($_POST['submit_book'])) {
+        $property_id = $_POST['property_id'];
+        $name = $_POST['name'];
+        $email = $_POST['email'];
+        $phone = $_POST['phone'];
+        $admin_agent_id = $_POST['admin_agent_id'];
+        $uid = $_POST['uid'];
+        $utype = $_POST['utype'];
+        $date = $_POST['date_sched'];
+        $time = $_POST['time_sched'];
+        
+        if($uid == ''){
+            $uid = 'None';
+        }
+        $conn->query("INSERT INTO sched_book (property_id, admin_agent_id, user_id, user_type, username, email, phone, date_sched, time_sched) 
+                VALUES('$property_id', '$admin_agent_id','$uid','$utype','$name', '$email', '$phone', '$date', '$time')") or die($conn->error);
+
+        $_SESSION['status'] = 'Request for Scheduling Successfully Sent!';
+        $_SESSION['status_icon'] = 'success';
+        header('location:schedule.php');
+    }
+
+    // send email agent booking
+    if (isset($_POST['agent_msg_booking'])) {
+        $id = $_POST['user_id'];
+        $messages = $_POST['msg'];
+        $emails = $_POST['email'];
+        
+        if ($id != ''){
+            $conn->query("UPDATE sched_book SET message='$messages' WHERE id='$id'") or die($conn->error);
+            include 'agent_send_email.php';
+            $_SESSION['status'] = 'Successfully Sent the Message!';
+            $_SESSION['status_icon'] = 'success';
+            header('location:custbooking.php');
+        }else{
+            $_SESSION['status'] = 'An Error Occured!';
+            $_SESSION['status_icon'] = 'danger';
+            header('location:custbooking.php');
+        }
+
+        
+    }
     
 ?>

@@ -60,7 +60,7 @@
 										<input class="form-control" type="date" placeholder="Date of Birth" name="dob" required>
 									</div>
 									<div class="form-group">
-										<input class="form-control" type="text" placeholder="Phone" name="phone" maxlength="10" required>
+										<input class="form-control" type="text" placeholder="Phone" name="phone" maxlength="11" required>
 									</div>
 									<div class="form-group mb-0">
 										<input class="btn btn-primary btn-block" type="submit" name="register" Value="Register">

@@ -136,11 +136,12 @@ include("config.php");
                                 }else{
                                 ?>
                                 <?php 
-                                if ($_SESSION['get_data']['uid'] == $row['34'] && $row['33'] == 'agent') {
+                                
+                                if ($_SESSION['get_data']['utype'] == 'agent') {
                                         // DISPLAY NOTHING
                                 }else{
                                 ?>
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Inquire</button>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Inquire</button>
                                 <?php 
                                 }
                             }
@@ -225,23 +226,77 @@ include("config.php");
                             <?php
                                 $uid = isset($_SESSION['get_data']['uid']) ? $_SESSION['get_data']['uid'] : '';
                                 $property_id = isset($_GET['pid']) ? $_GET['pid'] : '';
-                                $check_if_reserved = mysqli_query($conn, "SELECT * FROM reservation WHERE uid='$uid' AND property_id = '$property_id';");
-                                $cnt = mysqli_num_rows($check_if_reserved);
 
-                                if ($cnt > 0 || empty($uid)) {
+                                // Check if the property is reserved by the current user
+                                $check_if_reserved = mysqli_query($conn, "SELECT * FROM reservation WHERE uid='$uid' AND property_id = '$property_id';");
+                                $cnt_reserved = mysqli_num_rows($check_if_reserved);
+
+                                // Check if the property is booked
+                                date_default_timezone_set('Asia/Manila');
+                                $date_today = date('Y-m-d');
+                                $time_today = date('H:i:s');
+                                $check_if_booked = mysqli_query($conn, "SELECT * FROM sched_book WHERE property_id = '$property_id'");
+                                $cnt_booked = mysqli_num_rows($check_if_booked);
+
+                                if ($cnt_reserved > 0 || empty($uid)) {
                                     // Property is reserved or user is not logged in
                                     // Display none or perform other actions
                                     // You can use this space for additional logic or leave it blank
                                 } else {
-                                    ?>
-                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#reserve">Reserve</button>
-                                    <?php
+                                    if ($_SESSION['get_data']['utype'] != 'agent') {
+                                        // User is not an agent
+                                        if ($cnt_booked > 0) {
+                                            // Property is booked
+                                            ?>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#reserve">Reserve</button>
+                                            <?php
+                                        } else {
+                                            // Property is not booked
+                                            ?>
+                                            <button type="button" class="btn btn-warning text-white" data-toggle="modal" data-target="#book">Book</button>
+                                            <?php
+                                        }
+                                    }
                                 }
-                                ?>
-
-
-
+                            ?>
 							</div>
+                            <!-- Modal Book Sched-->
+                            <div class="modal fade" id="book" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog  modal-lg modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Book Schedule</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                    <div class="modal-body">
+                                        <form action="functions.php" method="post" >
+                                            <input type="text" name="property_id" value="<?php echo $_GET['pid']?>" hidden>
+                                            <input type="text" name='admin_agent_id' value = "<?php echo $row['34'];?>" hidden>
+                                            <input type="text" name='uid' value = "<?php echo $_SESSION['get_data']['uid'];?>" hidden>
+                                            <input type="text" name='utype' value = "<?php echo $row['33'];?>" hidden>
+                                            <input type="text" name="name" value="<?php echo $_SESSION['get_data']['uname'];?>" hidden>
+                                            <input type="text" name="email" value="<?php echo $_SESSION['get_data']['uemail'];?>" hidden>
+                                            <input type="text" name="phone" value="<?php echo $_SESSION['get_data']['uphone'];?>" hidden>
+                                            <div class="row">
+                                                <div class="col">
+                                                    <label for="">Date:</label>
+                                                    <input type="date" name="date_sched" class="form-control" required>
+                                                    <hr>
+                                                    <label for="">Time:</label>
+                                                    <input type="time" name="time_sched" class="form-control" required>
+                                                </div>
+                                            </div>
+                                            </div>
+                                            <div class="modal-footer justify-content-center">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <button type="submit" name="submit_book" class="btn btn-warning text-white">Book Schedule</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                             <!-- Modal Reserve-->
                             <div class="modal fade" id="reserve" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog  modal-lg modal-dialog-centered" role="document">
@@ -318,7 +373,12 @@ include("config.php");
                                 </div>
                             </div>
                             <div class="col-md-4">
-                                <div class="text-success text-left h5 my-2 text-md-right">P <?php echo $row['13'];?></div>
+                                <div class="text-success text-left h5 my-2 text-md-right">
+                                    P <?php 
+                                    $formattedNumber = number_format($row['13'], 2, '.', ',');
+                                    echo $formattedNumber;
+                                    ?>
+                                </div>
                                 <div class="text-left text-md-right">Price</div>
                             </div>
                         </div>
