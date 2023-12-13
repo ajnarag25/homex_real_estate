@@ -347,4 +347,21 @@
         }
     }
     
+    // mark as complete
+    if (isset($_POST['mark_complete'])) {
+        $id = $_POST['user_id'];
+
+        if (!empty($id)){
+            $conn->query("DELETE FROM sched_book WHERE user_id='$id'") or die($conn->error);
+            $_SESSION['status'] = 'Successfully Marked as Complete!';
+            $_SESSION['status_icon'] = 'success';
+            header('location:custbooking.php');
+        }else{
+            $_SESSION['status'] = 'An Error Occured!';
+            $_SESSION['status_icon'] = 'danger';
+            header('location:custbooking.php');
+        }
+
+    }
+    
 ?>

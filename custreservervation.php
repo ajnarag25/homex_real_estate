@@ -180,14 +180,15 @@ if(!isset($_SESSION['uemail']))
                                                 <div class="col">
                                                     <ul>
                                                         <li>2 Government Valid IDs</li>
-                                                        <li>- <a href="<?php echo $row['government_id_1'] ?>" target="_blank">Government I.D - 1</a></li>
-                                                        <li>- <a href="government_id_2">Government I.D - 2</a></li>
-                                                        <li><a href="<?php echo $row['id_pics'] ?>" target="_blank">ID Pics 1x1</a></li>
-                                                        <li><a href="<?php echo $row['billing'] ?>" target="_blank">Proof of Billing/Remittance</a></li>
-                                                        <li><a href="<?php echo $row['birth_marriage_cert'] ?>" target="_blank">Birth/Marriage</a> </li>
-                                                        <li><a href="<?php echo $row['employment_job_cert'] ?>" target="_blank">Certificate of Employment/Job Contract</a></li> 
-                                                        <li><a href="<?php echo $row['tin_passport'] ?>" target="_blank">TIN/Passport</a> </li>
-                                                        <li><a href="<?php echo $row['spa'] ?>" target="_blank">SPA (IF NEEDED, especially for OFW)</a></li>
+                                                        <li>- <?php echo !empty($row['government_id_1']) ? '<a href="' . $row['government_id_1'] . '" target="_blank">Government I.D - 1</a>' : 'Government I.D - 1 (Not available)'; ?></li>
+                                                        <li>- <?php echo !empty($row['government_id_2']) ? '<a href="' . $row['government_id_2'] . '" target="_blank">Government I.D - 2</a>' : 'Government I.D - 2 (Not available)'; ?></li>
+                                                        <li><?php echo !empty($row['id_pics']) ? '<a href="' . $row['id_pics'] . '" target="_blank">ID Pics 1x1</a>' : 'ID Pics 1x1 (Not available)'; ?></li>
+                                                        <li><?php echo !empty($row['billing']) ? '<a href="' . $row['billing'] . '" target="_blank">Proof of Billing/Remittance</a>' : 'Proof of Billing/Remittance (Not available)'; ?></li>
+                                                        <li><?php echo !empty($row['birth_marriage_cert']) ? '<a href="' . $row['birth_marriage_cert'] . '" target="_blank">Birth/Marriage</a>' : 'Birth/Marriage (Not available)'; ?></li>
+                                                        <li><?php echo !empty($row['employment_job_cert']) ? '<a href="' . $row['employment_job_cert'] . '" target="_blank">Certificate of Employment/Job Contract</a>' : 'Certificate of Employment/Job Contract (Not available)'; ?></li>
+                                                        <li><?php echo !empty($row['tin_passport']) ? '<a href="' . $row['tin_passport'] . '" target="_blank">TIN/Passport</a>' : 'TIN/Passport (Not available)'; ?></li>
+                                                        <li><?php echo !empty($row['spa']) ? '<a href="' . $row['spa'] . '" target="_blank">SPA (IF NEEDED, especially for OFW)</a>' : 'SPA (IF NEEDED, especially for OFW) (Not available)'; ?></li>
+
                                                     </ul>
                                                 </div>
                                             </div>

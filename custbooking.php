@@ -107,6 +107,7 @@ if(!isset($_SESSION['uemail']))
 								<th class="text-white font-weight-bolder">Status</th>
                                 <th class="text-white font-weight-bolder">Update</th>
 								<th class="text-white font-weight-bolder">Delete</th> -->
+                                <th class="text-white font-weight-bolder">Customer Name</th>
                                 <th class="text-white font-weight-bolder">Property Title</th>
                                 <th class="text-white font-weight-bolder">Property Type</th>
                                 <th class="text-white font-weight-bolder">Property Status</th>
@@ -128,6 +129,7 @@ if(!isset($_SESSION['uemail']))
                             while ($row = mysqli_fetch_array($result)) {
 							?>
                             <tr>
+                                <td class="text-capitalize"><?php echo $row['username'];?></td>	
                                 <td class="text-capitalize"><?php echo $row['title'];?></td>				
                                 <td class="text-capitalize"><?php echo $row['type'];?></td>
                                 <td class="text-capitalize">For <?php echo $row['pstatus'];?></td>
@@ -143,8 +145,32 @@ if(!isset($_SESSION['uemail']))
                                 <td class="text-capitalize">
                                     <!-- <button class="btn btn-secondary w-100" data-toggle="modal" data-target="#view<?php echo $row['id']; ?>">View</button> -->
                                     <button class="btn btn-primary w-100" data-toggle="modal" data-target="#compose<?php echo $row['id']; ?>">Compose</button>
+                                    <!-- <button class="btn btn-success w-100" data-toggle="modal" data-target="#complete<?php echo $row['id']; ?>">Mark as Complete</button> -->
                                 </td>
                             </tr>
+
+                            <div class="modal fade" id="complete<?php echo $row['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Mark as Complete</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <form action="functions.php" method="post">
+                                            <div class="modal-body text-center">
+                                                <input type="hidden" name="user_id" value="<?php echo $row['id']; ?>">
+                                                <h4>Are you sure to mark as complete this user booking?</h4>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="submit" name="mark_complete" class="btn btn-success">Yes</button>
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
 
                             <div class="modal fade" id="compose<?php echo $row['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog  modal-lg modal-dialog-centered" role="document">
@@ -171,6 +197,7 @@ if(!isset($_SESSION['uemail']))
                                     </div>
                                 </div>
                             </div>
+                            
 
 							<?php } ?>
 							
