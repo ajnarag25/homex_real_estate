@@ -87,60 +87,65 @@ include("config.php");
         <div class="full-row">
             <div class="container">
                 <div class="row">
-				
-					<div class="col-lg-8">
-                        <div class="row">
-					
-                             <?php 
-                                $uid = $_SESSION['get_data']['uid'];
-								$query=mysqli_query($conn,"SELECT * FROM `property` WHERE user_id <> '$uid' and is_approved = true  ORDER BY date DESC");
-                                while($row=mysqli_fetch_array($query))
-                                {
-								?>
-                            <div class="col-md-6">
-                                <div class="featured-thumb hover-zoomer mb-4">
-                                    <div class="overlay-black overflow-hidden position-relative"> <img src="admin/property/<?php echo $row['19'];?>" alt="pimage">
+			
+                    <?php 	
+                        $query=mysqli_query($conn,"SELECT * FROM `property` WHERE is_approved = true ORDER BY date DESC LIMIT 6");
+                        while($row=mysqli_fetch_array($query))
+                        {
+                    ?>
+                
+                    <div class="col-lg-4">
+                        <div class="featured-thumb hover-zoomer mb-4">
+                            <div class="overlay-black overflow-hidden position-relative"> <img src="admin/property/<?php echo $row['19'];?>" alt="pimage">
+                                <!-- <div class="featured bg-success text-white">New</div> -->
+                                <div class="sale bg-success text-white text-capitalize">For <?php echo $row['5'];?></div>
+                                <div class="price text-primary"><b>₱<?php echo $formattedNumber = number_format($row['price'], 2, '.', ',');;?> </b><span class="text-white"><?php echo $row['12'];?> Sqft</span></div>
+                            </div>          
+                            <div class="featured-thumb-data shadow-one">
+                                <div class="p-3">
+                                    <h5 class="text-secondary hover-text-success mb-2 text-capitalize"><a href="propertydetail.php?pid=<?php echo $row['0'];?>"><?php echo $row['1'];?></a></h5>
+                                    <span class="location text-capitalize"><i class="fas fa-map-marker-alt text-success"></i> <?php echo $row['14'];?></span> </div>
+                                <div class="bg-gray quantity px-4 pt-4">
+                                    <ul>
+                                        <li><span><?php echo $row['12'];?></span> Sqft</li>
+                                        <li><span><?php echo $row['6'];?></span> Beds</li>
+                                        <li><span><?php echo $row['7'];?></span> Baths</li>
+                                        <li><span><?php echo $row['9'];?></span> Kitchen</li>
+                                        <li><span><?php echo $row['8'];?></span> Balcony</li>
                                         
-                                        <div class="sale bg-secondary text-white">For <?php echo $row['5'];?></div>
-                                        <div class="price text-primary text-capitalize">Php <?php echo $row['13'];?><span class="text-white"> <?php echo $row['12'];?> Sqm</span></div>
-                                        
-                                    </div>
-                                    <div class="featured-thumb-data shadow-one">
-                                        <div class="p-4">
-                                            <h5 class="text-secondary hover-text-primary mb-2 text-capitalize"><a href="propertydetail.php?>"></a></h5>
-                                            <span class="location text-capitalize"><i class="fas fa-map-marker-alt text-primary"></i></span> <?php echo $row['16'];?>, <?php echo $row['17'];?>, <?php echo $row['15'];?></div>
-                                        <div class="px-4 pb-4 d-inline-block w-100">
-                                            <div class="float-left text-capitalize"><i class="fas fa-user text-primary mr-1"></i>By : <?php echo $row['useragent'];?></div>
-                                            <div class="float-right"><i class="far fa-calendar-alt text-primary mr-1"></i> <?php echo $row['30'];?></div>
-                                        </div>
-                                    </div>
-                                    <a class="btn btn-success w-100" href="propertydetail.php?pid=<?php echo $row['0'];?>"> View Details</a>
-                 
+                                    </ul>
+                                </div>
+                                <div class="p-4 d-inline-block w-100">
+                                    <div class="float-left text-capitalize"><i class="fas fa-user text-success mr-1"></i>By : <?php echo $row['useragent'];?></div>
+                                    <div class="float-right"><i class="far fa-calendar-alt text-success mr-1"></i> <?php echo date('d-m-Y', strtotime($row['date']));?></div> 
                                 </div>
                             </div>
-                            <?php } ?>
-                            
-            
-                            
-                        <!--    <div class="col-md-12">
-                                <nav aria-label="Page navigation">
-                                    <ul class="pagination justify-content-center mt-4">
-                                        <li class="page-item disabled"> <span class="page-link">Previous</span> </li>
-                                        <li class="page-item active" aria-current="page"> <span class="page-link"> 1 <span class="sr-only">(current)</span> </span> </li>
-                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                        <li class="page-item">...</li>
-                                        <li class="page-item"><a class="page-link" href="#">5</a></li>
-                                        <li class="page-item"> <a class="page-link" href="#">Next</a> </li>
-                                    </ul>
-                                </nav>
-                            </div>  -->
                         </div>
                     </div>
-					
+                    <?php } ?>
+
                     <div class="col-lg-4">
       
                         <div class="sidebar-widget mt-5">
+                            <h4 class="double-down-line-left text-secondary position-relative pb-4 mb-4 mt-5">Featured Property</h4>
+                            <ul class="property_list_widget">
+                                
+            
+                                <?php 
+                                    $query=mysqli_query($conn,"SELECT * FROM `property` WHERE feature='yes' ORDER BY date DESC LIMIT 7");
+                                            while($row=mysqli_fetch_array($query))
+                                            {
+                                    ?>
+                                    <li> <img src="admin/property/<?php echo $row['19'];?>" alt="pimage">
+                                        <h6 class="text-secondary hover-text-success text-capitalize"><a href="propertydetail.php?pid=<?php echo $row['0'];?>"><?php echo $row['1'];?></a></h6>
+                                        <span class="font-14"><i class="fas fa-map-marker-alt icon-success icon-small"></i> <?php echo $row['14'];?></span>
+                                        
+                                    </li>
+                                <?php } ?>
+                
+
+                            </ul>
+
                             <h4 class="double-down-line-left text-secondary position-relative pb-4 mb-4">Recent Property Add</h4>
                             <ul class="property_list_widget">
 							

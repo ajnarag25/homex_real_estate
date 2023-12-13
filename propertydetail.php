@@ -120,32 +120,50 @@ include("config.php");
                         </div>
                         <div class="row mb-4">
                             <div class="col-md-4">
-                                <div class="bg-success d-table px-3 py-2 rounded text-white text-capitalize">For <?php echo $row['5'];?></div>
+                                <div class="bg-success d-table px-3 py-2 rounded text-white text-capitalize">
+                                    <?php 
+                                        if($row['5'] == 'Pending'){
+                                            echo 'Pending';
+                                        }elseif($row['5'] == 'Sold Out'){
+                                            echo 'Sold Out';
+                                        }else{
+                                            echo 'For '.$row['5'];
+                                        }
+                                    ?>
+                                </div>
                                 <h4 class="mt-4 text-secondary text-capitalize"><?php echo $row['1'];?></h4>
                                 <span class="mb-sm-20 d-block text-capitalize"><i class="fas fa-map-marker-alt text-success font-12"></i> &nbsp;<?php echo $row['16'];?>, <?php echo $row['17'];?>, <?php echo $row['15'];?></span>
 							</div>
                             <div class="col-md-4">
                                 <!-- Inquire Modal -->
                                 <?php
-                                $uid = $_SESSION['get_data']['uid'];
-                                $property_id = $_GET['pid'];
-                                $check_if_inquired = mysqli_query($conn,"SELECT * FROM inquire WHERE uid='$uid' AND property_id = '$property_id';");
-                                $cnt = mysqli_num_rows($check_if_inquired);
-                                if ($cnt > 0){
-                                    // DISPLAY NOTHING
-                                }else{
-                                ?>
-                                <?php 
-                                
-                                if ($_SESSION['get_data']['utype'] == 'agent') {
-                                        // DISPLAY NOTHING
-                                }else{
-                                ?>
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Inquire</button>
-                                <?php 
-                                }
-                            }
-                                ?>
+                                    $uid = $_SESSION['get_data']['uid'];
+                                    $property_id = $_GET['pid'];
+
+                                    $check_status = mysqli_query($conn, "SELECT * FROM property WHERE pid = '$property_id';");
+                                    $property_data = mysqli_fetch_assoc($check_status);       
+
+                                    if($property_data['stype'] == 'Sold Out'){
+                                        // display nothing
+                                    }else{
+                                        $check_if_inquired = mysqli_query($conn,"SELECT * FROM inquire WHERE uid='$uid' AND property_id = '$property_id';");
+                                        $cnt = mysqli_num_rows($check_if_inquired);
+                                        if ($cnt > 0){
+                                            // DISPLAY NOTHING
+                                        }else{
+                                            ?>
+                                            <?php 
+                                            
+                                            if ($_SESSION['get_data']['utype'] == 'agent') {
+                                                    // DISPLAY NOTHING
+                                            }else{
+                                            ?>
+                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Inquire</button>
+                                            <?php 
+                                            }
+                                        }
+                                    }
+                                    ?>
                             <!-- Modal -->
                             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -226,38 +244,46 @@ include("config.php");
                             <?php
                                 $uid = isset($_SESSION['get_data']['uid']) ? $_SESSION['get_data']['uid'] : '';
                                 $property_id = isset($_GET['pid']) ? $_GET['pid'] : '';
+                                
+                                $check_status = mysqli_query($conn, "SELECT * FROM property WHERE pid = '$property_id';");
+                                $property_data = mysqli_fetch_assoc($check_status);           
 
-                                // Check if the property is reserved by the current user
-                                $check_if_reserved = mysqli_query($conn, "SELECT * FROM reservation WHERE uid='$uid' AND property_id = '$property_id';");
-                                $cnt_reserved = mysqli_num_rows($check_if_reserved);
-
-                                // Check if the property is booked
-                                date_default_timezone_set('Asia/Manila');
-                                $date_today = date('Y-m-d');
-                                $time_today = date('H:i:s');
-                                $check_if_booked = mysqli_query($conn, "SELECT * FROM sched_book WHERE property_id = '$property_id'");
-                                $cnt_booked = mysqli_num_rows($check_if_booked);
-
-                                if ($cnt_reserved > 0 || empty($uid)) {
-                                    // Property is reserved or user is not logged in
-                                    // Display none or perform other actions
-                                    // You can use this space for additional logic or leave it blank
-                                } else {
-                                    if ($_SESSION['get_data']['utype'] != 'agent') {
-                                        // User is not an agent
-                                        if ($cnt_booked > 0) {
-                                            // Property is booked
-                                            ?>
-                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#reserve">Reserve</button>
-                                            <?php
-                                        } else {
-                                            // Property is not booked
-                                            ?>
-                                            <button type="button" class="btn btn-warning text-white" data-toggle="modal" data-target="#book">Book</button>
-                                            <?php
-                                        }
-                                    }
+                                if($property_data['stype'] == 'For Reservation' OR $property_data['stype'] == 'Sold Out'){
+                                   // display nothing
+                                }else{
+                                     // Check if the property is reserved by the current user
+                                     $check_if_reserved = mysqli_query($conn, "SELECT * FROM reservation WHERE uid='$uid' AND property_id = '$property_id';");
+                                     $cnt_reserved = mysqli_num_rows($check_if_reserved);
+ 
+                                     // Check if the property is booked
+                                     date_default_timezone_set('Asia/Manila');
+                                     $date_today = date('Y-m-d');
+                                     $time_today = date('H:i:s');
+                                     $check_if_booked = mysqli_query($conn, "SELECT * FROM sched_book WHERE property_id = '$property_id' AND user_id='$uid' ");
+                                     $cnt_booked = mysqli_num_rows($check_if_booked);
+ 
+                                     if ($cnt_reserved > 0 || empty($uid)) {
+                                         // Property is reserved or user is not logged in
+                                         // Display none or perform other actions
+                                         // You can use this space for additional logic or leave it blank
+                                     } else {
+                                         if ($_SESSION['get_data']['utype'] != 'agent') {
+                                             // User is not an agent
+                                             if ($cnt_booked > 0) {
+                                                 // Property is booked
+                                                 ?>
+                                                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#reserve">Reserve</button>
+                                                 <?php
+                                             } else {
+                                                 // Property is not booked
+                                                 ?>
+                                                 <button type="button" class="btn btn-warning text-white" data-toggle="modal" data-target="#book">Book</button>
+                                                 <?php
+                                             }
+                                         }
+                                     }
                                 }
+
                             ?>
 							</div>
                             <!-- Modal Book Sched-->

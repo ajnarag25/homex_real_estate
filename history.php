@@ -130,7 +130,13 @@ if(!isset($_SESSION['uemail']))
                                         <h5 class="text-secondary text-capitalize"><?php echo $row['0'];?></h5>
                                         <span class="font-14 text-capitalize"><i class="fas fa-map-marker-alt text-primary font-13"></i>&nbsp; <?php echo $row['1'];?></span>
                                         <div class="price mt-3">
-											<span class="text-primary">P&nbsp;<?php echo $row['2'];?></span>
+											<span class="text-primary">
+                                                P&nbsp;
+                                                <?php 
+                                                    $formattedNumber = number_format($row['price'], 2, '.', ',');
+                                                    echo $formattedNumber;
+                                                ?>
+                                            </span>
 										</div>
                                     </div>
 								</td>

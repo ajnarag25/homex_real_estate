@@ -114,11 +114,8 @@ if(!isset($_SESSION['uemail']))
                                 <th class="text-white font-weight-bolder">Sale Type</th>
                                 <th class="text-white font-weight-bolder">Property Price</th>
                                 <th class="text-white font-weight-bolder">Payment Method</th>
-                                <th class="text-white font-weight-bolder">Discount / Equity</th>
                                 <th class="text-white font-weight-bolder">Date Reserved</th>
                                 <th class="text-white font-weight-bolder">Action</th>
-                                
-                            
                              </tr>
                         </thead>
                         <tbody>
@@ -138,25 +135,22 @@ if(!isset($_SESSION['uemail']))
                                 <td class="text-capitalize"><?php echo $row['type'];?></td>
                                 <td class="text-capitalize">For <?php echo $row['pstatus'];?></td>
                                 <td class="text-capitalize">For <?php echo $row['stype'];?></td>
-                                <td class="text-capitalize">P<?php echo $row['price'];?></td>
-                                <td class="text-capitalize"><?php echo $row['payment_method'];?></td>
                                 <td class="text-capitalize">
-                                    <?php 
-                                    if($row['payment_method'] == 'cash' || $row['payment_method'] == 'bank'){
-                                        echo 'P'.$row['price'] * 0.20 . ' - less 20%';
-                                    }else{
-                                        echo 'No discount for loan';
-                                    }
+                                    P<?php
+                                        $formattedNumber = number_format($row['price'], 2, '.', ',');
+                                        echo $formattedNumber;
                                     ?>
                                 </td>
+                                <td class="text-capitalize"><?php echo $row['payment_method'];?></td>
+
 								<td class="text-capitalize"><?php echo $row['date_reserved'];?></td>
                                 <td class="text-capitalize">
                                     <button class="btn btn-secondary w-100" data-toggle="modal" data-target="#view<?php echo $row['id']; ?>">View</button>
                                     <button class="btn btn-primary w-100" data-toggle="modal" data-target="#compose<?php echo $row['id']; ?>">Compose</button>
+                                    <button class="btn btn-danger w-100" data-toggle="modal" data-target="#status<?php echo $row['id']; ?>">Status</button>
                                 </td>
                             </tr>
-
-
+                            
                             <div class="modal fade" id="view<?php echo $row['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog  modal-lg modal-dialog-centered" role="document">
                                     <div class="modal-content">
@@ -206,7 +200,54 @@ if(!isset($_SESSION['uemail']))
                                     </div>
                                 </div>
                             </div>
-                            
+ 
+                            <div class="modal fade" id="status<?php echo $row['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="status<?php echo $row['id']; ?>" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="">Change Status</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <form action="functions.php" method="post">
+                                            <div class="modal-body text-center">
+                                                <input type="hidden" name="prop_id" value="<?php echo $row['property_id'] ?>">
+                                                <label for="">Current Status: 
+                                                    <?php 
+                                                        if($row['stype'] == 'Pending'){
+                                                            ?>
+                                                            <span class="text-warning"><?php echo $row['stype'] ?></span>
+                                                            <?php
+                                                        }elseif ($row['stype'] == 'For Reservation'){
+                                                            ?>
+                                                            <span class="text-danger"><?php echo $row['stype'] ?></span>
+                                                            <?php
+                                                        }else{
+                                                            ?>
+                                                            <span class="text-success"><?php echo $row['stype'] ?></span>
+                                                            <?php
+                                                        }
+                                                    ?>
+                                         
+                                                </label>
+                                                <hr>
+                                                <select class="form-control" name="stat" id="" required>
+                                                    <option value=""selected disabled><?php echo $row['stype'] ?></option>
+                                                    <option value="Pending">Pending</option>
+                                                    <option value="Reservation">For Reservation</option>
+                                                    <option value="Sold Out">Sold Out</option>
+                                                </select>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-danger" name="change_stat">Change Status</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="modal fade" id="compose<?php echo $row['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog  modal-lg modal-dialog-centered" role="document">
                                     <div class="modal-content">
@@ -217,21 +258,32 @@ if(!isset($_SESSION['uemail']))
                                             </button>
                                         </div>
                                     <div class="modal-body">
-                                        <form action="functions.php" method="post">
-                                            <div class="modal-body">
+                                        <div class="modal-body">
+                                            <form action="functions.php" method="post">
                                                 <input type="hidden" name="user_id" value="<?php echo $row['id']; ?>">
                                                 <input type="hidden" name="email" value="<?php echo $row['email']; ?>">
                                                 <textarea class="form-control" placeholder="Enter your message here..." name="msg" id="" cols="20" rows="5" required></textarea>
-                                            </div>
-                                      
-                                            <div class="modal-footer">
-                                                <button type="submit" class="btn btn-primary" name="agent_msg">Send Message</button>
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            </div>
-                                        </form>
+                                                <button type="submit" class="btn btn-primary w-100 mt-4" name="agent_msg">Send Message</button>
+                                            </form>
+                                            <hr>
+                                            <form action="functions.php" method="post" enctype="multipart/form-data">
+                                                <input type="hidden" name="user_id" value="<?php echo $row['id']; ?>">
+                                                <label for="">Provide Discount? (%)</label>
+                                                <input type="number" name="discount" class="form-control" required>
+                                                <hr>
+                                                <label for="">Upload Sample Computation (Breakdown):</label>
+                                                <input type="file" name="file_discount" class="form-control" required>
+                                                <button type="submit" class="btn btn-primary w-100 mt-4" name="agent_disc">Submit Discount</button>
+                                            </form>
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+
 
 							<?php } ?>
 							

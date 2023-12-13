@@ -408,7 +408,7 @@ if(isset($_POST['add']))
 														<select class="form-control"   name="status">
 															<option value="">Select Status</option>
 															<option value="available">Available</option>
-															<option value="sold out">Sold Out</option>
+															<!-- <option value="sold out">Sold Out</option> -->
 															<option value="sold out">Lease</option>
 														</select>
 													</div>

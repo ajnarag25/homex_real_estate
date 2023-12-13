@@ -186,8 +186,8 @@ include("config.php");
                                             <div class="overlay-black overflow-hidden position-relative"> <img src="admin/property/<?php echo $row['19'];?>" alt="pimage">
                                                 <!-- <div class="featured bg-success text-white">New</div> -->
                                                 <div class="sale bg-success text-white text-capitalize">For <?php echo $row['5'];?></div>
-                                                <div class="price text-primary"><b>₱<?php echo $row['13'];?> </b><span class="text-white"><?php echo $row['12'];?> Sqft</span></div>
-                                            </div>
+                                                <div class="price text-primary"><b>₱<?php echo $formattedNumber = number_format($row['price'], 2, '.', ',');;?> </b><span class="text-white"><?php echo $row['12'];?> Sqft</span></div>
+                                            </div>          
                                             <div class="featured-thumb-data shadow-one">
                                                 <div class="p-3">
                                                     <h5 class="text-secondary hover-text-success mb-2 text-capitalize"><a href="propertydetail.php?pid=<?php echo $row['0'];?>"><?php echo $row['1'];?></a></h5>

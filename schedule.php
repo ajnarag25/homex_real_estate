@@ -123,7 +123,7 @@ if(!isset($_SESSION['uemail']))
 							$uid=$_SESSION['get_data']['uid'];
                     
                             $query = "SELECT p.*, s.* FROM property AS p
-                            INNER JOIN sched_book AS s ON p.pid = s.property_id
+                            INNER JOIN sched_book AS s ON p.pid = s.property_id WHERE s.user_id = $uid
                             ";
                             $result = mysqli_query($conn, $query);
                             while ($row = mysqli_fetch_array($result)) {
@@ -133,7 +133,12 @@ if(!isset($_SESSION['uemail']))
                                 <td class="text-capitalize"><?php echo $row['type'];?></td>
                                 <td class="text-capitalize">For <?php echo $row['pstatus'];?></td>
                                 <td class="text-capitalize">For <?php echo $row['stype'];?></td>
-                                <td class="text-capitalize">P<?php echo $row['price'];?></td>
+                                <td class="text-capitalize">
+                                    P<?php
+                                    $formattedNumber = number_format($row['price'], 2, '.', ',');
+                                    echo $formattedNumber;
+                                    ?>
+                                </td>
                                 <td class="text-capitalize"><?php echo $row['date_sched'];?></td>
 								<td class="text-capitalize"><?php echo $row['time_sched'];?></td>
                                 <td class="text-capitalize">

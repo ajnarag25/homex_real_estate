@@ -87,15 +87,15 @@ if(!isset($_SESSION['uemail']))
 		<!--	Submit property   -->
         <div class="full-row bg-gray">
             <div class="container">
-                    <div class="row mb-5">
-						<div class="col-lg-12">
-							<h2 class="text-secondary double-down-line text-center">Reservation Details</h2>
-							<?php 
-								if(isset($_GET['msg']))	
-								echo $_GET['msg'];	
-							?>
-                        </div>
-					</div>
+                <div class="row mb-5">
+                    <div class="col-lg-12">
+                        <h2 class="text-secondary double-down-line text-center">Reservation Details</h2>
+                        <?php 
+                            if(isset($_GET['msg']))	
+                            echo $_GET['msg'];	
+                        ?>
+                    </div>
+                </div>
                     
 					<table class="items-list col-lg-12" style="border-collapse:inherit;" id="history">
                         <thead>
@@ -113,7 +113,6 @@ if(!isset($_SESSION['uemail']))
                                 <th class="text-white font-weight-bolder">Sale Type</th>
                                 <th class="text-white font-weight-bolder">Property Price</th>
                                 <th class="text-white font-weight-bolder">Payment Method</th>
-                                <th class="text-white font-weight-bolder">Discount / Equity</th>
                                 <th class="text-white font-weight-bolder">Date Reserved</th>
                                 <th class="text-white font-weight-bolder">Action</th>
                                 
@@ -126,7 +125,7 @@ if(!isset($_SESSION['uemail']))
 							$uid=$_SESSION['get_data']['uid'];
                     
                             $query = "SELECT p.*, r.* FROM property AS p
-                            INNER JOIN reservation AS r ON p.pid = r.property_id
+                            INNER JOIN reservation AS r ON p.pid = r.property_id WHERE r.uid = $uid
                             ";
                             $result = mysqli_query($conn, $query);
                             while ($row = mysqli_fetch_array($result)) {
@@ -136,17 +135,13 @@ if(!isset($_SESSION['uemail']))
                                 <td class="text-capitalize"><?php echo $row['type'];?></td>
                                 <td class="text-capitalize">For <?php echo $row['pstatus'];?></td>
                                 <td class="text-capitalize">For <?php echo $row['stype'];?></td>
-                                <td class="text-capitalize">P<?php echo $row['price'];?></td>
-                                <td class="text-capitalize"><?php echo $row['payment_method'];?></td>
                                 <td class="text-capitalize">
-                                    <?php 
-                                    if($row['payment_method'] == 'cash' || $row['payment_method'] == 'bank'){
-                                        echo 'P'.$row['price'] * 0.20 . ' - less 20%';
-                                    }else{
-                                        echo 'No discount for loan';
-                                    }
+                                    P<?php
+                                        $formattedNumber = number_format($row['price'], 2, '.', ',');
+                                        echo $formattedNumber;
                                     ?>
                                 </td>
+                                <td class="text-capitalize"><?php echo $row['payment_method'];?></td>
 								<td class="text-capitalize"><?php echo $row['date_reserved'];?></td>
                                 <td class="text-capitalize">
                                     <button class="btn btn-secondary w-100" data-toggle="modal" data-target="#view<?php echo $row['id']; ?>">View</button>
@@ -163,10 +158,9 @@ if(!isset($_SESSION['uemail']))
                                             <span aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
-                                    <div class="modal-body">
-                                        <form action="functions.php" method="post">
-                                            <div class="modal-body">
-                                  
+                                        <div class="modal-body">
+                                            <form action="functions.php" method="post">
+                                                <div class="modal-body">
                                                     <ul class="text-center">
                                                     <label for="">User Information:</label>
                                                         <li>Name: <?php echo $row['name'];?></li>
@@ -174,27 +168,42 @@ if(!isset($_SESSION['uemail']))
                                                         <li>Contact No: <?php echo $row['phone'];?></li>
                                                     </ul>
                                                     <hr>
-                                     
-                           
-                                                   <label for="">Agent Message:</label>
-                                                   <textarea class="form-control" name="" id="" cols="10" rows="5" readonly><?php echo $row['message'] ?></textarea>
-                                         
-                                            </div>
-                                      
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            </div>
-                                        </form>
+                                                    <label for="">Agent Message:</label>
+                                                    <textarea class="form-control" name="" id="" cols="10" rows="5" readonly><?php echo $row['message'] ?></textarea>
+                                                    <hr>
+                                                    <label for="">Discount:</label>
+                                                    <input class="form-control" type="text" value="<?php echo $row['discount'] ?>%" readonly>
+                                                    <hr>
+                                                    <div class="text-center">
+                                                    <?php 
+                                                        if ($row['computation']){
+                                                            ?>
+                                                                <a href="<?php echo $row['computation'] ?>" target="_blank">View Discount Computation</a>
+                                                        <?php
+                                                        }else{
+                                                            ?>
+                                                            <p>View Discount Computation</p>
+                                                            <?php
+                                                        }
+                                                    ?>
+                                            
+                                                    </div>
+                                                </div>
+                                        
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                </div>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-							<?php } ?>
-							
+                            <?php } ?>
+                            
                         </tbody>
                     </table>            
+                </div>
             </div>
-        </div>
 	<!--	Submit property   -->
         
         

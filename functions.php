@@ -287,4 +287,64 @@
         
     }
     
+    // send discount
+    if (isset($_POST['agent_disc'])) {
+        $id = $_POST['user_id'];
+        $discount = $_POST['discount'];
+        
+        $uploadDirectory = 'uploads/';
+
+        $file = uploadFile('file_discount', $uploadDirectory);
+
+        if ($id != ''){
+            $conn->query("UPDATE reservation SET discount='$discount' , computation='$file' WHERE id='$id'") or die($conn->error);
+            $_SESSION['status'] = 'Successfully Set a Discount!';
+            $_SESSION['status_icon'] = 'success';
+            header('location:custreservervation.php');
+        }else{
+            $_SESSION['status'] = 'An Error Occured!';
+            $_SESSION['status_icon'] = 'danger';
+            header('location:custreservervation.php');
+        }
+
+    }
+
+    // change status
+    if (isset($_POST['change_stat'])) {
+        $status = $_POST['stat'];
+        $property_id = $_POST['prop_id'];
+    
+        if ($property_id != '') {
+            // Fetch the current status from the database
+            $result = $conn->query("SELECT stype FROM property WHERE pid='$property_id'");
+            
+            if ($result->num_rows > 0) {
+                $row = $result->fetch_assoc();
+                $currentStatus = $row['stype'];
+    
+                // Check if there are no changes
+                if ($currentStatus != $status) {
+                    // Update the status
+                    $conn->query("UPDATE property SET stype='$status' WHERE pid='$property_id'") or die($conn->error);
+    
+                    $_SESSION['status'] = 'Successfully Changed the Status';
+                    $_SESSION['status_icon'] = 'success';
+                } else {
+                    $_SESSION['status'] = 'No Changes Made';
+                    $_SESSION['status_icon'] = 'info';
+                }
+    
+                header('location:custreservervation.php');
+            } else {
+                $_SESSION['status'] = 'An Error Occurred!';
+                $_SESSION['status_icon'] = 'danger';
+                header('location:custreservervation.php');
+            }
+        } else {
+            $_SESSION['status'] = 'An Error Occurred!';
+            $_SESSION['status_icon'] = 'danger';
+            header('location:custreservervation.php');
+        }
+    }
+    
 ?>
