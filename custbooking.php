@@ -110,7 +110,7 @@ if(!isset($_SESSION['uemail']))
                                 <th class="text-white font-weight-bolder">Customer Name</th>
                                 <th class="text-white font-weight-bolder">Property Title</th>
                                 <th class="text-white font-weight-bolder">Property Type</th>
-                                <th class="text-white font-weight-bolder">Property Status</th>
+                                <!-- <th class="text-white font-weight-bolder">Property Status</th> -->
                                 <th class="text-white font-weight-bolder">Sale Type</th>
                                 <th class="text-white font-weight-bolder">Property Price</th>
                                 <th class="text-white font-weight-bolder">Date Schedule</th>
@@ -132,7 +132,7 @@ if(!isset($_SESSION['uemail']))
                                 <td class="text-capitalize"><?php echo $row['username'];?></td>	
                                 <td class="text-capitalize"><?php echo $row['title'];?></td>				
                                 <td class="text-capitalize"><?php echo $row['type'];?></td>
-                                <td class="text-capitalize">For <?php echo $row['pstatus'];?></td>
+                                <!-- <td class="text-capitalize">For <?php echo $row['pstatus'];?></td> -->
                                 <td class="text-capitalize">For <?php echo $row['stype'];?></td>
                                 <td class="text-capitalize">
                                     P<?php

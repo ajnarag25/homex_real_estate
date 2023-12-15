@@ -352,43 +352,33 @@ include("config.php");
                                                     </ul>
                                                     <hr>
                                                     <ul>
-                                                    <label for="">Upload Requirements:</label>
+                                                    <label for="">Upload Inital Requirements:</label>
                                                     <li><b>Photocopy of Company ID (Front & Back)</b> </li>
                                                     <li><input type="file" name="company_id" required></li>
                                                     <li><b>Payslip ( a must for reservation) </b></li>
                                                     <li><input type="file" name="payslip" required></li>
-                                                    <li><b>2 Government Valid IDs</b></li>
-                                                    <li><input type="file" name="govern1" required></li>
-                                                    <br>
-                                                    <li><input type="file" name="govern2" required></li>
                                                     </ul>
                                                 </div>
                                                 <div class="col">
                                                     <ul>
+                                                        <label for="">Bank Inital Requirements:</label>
+                                                        <li><b>2 Government Valid IDs</b></li>  
                                                         <li><b>ID Pics 1x1</b></li>
-                                                        <li><input type="file" name="id_pic" required></li>
                                                         <li><b>Proof of Billing/Remittance</b></li>
-                                                        <li><input type="file" name="billing" required></li>
                                                         <li><b>Birth/Marriage Certificate</b></li>
-                                                        <li><input type="file" name="bertmarriage" required></li>
                                                         <li><b>Certificate of Employment/Job Contract</b></li> 
-                                                        <li><input type="file" name="coe" required></li>
-                                                        <hr>
-                                                        <label for="">Requirements if necessary needed:</label>
                                                         <li><b>TIN/Passport</b> </li>
-                                                        <li><input type="file" name="tinpass" ></li>
                                                         <li><b>SPA (IF NEEDED, especially for OFW)</b></li>
-                                                        <li><input type="file" name="spa" ></li>
                                                     </ul>
                                                 </div>
                                             </div>
-                                            <hr>
-                                            <label for="">Select Payment Method:</label>
+                                            <!-- <hr> -->
+                                            <!-- <label for="">Select Payment Method:</label>
                                             <select class="form-control" name="paymethod" id="">
                                                 <option value="cash">Cash</option>
                                                 <option value="bank">Bank</option>
                                                 <option value="loan">Loan</option>
-                                            </select>
+                                            </select> -->
                                             </div>
                                             <div class="modal-footer justify-content-center">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

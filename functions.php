@@ -194,22 +194,14 @@
 
         $company_id = uploadFile('company_id', $uploadDirectory);
         $payslip = uploadFile('payslip', $uploadDirectory);
-        $govern1 = uploadFile('govern1', $uploadDirectory);
-        $govern2 = uploadFile('govern2', $uploadDirectory);
-        $id_pic = uploadFile('id_pic', $uploadDirectory);
-        $billing = uploadFile('billing', $uploadDirectory);
-        $bertmarriage = uploadFile('bertmarriage', $uploadDirectory);
-        $coe = uploadFile('coe', $uploadDirectory);
-        $tinpass = uploadFile('tinpass', $uploadDirectory);
-        $spa = uploadFile('spa', $uploadDirectory);
 
         if($uid == ''){
             $uid = 'None';
         }
 
         // Insert data into the database with file paths
-        $conn->query("INSERT INTO reservation (name,email,phone,property_id,admin_agent_id,uid,payment_method, status,utype, company_id, payslip, government_id_1, government_id_2, id_pics, billing, birth_marriage_cert, employment_job_cert, tin_passport, spa) 
-                VALUES('$name', '$email','$phone','$property_id','$admin_agent_id', '$uid','$pay','New','$utype', '$company_id', '$payslip', '$govern1', '$govern2', '$id_pic', '$billing', '$bertmarriage', '$coe', '$tinpass', '$spa')") or die($conn->error);
+        $conn->query("INSERT INTO reservation (name,email,phone,property_id,admin_agent_id,uid,payment_method, status,utype, company_id, payslip) 
+                VALUES('$name', '$email','$phone','$property_id','$admin_agent_id', '$uid','$pay','New','$utype', '$company_id', '$payslip')") or die($conn->error);
 
         $_SESSION['status'] = 'Request for Reservation Successfully Sent!';
         $_SESSION['status_icon'] = 'success';
@@ -360,6 +352,25 @@
             $_SESSION['status'] = 'An Error Occured!';
             $_SESSION['status_icon'] = 'danger';
             header('location:custbooking.php');
+        }
+
+    }
+
+    // tag status
+    if (isset($_POST['tagging_status'])){
+        $id = $_POST['user_id'];
+        $property_id = $_POST['prop_id'];
+        $stat = $_POST['tag_stat'];
+
+        if ($id != ''){
+            $conn->query("UPDATE reservation SET tag_stat='$stat' WHERE uid='$id' AND property_id='$property_id'") or die($conn->error);
+            $_SESSION['status'] = 'Successfully Tagged!';
+            $_SESSION['status_icon'] = 'success';
+            header('location:custreservervation.php');
+        }else{
+            $_SESSION['status'] = 'An Error Occured!';
+            $_SESSION['status_icon'] = 'danger';
+            header('location:custreservervation.php');
         }
 
     }

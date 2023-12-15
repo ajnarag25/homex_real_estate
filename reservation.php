@@ -109,10 +109,11 @@ if(!isset($_SESSION['uemail']))
 								<th class="text-white font-weight-bolder">Delete</th> -->
                                 <th class="text-white font-weight-bolder">Property Title</th>
                                 <th class="text-white font-weight-bolder">Property Type</th>
-                                <th class="text-white font-weight-bolder">Property Status</th>
+                                <!-- <th class="text-white font-weight-bolder">Property Status</th> -->
                                 <th class="text-white font-weight-bolder">Sale Type</th>
                                 <th class="text-white font-weight-bolder">Property Price</th>
-                                <th class="text-white font-weight-bolder">Payment Method</th>
+                                <th class="text-white font-weight-bolder">Tagged As</th>
+                                <!-- <th class="text-white font-weight-bolder">Payment Method</th> -->
                                 <th class="text-white font-weight-bolder">Date Reserved</th>
                                 <th class="text-white font-weight-bolder">Action</th>
                                 
@@ -133,7 +134,7 @@ if(!isset($_SESSION['uemail']))
                             <tr>
                                 <td class="text-capitalize"><?php echo $row['title'];?></td>				
                                 <td class="text-capitalize"><?php echo $row['type'];?></td>
-                                <td class="text-capitalize">For <?php echo $row['pstatus'];?></td>
+                                <!-- <td class="text-capitalize">For <?php echo $row['pstatus'];?></td> -->
                                 <td class="text-capitalize">For <?php echo $row['stype'];?></td>
                                 <td class="text-capitalize">
                                     P<?php
@@ -141,7 +142,8 @@ if(!isset($_SESSION['uemail']))
                                         echo $formattedNumber;
                                     ?>
                                 </td>
-                                <td class="text-capitalize"><?php echo $row['payment_method'];?></td>
+                                <td class="text-capitalize"><?php echo $row['tag_stat'];?></td>
+                                <!-- <td class="text-capitalize"><?php echo $row['payment_method'];?></td> -->
 								<td class="text-capitalize"><?php echo $row['date_reserved'];?></td>
                                 <td class="text-capitalize">
                                     <button class="btn btn-secondary w-100" data-toggle="modal" data-target="#view<?php echo $row['id']; ?>">View</button>

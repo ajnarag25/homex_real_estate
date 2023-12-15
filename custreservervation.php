@@ -110,10 +110,10 @@ if(!isset($_SESSION['uemail']))
                                 <th class="text-white font-weight-bolder">Customer Name</th>
                                 <th class="text-white font-weight-bolder">Property Title</th>
                                 <th class="text-white font-weight-bolder">Property Type</th>
-                                <th class="text-white font-weight-bolder">Property Status</th>
+                                <!-- <th class="text-white font-weight-bolder">Property Status</th> -->
                                 <th class="text-white font-weight-bolder">Sale Type</th>
                                 <th class="text-white font-weight-bolder">Property Price</th>
-                                <th class="text-white font-weight-bolder">Payment Method</th>
+                                <!-- <th class="text-white font-weight-bolder">Payment Method</th> -->
                                 <th class="text-white font-weight-bolder">Date Reserved</th>
                                 <th class="text-white font-weight-bolder">Action</th>
                              </tr>
@@ -133,7 +133,7 @@ if(!isset($_SESSION['uemail']))
                                 <td class="text-capitalize"><?php echo $row['name'];?></td>		
                                 <td class="text-capitalize"><?php echo $row['title'];?></td>				
                                 <td class="text-capitalize"><?php echo $row['type'];?></td>
-                                <td class="text-capitalize">For <?php echo $row['pstatus'];?></td>
+                                <!-- <td class="text-capitalize">For <?php echo $row['pstatus'];?></td> -->
                                 <td class="text-capitalize">For <?php echo $row['stype'];?></td>
                                 <td class="text-capitalize">
                                     P<?php
@@ -141,7 +141,7 @@ if(!isset($_SESSION['uemail']))
                                         echo $formattedNumber;
                                     ?>
                                 </td>
-                                <td class="text-capitalize"><?php echo $row['payment_method'];?></td>
+                                <!-- <td class="text-capitalize"><?php echo $row['payment_method'];?></td> -->
 
 								<td class="text-capitalize"><?php echo $row['date_reserved'];?></td>
                                 <td class="text-capitalize">
@@ -152,7 +152,7 @@ if(!isset($_SESSION['uemail']))
                             </tr>
                             
                             <div class="modal fade" id="view<?php echo $row['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog  modal-lg modal-dialog-centered" role="document">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="exampleModalLabel">Reservation Details</h5>
@@ -162,8 +162,8 @@ if(!isset($_SESSION['uemail']))
                                         </div>
                                     <div class="modal-body">
                                         <form action="functions.php" method="post">
-                                            <div class="row">
-                                                <div class="col">
+                              
+                                                <div class="text-center">
                                                     <ul>
                                                     <label for="">User Information:</label>
                                                         <li>Name: <?php echo $row['name'];?></li>
@@ -177,21 +177,8 @@ if(!isset($_SESSION['uemail']))
                                                         <li><a href="<?php echo $row['payslip'] ?>" target="_blank">Payslip</a> </li>
                                                     </ul>
                                                 </div>
-                                                <div class="col">
-                                                    <ul>
-                                                        <li>2 Government Valid IDs</li>
-                                                        <li>- <?php echo !empty($row['government_id_1']) ? '<a href="' . $row['government_id_1'] . '" target="_blank">Government I.D - 1</a>' : 'Government I.D - 1 (Not available)'; ?></li>
-                                                        <li>- <?php echo !empty($row['government_id_2']) ? '<a href="' . $row['government_id_2'] . '" target="_blank">Government I.D - 2</a>' : 'Government I.D - 2 (Not available)'; ?></li>
-                                                        <li><?php echo !empty($row['id_pics']) ? '<a href="' . $row['id_pics'] . '" target="_blank">ID Pics 1x1</a>' : 'ID Pics 1x1 (Not available)'; ?></li>
-                                                        <li><?php echo !empty($row['billing']) ? '<a href="' . $row['billing'] . '" target="_blank">Proof of Billing/Remittance</a>' : 'Proof of Billing/Remittance (Not available)'; ?></li>
-                                                        <li><?php echo !empty($row['birth_marriage_cert']) ? '<a href="' . $row['birth_marriage_cert'] . '" target="_blank">Birth/Marriage</a>' : 'Birth/Marriage (Not available)'; ?></li>
-                                                        <li><?php echo !empty($row['employment_job_cert']) ? '<a href="' . $row['employment_job_cert'] . '" target="_blank">Certificate of Employment/Job Contract</a>' : 'Certificate of Employment/Job Contract (Not available)'; ?></li>
-                                                        <li><?php echo !empty($row['tin_passport']) ? '<a href="' . $row['tin_passport'] . '" target="_blank">TIN/Passport</a>' : 'TIN/Passport (Not available)'; ?></li>
-                                                        <li><?php echo !empty($row['spa']) ? '<a href="' . $row['spa'] . '" target="_blank">SPA (IF NEEDED, especially for OFW)</a>' : 'SPA (IF NEEDED, especially for OFW) (Not available)'; ?></li>
-
-                                                    </ul>
-                                                </div>
-                                            </div>
+                                            
+                                       
                                       
                                             </div>
                                             <div class="modal-footer">
@@ -212,39 +199,53 @@ if(!isset($_SESSION['uemail']))
                                             </button>
                                         </div>
                                         <form action="functions.php" method="post">
-                                            <div class="modal-body text-center">
-                                                <input type="hidden" name="prop_id" value="<?php echo $row['property_id'] ?>">
-                                                <label for="">Current Status: 
-                                                    <?php 
-                                                        if($row['stype'] == 'Pending'){
-                                                            ?>
-                                                            <span class="text-warning"><?php echo $row['stype'] ?></span>
-                                                            <?php
-                                                        }elseif ($row['stype'] == 'For Reservation'){
-                                                            ?>
-                                                            <span class="text-danger"><?php echo $row['stype'] ?></span>
-                                                            <?php
-                                                        }else{
-                                                            ?>
-                                                            <span class="text-success"><?php echo $row['stype'] ?></span>
-                                                            <?php
-                                                        }
-                                                    ?>
-                                         
-                                                </label>
-                                                <hr>
-                                                <select class="form-control" name="stat" id="" required>
-                                                    <option value=""selected disabled><?php echo $row['stype'] ?></option>
-                                                    <option value="Pending">Pending</option>
-                                                    <option value="Reservation">For Reservation</option>
-                                                    <option value="Sold Out">Sold Out</option>
-                                                </select>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                <button type="submit" class="btn btn-danger" name="change_stat">Change Status</button>
-                                            </div>
+                                        <div class="modal-body text-center">
+                                            <input type="hidden" name="prop_id" value="<?php echo $row['property_id'] ?>">
+                                            <label for="">Current Status: 
+                                                <?php 
+                                                    if($row['stype'] == 'Pending'){
+                                                        ?>
+                                                        <span class="text-warning"><?php echo $row['stype'] ?></span>
+                                                        <?php
+                                                    }elseif ($row['stype'] == 'For Reservation'){
+                                                        ?>
+                                                        <span class="text-danger"><?php echo $row['stype'] ?></span>
+                                                        <?php
+                                                    }else{
+                                                        ?>
+                                                        <span class="text-success"><?php echo $row['stype'] ?></span>
+                                                        <?php
+                                                    }
+                                                ?>
+                                        
+                                            </label>
+                                            <hr>
+                                            <select class="form-control" name="stat" id="" required>
+                                                <option value=""selected disabled><?php echo $row['stype'] ?></option>
+                                                <option value="Pending">Pending</option>
+                                                <option value="Reservation">For Reservation</option>
+                                                <option value="Sold Out">Sold Out</option>
+                                            </select>
+                                            <button type="submit" class="btn btn-danger w-100 mt-2" name="change_stat">Change Status</button>
+                                            <hr>
                                         </form>
+                                        <form action="functions.php" method="post">
+                                            <label for="">Tag as: </label>
+                                            <input type="hidden" name="prop_id" value="<?php echo $row['property_id'] ?>">
+                                            <input type="hidden" name="user_id" value="<?php echo $row['uid'] ?>">
+                                            <select class="form-control" name="tag_stat" id="" required>
+                                                <option value="" selected disabled><?php echo $row['tag_stat'] ?></option>
+                                                <option value="Cash Payment">Cash Payment</option>
+                                                <option value="Banking Finance">Banking Finance</option>
+                                                <option value="Pag-ibig Finance">Pag-ibig Finance</option>
+                                                <option value="In House (Installment - Buyer)">In House (Installment - Buyer)</option>
+                                            </select>
+                                            <button type="submit" class="btn btn-danger w-100 mt-2" name="tagging_status">Tag Status</button>
+                                        </div>
+                                        </form>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
