@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 13, 2023 at 08:59 AM
+-- Generation Time: Dec 15, 2023 at 07:36 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -206,16 +206,9 @@ CREATE TABLE `reservation` (
   `message` text NOT NULL,
   `company_id` text NOT NULL,
   `payslip` text NOT NULL,
-  `government_id_1` text NOT NULL,
-  `government_id_2` text NOT NULL,
-  `id_pics` text NOT NULL,
-  `billing` text NOT NULL,
-  `birth_marriage_cert` text NOT NULL,
-  `employment_job_cert` text NOT NULL,
-  `tin_passport` text NOT NULL,
-  `spa` text NOT NULL,
   `discount` int(11) NOT NULL,
-  `computation` text NOT NULL
+  `computation` text NOT NULL,
+  `tag_stat` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
