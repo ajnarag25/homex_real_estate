@@ -161,7 +161,7 @@ if(!isset($_SESSION['uemail']))
                                   
                                                     <ul class="text-center">
                                                     <label for="">User Information:</label>
-                                                        <li>Name: <?php echo $_SESSION['get_data']['uname'];?></li>
+                                                        <li>Name: <?php echo $_SESSION['get_data']['fname'];?> <?php echo $_SESSION['get_data']['lname'];?></li>
                                                         <li>Email: <?php echo $_SESSION['get_data']['uemail'];?></li>
                                                         <li>Contact No: <?php echo $_SESSION['get_data']['uphone'];?></li>
                                                     </ul>

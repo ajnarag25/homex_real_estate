@@ -86,7 +86,8 @@ if(!isset($_SESSION['auser']))
                                                 <tr>
                                                     <th>ID</th>
 													<th>Image</th>
-                                                    <th>Name</th>
+                                                    <th>First Name</th>
+													<th>Last Name</th>
                                                     <th>Email</th>
                                                     <th>Phone</th>
                                                     <th>Utype</th>
@@ -107,7 +108,8 @@ if(!isset($_SESSION['auser']))
                                                 <tr>
 													<td><?php echo $row['uid'] ?></td>
 													<td><img src="user/<?php echo $row['uimage']; ?>" height="50px" width="50px"></td>
-                                                    <td><?php echo $row['uname']; ?></td>
+                                                    <td><?php echo $row['fname']; ?></td>
+													<td><?php echo $row['lname']; ?></td>
                                                     <td><?php echo $row['uemail']; ?></td>
                                                     <td><?php echo $row['uphone']; ?></td>
                                                     <td><?php echo $row['utype']; ?></td>

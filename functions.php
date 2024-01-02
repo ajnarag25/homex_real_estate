@@ -32,7 +32,8 @@
 
     if(isset($_POST['reg']))
     {
-        $name=$_POST['name'];
+        $fname=$_POST['fname'];
+        $lname=$_POST['lname'];
         $email=$_POST['email'];
         $phone=$_POST['phone'];
         $pass1=$_POST['pass1'];
@@ -56,9 +57,9 @@
         {
             if($pass1 != $pass2){
                 $msg = "<p class='alert alert-danger'>Password does not match!</p> ";
-            }elseif(!empty($name) && !empty($email) && !empty($phone) && !empty($pass1) && !empty($uimage)){
+            }elseif(!empty($fname) && !empty($lname) && !empty($email) && !empty($phone) && !empty($pass1) && !empty($uimage)){
                 if ($utype == 'agent') {
-                    $sql="INSERT INTO user (uname,uemail,uphone,upass,utype,uimage,ustatus,idnum) VALUES ('$name','$email','$phone','".password_hash($pass1, PASSWORD_DEFAULT)."','$utype','$uimage','Unverified','$idnum')";
+                    $sql="INSERT INTO user (fname,lname,uemail,uphone,upass,utype,uimage,ustatus,idnum) VALUES ('$fname', '$lname','$email','$phone','".password_hash($pass1, PASSWORD_DEFAULT)."','$utype','$uimage','Unverified','$idnum')";
                     $result=mysqli_query($conn, $sql);
                     move_uploaded_file($temp_name1,"admin/user/$uimage");
                     if($result){
@@ -72,7 +73,7 @@
                             header('location:register.php');
                     }
                 }elseif ($utype == 'user') {
-                    $sql="INSERT INTO user (uname,uemail,uphone,upass,utype,uimage,ustatus) VALUES ('$name','$email','$phone','".password_hash($pass1, PASSWORD_DEFAULT)."','$utype','$uimage','Unverified')";
+                    $sql="INSERT INTO user (fname,lname,uemail,uphone,upass,utype,uimage,ustatus) VALUES ('$fname', '$lname','$email','$phone','".password_hash($pass1, PASSWORD_DEFAULT)."','$utype','$uimage','Unverified')";
                     $result=mysqli_query($conn, $sql);
                     move_uploaded_file($temp_name1,"admin/user/$uimage");
                     if($result){
@@ -97,6 +98,7 @@
     if (isset($_POST['submit_inquire'])) {
         $property_id = $_POST['property_id'];
         $fname = $_POST['fname'];
+        $lname = $_POST['lname'];
         $email = $_POST['email'];
         $cnum = $_POST['cnum'];
         $admin_agent_id = $_POST['admin_agent_id'];
@@ -107,11 +109,32 @@
             $uid = 'None';
         }
 
-        $conn->query("INSERT INTO inquire (fname,email,cnum,property_id,admin_agent_id,uid,message,utype) 
-                VALUES('$fname', '$email','$cnum','$property_id','$admin_agent_id', '$uid','$message','$utype')") or die($conn->error);
+        $conn->query("INSERT INTO inquire (fname, lname,email,cnum,property_id,admin_agent_id,uid,message,utype) 
+                VALUES('$fname', '$lname', '$email','$cnum','$property_id','$admin_agent_id', '$uid','$message','$utype')") or die($conn->error);
         $_SESSION['status'] = 'Request for Inquiry Successfully Sent!';
         $_SESSION['status_icon'] = 'success';
         header('location:history.php');
+    }
+
+    if (isset($_POST['submit_inquire_no_acc'])) {
+        $property_id = $_POST['property_id'];
+        $fname = $_POST['fname'];
+        $lname = $_POST['lname'];
+        $email = $_POST['email'];
+        $cnum = $_POST['cnum'];
+        $admin_agent_id = $_POST['admin_agent_id'];
+        $uid = $_POST['uid'];
+        $utype = $_POST['utype'];
+        $message = $_POST['message'];
+        if($uid == ''){
+            $uid = 'None';
+        }
+
+        $conn->query("INSERT INTO inquire (fname, lname,email,cnum,property_id,admin_agent_id,uid,message,utype) 
+                VALUES('$fname', '$lname', '$email','$cnum','$property_id','$admin_agent_id', '$uid','$message','$utype')") or die($conn->error);
+        $_SESSION['status'] = 'Request for Inquiry Successfully Sent!';
+        $_SESSION['status_icon'] = 'success';
+        header('location:propertydetail.php?pid='.$property_id.'');
     }
 
 
@@ -134,7 +157,8 @@
         $status='Available';
         $uid=$_SESSION['get_data']['uid'];
         $utype=$_SESSION['get_data']['utype'];
-        $uname = $_SESSION['get_data']['uname'];
+        $fname = $_SESSION['get_data']['fname'];
+        $lname = $_SESSION['get_data']['lname'];
         $feature=$_POST['feature'];
         
         $totalfloor=$_POST['totalfl'];
@@ -171,7 +195,7 @@
 
         $conn->query("INSERT INTO property (title, pcontent, type, stype,bedroom, bathroom, balcony, kitchen, hall, floor, size, price, region, city, feature,
         pimage, pimage1, pimage2, pimage3, pimage4,user_id, status, mapimage, topmapimage, groundmapimage, 
-        totalfloor,user_type,useragent)VALUES('$title','$content','$ptype', '$stype','$bed','$bath','$balc','$kitc', '$hall', '$floor', '$asize', '$price', '$loc', '$city', '$feature','$aimage','$aimage1','$aimage2','$aimage3','$aimage4','$uid','$status', '$fimage','$fimage1','$fimage2','$totalfloor','$utype','$uname')") or die($conn->error);
+        totalfloor,user_type,useragent)VALUES('$title','$content','$ptype', '$stype','$bed','$bath','$balc','$kitc', '$hall', '$floor', '$asize', '$price', '$loc', '$city', '$feature','$aimage','$aimage1','$aimage2','$aimage3','$aimage4','$uid','$status', '$fimage','$fimage1','$fimage2','$totalfloor','$utype','$fname $lname')") or die($conn->error);
         
         $_SESSION['status'] = 'Property Added Successfully!';
         $_SESSION['status_icon'] = 'success';

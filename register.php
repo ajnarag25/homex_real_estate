@@ -102,7 +102,10 @@ session_start();
 										<input type="text"  name="idnum" class="form-control" placeholder="ID Number*" maxlength="10">
 									</div>
 									<div class="form-group">
-										<input type="text"  name="name" class="form-control" placeholder="Your Name*">
+										<input type="text"  name="fname" class="form-control" placeholder="Your First Name*">
+									</div>
+									<div class="form-group">
+										<input type="text"  name="lname" class="form-control" placeholder="Your Last Name*">
 									</div>
 									<div class="form-group">
 										<input type="email"  name="email" class="form-control" placeholder="Your Email*">

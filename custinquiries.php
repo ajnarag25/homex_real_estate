@@ -120,13 +120,13 @@ if(!isset($_SESSION['uemail']))
 							<?php 
 							$uid=$_SESSION['get_data']['uid'];
 
-							$query=mysqli_query($conn,"SELECT * FROM inquire WHERE admin_agent_id = '$uid' and utype = 'agent';");
+							$query=mysqli_query($conn,"SELECT * FROM inquire WHERE admin_agent_id = '$uid' and utype = 'agent' or utype = '';");
 								while($row=mysqli_fetch_array($query))
 								{
 							?>
                             <tr>
                                 
-                                <td><?php echo $row['fname'];?></td>
+                                <td><?php echo $row['fname'];?> <?php echo $row['lname'];?></td>
                                 <td><?php echo $row['property_id'];?></td>
                                 <td><?php echo $row['email'];?></td>
                                 <td><?php echo $row['cnum'];?></td>

@@ -185,8 +185,12 @@ include("config.php");
                                             <input type="text" name =  'uid' value = "<?php echo $_SESSION['get_data']['uid'];?>" hidden>
                                             <input type="text" name =  'utype' value = "<?php echo $row['33'];?>" hidden>
 
-                                            <label for="" class="form-label">Name:</label>
-                                            <input type="text" name="fname" class="form-control" value="<?php echo $_SESSION['get_data']['uname'];?>" readonly>
+                                            <label for="" class="form-label">First Name:</label>
+                                            <input type="text" name="fname" class="form-control" value="<?php echo $_SESSION['get_data']['fname'];?>" readonly>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="" class="col-form-label">Last Name:</label>
+                                            <input type="text" name="email" class="form-control" value="<?php echo $_SESSION['get_data']['lname'];?>" readonly>
                                         </div>
                                         <div class="form-group">
                                             <label for="" class="col-form-label">Email:</label>
@@ -213,8 +217,12 @@ include("config.php");
                                             <input type="text" name =  'admin_agent_id' value = "<?php echo $row['34'];?>" hidden>
                                             <input type="text" name =  'uid' value = "<?php echo $_SESSION['get_data']['uid'];?>" hidden>
 
-                                            <label for="" class="form-label">Name:</label>
+                                            <label for="" class="form-label">First Name:</label>
                                             <input type="text" name="fname" class="form-control" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="" class="col-form-label">Last Name:</label>
+                                            <input type="text" name="lname" class="form-control" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="" class="col-form-label">Email:</label>
@@ -227,12 +235,12 @@ include("config.php");
 
                                         <div class="form-group">
                                             <label for="" class="col-form-label">Message(Optional):</label>
-                                            <textarea class="tinymce form-control" name="content" rows="10" cols="30"></textarea>
+                                            <textarea class="tinymce form-control" name="message" rows="10" cols="30"></textarea>
                                         </div>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            <button type="submit" name="submit_inquire" class="btn btn-primary">Send Inquiry</button>
+                                            <button type="submit" name="submit_inquire_no_acc" class="btn btn-primary">Send Inquiry</button>
                                         </div>
 
                                         <?php }?>
@@ -302,7 +310,7 @@ include("config.php");
                                             <input type="text" name='admin_agent_id' value = "<?php echo $row['34'];?>" hidden>
                                             <input type="text" name='uid' value = "<?php echo $_SESSION['get_data']['uid'];?>" hidden>
                                             <input type="text" name='utype' value = "<?php echo $row['33'];?>" hidden>
-                                            <input type="text" name="name" value="<?php echo $_SESSION['get_data']['uname'];?>" hidden>
+                                            <input type="text" name="name" value="<?php echo $_SESSION['get_data']['fname'];?> <?php echo $_SESSION['get_data']['lname'];?>" hidden>
                                             <input type="text" name="email" value="<?php echo $_SESSION['get_data']['uemail'];?>" hidden>
                                             <input type="text" name="phone" value="<?php echo $_SESSION['get_data']['uphone'];?>" hidden>
                                             <div class="row">
@@ -339,14 +347,14 @@ include("config.php");
                                             <input type="text" name =  'admin_agent_id' value = "<?php echo $row['34'];?>" hidden>
                                             <input type="text" name =  'uid' value = "<?php echo $_SESSION['get_data']['uid'];?>" hidden>
                                             <input type="text" name =  'utype' value = "<?php echo $row['33'];?>" hidden>
-                                            <input type="hidden" name="name" value="<?php echo $_SESSION['get_data']['uname'];?>">
+                                            <input type="hidden" name="name" value="<?php echo $_SESSION['get_data']['fname'];?> <?php echo $_SESSION['get_data']['lname'];?>">
                                             <input type="hidden" name="email" value="<?php echo $_SESSION['get_data']['uemail'];?>">
                                             <input type="hidden" name="phone" value="<?php echo $_SESSION['get_data']['uphone'];?>">
                                             <div class="row">
                                                 <div class="col">
                                                     <ul>
                                                     <label for="">User Information:</label>
-                                                        <li>Name: <?php echo $_SESSION['get_data']['uname'];?></li>
+                                                        <li>Name: <?php echo $_SESSION['get_data']['fname'];?> <?php echo $_SESSION['get_data']['lname'];?></li>
                                                         <li>Email: <?php echo $_SESSION['get_data']['uemail'];?></li>
                                                         <li>Contact No: <?php echo $_SESSION['get_data']['uphone'];?></li>
                                                     </ul>

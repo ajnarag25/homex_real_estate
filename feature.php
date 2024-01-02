@@ -123,7 +123,7 @@ if(!isset($_SESSION['uemail']))
 						
 							<?php 
 							$uid = $_SESSION['get_data']['uid'];
-                            $agent = $_SESSION['get_data']['uname'];
+                            $agent = $_SESSION['get_data']['fname'];
 							$query=mysqli_query($conn,"SELECT * FROM `property` WHERE user_id='$uid' AND user_type = 'agent' AND useragent = '$agent'");
 								while($row=mysqli_fetch_array($query))
 								{

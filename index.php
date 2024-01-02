@@ -456,6 +456,29 @@ include("config.php");
 <script src="js/validate.js"></script> 
 <script src="js/jquery.cookie.js"></script> 
 <script src="js/custom.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!-- Validation Messages -->
+<?php 
+    if (isset($_SESSION['status']) && $_SESSION['status'] !='')
+    {
+		?>
+		<script>
+			$(document).ready(function(){
+				Swal.fire({
+					icon: '<?php echo $_SESSION['status_icon'] ?>',
+					title: '<?php echo $_SESSION['status'] ?>',
+					confirmButtonColor: 'rgb(0, 0, 0)',
+					confirmButtonText: 'Okay'
+				});
+				<?php  unset($_SESSION['status']); ?>
+			})
+		</script>
+		
+		<?php
+    }else{
+        unset($_SESSION['status']);
+    }
+    ?>
 </body>
 
 </html>

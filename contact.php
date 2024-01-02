@@ -113,15 +113,13 @@ if(isset($_POST['send']))
                                 <li class="d-flex mb-4"> <i class="fas fa-map-marker-alt text-white mr-2 font-13 mt-1"></i>
                                     <div class="contact-address">
                                         <h5 class="text-white">Address</h5>
-                                        <span class="text-secondary">Quezon City Philippines</span> 
-										<span class="text-secondary">Quezon City Philippines</span>
+                                        <span class="text-secondary">EDSA 1109 Quezon City, Philippines</span> 
 										</div>
                                 </li>
                                 <li class="d-flex mb-4"> <i class="fas fa-phone-alt text-white mr-2 font-13 mt-1"></i>
                                     <div class="contact-address">
                                         <h5 class="text-white">Call Us</h5>
                                         <span class="d-table text-secondary">0912 234 5679</span>
-										<span class="text-secondary">0912 234 5679 </span>
 									</div>
                                 </li>
                                 <li class="d-flex mb-4"> <i class="fas fa-envelope text-white mr-2 font-13 mt-1"></i>
@@ -178,9 +176,8 @@ if(isset($_POST['send']))
         </div>
         <!--	Contact Inforamtion -->
         
-        <!--	Map -->
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29921.88989279091!2d72.89392697798161!3d20.373147326844283!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be0d1d69db97345%3A0x8bc4433aecadadfd!2sROFEL%20ARTS%20%26%20COMMERCE%20COLLEGE!5e0!3m2!1sen!2sin!4v1585740130321!5m2!1sen!2sin" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 		<!--	Map -->
+		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3859.9874090916983!2d121.01330182135187!3d14.656655982352769!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397b6f276494981%3A0x621b984c194a0e7c!2s1109%20Epifanio%20de%20los%20Santos%20Ave%2C%20Balintawak%2C%20Quezon%20City%2C%20Metro%20Manila!5e0!3m2!1sen!2sph!4v1704205960910!5m2!1sen!2sph" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         
         <!--	Footer   start-->
 		<?php include("include/footer.php");?>
