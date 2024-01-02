@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 15, 2023 at 07:36 AM
+-- Generation Time: Jan 02, 2024 at 03:38 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -107,6 +107,7 @@ CREATE TABLE `feedback` (
 CREATE TABLE `inquire` (
   `id` int(11) NOT NULL,
   `fname` varchar(255) DEFAULT NULL,
+  `lname` varchar(255) NOT NULL,
   `email` varchar(255) DEFAULT NULL,
   `cnum` varchar(255) DEFAULT NULL,
   `property_id` varchar(4) NOT NULL,
@@ -239,7 +240,8 @@ CREATE TABLE `sched_book` (
 
 CREATE TABLE `user` (
   `uid` int(50) NOT NULL,
-  `uname` varchar(100) NOT NULL,
+  `fname` varchar(100) NOT NULL,
+  `lname` varchar(100) NOT NULL,
   `uemail` varchar(100) NOT NULL,
   `uphone` varchar(20) NOT NULL,
   `upass` varchar(255) NOT NULL,
