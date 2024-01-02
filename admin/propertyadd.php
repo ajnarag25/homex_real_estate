@@ -327,12 +327,12 @@ if(isset($_POST['add']))
 														<input type="text" class="form-control" name="asize"  placeholder="Enter Area Size (in sqrt)">
 													</div>
 												</div>
-												<div class="form-group row">
+												<!-- <div class="form-group row">
 													<label class="col-lg-3 col-form-label">Address</label>
 													<div class="col-lg-9">
 														<input type="text" class="form-control" name="loc"  placeholder="Enter Address">
 													</div>
-												</div>
+												</div> -->
 												
 											</div>
 										</div>

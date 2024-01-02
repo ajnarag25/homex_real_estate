@@ -74,7 +74,7 @@ if(!isset($_SESSION['auser']))
 							<div class="card">
 								<div class="card-body">
 									<div class="dash-widget-header">
-										<span class="dash-widget-icon bg-primary">
+										<span class="dash-widget-icon bg-secondary">
 											<i class="fe fe-users"></i>
 										</span>
 										
@@ -116,34 +116,12 @@ if(!isset($_SESSION['auser']))
 								</div>
 							</div>
 						</div>
+	
 						<div class="col-xl-3 col-sm-6 col-12">
 							<div class="card">
 								<div class="card-body">
 									<div class="dash-widget-header">
 										<span class="dash-widget-icon bg-danger">
-											<i class="fe fe-user"></i>
-										</span>
-										
-									</div>
-									<div class="dash-widget-info">
-										
-									<h3><?php $sql = "SELECT * FROM user WHERE utype = 'builder'";
-										$query = $conn->query($sql);
-                						echo "$query->num_rows";?></h3>
-										
-										<h6 class="text-muted">Builder</h6>
-										<div class="progress progress-sm">
-											<div class="progress-bar bg-danger w-50"></div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-xl-3 col-sm-6 col-12">
-							<div class="card">
-								<div class="card-body">
-									<div class="dash-widget-header">
-										<span class="dash-widget-icon bg-info">
 											<i class="fe fe-home"></i>
 										</span>
 										
@@ -155,33 +133,6 @@ if(!isset($_SESSION['auser']))
                 						echo "$query->num_rows";?></h3>
 										
 										<h6 class="text-muted">Properties</h6>
-										<div class="progress progress-sm">
-											<div class="progress-bar bg-info w-50"></div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-
-					<div class="row">
-						<div class="col-xl-3 col-sm-6 col-12">
-							<div class="card">
-								<div class="card-body">
-									<div class="dash-widget-header">
-										<span class="dash-widget-icon bg-warning">
-											<i class="fe fe-table"></i>
-										</span>
-										
-									</div>
-									<div class="dash-widget-info">
-										
-									<h3><?php $sql = "SELECT * FROM property where type = 'apartment'";
-										$query = $conn->query($sql);
-                						echo "$query->num_rows";?></h3>
-										
-										<h6 class="text-muted">No. of Apartments</h6>
 										<div class="progress progress-sm">
 											<div class="progress-bar bg-info w-50"></div>
 										</div>
@@ -213,6 +164,13 @@ if(!isset($_SESSION['auser']))
 								</div>
 							</div>
 						</div>
+					</div>
+
+
+					<div class="row">
+	
+
+			
 
 						<div class="col-xl-3 col-sm-6 col-12">
 							<div class="card">
@@ -242,32 +200,6 @@ if(!isset($_SESSION['auser']))
 							<div class="card">
 								<div class="card-body">
 									<div class="dash-widget-header">
-										<span class="dash-widget-icon bg-primary">
-											<i class="fe fe-tablet"></i>
-										</span>
-										
-									</div>
-									<div class="dash-widget-info">
-										
-									<h3><?php $sql = "SELECT * FROM property where type = 'flat'";
-										$query = $conn->query($sql);
-                						echo "$query->num_rows";?></h3>
-										
-										<h6 class="text-muted">No. of Flat</h6>
-										<div class="progress progress-sm">
-											<div class="progress-bar bg-info w-50"></div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="row">
-						<div class="col-xl-3 col-sm-6 col-12">
-							<div class="card">
-								<div class="card-body">
-									<div class="dash-widget-header">
 										<span class="dash-widget-icon bg-success">
 											<i class="fe fe-quote-left"></i>
 										</span>
@@ -277,7 +209,7 @@ if(!isset($_SESSION['auser']))
 										
 									<h3><?php $sql = "SELECT * FROM property where stype = 'sale'";
 										$query = $conn->query($sql);
-                						echo "$query->num_rows";?></h3>
+										echo "$query->num_rows";?></h3>
 										
 										<h6 class="text-muted">On Sale</h6>
 										<div class="progress progress-sm">
@@ -287,12 +219,11 @@ if(!isset($_SESSION['auser']))
 								</div>
 							</div>
 						</div>
-
 						<div class="col-xl-3 col-sm-6 col-12">
 							<div class="card">
 								<div class="card-body">
 									<div class="dash-widget-header">
-										<span class="dash-widget-icon bg-info">
+										<span class="dash-widget-icon bg-danger">
 											<i class="fe fe-quote-right"></i>
 										</span>
 										
