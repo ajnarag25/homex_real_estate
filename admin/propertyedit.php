@@ -14,78 +14,67 @@ $error="";
 $msg="";
 if(isset($_POST['add']))
 {
-	$pid=$_REQUEST['id'];
-	
-	$title=$_POST['title'];
-	$conntent=$_POST['content'];
-	$ptype=$_POST['ptype'];
-	$bhk=$_POST['bhk'];
-	$bed=$_POST['bed'];
-	$balc=$_POST['balc'];
-	$hall=$_POST['hall'];
-	$stype=$_POST['stype'];
-	$bath=$_POST['bath'];
-	$kitc=$_POST['kitc'];
-	$floor=$_POST['floor'];
-	$price=$_POST['price'];
-	$city=$_POST['city'];
-	$asize=$_POST['asize'];
-	$loc=$_POST['loc'];
-	$state=$_POST['state'];
-	$status=$_POST['status'];
-	$uid=$_POST['uid'];
-	$feature=$_POST['feature'];
-	
-	$totalfloor=$_POST['totalfl'];
-	
-	$aimage=$_FILES['aimage']['name'];
-	$aimage1=$_FILES['aimage1']['name'];
-	$aimage2=$_FILES['aimage2']['name'];
-	$aimage3=$_FILES['aimage3']['name'];
-	$aimage4=$_FILES['aimage4']['name'];
-	
-	$fimage=$_FILES['fimage']['name'];
-	$fimage1=$_FILES['fimage1']['name'];
-	$fimage2=$_FILES['fimage2']['name'];
-	
-	$temp_name  =$_FILES['aimage']['tmp_name'];
-	$temp_name1 =$_FILES['aimage1']['tmp_name'];
-	$temp_name2 =$_FILES['aimage2']['tmp_name'];
-	$temp_name3 =$_FILES['aimage3']['tmp_name'];
-	$temp_name4 =$_FILES['aimage4']['tmp_name'];
-	
-	$temp_name5 =$_FILES['fimage']['tmp_name'];
-	$temp_name6 =$_FILES['fimage1']['tmp_name'];
-	$temp_name7 =$_FILES['fimage2']['tmp_name'];
-	
-	move_uploaded_file($temp_name,"property/$aimage");
-	move_uploaded_file($temp_name1,"property/$aimage1");
-	move_uploaded_file($temp_name2,"property/$aimage2");
-	move_uploaded_file($temp_name3,"property/$aimage3");
-	move_uploaded_file($temp_name4,"property/$aimage4");
-	
-	move_uploaded_file($temp_name5,"property/$fimage");
-	move_uploaded_file($temp_name6,"property/$fimage1");
-	move_uploaded_file($temp_name7,"property/$fimage2");
-	
-	
-	$sql = "UPDATE property SET title= '{$title}', pcontent= '{$conntent}', type='{$ptype}', bhk='{$bhk}', stype='{$stype}',
-	bedroom='{$bed}', bathroom='{$bath}', balcony='{$balc}', kitchen='{$kitc}', hall='{$hall}', floor='{$floor}', 
-	size='{$asize}', price='{$price}', location='{$loc}', city='{$city}', state='{$state}', feature='{$feature}',
-	pimage='{$aimage}', pimage1='{$aimage1}', pimage2='{$aimage2}', pimage3='{$aimage3}', pimage4='{$aimage4}',
-	uid='{$uid}', status='{$status}', mapimage='{$fimage}', topmapimage='{$fimage1}', groundmapimage='{$fimage2}', 
-	totalfloor='{$totalfloor}' WHERE pid = {$pid}";
-	
-	$result=mysqli_query($conn,$sql);
-	if($result == true)
-	{
-		$msg="<p class='alert alert-success'>Property Updated</p>";
-		header("Location:propertyview.php?msg=$msg");
-	}
-	else{
-		$msg="<p class='alert alert-warning'>Property Not Updated</p>";
-		header("Location:propertyview.php?msg=$msg");
-	}
+    $pid = $_REQUEST['id'];
+    
+    $title = $_POST['title'];
+    $content = $_POST['content'];
+    $ptype = $_POST['ptype'];
+    $stype = $_POST['stype'];
+    $bath = $_POST['bath'];
+    $kitc = $_POST['kitc'];
+    $pstatus = $_POST['pstatus'];
+    $bed = $_POST['bed'];
+    $balc = $_POST['balc'];
+    $hall = $_POST['hall'];
+    $price = $_POST['price'];
+    $region = $_POST['region'];
+    $province = $_POST['province'];
+    $city = $_POST['city'];
+    $barangay = $_POST['barangay'];
+    $floor = $_POST['floor'];
+    $asize = $_POST['asize'];
+    $status = $_POST['status'];
+    $uid = $_POST['uid'];
+    $aimage = $_FILES['aimage']['name'];
+    $aimage2 = $_FILES['aimage2']['name'];
+    $aimage4 = $_FILES['aimage4']['name'];
+    $fimage1 = $_FILES['fimage1']['name'];
+    $aimage1 = $_FILES['aimage1']['name'];
+    $aimage3 = $_FILES['aimage3']['name'];
+    $fimage = $_FILES['fimage']['name'];
+    $fimage2 = $_FILES['fimage2']['name'];
+
+    move_uploaded_file($_FILES['aimage']['tmp_name'], "property/$aimage");
+    move_uploaded_file($_FILES['aimage1']['tmp_name'], "property/$aimage1");
+    move_uploaded_file($_FILES['aimage2']['tmp_name'], "property/$aimage2");
+    move_uploaded_file($_FILES['aimage3']['tmp_name'], "property/$aimage3");
+    move_uploaded_file($_FILES['aimage4']['tmp_name'], "property/$aimage4");
+
+    move_uploaded_file($_FILES['fimage']['tmp_name'], "property/$fimage");
+    move_uploaded_file($_FILES['fimage1']['tmp_name'], "property/$fimage1");
+    move_uploaded_file($_FILES['fimage2']['tmp_name'], "property/$fimage2");
+
+    $sql = "UPDATE property SET title= '{$title}', pcontent= '{$content}', type='{$ptype}', stype='{$stype}',
+    bedroom='{$bed}', bathroom='{$bath}', balcony='{$balc}', kitchen='{$kitc}', hall='{$hall}', floor='{$floor}', 
+    size='{$asize}', price='{$price}', region='{$region}', city='{$city}', province='{$province}', 
+    pimage='{$aimage}', pimage1='{$aimage1}', pimage2='{$aimage2}', pimage3='{$aimage3}', pimage4='{$aimage4}',
+    uid='{$uid}', status='{$status}', mapimage='{$fimage}', topmapimage='{$fimage1}', groundmapimage='{$fimage2}', 
+    totalfloor='{$floor}' WHERE pid = {$pid}";
+
+    $result = mysqli_query($conn, $sql);
+
+    if($result)
+    {
+        $msg = "<p class='alert alert-success'>Property Updated</p>";
+        header("Location: propertyview.php?msg=$msg");
+        exit();
+    }
+    else
+    {
+        $msg = "<p class='alert alert-warning'>Property Not Updated</p>";
+        header("Location: propertyview.php?msg=$msg");
+        exit();
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -181,8 +170,7 @@ if(isset($_POST['add']))
 											<label class="col-lg-3 col-form-label">Property Type</label>
 											<div class="col-lg-9">
 												<select class="form-control"  name="ptype">
-													<option value="">Select Type</option>
-													<option value="<?php echo $row['3'] ?>" selected disabled><?php echo $row['3'] ?></option>
+													<option value="<?php echo $row['3'] ?>" selected><?php echo $row['3'] ?></option>
 													<option value="bungalow">Bungalow</option>
 													<option value="commercial">Commercial</option>
 													<option value="condominium">Condominium</option>
@@ -200,8 +188,7 @@ if(isset($_POST['add']))
 											<label class="col-lg-3 col-form-label">Selling Type</label>
 											<div class="col-lg-9">
 												<select class="form-control"  name="stype">
-													<option value="<?php echo $row['5'] ?>" selected disabled><?php echo $row['5'] ?></option>
-													<option value="">Select Status</option>
+													<option value="<?php echo $row['5'] ?>" selected><?php echo $row['5'] ?></option>
 													<option value="rent">Rent</option>
 													<option value="sale">Sale</option>
 												</select>
@@ -226,8 +213,7 @@ if(isset($_POST['add']))
 											<label class="col-lg-3 col-form-label">Status</label>
 											<div class="col-lg-9">
 												<select class="form-control"  name="pstatus">
-													<option value="">Select Property Status</option>
-													<option value="<?php echo $row['4'] ?>" selected disabled><?php echo $row['4'] ?></option>
+													<option value="<?php echo $row['4'] ?>" selected><?php echo $row['4'] ?></option>
 													<option value="new">New</option>
 													<option value="pre-selling">Pre-Selling</option>
 													<option value="pre-owned">Pre-Owned</option>
@@ -257,76 +243,73 @@ if(isset($_POST['add']))
 										
 									</div>
 								</div>
-								<h4 class="card-title">Price & Location</h4>
-								<div class="row">
-									<div class="col-xl-6"><!--
-										<div class="form-group row">
-											<label class="col-lg-3 col-form-label">Floor</label>
-											<div class="col-lg-9">
-												<select class="form-control"  name="floor">
-													<option value="">Select Floor</option>
-													<option value="1st Floor">1st Floor</option>
-													<option value="2nd Floor">2nd Floor</option>
-													<option value="3rd Floor">3rd Floor</option>
-													<option value="4th Floor">4th Floor</option>
-													<option value="5th Floor">5th Floor</option>
-												</select>
+									<hr>
+										<div class="row">
+											<div class="col-xl-6">
+												<div class="form-group row">
+													<label class="col-lg-3 col-form-label">Price</label>
+													<div class="col-lg-9">
+														<input type="text" class="form-control" name="price" required value="<?php echo $row['13']; ?>">
+													</div>
+												</div>
+												<div class="form-group row">
+													<label class="col-lg-3 col-form-label">Region</label>
+													<div class="col-lg-9">
+														<input type="text" class="form-control" name="region" required value="<?php echo $row['14']; ?>">
+													</div>
+												</div>
+												<div class="form-group row">
+													<label class="col-lg-3 col-form-label">Province</label>
+													<div class="col-lg-9">
+														<input type="text" class="form-control" name="province" required value="<?php echo $row['15']; ?>">
+													</div>
+												</div>
+												<div class="form-group row">
+													<label class="col-lg-3 col-form-label">City</label>
+													<div class="col-lg-9">
+														<input type="text" class="form-control" name="city" required value="<?php echo $row['16']; ?>">
+													</div>
+												</div>
 											</div>
-										</div>-->
-										<div>
-											<table>
-												<tr>
-													<td>Region</td>
-													<td><select id="region" value=>
-													<option value="">---</option> 
-													</select></td>
-													<input type="hidden" id="setRegion" name="region">
-												</tr>
-												<tr>
-													<td>Province</td>
-													<td><select id="province">
-													<option value="">---</option> 
-													</select></td>
-													<input type="hidden" id="setProvince" name="province">
-												</tr>
-												<tr>
-													<td>City</td>
-													<td><select id="city"><option value="">---</option> 
-													</select></td>
-													<input type="hidden" id="setCity" name="city">
-												</tr>
-												<tr>
-													<td>Barangay</td>
-													<td><select id="barangay"><option value="">---</option> 
-													</select></td>
-													<input type="hidden" id="setBarangay" name="barangay">
-												</tr>
-											</table>
-
-										</div>
-										</br>
-										<div class="form-group row">	
-											<label class="col-lg-3 col-form-label">Price</label>
-											<div class="col-lg-9">
-												<input type="text" class="form-control" value="<?php echo $row['13'] ?>"  name="price"  placeholder="Enter Price">
+											<div class="col-xl-6">
+									
+												<div class="form-group row">
+													<label class="col-lg-3 col-form-label">Barangay</label>
+													<div class="col-lg-9">
+														<input type="text" class="form-control" name="barangay" required value="<?php echo $row['17']; ?>">
+													</div>
+												</div>
+												<div class="form-group row">
+													<label class="col-lg-3 col-form-label">Floor</label>
+													<div class="col-lg-9">
+														<input type="text" class="form-control" name="floor" value="<?php echo $row['11'] ?>">
+													</div>
+												</div>
+												<div class="form-group row">
+													<label class="col-lg-3 col-form-label">Area Size</label>
+													<div class="col-lg-9">
+														<input type="text" class="form-control" name="asize" required value="<?php echo $row['12']; ?>">
+													</div>
+												</div>
+												<div class="form-group row">
+													<label class="col-lg-3 col-form-label">Uid</label>
+													<div class="col-lg-9">
+														<input type="text" class="form-control" name="uid" required value="<?php echo $row['24']; ?>">
+													</div>
+												</div>
+												<div class="form-group row">
+													<label class="col-lg-3 col-form-label">Status</label>
+													<div class="col-lg-9">
+														<select class="form-control"  required name="status">
+															<option value="">Select Status</option>
+															<option value="<?php echo $row['25'] ?>" selected><?php echo $row['25'] ?></option>
+															<option value="available">Available</option>
+															<option value="sold out">Sold Out</option>
+														</select>
+													</div>
+												</div>
 											</div>
 										</div>
-									</div>
-									<div class="col-xl-6">
-										<div class="form-group row">
-											<label class="col-lg-3 col-form-label">Floor</label>
-											<div class="col-lg-9">
-												<input type="number" inputmode="numeric" value="<?php echo $row['11'] ?>" min=0 name="floor">
-											</div>
-										</div>
-										<div class="form-group row">
-											<label class="col-lg-3 col-form-label">Area Size</label>
-											<div class="col-lg-9">
-												<input type="text" class="form-control" name="asize" value="<?php echo $row['12'] ?>"  placeholder="Enter Area Size (in sqrt)">
-											</div>
-										</div>
-									</div>
-								</div>
 							<!--	
 								<div class="form-group row">
 									<label class="col-lg-2 col-form-label">Feature</label>
@@ -391,17 +374,7 @@ if(isset($_POST['add']))
 														<img src="property/<?php echo $row['21'];?>" alt="pimage" height="150" width="180">
 													</div>
 												</div>
-												<div class="form-group row">
-													<label class="col-lg-3 col-form-label">Status</label>
-													<div class="col-lg-9">
-														<select class="form-control"  required name="status">
-															<option value="">Select Status</option>
-															<option value="<?php echo $row['25'] ?>" selected disabled><?php echo $row['25'] ?></option>
-															<option value="available">Available</option>
-															<option value="sold out">Sold Out</option>
-														</select>
-													</div>
-												</div>
+
 												<div class="form-group row">
 													<label class="col-lg-3 col-form-label">Basement Floor Plan Image</label>
 													<div class="col-lg-9">
@@ -424,12 +397,6 @@ if(isset($_POST['add']))
 													<div class="col-lg-9">
 														<input class="form-control" name="aimage3" type="file" required="">
 														<img src="property/<?php echo $row['21'];?>" alt="pimage" height="150" width="180">
-													</div>
-												</div>
-												<div class="form-group row">
-													<label class="col-lg-3 col-form-label">Uid</label>
-													<div class="col-lg-9">
-														<input type="text" class="form-control" name="uid" required value="<?php echo $row['24']; ?>">
 													</div>
 												</div>
 												<div class="form-group row">
@@ -480,68 +447,7 @@ if(isset($_POST['add']))
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.js"></script>
 	<!-- script type="text/javascript" src="../../jquery.ph-locations.js"></script -->
 	<script type="text/javascript" src="https://f001.backblazeb2.com/file/buonzz-assets/jquery.ph-locations-v1.0.1.js"></script>
-	<script type="text/javascript">
-	var my_handlers = {
 
-		fill_provinces:  function(){
-
-			var region_code = $(this).val();
-			$('#province').ph_locations('fetch_list', [{"region_code": region_code}]);
-			
-		},
-
-		fill_cities: function(){
-
-			var province_code = $(this).val();
-			$('#city').ph_locations( 'fetch_list', [{"province_code": province_code}]);
-		},
-
-
-		fill_barangays: function(){
-
-			var city_code = $(this).val();
-			$('#barangay').ph_locations('fetch_list', [{"city_code": city_code}]);
-		}
-	};
-
-	$(function () {
-		$('#region').on('change', function () {
-			var region_text = $('#region option:selected').text();
-			console.log('Region: ' + region_text);
-			$('#setRegion').val(region_text);
-			my_handlers.fill_provinces.call(this);
-		});
-
-		$('#province').on('change', function () {
-			var province_text = $('#province option:selected').text();
-			console.log('Province: ' + province_text);
-			$('#setProvince').val(province_text);
-			my_handlers.fill_cities.call(this);
-		});
-
-		$('#city').on('change', function () {
-			var city_text = $('#city option:selected').text();
-			console.log('City: ' + city_text);
-			$('#setCity').val(city_text);
-			my_handlers.fill_barangays.call(this);
-		});
-
-		$('#barangay').on('change', function () {
-			var barangay_text = $('#barangay option:selected').text();
-			$('#setBarangay').val(barangay_text);
-			console.log('Barangay: ' + $('#barangay option:selected').text());
-		});
-
-		$('#region').ph_locations({ 'location_type': 'regions' });
-		$('#province').ph_locations({ 'location_type': 'provinces' });
-		$('#city').ph_locations({ 'location_type': 'cities' });
-		$('#barangay').ph_locations({ 'location_type': 'barangays' });
-
-		$('#region').ph_locations('fetch_list');
-	});
-
-
-	</script>
 				
 
 	</body>

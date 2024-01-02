@@ -99,7 +99,7 @@ include("config.php");
 								$type=$_REQUEST['type'];
 								$stype=$_REQUEST['stype'];
 								$city=$_REQUEST['city'];
-								$sql="SELECT * FROM property WHERE type='{$type}' and stype='{$stype}' and city='{$city}' or region='{$city}' or province='{$city}' or barangay='{$city}'";
+								$sql="SELECT * FROM property WHERE type='{$type}' and stype='{$stype}' or city='{$city}' or region='{$city}' or province='{$city}' or barangay='{$city}'";
 								//SELECT * FROM `property` WHERE type='office' or type='office' and stype='sale' or stype='rent' and city='valsad' OR state='mumbai'
 								//SELECT * FROM `property` WHERE type='office' and stype='sale'  and city='valsad' OR state='mumbai'
 								$result=mysqli_query($conn,$sql);
