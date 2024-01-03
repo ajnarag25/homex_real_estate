@@ -274,35 +274,33 @@ if(isset($_POST['add']))
 													</div>
 												</div>-->
 												<div>
-													<table>
-														<tr>
-															<td>Region</td>
-															<td><select id="region" value=>
-															<option value="">---</option> 
-															</select></td>
-															<input type="hidden" id="setRegion" name="region">
-														</tr>
-														<tr>
-															<td>Province</td>
-															<td><select id="province">
-															<option value="">---</option> 
-															</select></td>
-															<input type="hidden" id="setProvince" name="province">
-														</tr>
-														<tr>
-															<td>City</td>
-															<td><select id="city"><option value="">---</option> 
-															</select></td>
-															<input type="hidden" id="setCity" name="city">
-														</tr>
-														<tr>
-															<td>Barangay</td>
-															<td><select id="barangay"><option value="">---</option> 
-															</select></td>
-															<input type="hidden" id="setBarangay" name="barangay">
-														</tr>
-													</table>
+												<div class="form-group row">	
+													<label class="col-lg-3 col-form-label">Region</label>
+													<div class="col-lg-9">
+														<input type="text" class="form-control" name="price"  placeholder="Enter Region">
+													</div>
+												</div>
 
+												<div class="form-group row">	
+													<label class="col-lg-3 col-form-label">Province</label>
+													<div class="col-lg-9">
+														<input type="text" class="form-control" id="setProvince" name="province" placeholder="Enter Province">
+													</div>
+												</div>
+
+												<div class="form-group row">	
+													<label class="col-lg-3 col-form-label">City</label>
+													<div class="col-lg-9">
+														<input type="text" class="form-control" id="setCity" name="city" placeholder="Enter City">
+													</div>
+												</div>
+
+												<div class="form-group row">	
+													<label class="col-lg-3 col-form-label">Barangay</label>
+													<div class="col-lg-9">
+														<input type="text" class="form-control" id="setBarangay" name="barangay" placeholder="Enter Barangay">
+													</div>
+												</div>
 												</div>
 												</br>
 												<div class="form-group row">	
@@ -313,12 +311,12 @@ if(isset($_POST['add']))
 												</div>
 
 
-					</div>
+											</div>
 											<div class="col-xl-6">
 												<div class="form-group row">
 													<label class="col-lg-3 col-form-label">Floor</label>
 													<div class="col-lg-9">
-												    <input type="number" inputmode="numeric" min=0 name="floor">
+												    <input type="number" class="form-control" inputmode="numeric" min=0 name="floor">
 													</div>
 												</div>
 												<div class="form-group row">

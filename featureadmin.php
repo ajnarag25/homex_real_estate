@@ -124,15 +124,7 @@ if(!isset($_SESSION['uemail']))
 								{
 							?>
                             <tr>
-                                <td>
-                                    <div class="property-info d-table">
-                                        <h5 class="text-secondary text-capitalize"><a href="propertydetail.php?pid=<?php echo $row['0'];?>"><?php echo $row['1'];?></a></h5>
-                                        <span class="font-14 text-capitalize"><i class="fas fa-map-marker-alt text-primary font-13"></i>&nbsp; <?php echo $row['14'];?></span>
-                                        <div class="price mt-3">
-											<span class="text-primary">$&nbsp;<?php echo $row['13'];?></span>
-										</div>
-                                    </div>
-								</td>
+                                <td class="text-capitalize"><?php echo $row['1'];?></td>
                                 <td><?php echo $row['3'];?></td>
                                 <td class="text-capitalize">For <?php echo $row['4'];?></td>
                                 <td class="text-capitalize">For <?php echo $row['5'];?></td>
@@ -181,5 +173,28 @@ if(!isset($_SESSION['uemail']))
 <script>
     $('#assigned').DataTable()
 </script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!-- Validation Messages -->
+<?php 
+			if (isset($_SESSION['status']) && $_SESSION['status'] !='')
+			{
+		?>
+		<script>
+			$(document).ready(function(){
+				Swal.fire({
+					icon: '<?php echo $_SESSION['status_icon'] ?>',
+					title: '<?php echo $_SESSION['status'] ?>',
+					confirmButtonColor: 'rgb(0, 0, 0)',
+					confirmButtonText: 'Okay'
+				});
+				<?php  unset($_SESSION['status']); ?>
+			})
+		</script>
+		
+		<?php
+		}else{
+			unset($_SESSION['status']);
+		}
+		?>
 </body>
 </html>

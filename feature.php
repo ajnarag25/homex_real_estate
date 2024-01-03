@@ -68,13 +68,13 @@ if(!isset($_SESSION['uemail']))
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
-                        <h2 class="page-name float-left text-white text-uppercase mt-1 mb-0"><b>My Listed Property</b></h2>
+                        <h2 class="page-name float-left text-white text-uppercase mt-1 mb-0"><b>Add Property</b></h2>
                     </div>
                     <div class="col-md-6">
                         <nav aria-label="breadcrumb" class="float-left float-md-right">
                             <ol class="breadcrumb bg-transparent m-0 p-0">
                                 <li class="breadcrumb-item text-white"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">My Listed Property</li>
+                                <li class="breadcrumb-item active">Add Property</li>
                             </ol>
                         </nav>
                     </div>
@@ -89,7 +89,7 @@ if(!isset($_SESSION['uemail']))
             <div class="container">
                     <div class="row mb-5">
 						<div class="col-lg-12">
-							<h2 class="text-secondary double-down-line text-center">My Listed Property</h2>
+							<h2 class="text-secondary double-down-line text-center">Add Property</h2>
 							<?php 
 								if(isset($_GET['msg']))	
 								echo $_GET['msg'];	
@@ -97,7 +97,7 @@ if(!isset($_SESSION['uemail']))
                         </div>
 					</div>
                     <div class="row mb-4" style = "margin-left: 25px;">
-                        <a href="submitproperty.php" class = "btn btn-secondary">+ Add Property</a>
+                        <a href="submitproperty.php" class = "btn btn-secondary w-100">+ Add Property</a>
                     </div>
                     
 					<table class="items-list col-lg-12" style="border-collapse:inherit;" id="myproperty">

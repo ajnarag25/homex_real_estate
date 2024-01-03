@@ -106,7 +106,7 @@ if(!isset($_SESSION['auser']))
 											?>
                                                 <tr>
                                                     <td><?php echo $cnt; ?></td>
-                                                    <td><?php echo $row['uname']; ?></td>
+                                                    <td><?php echo $row['fname']; ?> <?php echo $row['lname']; ?></td>
                                                     <td><?php echo $row['uemail']; ?></td>
                                                     <td><?php echo $row['2']; ?></td>
                                                     <!-- <td><?php echo $row['3']; ?></td> -->

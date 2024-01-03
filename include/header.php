@@ -81,7 +81,7 @@
                                             <?php if($_SESSION['get_data']['utype'] == 'agent'){
                                             ?>
 												<li class="nav-item"> <a class="nav-link" href="profile.php">Profile</a> </li>
-												<li class="nav-item"> <a class="nav-link" href="feature.php">My Property</a> </li>
+												<li class="nav-item"> <a class="nav-link" href="submitproperty.php">Submit Property</a> </li>
                                                 <li class="nav-item"> <a class="nav-link" href="featureadmin.php">Admin Assigned Property</a> </li>
 												<li class="nav-item"> <a class="nav-link" href="logout.php">Logout</a> </li>	
 											<?php 

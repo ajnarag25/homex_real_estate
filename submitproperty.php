@@ -301,29 +301,33 @@ if(isset($_POST['add']))
 													<table>
 														<tr>
 															<td>Region</td>
-															<td><select id="region" value=>
+															<td><input type="text" class="form-control" id="setRegion" name="region"></td>
+															<!-- <td><select id="region" value=>
 															<option value="">---</option> 
 															</select></td>
-															<input type="hidden" id="setRegion" name="region">
+															<input type="hidden" id="setRegion" name="region"> -->
 														</tr>
 														<tr>
 															<td>Province</td>
-															<td><select id="province">
+															<td><input type="text" class="form-control" id="setProvince" name="province"></td>
+															<!-- <td><select id="province">
 															<option value="">---</option> 
 															</select></td>
-															<input type="hidden" id="setProvince" name="province">
+															<input type="hidden" id="setProvince" name="province"> -->
 														</tr>
 														<tr>
 															<td>City</td>
-															<td><select id="city"><option value="">---</option> 
+															<td><input type="text" class="form-control" id="setCity" name="city"></td>
+															<!-- <td><select id="city"><option value="">---</option> 
 															</select></td>
-															<input type="hidden" id="setCity" name="city">
+															<input type="hidden" id="setCity" name="city"> -->
 														</tr>
 														<tr>
 															<td>Barangay</td>
-															<td><select id="barangay"><option value="">---</option> 
+															<td><input type="text" class="form-control" id="setBarangay" name="barangay"></td>
+															<!-- <td><select id="barangay"><option value="">---</option> 
 															</select></td>
-															<input type="hidden" id="setBarangay" name="barangay">
+															<input type="hidden" id="setBarangay" name="barangay"> -->
 														</tr>
 													</table>
 
@@ -342,7 +346,7 @@ if(isset($_POST['add']))
 												<div class="form-group row">
 													<label class="col-lg-3 col-form-label">Floor</label>
 													<div class="col-lg-9">
-												    <input type="number" inputmode="numeric" min=0 name="floor">
+												    <input type="number" class="form-control" inputmode="numeric" min=0 name="floor">
 													</div>
 												</div>
 												<div class="form-group row">
