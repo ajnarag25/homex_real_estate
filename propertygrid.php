@@ -117,7 +117,11 @@ include("config.php");
                                     <div class="overlay-black overflow-hidden position-relative"> <img src="admin/property/<?php echo $row['19'];?>" alt="pimage">
                                         
                                         <div class="sale bg-secondary text-white">For <?php echo $row['5'];?></div>
-                                        <div class="price text-primary text-capitalize">php<?php echo $row['13'];?> <span class="text-white"><?php echo $row['12'];?> Sqft</span></div>
+                                        <div class="price text-primary text-capitalize"> P&nbsp;
+                                                <?php 
+                                                    $formattedNumber = number_format($row['price'], 2, '.', ',');
+                                                    echo $formattedNumber;
+                                                ?><span class="text-white"><?php echo $row['12'];?> Sqft</span></div>
                                         
                                     </div>
                                     <div class="featured-thumb-data shadow-one">

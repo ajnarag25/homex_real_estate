@@ -154,7 +154,7 @@ if(!isset($_SESSION['auser']))
 																	</button>
 																</div>
 																<div class="modal-body text-center">
-																	<h4>Are you sure to delete this current User Account? <b><?php echo $row['uname'] ?></b></h4>
+																	<h4>Are you sure to delete this current User Account? <b><?php echo $row['fname'] ?> <?php echo $row['lname'] ?></b></h4>
 																	<p>This action is irreversible!</p>
 																</div>
 																<div class="modal-footer">
@@ -183,7 +183,7 @@ if(!isset($_SESSION['auser']))
 																		<div class="col-md-6">
 																			<label for="">Account Information:</label>
 																			<ul>
-																				<li><?php echo $row['uname']; ?></li>
+																				<li><?php echo $row['fname']; ?> <?php echo $row['lname']; ?></li>
 																				<li><?php echo $row['uemail']; ?></li>
 																				<li><?php echo $row['uphone']; ?></li>
 																			</ul>
@@ -227,7 +227,7 @@ if(!isset($_SESSION['auser']))
 																		<div class="col-md-6">
 																			<label for="">Account Information:</label>
 																			<ul>
-																				<li><?php echo $row['uname']; ?></li>
+																				<li><?php echo $row['fname']; ?> <?php echo $row['lname']; ?></li>
 																				<li><?php echo $row['uemail']; ?></li>
 																				<li><?php echo $row['uphone']; ?></li>
 																			</ul>
@@ -254,10 +254,6 @@ if(!isset($_SESSION['auser']))
 														</div>
 													</div>
 												</div>
-
-									
-
-						
 
                                                 <?php
 											

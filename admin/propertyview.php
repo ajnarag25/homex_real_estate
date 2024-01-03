@@ -89,7 +89,7 @@ if(!isset($_SESSION['auser']))
                                                     <th>Description</th>
                                                     <th>Type</th>
                                                     <th>Property Status</th>
-                                                    <th>Selling Type</th>
+                                                    <th>Selling Status</th>
 													<!-- <th>Bedroom</th>
                                                     <th>Bathroom</th>
                                                     <th>Balcony</th>

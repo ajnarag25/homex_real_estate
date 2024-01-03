@@ -141,8 +141,8 @@ if(!isset($_SESSION['uemail']))
                                     </div>
 								</td>
                                 <td><?php echo $row['3'];?></td>
-                                <td class="text-capitalize">For <?php echo $row['4'];?></td>
-                                <td class="text-capitalize">For <?php echo $row['5'];?></td>
+                                <td class="text-capitalize"><?php echo $row['4'];?></td>
+                                <td class="text-capitalize"><?php echo $row['5'];?></td>
 								<td class="text-capitalize"><?php echo $row['6'];?></td>
                             </tr>
 							<?php } ?>

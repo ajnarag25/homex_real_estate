@@ -158,7 +158,7 @@ if(isset($_POST['insert']))
 									while($row=mysqli_fetch_array($query))
 									{
 								?>
-                                <div class="user-info mt-md-50"> <img src="admin/user/<?php echo $row['6'];?>" alt="userimage">
+                                <div class="user-info mt-md-50"> <img src="admin/user/<?php echo $row['7'];?>" alt="userimage">
                                     <div class="mb-4 mt-3">
                                         
                                     </div>
@@ -167,7 +167,7 @@ if(isset($_POST['insert']))
                                         <div class="mb-1 text-capitalize"><b>Name:</b> <?php echo $row['1'];?></div>
                                         <div class="mb-1 text-capitalize"><b>Email:</b> <?php echo $row['2'];?></div>
                                         <div class="mb-1 text-capitalize"><b>Phone:</b> <?php echo $row['3'];?></div>
-										<div class="mb-1 text-capitalize"><b>Role:</b> <?php echo $row['5'];?></div>
+										<div class="mb-1 text-capitalize"><b>Role:</b> <?php echo $row['6'];?></div>
                                     </div>
 									<?php } ?>
                                 </div>

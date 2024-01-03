@@ -97,7 +97,7 @@ if(!isset($_SESSION['uemail']))
                         </div>
 					</div>
                     <div class="row mb-4" style = "margin-left: 25px;">
-                        <a href="submitpropertyadd.php" class = "btn btn-secondary">+ Add Property</a>
+                        <a href="submitproperty.php" class = "btn btn-secondary">+ Add Property</a>
                     </div>
                     
 					<table class="items-list col-lg-12" style="border-collapse:inherit;" id="myproperty">

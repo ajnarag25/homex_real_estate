@@ -132,7 +132,7 @@ include("config.php");
                                 
             
                                 <?php 
-                                    $query=mysqli_query($conn,"SELECT * FROM `property` WHERE feature='yes' ORDER BY date DESC LIMIT 7");
+                                    $query=mysqli_query($conn,"SELECT * FROM `property` WHERE feature='yes' AND is_approved = true ORDER BY date DESC LIMIT 7");
                                             while($row=mysqli_fetch_array($query))
                                             {
                                     ?>
