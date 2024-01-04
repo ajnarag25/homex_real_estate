@@ -68,13 +68,13 @@ if(isset($_POST['add']))
     {
         $_SESSION['status'] = 'Property Successfully Updated';
         $_SESSION['status_icon'] = 'success';
-        header('location:featureadmin.php');
+        header('location:feature.php');
     }
     else
     {
 		$_SESSION['status'] = 'An Error Occured!';
         $_SESSION['status_icon'] = 'success';
-        header('location:featureadmin.php');
+        header('location:feature.php');
     }
 }				
 ?>

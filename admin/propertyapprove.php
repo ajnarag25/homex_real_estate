@@ -106,13 +106,13 @@ if(!isset($_SESSION['auser']))
                                                     <th>Image2</th>
                                                     <th>Image3</th>
                                                     <th>Image4</th>
-                                                    <th>Image5</th>
+                                                    <!-- <th>Image5</th> -->
                                                     <!-- <th>Uid</th> -->
 													<th>Status</th>
                                                     <th>Floor Plan</th>
                                                     <th>Basement Plan</th>
 													<th>Ground Floor Plan</th>
-                                                    <th>Total Floor</th>
+                                                    <!-- <th>Total Floor</th> -->
                                                     <th>Date</th>
                                                     <th>Approve</th>
                                                     <th>Decline</th>
@@ -147,13 +147,13 @@ if(!isset($_SESSION['auser']))
                                                     <td><img src="property/<?php echo $row['20']; ?>" alt="pimage" height="70px"width="70px"></td>
 													<td><img src="property/<?php echo $row['21']; ?>" alt="pimage" height="70px"width="70px"></td>
                                                     <td><img src="property/<?php echo $row['22']; ?>" alt="pimage" height="70px"width="70px"></td>
-                                                    <td><img src="property/<?php echo $row['23']; ?>" alt="pimage" height="70px"width="70px"></td>
+                                                    <!-- <td><img src="property/<?php echo $row['23']; ?>" alt="pimage" height="70px"width="70px"></td> -->
                                                     <!-- <td><?php echo $row['24']; ?></td> -->
                                                     <td><?php echo $row['25']; ?></td>
 													<td><img src="property/<?php echo $row['26']; ?>" alt="plan" height="70px"width="70px"></td>
                                                     <td><img src="property/<?php echo $row['27']; ?>" alt="plan" height="70px"width="70px"></td>
 													<td><img src="property/<?php echo $row['28']; ?>" alt="plan" height="70px"width="70px"></td>
-                                                    <td><?php echo $row['29']; ?></td>
+                                                    <!-- <td><?php echo $row['29']; ?></td> -->
                                                     <td><?php echo $row['30']; ?></td>
 													<td><a href="approvepropertyrequest.php?id=<?php echo $row['0'];?>">Approve</a></td>
                                                     <td><a href="declinepropertyrequest.php?id=<?php echo $row['0'];?>">Decline</a></td>

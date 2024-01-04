@@ -97,10 +97,9 @@ if(!isset($_SESSION['uemail']))
                         </div>
 					</div>
                     <div class="row mb-4" style = "margin-left: 25px;">
-                        <a href="submitproperty.php" class = "btn btn-secondary w-100">+ Add Property</a>
+                        <a href="submitproperty.php" class = "btn btn-secondary">+ Add Property</a>
                     </div>
-                    
-					<table class="items-list col-lg-12" style="border-collapse:inherit;" id="myproperty">
+                    <table class="items-list col-lg-12" style="border-collapse:inherit;" id="myproperty">
                         <thead>
                              <tr  class="bg-primary">
                                 <!-- <th class="text-white font-weight-bolder">Properties</th>
@@ -120,37 +119,29 @@ if(!isset($_SESSION['uemail']))
                              </tr>
                         </thead>
                         <tbody>
-						
-							<?php 
+
+						    <?php 
 							$uid = $_SESSION['get_data']['uid'];
                             $agent = $_SESSION['get_data']['fname'];
-							$query=mysqli_query($conn,"SELECT * FROM `property` WHERE user_id='$uid' AND user_type = 'agent' AND useragent = '$agent'");
+							$query=mysqli_query($conn,"SELECT * FROM `property` WHERE user_id='$uid' AND user_type = 'agent' ");
 								while($row=mysqli_fetch_array($query))
 								{
 							?>
                             <tr>
-                                <td>
-                                    <div class="property-info d-table">
-                                        <h5 class="text-secondary text-capitalize"><a href="propertydetail.php?pid=<?php echo $row['0'];?>"><?php echo $row['1'];?></a></h5>
-                                        <span class="font-14 text-capitalize"><i class="fas fa-map-marker-alt text-primary font-13"></i>&nbsp; <?php echo $row['14'];?></span>
-                                        <div class="price mt-3">
-											<span class="text-primary">$&nbsp;<?php echo $row['13'];?></span>
-										</div>
-                                    </div>
-								</td>
+                                <td class="text-capitalize"><?php echo $row['1'];?></td>
                                 <td><?php echo $row['3'];?></td>
-                                <td class="text-capitalize">For <?php echo $row['4'];?></td>
-                                <td class="text-capitalize">For <?php echo $row['5'];?></td>
+                                <td class="text-capitalize"><?php echo $row['4'];?></td>
+                                <td class="text-capitalize"><?php echo $row['5'];?></td>
 								<td class="text-capitalize"><?php echo $row['date'];?></td>
                                 <td>
-                                    <a class="btn btn-primary" href="submitpropertyupdate.php?id=<?php echo $row['0'];?>">Update</a>
-                                    <a class="btn btn-primary" href="submitpropertydelete.php?id=<?php echo $row['0'];?>">Delete</a>
+                                    <a class="btn btn-primary" href="submitpropertyupdate2.php?id=<?php echo $row['0'];?>">Update</a>
                                 </td>
                             </tr>
 							<?php } ?>
 							
                         </tbody>
-                    </table>            
+                    </table>           
+				
             </div>
         </div>
 	<!--	Submit property   -->
@@ -188,5 +179,28 @@ if(!isset($_SESSION['uemail']))
 <script>
     $('#myproperty').DataTable()
 </script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!-- Validation Messages -->
+<?php 
+			if (isset($_SESSION['status']) && $_SESSION['status'] !='')
+			{
+		?>
+		<script>
+			$(document).ready(function(){
+				Swal.fire({
+					icon: '<?php echo $_SESSION['status_icon'] ?>',
+					title: '<?php echo $_SESSION['status'] ?>',
+					confirmButtonColor: 'rgb(0, 0, 0)',
+					confirmButtonText: 'Okay'
+				});
+				<?php  unset($_SESSION['status']); ?>
+			})
+		</script>
+		
+		<?php
+		}else{
+			unset($_SESSION['status']);
+		}
+		?>
 </body>
 </html>
