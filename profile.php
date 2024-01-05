@@ -138,7 +138,7 @@ if(isset($_POST['insert']))
                                 
                                 <div class="form-group">
                                     <label for="phone">Phone Number</label>
-                                    <input type="text" name="phone"  class="form-control" value="<?php echo $row['3'];?>" placeholder="Enter Phone" maxlength="10" readonly>
+                                    <input type="text" name="phone"  class="form-control" value="<?php echo $row['4'];?>" placeholder="Enter Phone" maxlength="10" readonly>
                                 </div>
 
                                 <div class="form-group">

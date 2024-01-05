@@ -269,7 +269,7 @@ include("config.php");
                         <div class="col-md-3">
                             <div class="count wow text-center  mb-sm-50" data-wow-duration="300ms"> <i class="flaticon-house flat-large text-white" aria-hidden="true"></i>
 								<?php
-										$query=mysqli_query($conn,"SELECT count(pid) FROM property");
+										$query=mysqli_query($conn,"SELECT count(pid) FROM property WHERE is_approved = 1");
 											while($row=mysqli_fetch_array($query))
 												{
 										?>
@@ -283,7 +283,7 @@ include("config.php");
 						<div class="col-md-3">
                             <div class="count wow text-center  mb-sm-50" data-wow-duration="300ms"> <i class="flaticon-house flat-large text-white" aria-hidden="true"></i>
 								<?php
-										$query=mysqli_query($conn,"SELECT count(pid) FROM property where stype='sale'");
+										$query=mysqli_query($conn,"SELECT count(pid) FROM property where stype='sale' AND is_approved = 1");
 											while($row=mysqli_fetch_array($query))
 												{
 										?>
@@ -297,7 +297,7 @@ include("config.php");
 						<div class="col-md-3">
                             <div class="count wow text-center  mb-sm-50" data-wow-duration="300ms"> <i class="flaticon-house flat-large text-white" aria-hidden="true"></i>
 								<?php
-										$query=mysqli_query($conn,"SELECT count(pid) FROM property where stype='rent'");
+										$query=mysqli_query($conn,"SELECT count(pid) FROM property where stype='rent' AND is_approved = 1");
 											while($row=mysqli_fetch_array($query))
 												{
 										?>

@@ -36,7 +36,6 @@ if(isset($_POST['add']))
 	$region=$_POST['region'];
 	$province=$_POST['province'];
 	$barangay=$_POST['barangay'];
-	$uid=$_POST['uid'];
 	$feature=$_POST['pfeature'];
 	$status=$_POST['status'];
 
@@ -74,9 +73,9 @@ if(isset($_POST['add']))
 	$user_agent = $_SESSION['auser']['fullname'];
 	$user_id = $_SESSION['auser']['aid'];
 	$user_type = 'admin';
-	$sql="insert into property (title,pcontent,type,pstatus,stype,bedroom,bathroom,balcony,kitchen,hall,floor,size,price,region,province,city,barangay,feature,pimage,pimage1,pimage2,pimage3,pimage4,uid,status,mapimage,topmapimage,groundmapimage,date,useragent,user_type,user_id)
+	$sql="insert into property (title,pcontent,type,pstatus,stype,bedroom,bathroom,balcony,kitchen,hall,floor,size,price,region,province,city,barangay,feature,pimage,pimage1,pimage2,pimage3,pimage4,status,mapimage,topmapimage,groundmapimage,date,useragent,user_type,user_id)
 	values('$title','$content','$ptype','$pstatus','$stype','$bed','$bath','$balc','$kitc','$hall','$floor','$asize','$price','$region',
-	'$province','$city','$barangay','$feature','$aimage','$aimage1','$aimage2','$aimage3','$aimage4','$uid','$status','$fimage','$fimage1','$fimage2','$currentDate','$user_agent','$user_type','$user_id')";
+	'$province','$city','$barangay','$feature','$aimage','$aimage1','$aimage2','$aimage3','$aimage4','$status','$fimage','$fimage1','$fimage2','$currentDate','$user_agent','$user_type','$user_id')";
 	$result=mysqli_query($conn,$sql);
 	if($result)
 		{
@@ -277,7 +276,7 @@ if(isset($_POST['add']))
 												<div class="form-group row">	
 													<label class="col-lg-3 col-form-label">Region</label>
 													<div class="col-lg-9">
-														<input type="text" class="form-control" name="price"  placeholder="Enter Region">
+														<input type="text" class="form-control" name="region"  placeholder="Enter Region">
 													</div>
 												</div>
 
@@ -323,6 +322,17 @@ if(isset($_POST['add']))
 													<label class="col-lg-3 col-form-label">Area Size</label>
 													<div class="col-lg-9">
 														<input type="text" class="form-control" name="asize"  placeholder="Enter Area Size (in sqrt)">
+													</div>
+												</div>
+												<div class="form-group row">
+													<label class="col-lg-3 col-form-label">Status</label>
+													<div class="col-lg-9">
+														<select class="form-control"   name="status">
+															<option value="">Select Status</option>
+															<option value="available">Available</option>
+															<!-- <option value="sold out">Sold Out</option> -->
+															<option value="sold out">Lease</option>
+														</select>
 													</div>
 												</div>
 												<!-- <div class="form-group row">
@@ -378,7 +388,7 @@ if(isset($_POST['add']))
 
 
 
-										<h4 class="card-title">Image & Status</h4>
+										<h4 class="card-title">Images</h4>
 										<div class="row">
 											<div class="col-xl-6">
 												
@@ -400,17 +410,7 @@ if(isset($_POST['add']))
 														<input class="form-control" name="aimage4" type="file"> <!---->
 													</div>
 												</div>
-												<div class="form-group row">
-													<label class="col-lg-3 col-form-label">Status</label>
-													<div class="col-lg-9">
-														<select class="form-control"   name="status">
-															<option value="">Select Status</option>
-															<option value="available">Available</option>
-															<!-- <option value="sold out">Sold Out</option> -->
-															<option value="sold out">Lease</option>
-														</select>
-													</div>
-												</div>
+												
 												<div class="form-group row">
 													<label class="col-lg-3 col-form-label">Basement Floor Plan Image</label>
 													<div class="col-lg-9">
@@ -432,12 +432,12 @@ if(isset($_POST['add']))
 														<input class="form-control" name="aimage3" type="file" >
 													</div>
 												</div>
-												<div class="form-group row">
+												<!-- <div class="form-group row">
 													<label class="col-lg-3 col-form-label">User ID</label>
 													<div class="col-lg-9">
 														<input type="text" class="form-control" name="uid"  placeholder="Enter User Id (only number)">
 													</div>
-												</div>
+												</div> -->
 												<div class="form-group row">
 													<label class="col-lg-3 col-form-label">Floor Plan Image</label>
 													<div class="col-lg-9">
