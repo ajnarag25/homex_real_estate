@@ -84,12 +84,12 @@ if(!isset($_SESSION['auser']))
                                         <table id="datatable-buttons" class="table table-striped dt-responsive nowrap">
                                             <thead>
                                                 <tr>
-                                                    <th>P ID</th>
+                                                <th>P ID</th>
                                                     <th>Title</th>
                                                     <th>Description</th>
                                                     <th>Type</th>
                                                     <th>Property Status</th>
-                                                    <th>Selling Type</th>
+                                                    <th>Selling Status</th>
 													<!-- <th>Bedroom</th>
                                                     <th>Bathroom</th>
                                                     <th>Balcony</th>
@@ -106,13 +106,13 @@ if(!isset($_SESSION['auser']))
                                                     <th>Image2</th>
                                                     <th>Image3</th>
                                                     <th>Image4</th>
-                                                    <th>Image5</th>
+                                                    <!-- <th>Image5</th> -->
                                                     <!-- <th>Uid</th> -->
                                                     <th>Floor Plan</th>
                                                     <th>Basement Plan</th>
 													<th>Ground Floor Plan</th>
                                                     <!-- <th>Total Floor</th> -->
-                                                    <th>Status</th>
+                                                    <!-- <th>Status</th> -->
                                                     <th>Date</th>
                                                     <th>Assign To</th>
                                                     
@@ -147,13 +147,13 @@ if(!isset($_SESSION['auser']))
                                                     <td><img src="property/<?php echo $row['20']; ?>" alt="pimage" height="70px"width="70px"></td>
 													<td><img src="property/<?php echo $row['21']; ?>" alt="pimage" height="70px"width="70px"></td>
                                                     <td><img src="property/<?php echo $row['22']; ?>" alt="pimage" height="70px"width="70px"></td>
-                                                    <td><img src="property/<?php echo $row['23']; ?>" alt="pimage" height="70px"width="70px"></td>
+                                                    <!-- <td><img src="property/<?php echo $row['23']; ?>" alt="pimage" height="70px"width="70px"></td> -->
                                                     <!-- <td><?php echo $row['24']; ?></td> -->
 													<td><img src="property/<?php echo $row['26']; ?>" alt="plan" height="70px"width="70px"></td>
                                                     <td><img src="property/<?php echo $row['27']; ?>" alt="plan" height="70px"width="70px"></td>
 													<td><img src="property/<?php echo $row['28']; ?>" alt="plan" height="70px"width="70px"></td>
                                                     <!-- <td><?php echo $row['29']; ?></td> -->
-                                                    <td><?php echo $row['25']; ?></td>
+                                                    <!-- <td><?php echo $row['25']; ?></td> -->
                                                     <td><?php echo $row['30']; ?></td>
 													<td>
                                                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#assign<?php echo $row['0'];?>">

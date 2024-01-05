@@ -112,7 +112,7 @@ if(!isset($_SESSION['auser']))
                                                     <th>Basement Plan</th>
 													<th>Ground Floor Plan</th>
                                                     <!-- <th>Total Floor</th> -->
-                                                    <th>Status</th>
+                                                    <!-- <th>Status</th> -->
                                                     <th>Date</th>
                                                     <th>Approve</th>
                                                     <th>Decline</th>
@@ -153,7 +153,7 @@ if(!isset($_SESSION['auser']))
                                                     <td><img src="property/<?php echo $row['27']; ?>" alt="plan" height="70px"width="70px"></td>
 													<td><img src="property/<?php echo $row['28']; ?>" alt="plan" height="70px"width="70px"></td>
                                                     <!-- <td><?php echo $row['29']; ?></td> -->
-                                                    <td><?php echo $row['25']; ?></td>
+                                                    <!-- <td><?php echo $row['25']; ?></td> -->
                                                     <td><?php echo $row['30']; ?></td>
 													<td><a href="approvepropertyrequest.php?id=<?php echo $row['0'];?>">Approve</a></td>
                                                     <td><a href="declinepropertyrequest.php?id=<?php echo $row['0'];?>">Decline</a></td>

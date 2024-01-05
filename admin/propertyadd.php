@@ -37,7 +37,7 @@ if(isset($_POST['add']))
 	$province=$_POST['province'];
 	$barangay=$_POST['barangay'];
 	$feature=$_POST['pfeature'];
-	$status=$_POST['status'];
+	// $status=$_POST['status'];
 
 	// $totalfloor=$_POST['totalfl'];
 	
@@ -73,9 +73,9 @@ if(isset($_POST['add']))
 	$user_agent = $_SESSION['auser']['fullname'];
 	$user_id = $_SESSION['auser']['aid'];
 	$user_type = 'admin';
-	$sql="insert into property (title,pcontent,type,pstatus,stype,bedroom,bathroom,balcony,kitchen,hall,floor,size,price,region,province,city,barangay,feature,pimage,pimage1,pimage2,pimage3,pimage4,status,mapimage,topmapimage,groundmapimage,date,useragent,user_type,user_id)
+	$sql="insert into property (title,pcontent,type,pstatus,stype,bedroom,bathroom,balcony,kitchen,hall,floor,size,price,region,province,city,barangay,feature,pimage,pimage1,pimage2,pimage3,pimage4,mapimage,topmapimage,groundmapimage,date,useragent,user_type,user_id)
 	values('$title','$content','$ptype','$pstatus','$stype','$bed','$bath','$balc','$kitc','$hall','$floor','$asize','$price','$region',
-	'$province','$city','$barangay','$feature','$aimage','$aimage1','$aimage2','$aimage3','$aimage4','$status','$fimage','$fimage1','$fimage2','$currentDate','$user_agent','$user_type','$user_id')";
+	'$province','$city','$barangay','$feature','$aimage','$aimage1','$aimage2','$aimage3','$aimage4','$fimage','$fimage1','$fimage2','$currentDate','$user_agent','$user_type','$user_id')";
 	$result=mysqli_query($conn,$sql);
 	if($result)
 		{
@@ -324,17 +324,17 @@ if(isset($_POST['add']))
 														<input type="text" class="form-control" name="asize"  placeholder="Enter Area Size (in sqrt)">
 													</div>
 												</div>
-												<div class="form-group row">
+												<!-- <div class="form-group row">
 													<label class="col-lg-3 col-form-label">Status</label>
 													<div class="col-lg-9">
 														<select class="form-control"   name="status">
 															<option value="">Select Status</option>
 															<option value="available">Available</option>
-															<!-- <option value="sold out">Sold Out</option> -->
+													
 															<option value="sold out">Lease</option>
 														</select>
 													</div>
-												</div>
+												</div> -->
 												<!-- <div class="form-group row">
 													<label class="col-lg-3 col-form-label">Address</label>
 													<div class="col-lg-9">

@@ -297,7 +297,7 @@ if(isset($_POST['add']))
 														<input type="text" class="form-control" name="uid" required value="<?php echo $row['24']; ?>">
 													</div>
 												</div>
-												<div class="form-group row">
+												<!-- <div class="form-group row">
 													<label class="col-lg-3 col-form-label">Status</label>
 													<div class="col-lg-9">
 														<select class="form-control"  required name="status">
@@ -307,7 +307,7 @@ if(isset($_POST['add']))
 															<option value="sold out">Sold Out</option>
 														</select>
 													</div>
-												</div>
+												</div> -->
 											</div>
 										</div>
 							<!--	
@@ -349,28 +349,28 @@ if(isset($_POST['add']))
 								</div>
 	-->	
 
-								<h4 class="card-title">Image & Status</h4>
+								<h4 class="card-title">Images</h4>
 								<div class="row">
 											<div class="col-xl-6">
 												
 												<div class="form-group row">
 													<label class="col-lg-3 col-form-label">Image</label>
 													<div class="col-lg-9">
-														<input class="form-control" name="aimage" type="file" required="">
+														<input class="form-control" name="aimage" type="file" >
 														<img src="property/<?php echo $row['19'];?>" alt="pimage" height="150" width="180">
 													</div>
 												</div>
 												<div class="form-group row">
 													<label class="col-lg-3 col-form-label">Image 2</label>
 													<div class="col-lg-9">
-														<input class="form-control" name="aimage2" type="file" required="">
+														<input class="form-control" name="aimage2" type="file" >
 														<img src="property/<?php echo $row['20'];?>" alt="pimage" height="150" width="180">
 													</div>
 												</div>
 												<div class="form-group row">
 													<label class="col-lg-3 col-form-label">Image 4</label>
 													<div class="col-lg-9">
-														<input class="form-control" name="aimage4" type="file" required="">
+														<input class="form-control" name="aimage4" type="file">
 														<img src="property/<?php echo $row['21'];?>" alt="pimage" height="150" width="180">
 													</div>
 												</div>
@@ -388,14 +388,14 @@ if(isset($_POST['add']))
 												<div class="form-group row">
 													<label class="col-lg-3 col-form-label">Image 1</label>
 													<div class="col-lg-9">
-														<input class="form-control" name="aimage1" type="file" required="">
+														<input class="form-control" name="aimage1" type="file" >
 														<img src="property/<?php echo $row['19'];?>" alt="pimage" height="150" width="180">
 													</div>
 												</div>
 												<div class="form-group row">
 													<label class="col-lg-3 col-form-label">image 3</label>
 													<div class="col-lg-9">
-														<input class="form-control" name="aimage3" type="file" required="">
+														<input class="form-control" name="aimage3" type="file" >
 														<img src="property/<?php echo $row['21'];?>" alt="pimage" height="150" width="180">
 													</div>
 												</div>

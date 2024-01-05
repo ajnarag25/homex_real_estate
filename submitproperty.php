@@ -38,7 +38,7 @@ if(isset($_POST['add']))
 	$barangay=$_POST['barangay'];
 	// $uid=$_POST['uid'];
 	$feature=$_POST['pfeature'];
-	$status=$_POST['status'];
+	// $status=$_POST['status'];
 
 	// $totalfloor=$_POST['totalfl'];
 	
@@ -64,9 +64,9 @@ if(isset($_POST['add']))
 	$user_agent = $_SESSION['get_data']['fname'].' '.$_SESSION['get_data']['lname'];
 	$user_id = $_SESSION['get_data']['uid'];
 	$user_type = 'agent';
-	$sql="insert into property (title,pcontent,type,pstatus,stype,bedroom,bathroom,balcony,kitchen,hall,floor,size,price,region,province,city,barangay,feature,pimage,pimage1,pimage2,pimage3,pimage4,status,mapimage,topmapimage,groundmapimage,date,useragent,user_type,user_id)
+	$sql="insert into property (title,pcontent,type,pstatus,stype,bedroom,bathroom,balcony,kitchen,hall,floor,size,price,region,province,city,barangay,feature,pimage,pimage1,pimage2,pimage3,pimage4,mapimage,topmapimage,groundmapimage,date,useragent,user_type,user_id)
 	values('$title','$content','$ptype','$pstatus','$stype','$bed','$bath','$balc','$kitc','$hall','$floor','$asize','$price','$region',
-	'$province','$city','$barangay','$feature','$aimage','$aimage1','$aimage2','$aimage3','$aimage4','$status','$fimage','$fimage1','$fimage2','$currentDate','$user_agent','$user_type','$user_id')";
+	'$province','$city','$barangay','$feature','$aimage','$aimage1','$aimage2','$aimage3','$aimage4','$fimage','$fimage1','$fimage2','$currentDate','$user_agent','$user_type','$user_id')";
 	$result=mysqli_query($conn,$sql);
 	if($result)
 		{
@@ -355,17 +355,7 @@ if(isset($_POST['add']))
 														<input type="text" class="form-control" name="asize"  placeholder="Enter Area Size (in sqrt)">
 													</div>
 												</div>
-												<div class="form-group row">
-													<label class="col-lg-3 col-form-label">Status</label>
-													<div class="col-lg-9">
-														<select class="form-control"   name="status">
-															<option value="">Select Status</option>
-															<option value="available">Available</option>
-															<!-- <option value="sold out">Sold Out</option> -->
-															<option value="sold out">Lease</option>
-														</select>
-													</div>
-												</div>
+							
 												<!-- <div class="form-group row">
 													<label class="col-lg-3 col-form-label">Address</label>
 													<div class="col-lg-9">
@@ -458,58 +448,23 @@ if(isset($_POST['add']))
 
 		
 		<!-- jQuery -->
-        <script src="assets/js/jquery-3.2.1.min.js"></script>
-		<script src="assets/plugins/tinymce/tinymce.min.js"></script>
-		<script src="assets/plugins/tinymce/init-tinymce.min.js"></script>
-		<!-- Bootstrap Core JS -->
-        <script src="assets/js/popper.min.js"></script>
-        <script src="assets/js/bootstrap.min.js"></script>
-		
-		<!-- Slimscroll JS -->
-        <script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-		
-		<!-- Custom JS -->
-		<script  src="assets/js/script.js"></script>
-		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.js"></script>
-        <!-- script type="text/javascript" src="../../jquery.ph-locations.js"></script -->
-        <script type="text/javascript" src="https://f001.backblazeb2.com/file/buonzz-assets/jquery.ph-locations-v1.0.1.js"></script>
-        <script type="text/javascript">
-            
-            var my_handlers = {
+		<script src="js/jquery.min.js"></script> 
+<script src="js/tinymce/tinymce.min.js"></script>
+<script src="js/tinymce/init-tinymce.min.js"></script>
+<!--jQuery Layer Slider --> 
+<script src="js/greensock.js"></script> 
+<script src="js/layerslider.transitions.js"></script> 
+<script src="js/layerslider.kreaturamedia.jquery.js"></script> 
+<!--jQuery Layer Slider --> 
+<script src="js/popper.min.js"></script> 
+<script src="js/bootstrap.min.js"></script> 
+<script src="js/owl.carousel.min.js"></script> 
+<script src="js/tmpl.js"></script> 
+<script src="js/jquery.dependClass-0.1.js"></script> 
+<script src="js/draggable-0.1.js"></script> 
+<script src="js/jquery.slider.js"></script> 
+<script src="js/wow.js"></script> 
+<script src="js/custom.js"></script>
 
-                fill_provinces:  function(){
-
-                    var region_code = $(this).val();
-                    $('#province').ph_locations('fetch_list', [{"region_code": region_code}]);
-                    
-                },
-
-                fill_cities: function(){
-
-                    var province_code = $(this).val();
-                    $('#city').ph_locations( 'fetch_list', [{"province_code": province_code}]);
-                },
-
-
-                fill_barangays: function(){
-
-                    var city_code = $(this).val();
-                    $('#barangay').ph_locations('fetch_list', [{"city_code": city_code}]);
-                }
-            };
-
-            $(function(){
-                $('#region').on('change', my_handlers.fill_provinces);
-                $('#province').on('change', my_handlers.fill_cities);
-                $('#city').on('change', my_handlers.fill_barangays);
-
-                $('#region').ph_locations({'location_type': 'regions'});
-                $('#province').ph_locations({'location_type': 'provinces'});
-                $('#city').ph_locations({'location_type': 'cities'});
-                $('#barangay').ph_locations({'location_type': 'barangays'});
-
-                $('#region').ph_locations('fetch_list');
-            });
-        </script>
 </body>
 </html>
