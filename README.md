@@ -1,2 +1,2 @@
 # homex_real_estate
-Home Dreamers - Real Estate System
+Home Dreamers Realty and Development Corporation - Real Estate System
