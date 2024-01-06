@@ -88,41 +88,52 @@ include("config.php");
             <div class="container">
                 <div class="row">
 			
-                    <?php 	
-                        $query=mysqli_query($conn,"SELECT * FROM `property` WHERE is_approved = true ORDER BY date DESC LIMIT 6");
-                        while($row=mysqli_fetch_array($query))
-                        {
-                    ?>
+
                 
-                    <div class="col-lg-4">
-                        <div class="featured-thumb hover-zoomer mb-4">
-                            <div class="overlay-black overflow-hidden position-relative"> <img src="admin/property/<?php echo $row['19'];?>" alt="pimage">
-                                <!-- <div class="featured bg-success text-white">New</div> -->
-                                <div class="sale bg-success text-white text-capitalize">For <?php echo $row['5'];?></div>
-                                <div class="price text-primary"><b>₱<?php echo $formattedNumber = number_format($row['price'], 2, '.', ',');;?> </b><span class="text-white"><?php echo $row['12'];?> Sqft</span></div>
-                            </div>          
-                            <div class="featured-thumb-data shadow-one">
-                                <div class="p-3">
-                                    <h5 class="text-secondary hover-text-success mb-2 text-capitalize"><a href="propertydetail.php?pid=<?php echo $row['0'];?>"><?php echo $row['1'];?></a></h5>
-                                    <span class="location text-capitalize"><i class="fas fa-map-marker-alt text-success"></i> <?php echo $row['14'];?></span> </div>
-                                <div class="bg-gray quantity px-4 pt-4">
-                                    <ul>
-                                        <li><span><?php echo $row['12'];?></span> Sqft</li>
-                                        <li><span><?php echo $row['6'];?></span> Beds</li>
-                                        <li><span><?php echo $row['7'];?></span> Baths</li>
-                                        <li><span><?php echo $row['9'];?></span> Kitchen</li>
-                                        <li><span><?php echo $row['8'];?></span> Balcony</li>
-                                        
-                                    </ul>
-                                </div>
-                                <div class="p-4 d-inline-block w-100">
-                                    <div class="float-left text-capitalize"><i class="fas fa-user text-success mr-1"></i>By : <?php echo $row['useragent'];?></div>
-                                    <div class="float-right"><i class="far fa-calendar-alt text-success mr-1"></i> <?php echo date('d-m-Y', strtotime($row['date']));?></div> 
+                <div class="col-lg-8">
+                        <div class="row">
+						
+		
+                            <?php 	
+                                $query=mysqli_query($conn,"SELECT * FROM `property` WHERE is_approved = true ORDER BY date DESC LIMIT 6");
+                                while($row=mysqli_fetch_array($query))
+                                {
+                            ?>
+                                     
+                            <div class="col-md-6">
+                                <div class="featured-thumb hover-zoomer mb-4">
+                                    <div class="overlay-black overflow-hidden position-relative"> <img src="admin/property/<?php echo $row['19'];?>" alt="pimage">
+                                        <!-- <div class="featured bg-success text-white">New</div> -->
+                                        <div class="sale bg-success text-white text-capitalize">For <?php echo $row['5'];?></div>
+                                        <div class="price text-primary"><b>₱<?php echo $formattedNumber = number_format($row['price'], 2, '.', ',');;?> </b><span class="text-white"><?php echo $row['12'];?> Sqft</span></div>
+                                    </div>          
+                                    <div class="featured-thumb-data shadow-one">
+                                        <div class="p-3">
+                                            <h5 class="text-secondary hover-text-success mb-2 text-capitalize"><a href="propertydetail.php?pid=<?php echo $row['0'];?>"><?php echo $row['1'];?></a></h5>
+                                            <span class="location text-capitalize"><i class="fas fa-map-marker-alt text-success"></i> <?php echo $row['14'];?></span> </div>
+                                        <div class="bg-gray quantity px-4 pt-4">
+                                            <ul>
+                                                <li><span><?php echo $row['12'];?></span> Sqft</li>
+                                                <li><span><?php echo $row['6'];?></span> Beds</li>
+                                                <li><span><?php echo $row['7'];?></span> Baths</li>
+                                                <li><span><?php echo $row['9'];?></span> Kitchen</li>
+                                                <li><span><?php echo $row['8'];?></span> Balcony</li>
+                                                
+                                            </ul>
+                                        </div>
+                                        <div class="p-4 d-inline-block w-100">
+                                            <div class="float-left text-capitalize"><i class="fas fa-user text-success mr-1"></i>By : <?php echo $row['useragent'];?></div>
+                                            <div class="float-right"><i class="far fa-calendar-alt text-success mr-1"></i> <?php echo date('d-m-Y', strtotime($row['date']));?></div> 
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
+                            <?php 		
+							    } 
+							?>
+                            
                         </div>
                     </div>
-                    <?php } ?>
 
                     <div class="col-lg-4">
       

@@ -13,8 +13,8 @@
         <title>Home Dreamers Admin - Login</title>
 		
 		<!-- Favicon -->
-		<link rel="shortcut icon" href="images/favicon.ico">
-
+		<link rel="shortcut icon" type="image/x-icon" href="assets/favicon.ico">
+		
 		<!-- Bootstrap CSS -->
         <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 		
