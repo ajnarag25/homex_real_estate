@@ -299,7 +299,7 @@ include("config.php");
                                 <div class="modal-dialog  modal-lg modal-dialog-centered" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Book Schedule</h5>
+                                            <h5 class="modal-title" id="exampleModalLabel">Book for Tripping</h5>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                             </button>
@@ -325,7 +325,7 @@ include("config.php");
                                             </div>
                                             <div class="modal-footer justify-content-center">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                <button type="submit" name="submit_book" class="btn btn-warning text-white">Book Schedule</button>
+                                                <button type="submit" name="submit_book" class="btn btn-warning text-white">Book</button>
                                             </div>
                                         </form>
                                     </div>
