@@ -107,12 +107,23 @@ if(!isset($_SESSION['auser']))
 									
 								</ul>
 							</li>
-						
+
+							<li class="menu-title"> 
+								<span>Reports</span>
+							</li>
+							<li class="submenu">
+								<a href=""><i class="fe fe-book"></i> <span> Reports</span>  <span class="menu-arrow"></span></a>
+								<ul style="display: none;">
+									<li><a href="reports1.php"> Available Property</a></li>
+									<li><a href="reports2.php"> Sold/Occupied Property</a></li>
+								</ul>
+							</li>
+
 							<li class="menu-title"> 
 								<span>Property</span>
 							</li>
 							<li class="submenu">
-								<a href="#"><i class="fe fe-user"></i> <span> Property</span> <span class="menu-arrow"></span></a>
+								<a href="#"><i class="fe fe-home"></i> <span> Property</span> <span class="menu-arrow"></span></a>
 								<ul style="display: none;">
 									<li><a href="propertyadd.php"> Add Property</a></li>
 									<li><a href="propertyview.php"> View Property </a></li>
@@ -121,12 +132,11 @@ if(!isset($_SESSION['auser']))
 								</ul>
 							</li>
 							
-	
 							<li class="menu-title"> 
 								<span>Query</span>
 							</li>
 							<li class="submenu">
-								<a href="#"><i class="fe fe-user"></i> <span> Query </span> <span class="menu-arrow"></span></a>
+								<a href="#"><i class="fe fe-bookmark"></i> <span> Query </span> <span class="menu-arrow"></span></a>
 								<ul style="display: none;">
 									<li><a href="contactview.php"> Contact </a></li>
 									<li><a href="feedbackview.php"> Feedback </a></li>
@@ -136,7 +146,7 @@ if(!isset($_SESSION['auser']))
 								<span>About</span>
 							</li>
 							<li class="submenu">
-								<a href="#"><i class="fe fe-user"></i> <span> About </span> <span class="menu-arrow"></span></a>
+								<a href="#"><i class="fe fe-info"></i> <span> About </span> <span class="menu-arrow"></span></a>
 								<ul style="display: none;">
 									<li><a href="aboutadd.php"> About </a></li>
 									<li><a href="aboutview.php"> View About </a></li>
