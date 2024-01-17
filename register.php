@@ -90,7 +90,7 @@ session_start();
 								<form method="post" action="functions.php" enctype="multipart/form-data">
 									<div class="form-check-inline">
 									  <label class="form-check-label">
-										<input type="radio" class="form-check-input" name="utype" value="user" checked onclick="hideIdNumber()">User
+										<input type="radio" class="form-check-input" name="utype" value="user" checked onclick="hideIdNumber()">Buyer
 									  </label>
 									</div>
 									<div class="form-check-inline">
