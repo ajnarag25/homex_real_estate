@@ -35,7 +35,7 @@ if(isset($_POST['add']))
     $floor = $_POST['floor'];
     $asize = $_POST['asize'];
     $status = $_POST['status'];
-    $uid = $_POST['uid'];
+    // $uid = $_POST['uid'];
     $aimage = $_FILES['aimage']['name'];
     $aimage2 = $_FILES['aimage2']['name'];
     $aimage4 = $_FILES['aimage4']['name'];
@@ -59,7 +59,7 @@ if(isset($_POST['add']))
     bedroom='{$bed}', bathroom='{$bath}', balcony='{$balc}', kitchen='{$kitc}', hall='{$hall}', floor='{$floor}', 
     size='{$asize}', price='{$price}', region='{$region}', city='{$city}', province='{$province}', 
     pimage='{$aimage}', pimage1='{$aimage1}', pimage2='{$aimage2}', pimage3='{$aimage3}', pimage4='{$aimage4}',
-    uid='{$uid}', status='{$status}', mapimage='{$fimage}', topmapimage='{$fimage1}', groundmapimage='{$fimage2}', 
+    status='{$status}', mapimage='{$fimage}', topmapimage='{$fimage1}', groundmapimage='{$fimage2}', 
     totalfloor='{$floor}' WHERE pid = {$pid}";
 
     $result = mysqli_query($conn, $sql);
@@ -317,12 +317,12 @@ if(isset($_POST['add']))
 														<input type="text" class="form-control" name="asize" required value="<?php echo $row['12']; ?>">
 													</div>
 												</div>
-												<div class="form-group row">
+												<!-- <div class="form-group row">
 													<label class="col-lg-3 col-form-label">Uid</label>
 													<div class="col-lg-9">
 														<input type="text" class="form-control" name="uid" required value="<?php echo $row['24']; ?>">
 													</div>
-												</div>
+												</div> -->
 												<!-- <div class="form-group row">
 													<label class="col-lg-3 col-form-label">Status</label>
 													<div class="col-lg-9">
