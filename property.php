@@ -95,7 +95,7 @@ include("config.php");
 						
 		
                             <?php 	
-                                $query=mysqli_query($conn,"SELECT * FROM `property` WHERE is_approved = true ORDER BY date DESC LIMIT 6");
+                                $query=mysqli_query($conn,"SELECT * FROM `property` WHERE is_approved = true AND stype != 'Sold Out' ORDER BY date DESC LIMIT 6");
                                 while($row=mysqli_fetch_array($query))
                                 {
                             ?>
@@ -104,7 +104,7 @@ include("config.php");
                                 <div class="featured-thumb hover-zoomer mb-4">
                                     <div class="overlay-black overflow-hidden position-relative"> <img src="admin/property/<?php echo $row['19'];?>" alt="pimage">
                                         <!-- <div class="featured bg-success text-white">New</div> -->
-                                        <div class="sale bg-success text-white text-capitalize">For <?php echo $row['5'];?></div>
+                                        <div class="sale bg-success text-white text-capitalize"><?php echo $row['5'];?></div>
                                         <div class="price text-primary"><b>₱<?php echo $formattedNumber = number_format($row['price'], 2, '.', ',');;?> </b><span class="text-white"><?php echo $row['12'];?> Sqft</span></div>
                                     </div>          
                                     <div class="featured-thumb-data shadow-one">
