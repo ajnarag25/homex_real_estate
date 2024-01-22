@@ -433,7 +433,7 @@ include("config.php");
                                                 <!-- <p>- 10% of <?php echo $formattedNumber ?></p> -->
                                                 <hr>
                                                 <h5>Downpayments:</h5>
-                                                <p><span class="text-danger">*</span> Note: 5% - 20% are default in the system it may change if the agent proposed a new discount.</p>
+                                                <p><span class="text-danger">*</span> Note: 5% - 20% are default in the system it may change if the agent provide a new discount.</p>
                                                 <ul>
                                                     <li>- 5% Downpayment = <b>P <?php echo number_format($disc1, 2, '.', ',') ?></b></li>
                                                     <li>- 10% Downpayment = <b>P <?php echo number_format($disc2, 2, '.', ',') ?></b></li>
