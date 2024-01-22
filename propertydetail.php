@@ -403,9 +403,55 @@ include("config.php");
                                     echo $formattedNumber;
                                     ?>
                                 </div>
-                                <div class="text-left text-md-right">Price</div>
+                                
+                                <div class="text-left text-md-right">
+                                    <span><a href="" class="text-warning" data-toggle="modal" data-target="#computation<?php echo $_GET['pid']; ?>">Show computation</a></span>
+                                    <br>
+                                    <label for="">Price</label>
+                                </div>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="computation<?php echo $_GET['pid']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Computation for <?php echo $row['1'] ?></h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <?php 
+                                                    $compute = $row['13'] * 0.10;
+                                                    $disc1 = $row['13'] * 0.05;
+                                                    $disc2 = $row['13'] * 0.10;
+                                                    $disc3 = $row['13'] * 0.15;
+                                                    $disc4 = $row['13'] * 0.20;
+                                                    $dp = number_format($compute, 2, '.', ',');
+                                                ?>
+                                                <h5>Reservation Fee : <b class="text-underline">P <?php echo $dp ?></b></h5>
+                                                <!-- <p>- 10% of <?php echo $formattedNumber ?></p> -->
+                                                <hr>
+                                                <h5>Downpayments:</h5>
+                                                <p><span class="text-danger">*</span> Note: 5% - 20% are default in the system it may change if the agent proposed a new discount.</p>
+                                                <ul>
+                                                    <li>- 5% Downpayment = <b>P <?php echo number_format($disc1, 2, '.', ',') ?></b></li>
+                                                    <li>- 10% Downpayment = <b>P <?php echo number_format($disc2, 2, '.', ',') ?></b></li>
+                                                    <li>- 15% Downpayment = <b>P <?php echo number_format($disc3, 2, '.', ',') ?></b></li>
+                                                    <li>- 20% Downpayment = <b>P <?php echo number_format($disc4, 2, '.', ',') ?></b></li>
+                                                </ul>
+                                                <!-- <hr>
+                                                <h5>Monthly Amortization:</h5> -->
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+
                         <div class="property-details">
                             <h4 class="text-secondary my-4">Description</h4>
                             <p><?php echo $row['2'];?></p>

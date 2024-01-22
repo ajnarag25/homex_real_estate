@@ -1,4 +1,4 @@
-<header id="header" class="transparent-header-modern fixed-header-bg-white w-100">
+<header id="" class="transparent-header-modern fixed-header-bg-white w-100">
             <div class="top-header bg-secondary">
                 <div class="container">
                     <div class="row">

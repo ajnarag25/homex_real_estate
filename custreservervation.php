@@ -275,32 +275,32 @@ if(!isset($_SESSION['uemail']))
                                                     <div class="col">
                                                         <div class="form-check">
                                                             <input class="form-check-input" type="radio" name="discount" value="5" checked>
-                                                            <label class="form-check-label">
-                                                                5% Discount
-                                                            </label>
-                                                            </div>
-                                                            <div class="form-check">
+                                                            <label class="form-check-label">5% Discount</label>
+                                                        </div>
+                                                        <div class="form-check">
                                                             <input class="form-check-input" type="radio" name="discount" value="10">
-                                                            <label class="form-check-label">
-                                                                10% Discount
-                                                            </label>
+                                                            <label class="form-check-label">10% Discount</label>
                                                         </div>
                                                     </div>
                                                     <div class="col">
                                                         <div class="form-check">
                                                             <input class="form-check-input" type="radio" name="discount" value="15">
-                                                            <label class="form-check-label">
-                                                                15% Discount
-                                                            </label>
-                                                            </div>
-                                                            <div class="form-check">
+                                                            <label class="form-check-label">15% Discount</label>
+                                                        </div>
+                                                        <div class="form-check">
                                                             <input class="form-check-input" type="radio" name="discount" value="20">
-                                                            <label class="form-check-label">
-                                                                20% Discount
-                                                            </label>
+                                                            <label class="form-check-label">20% Discount</label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="discount" value="others" id="othersRadio">
+                                                            <label class="form-check-label" for="othersRadio">Others</label>
+                                                            <div id="othersInput" style="display: none;">
+                                                                <input type="number" class="form-control" name="discount" placeholder="Enter custom discount">
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
+
                                                 <hr>
                                                 <!-- <label for="">Upload Sample Computation (Breakdown):</label>
                                                 <input type="file" name="file_discount" class="form-control" required> -->
@@ -358,6 +358,17 @@ if(!isset($_SESSION['uemail']))
     $('#history').DataTable()
 </script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    $(document).ready(function () {
+        $('input[name="discount"]').change(function () {
+            if ($(this).val() === 'others') {
+                $('#othersInput').show();
+            } else {
+                $('#othersInput').hide();
+            }
+        });
+    });
+</script>
 <!-- Validation Messages -->
 <?php 
     if (isset($_SESSION['status']) && $_SESSION['status'] !='')
