@@ -134,7 +134,7 @@ if(!isset($_SESSION['uemail']))
                                 <td class="text-capitalize"><?php echo $row['title'];?></td>				
                                 <td class="text-capitalize"><?php echo $row['type'];?></td>
                                 <!-- <td class="text-capitalize">For <?php echo $row['pstatus'];?></td> -->
-                                <td class="text-capitalize">For <?php echo $row['stype'];?></td>
+                                <td class="text-capitalize"><?php echo $row['stype'];?></td>
                                 <td class="text-capitalize">
                                     P<?php
                                         $formattedNumber = number_format($row['price'], 2, '.', ',');
