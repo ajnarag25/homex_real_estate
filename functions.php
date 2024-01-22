@@ -308,12 +308,13 @@
         $id = $_POST['user_id'];
         $discount = $_POST['discount'];
         
-        $uploadDirectory = 'uploads/';
+        // $uploadDirectory = 'uploads/';
 
-        $file = uploadFile('file_discount', $uploadDirectory);
+        // $file = uploadFile('file_discount', $uploadDirectory);
 
         if ($id != ''){
-            $conn->query("UPDATE reservation SET discount='$discount' , computation='$file' WHERE id='$id'") or die($conn->error);
+            // $conn->query("UPDATE reservation SET discount='$discount' , computation='$file' WHERE id='$id'") or die($conn->error);
+            $conn->query("UPDATE reservation SET discount='$discount' WHERE id='$id'") or die($conn->error);
             $_SESSION['status'] = 'Successfully Set a Discount!';
             $_SESSION['status_icon'] = 'success';
             header('location:custreservervation.php');

@@ -271,10 +271,39 @@ if(!isset($_SESSION['uemail']))
                                             <form action="functions.php" method="post" enctype="multipart/form-data">
                                                 <input type="hidden" name="user_id" value="<?php echo $row['id']; ?>">
                                                 <label for="">Provide Discount? (%)</label>
-                                                <input type="number" name="discount" class="form-control" required>
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="discount" value="5" checked>
+                                                            <label class="form-check-label" for="flexRadioDefault1">
+                                                                5% Discount
+                                                            </label>
+                                                            </div>
+                                                            <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="discount" value="10">
+                                                            <label class="form-check-label" for="flexRadioDefault2">
+                                                                10% Discount
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="discount" value="15">
+                                                            <label class="form-check-label" for="flexRadioDefault1">
+                                                                15% Discount
+                                                            </label>
+                                                            </div>
+                                                            <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="discount" value="20">
+                                                            <label class="form-check-label" for="flexRadioDefault2">
+                                                                20% Discount
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                                 <hr>
-                                                <label for="">Upload Sample Computation (Breakdown):</label>
-                                                <input type="file" name="file_discount" class="form-control" required>
+                                                <!-- <label for="">Upload Sample Computation (Breakdown):</label>
+                                                <input type="file" name="file_discount" class="form-control" required> -->
                                                 <button type="submit" class="btn btn-primary w-100 mt-4" name="agent_disc">Submit Discount</button>
                                             </form>
                                         </div>
