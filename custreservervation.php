@@ -207,7 +207,7 @@ if(!isset($_SESSION['uemail']))
                                                         ?>
                                                         <span class="text-warning"><?php echo $row['stype'] ?></span>
                                                         <?php
-                                                    }elseif ($row['stype'] == 'For Reservation'){
+                                                    }elseif ($row['stype'] == 'Reservation'){
                                                         ?>
                                                         <span class="text-danger"><?php echo $row['stype'] ?></span>
                                                         <?php
@@ -224,6 +224,7 @@ if(!isset($_SESSION['uemail']))
                                                 <option value=""selected disabled><?php echo $row['stype'] ?></option>
                                                 <option value="Pending">Pending</option>
                                                 <option value="Reservation">For Reservation</option>
+                                                <option value="Reserved">Reserved (Downpayment)</option>
                                                 <option value="Sold Out">Sold Out</option>
                                             </select>
                                             <button type="submit" class="btn btn-danger w-100 mt-2" name="change_stat">Change Status</button>
