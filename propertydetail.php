@@ -412,7 +412,7 @@ include("config.php");
 
                                 <!-- Modal -->
                                 <div class="modal fade" id="computation<?php echo $_GET['pid']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
+                                    <div class="modal-dialog modal-xl" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h5 class="modal-title" id="exampleModalLabel">Computation for <?php echo $row['1'] ?></h5>
@@ -427,21 +427,110 @@ include("config.php");
                                                     $disc2 = $row['13'] * 0.10;
                                                     $disc3 = $row['13'] * 0.15;
                                                     $disc4 = $row['13'] * 0.20;
+                                                    $net = $row['13'] - 20000;
+                                                    $price = number_format($row['13'], 2, '.', ',');
                                                     $dp = number_format($compute, 2, '.', ',');
+                                                    $net_equity = number_format($net, 2, '.', ',')
                                                 ?>
-                                                <h5>Reservation Fee : <b class="text-underline">P <?php echo $dp ?></b></h5>
-                                                <!-- <p>- 10% of <?php echo $formattedNumber ?></p> -->
-                                                <hr>
-                                                <h5>Downpayments:</h5>
-                                                <p><span class="text-danger">*</span> Note: 5% - 20% are default in the system it may change if the agent provide a new discount.</p>
-                                                <ul>
-                                                    <li>- 5% Downpayment = <b>P <?php echo number_format($disc1, 2, '.', ',') ?></b></li>
-                                                    <li>- 10% Downpayment = <b>P <?php echo number_format($disc2, 2, '.', ',') ?></b></li>
-                                                    <li>- 15% Downpayment = <b>P <?php echo number_format($disc3, 2, '.', ',') ?></b></li>
-                                                    <li>- 20% Downpayment = <b>P <?php echo number_format($disc4, 2, '.', ',') ?></b></li>
-                                                </ul>
-                                                <!-- <hr>
-                                                <h5>Monthly Amortization:</h5> -->
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                    <h5>Reservation Fee :</h5>
+                                                        <ul>
+                                                            <li>Equity Down payment 10% of <b>P <?php echo $price ?></b></li>
+                                                            <li>Less Reservation fee: <b>P 20,000</b> </li>
+                                                            <li>Net Equity Payment: <b>P <?php echo $net_equity ?></b> </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <h5>Downpayments:</h5>
+                                                        <p><span class="text-danger">*</span> Note: 5% - 20% are default in the system it may change if the agent provide a new discount.</p>
+                                                        <ul>
+                                                            <li>- 5% Downpayment = <b>P <?php echo number_format($disc1, 2, '.', ',') ?></b></li>
+                                                            <li>- 10% Downpayment = <b>P <?php echo number_format($disc2, 2, '.', ',') ?></b></li>
+                                                            <li>- 15% Downpayment = <b>P <?php echo number_format($disc3, 2, '.', ',') ?></b></li>
+                                                            <li>- 20% Downpayment = <b>P <?php echo number_format($disc4, 2, '.', ',') ?></b></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <h5>Estimated Monthly Amortization:</h5>
+                                                <?php 
+                                                    $selling_price = $row['13'];
+                                                    // $monthly_rate = 0.07 / 12 / 100;
+                                                    // $month1 = 60 * 12;
+                                                    // $month2 = 120 * 12;
+                                                    // $month3 = 180 * 12;
+                                                    // $month4 = 240 * 12;
+                                                    
+                                                    // $monthly_payment_1 = $selling_price * ($monthly_rate * (pow(1 + $monthly_rate, $month1))) / ((pow(1 + $monthly_rate, $month1)) - 1);
+                                                    // $monthly_payment_2 = $selling_price * ($monthly_rate * (pow(1 + $monthly_rate, $month2))) / ((pow(1 + $monthly_rate, $month2)) - 1);
+                                                    // $monthly_payment_3 = $selling_price * ($monthly_rate * (pow(1 + $monthly_rate, $month3))) / ((pow(1 + $monthly_rate, $month3)) - 1);
+                                                    // $monthly_payment_4 = $selling_price * ($monthly_rate * (pow(1 + $monthly_rate, $month4))) / ((pow(1 + $monthly_rate, $month4)) - 1);
+
+                                                    $factor_rate_5_years = 0.0198012;
+                                                    $factor_rate_10_years = 0.01161085;
+                                                    $factor_rate_15_years = 0.00898828;
+                                                    $factor_rate_20_years = 0.00775299;
+
+                                                    // Calculate Amount and Income Requirement for each term
+                                                    $amount_5_years = $factor_rate_5_years * $selling_price;
+                                                    $income_requirement_5_years = $factor_rate_5_years * $selling_price * 3;
+
+                                                    $amount_10_years = $factor_rate_10_years * $selling_price;
+                                                    $income_requirement_10_years = $factor_rate_10_years * $selling_price * 3;
+
+                                                    $amount_15_years = $factor_rate_15_years * $selling_price;
+                                                    $income_requirement_15_years = $factor_rate_15_years * $selling_price * 3;
+
+                                                    $amount_20_years = $factor_rate_20_years * $selling_price;
+                                                    $income_requirement_20_years = $factor_rate_20_years * $selling_price * 3;
+                                                    
+                                                ?>
+                                                <table class="table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col">Term</th>
+                                                            <th scope="col">Interst Rate</th>
+                                                            <th scope="col">Factor Rate</th>
+                                                            <th scope="col">Amount</th>
+                                                            <th scope="col">Income Requirement</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <tr>
+                                                            <th>5</th>
+                                                            <td>7.0%</td>
+                                                            <td>0.01980120</td>
+                                                            <td>P <?php echo number_format($amount_5_years, 2, '.', ',') ?></td>
+                                                            <td>P <?php echo number_format($income_requirement_5_years, 2, '.',',') ?></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>10</th>
+                                                            <td>7.0%</td>
+                                                            <td>0.01161085</td>
+                                                            <td>P <?php echo number_format($amount_10_years, 2, '.', ',') ?></td>
+                                                            <td>P <?php echo number_format($income_requirement_10_years, 2, '.',',') ?></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>15</th>
+                                                            <td>7.0%</td>
+                                                            <td>0.00898828</td>
+                                                            <td>P <?php echo number_format($amount_15_years, 2, '.', ',') ?></td>
+                                                            <td>P <?php echo number_format($income_requirement_15_years, 2, '.',',') ?></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>20</th>
+                                                            <td>7.0%</td>
+                                                            <td>0.00775299</td>
+                                                            <td>P <?php echo number_format($amount_20_years, 2, '.', ',') ?></td>
+                                                            <td>P <?php echo number_format($income_requirement_20_years, 2, '.',',') ?></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                               
+                                                <p>Fixed for five (3) years. Computation for Interest rate is at 7% fixed for five (3) years only</p>
+                                                <p>A. Prices are subject to change without prior notice.</p>
+                                                <p>B. Bank Fees rates may vary per bank.</p>
+                                               
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
