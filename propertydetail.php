@@ -120,17 +120,34 @@ include("config.php");
                         </div>
                         <div class="row mb-4">
                             <div class="col-md-4">
-                                <div class="bg-success d-table px-3 py-2 rounded text-white text-capitalize">
-                                    <?php 
-                                        if($row['5'] == 'Pending'){
-                                            echo 'Pending';
-                                        }elseif($row['5'] == 'Sold Out'){
-                                            echo 'Sold Out';
-                                        }else{
-                                            echo 'For '.$row['5'];
-                                        }
-                                    ?>
-                                </div>
+                                <?php 
+                                    if($row['5'] == 'Pending'){
+                                        ?>
+                                        <div class="bg-warning d-table px-3 py-2 rounded text-white text-capitalize">
+                                            <?php echo 'Pending' ?>
+                                        </div>
+                                        <?php
+                                    }elseif($row['5'] == 'Sold Out'){
+                                        ?>
+                                        <div class="bg-secondary d-table px-3 py-2 rounded text-white text-capitalize">
+                                            <?php echo 'Sold Out' ?>
+                                        </div>
+                                        <?php
+                                    }elseif($row['5'] == 'Reserved'){
+                                        ?>
+                                        <div class="bg-danger d-table px-3 py-2 rounded text-white text-capitalize">
+                                            <?php echo 'Reserved' ?>
+                                        </div>
+                                        <?php
+                                    }else{
+                                        ?>
+                                        <div class="bg-success d-table px-3 py-2 rounded text-white text-capitalize">
+                                            <?php echo 'For '.$row['5']; ?>
+                                        </div>
+                                        <?php
+                                    }
+                                ?>
+                 
                                 <h4 class="mt-4 text-secondary text-capitalize"><?php echo $row['1'];?></h4>
                                 <span class="mb-sm-20 d-block text-capitalize"><i class="fas fa-map-marker-alt text-success font-12"></i> &nbsp;<?php echo $row['16'];?>, <?php echo $row['17'];?>, <?php echo $row['15'];?></span>
 							</div>
@@ -143,7 +160,7 @@ include("config.php");
                                     $check_status = mysqli_query($conn, "SELECT * FROM property WHERE pid = '$property_id';");
                                     $property_data = mysqli_fetch_assoc($check_status);       
 
-                                    if($property_data['stype'] == 'Sold Out'){
+                                    if($property_data['stype'] == 'Reservation' OR $property_data['stype'] == 'Reserved' OR $property_data['stype'] == 'Sold Out'){
                                         // display nothing
                                     }else{
                                         $check_if_inquired = mysqli_query($conn,"SELECT * FROM inquire WHERE uid='$uid' AND property_id = '$property_id';");
@@ -256,7 +273,7 @@ include("config.php");
                                 $check_status = mysqli_query($conn, "SELECT * FROM property WHERE pid = '$property_id';");
                                 $property_data = mysqli_fetch_assoc($check_status);           
 
-                                if($property_data['stype'] == 'For Reservation' OR $property_data['stype'] == 'Sold Out'){
+                                if($property_data['stype'] == 'Reservation' OR $property_data['stype'] == 'Reserved' OR $property_data['stype'] == 'Sold Out'){
                                    // display nothing
                                 }else{
                                      // Check if the property is reserved by the current user
