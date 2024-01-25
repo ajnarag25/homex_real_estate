@@ -306,8 +306,12 @@
     // send discount
     if (isset($_POST['agent_disc'])) {
         $id = $_POST['user_id'];
-        $discount = $_POST['discount'];
-        
+        if($_POST['discount']){
+            $discount = $_POST['discount'];
+        }else{
+            $discount = $_POST['disc'];
+        }
+
         // $uploadDirectory = 'uploads/';
 
         // $file = uploadFile('file_discount', $uploadDirectory);
@@ -386,18 +390,30 @@
         $id = $_POST['user_id'];
         $property_id = $_POST['prop_id'];
         $stat = $_POST['tag_stat'];
+        $dp = $_POST['downpayment'];
 
-        if ($id != ''){
-            $conn->query("UPDATE reservation SET tag_stat='$stat' WHERE uid='$id' AND property_id='$property_id'") or die($conn->error);
-            $_SESSION['status'] = 'Successfully Tagged!';
-            $_SESSION['status_icon'] = 'success';
-            header('location:custreservervation.php');
-        }else{
-            $_SESSION['status'] = 'An Error Occured!';
-            $_SESSION['status_icon'] = 'danger';
+        if($dp < 20000 AND $dp != ''){
+            $_SESSION['status'] = 'You inputted lower than P20,000';
+            $_SESSION['status_icon'] = 'warning';
             header('location:custreservervation.php');
         }
-
+        else{
+            if($dp != ''){
+                $downpayment = $dp;
+            }else{
+                $downpayment = 20000;
+            }
+            if ($id != ''){
+                $conn->query("UPDATE reservation SET tag_stat='$stat', reservation_fee='$downpayment' WHERE uid='$id' AND property_id='$property_id'") or die($conn->error);
+                $_SESSION['status'] = 'Successfully Tagged!';
+                $_SESSION['status_icon'] = 'success';
+                header('location:custreservervation.php');
+            }else{
+                $_SESSION['status'] = 'An Error Occured!';
+                $_SESSION['status_icon'] = 'danger';
+                header('location:custreservervation.php');
+            }
+        }
     }
     
 ?>

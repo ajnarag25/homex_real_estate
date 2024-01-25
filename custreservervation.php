@@ -241,6 +241,11 @@ if(!isset($_SESSION['uemail']))
                                                 <option value="Pag-ibig Finance">Pag-ibig Finance</option>
                                                 <option value="In House (Installment - Buyer)">In House (Installment - Buyer)</option>
                                             </select>
+                                            <br>
+                                            <label for="">Reservation/Downpayment (Optional):</label>
+                                            <br>
+                                            <input class="form-control" type="number" name="downpayment" >
+                                            <p>*Note Reservation/Downpayment will be depending on buyer's payment. Default of reservation fee is P 20,000</p>
                                             <button type="submit" class="btn btn-danger w-100 mt-2" name="tagging_status">Tag Status</button>
                                         </div>
                                         </form>
@@ -293,10 +298,10 @@ if(!isset($_SESSION['uemail']))
                                                             <label class="form-check-label">20% Discount</label>
                                                         </div>
                                                         <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="discount" value="others" id="othersRadio">
+                                                            <input class="form-check-input" type="radio" name="discount" value="" id="othersRadio">
                                                             <label class="form-check-label" for="othersRadio">Others</label>
                                                             <div id="othersInput" style="display: none;">
-                                                                <input type="number" class="form-control" name="discount" placeholder="Enter custom discount">
+                                                                <input type="number" class="form-control" name="disc" placeholder="Enter custom discount">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -362,7 +367,7 @@ if(!isset($_SESSION['uemail']))
 <script>
     $(document).ready(function () {
         $('input[name="discount"]').change(function () {
-            if ($(this).val() === 'others') {
+            if ($(this).val() === '') {
                 $('#othersInput').show();
             } else {
                 $('#othersInput').hide();
