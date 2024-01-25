@@ -97,7 +97,7 @@ if(!isset($_SESSION['uemail']))
                         </div>
 					</div>
                     
-					<table class="items-list col-lg-12" style="border-collapse:inherit;" id="history">
+					<table class="items-list table-responsive" style="border-collapse:inherit;" id="history">
                         <thead>
                              <tr  class="bg-primary">
                                 <!-- <th class="text-white font-weight-bolder">Properties</th>
