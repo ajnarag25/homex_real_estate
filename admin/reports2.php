@@ -97,7 +97,7 @@ if(!isset($_SESSION['auser']))
                                         
                                             <tbody>
 											<?php
-												$query = "SELECT * FROM property WHERE stype='Sold Out' OR stype='Reservation'";
+												$query = "SELECT * FROM property WHERE stype='Sold Out' OR stype='Reservation' OR stype='Reserved'";
 												$result = mysqli_query($conn, $query);
 												while ($row = mysqli_fetch_array($result)) {
 				
