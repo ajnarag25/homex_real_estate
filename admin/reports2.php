@@ -59,10 +59,10 @@ if(!isset($_SESSION['auser']))
 					<div class="page-header">
 						<div class="row">
 							<div class="col">
-								<h3 class="page-title">Reports - List of Sold / Occupied Properties</h3>
+								<h3 class="page-title">Reports - List of Sold / Reserved Properties</h3>
 								<ul class="breadcrumb">
 									<li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
-									<li class="breadcrumb-item active">List of Sold / Occupied Properties</li>
+									<li class="breadcrumb-item active">List of Sold / Reserved Properties</li>
 								</ul>
 							</div>
 						</div>
@@ -73,7 +73,7 @@ if(!isset($_SESSION['auser']))
 						<div class="col-sm-12">
 							<div class="card">
 								<div class="card-header">
-									<h4 class="card-title">List of Sold / Occupied Properties</h4>
+									<h4 class="card-title">List of Sold / Reserved Properties</h4>
 									<?php 
 											if(isset($_GET['msg']))	
 											echo $_GET['msg'];
@@ -97,7 +97,7 @@ if(!isset($_SESSION['auser']))
                                         
                                             <tbody>
 											<?php
-												$query = "SELECT * FROM property WHERE stype='Sold Out' OR stype='Reservation' OR stype='Reserved'";
+												$query = "SELECT * FROM property WHERE stype='Sold Out' OR stype='Reserved' OR stype='Reserved'";
 												$result = mysqli_query($conn, $query);
 												while ($row = mysqli_fetch_array($result)) {
 				

@@ -115,7 +115,7 @@ if(!isset($_SESSION['auser']))
 								<a href=""><i class="fe fe-book"></i> <span> Reports</span>  <span class="menu-arrow"></span></a>
 								<ul style="display: none;">
 									<li><a href="reports1.php"> Available Property</a></li>
-									<li><a href="reports2.php"> Sold/Occupied Property</a></li>
+									<li><a href="reports2.php"> Sold/Reserved Property</a></li>
 								</ul>
 							</li>
 
