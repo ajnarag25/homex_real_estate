@@ -257,7 +257,7 @@ if(!isset($_SESSION['uemail']))
                             </div>
 
                             <div class="modal fade" id="compose<?php echo $row['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog  modal-lg modal-dialog-centered" role="document">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="exampleModalLabel">Compose Message</h5>
@@ -270,8 +270,22 @@ if(!isset($_SESSION['uemail']))
                                             <form action="functions.php" method="post">
                                                 <input type="hidden" name="user_id" value="<?php echo $row['id']; ?>">
                                                 <input type="hidden" name="email" value="<?php echo $row['email']; ?>">
-                                                <textarea class="form-control" placeholder="Enter your message here..." name="msg" id="" cols="20" rows="5" required></textarea>
-                                                <button type="submit" class="btn btn-primary w-100 mt-4" name="agent_msg">Send Message</button>
+                                                <?php
+                                                    if($row['message'] == ''){
+                                                        ?>
+                                                        <textarea class="form-control" placeholder="Enter your message here..." name="msg" id="" cols="5" rows="3" required></textarea>
+                                                        <button type="submit" class="btn btn-primary w-100 mt-4" name="agent_msg">Send Message</button>
+                                                    <?php
+                                                    }else{
+                                                        ?>
+                                                        <label for="">Message of Buyer:</label>
+                                                        <textarea class="form-control" name="msg" id="" cols="5" rows="3" readonly><?php echo $row['reply'] ?></textarea>
+                                                        <hr>
+                                                        <textarea class="form-control" placeholder="Enter your message here..." name="msg" id="" cols="5" rows="3" required></textarea>
+                                                        <button type="submit" class="btn btn-primary w-100 mt-4" name="agent_msg">Send Message</button>
+                                                    <?php
+                                                    }
+                                                ?>
                                             </form>
                                             <hr>
                                             <form action="functions.php" method="post" enctype="multipart/form-data">

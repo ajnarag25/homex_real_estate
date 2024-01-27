@@ -142,9 +142,42 @@ if(!isset($_SESSION['uemail']))
                                 <td class="text-capitalize"><?php echo $row['date_sched'];?></td>
 								<td class="text-capitalize"><?php echo $row['time_sched'];?></td>
                                 <td class="text-capitalize">
+                                    <button class="btn btn-warning text-white w-100" data-toggle="modal" data-target="#resched<?php echo $row['id']; ?>">Resched</button>
                                     <button class="btn btn-secondary w-100" data-toggle="modal" data-target="#view<?php echo $row['id']; ?>">View</button>
                                 </td>
                             </tr>
+                            
+                            <!-- Modal Book Sched-->
+                            <div class="modal fade" id="resched<?php echo $row['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog  modal-lg modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Resched for Book Tripping</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                    <div class="modal-body">
+                                        <form action="functions.php" method="post" >
+                                            <input type="hidden" name="uid" value="<?php echo $row['id'] ?>"> 
+                                            <div class="row">
+                                                <div class="col">
+                                                    <label for="">Date:</label>
+                                                    <input type="date" name="date_sched" class="form-control" required>
+                                                    <hr>
+                                                    <label for="">Time:</label>
+                                                    <input type="time" name="time_sched" class="form-control" required>
+                                                </div>
+                                            </div>
+                                            </div>
+                                            <div class="modal-footer justify-content-center">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <button type="submit" name="reched_book" class="btn btn-warning text-white">Resched</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
 
                             <div class="modal fade" id="view<?php echo $row['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog " role="document">
@@ -158,22 +191,38 @@ if(!isset($_SESSION['uemail']))
                                     <div class="modal-body">
                                         <form action="functions.php" method="post">
                                             <div class="modal-body">
-                                  
+
                                                     <ul class="text-center">
                                                     <label for="">User Information:</label>
+                                                        <input type="hidden" name="uid" value="<?php echo $row['id'] ?>"> 
                                                         <li>Name: <?php echo $_SESSION['get_data']['fname'];?> <?php echo $_SESSION['get_data']['lname'];?></li>
                                                         <li>Email: <?php echo $_SESSION['get_data']['uemail'];?></li>
                                                         <li>Contact No: <?php echo $_SESSION['get_data']['uphone'];?></li>
                                                     </ul>
                                                     <hr>
-                                     
-                           
-                                                   <label for="">Agent Message:</label>
-                                                   <textarea class="form-control" name="" id="" cols="10" rows="5" readonly><?php echo $row['message'] ?></textarea>
-                                         
+
+                                                    <?php 
+                                                        if($row['message'] == ''){
+                                                            ?>
+                                                            <label for="">Agent Message:</label>
+                                                            <textarea class="form-control" name="" id="" cols="5" rows="3" readonly><?php echo $row['message'] ?></textarea>
+                                                        <?php    
+                                                        }else{
+                                                            ?>
+                                                            <label for="">Agent Message:</label>
+                                                            <textarea class="form-control" name="" id="" cols="5" rows="3" readonly><?php echo $row['message'] ?></textarea>
+                                                            
+                                                            <label for="">Reply:</label>
+                                                            <textarea class="form-control" name="reply" id="" cols="5" rows="3" required></textarea>
+                                                            <br>
+                                                                                                
+                                                            <button type="submit" class="btn btn-success w-100" name="reply_msg_sched">Reply</button>
+                                                        <?php
+                                                        }
+                                                    ?>
                                             </div>
                                       
-                                            <div class="modal-footer">
+                                            <div class="modal-footer">                     
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                             </div>
                                         </form>

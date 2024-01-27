@@ -415,5 +415,58 @@
             }
         }
     }
+
+
+    // reply message sched
+    if (isset($_POST['reply_msg_sched'])){
+        $id = $_POST['uid'];
+        $reply = $_POST['reply'];
+
+        if ($id != ''){
+            $conn->query("UPDATE sched_book SET reply='$reply' WHERE id='$id'") or die($conn->error);
+            $_SESSION['status'] = 'Successfully Send your Message';
+            $_SESSION['status_icon'] = 'success';
+            header('location:schedule.php');
+        }else{
+            $_SESSION['status'] = 'An Error Occured!';
+            $_SESSION['status_icon'] = 'danger';
+            header('location:schedule.php');
+        }
+    }
+
+    // rechedule book for tripping
+    if (isset($_POST['reched_book'])){
+        $id = $_POST['uid'];
+        $date = $_POST['date_sched'];
+        $time = $_POST['time_sched'];
+
+        if ($id != ''){
+            $conn->query("UPDATE sched_book SET date_sched='$date', time_sched='$time' WHERE id='$id'") or die($conn->error);
+            $_SESSION['status'] = 'Successfully Rescheduled your Tripping';
+            $_SESSION['status_icon'] = 'success';
+            header('location:schedule.php');
+        }else{
+            $_SESSION['status'] = 'An Error Occured!';
+            $_SESSION['status_icon'] = 'danger';
+            header('location:schedule.php');
+        }
+    }
+
+    // reply message reserve
+    if (isset($_POST['reply_msg_reserve'])){
+        $id = $_POST['uid'];
+        $reply = $_POST['reply'];
+
+        if ($id != ''){
+            $conn->query("UPDATE reservation SET reply='$reply' WHERE id='$id'") or die($conn->error);
+            $_SESSION['status'] = 'Successfully Send your Message';
+            $_SESSION['status_icon'] = 'success';
+            header('location:reservation.php');
+        }else{
+            $_SESSION['status'] = 'An Error Occured!';
+            $_SESSION['status_icon'] = 'danger';
+            header('location:reservation.php');
+        }
+    }
     
 ?>

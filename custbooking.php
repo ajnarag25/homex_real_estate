@@ -173,7 +173,7 @@ if(!isset($_SESSION['uemail']))
                             </div>
 
                             <div class="modal fade" id="compose<?php echo $row['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog  modal-lg modal-dialog-centered" role="document">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="exampleModalLabel">Compose Message</h5>
@@ -186,7 +186,21 @@ if(!isset($_SESSION['uemail']))
                                             <div class="modal-body">
                                                 <input type="hidden" name="user_id" value="<?php echo $row['id']; ?>">
                                                 <input type="hidden" name="email" value="<?php echo $row['email']; ?>">
-                                                <textarea class="form-control" placeholder="Enter your message here..." name="msg" id="" cols="20" rows="5" required></textarea>
+                                                <?php
+                                                    if($row['message'] == ''){
+                                                        ?>
+                                                        <textarea class="form-control" placeholder="Enter your message here..." name="msg" id="" cols="5" rows="3" required></textarea>
+                                                    <?php
+                                                    }else{
+                                                        ?>
+                                                        <label for="">Message of Buyer:</label>
+                                                        <textarea class="form-control" name="msg" id="" cols="5" rows="3" readonly><?php echo $row['reply'] ?></textarea>
+                                                        <hr>
+                                                        <textarea class="form-control" placeholder="Enter your message here..." name="msg" id="" cols="5" rows="3" required></textarea>
+                                                    <?php
+                                                    }
+                                                ?>
+                                                
                                             </div>
                                       
                                             <div class="modal-footer">
