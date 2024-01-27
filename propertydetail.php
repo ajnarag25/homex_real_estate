@@ -564,7 +564,8 @@ include("config.php");
                                     <?php
                                     }else{
                                         $id = $_GET['pid']; 
-                                        $query = "SELECT * FROM property as p INNER JOIN reservation as r ON p.pid = r.property_id WHERE p.pid = $id AND p.stype = 'Reserved'";
+                                        $uid = $_SESSION['get_data']['uid'];
+                                        $query = "SELECT * FROM property as p INNER JOIN reservation as r ON p.pid = r.property_id WHERE p.pid = $id AND p.stype = 'Reserved' AND r.uid = '$uid'";
                                         $reservation = mysqli_query($conn, $query);
                                         $chk_reserved = mysqli_num_rows($reservation);
                                         $reserve = mysqli_fetch_array($reservation);
