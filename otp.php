@@ -64,13 +64,13 @@ include("config.php");
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
-                        <h2 class="page-name float-left text-white text-uppercase mt-1 mb-0"><b>Login</b></h2>
+                        <h2 class="page-name float-left text-white text-uppercase mt-1 mb-0"><b>One Time Password</b></h2>
                     </div>
                     <div class="col-md-6">
                         <nav aria-label="breadcrumb" class="float-left float-md-right">
                             <ol class="breadcrumb bg-transparent m-0 p-0">
                                 <li class="breadcrumb-item text-white"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Login</li>
+                                <li class="breadcrumb-item active">OTP</li>
                             </ol>
                         </nav>
                     </div>
@@ -78,74 +78,26 @@ include("config.php");
             </div>
         </div>
          <!--	Banner   --->
-		 
-		 
-		 
+
         <div class="page-wrappers login-body full-row bg-gray">
             <div class="login-wrapper">
             	<div class="container">
                 	<div class="loginbox">
                         <div class="login-right">
 							<div class="login-right-wrap">
-								<h1>Login</h1>
-								<p class="account-subtitle">Access to our dashboard</p>
+                                <h3 class="text-center">OTP Verify</h3>
+								<p class="account-subtitle">Kindly check your email</p>
 								
 								<!-- Form -->
 								<form method="post" action="functions.php">
 									<div class="form-group">
-										<input class="form-control" name="email" type="text" placeholder="Email" required>
+										<input class="form-control" type="number" name="otp" placeholder="Enter OTP" required>
 									</div>
 									<div class="form-group">
-										<input class="form-control" type="password" name="pass" placeholder="Password" required>
-									</div>
-									<div class="form-group">
-										<button class="btn btn-primary btn-block" name="login" type="submit">Login</button>
+										<button class="btn btn-primary btn-block" name="otp_submit" type="submit">Submit</button>
 									</div>
 								</form>
 								
-								<!-- Social Login -->
-								<!-- <div class="social-login">
-									<span>Login with</span>
-									<a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
-									<a href="#" class="google"><i class="fab fa-google"></i></a>
-									<a href="#" class="facebook"><i class="fab fa-twitter"></i></a>
-									<a href="#" class="google"><i class="fab fa-instagram"></i></a>
-								</div> -->
-								<!-- /Social Login -->
-								
-								<div class="text-center dont-have">
-									Don't have an account? <a href="register.php">Register</a>
-									<br>
-									Forgot Password? <a href="" data-toggle="modal" data-target="#forgot">Reset</a>
-								</div>
-
-								<!-- Modal Forgor Password-->
-								<div class="modal fade" id="forgot" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-									<div class="modal-dialog " role="document">
-										<div class="modal-content">
-											<div class="modal-header">
-												<h5 class="modal-title" id="exampleModalLabel">Forgot Password</h5>
-												<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-												<span aria-hidden="true">&times;</span>
-												</button>
-											</div>
-										<div class="modal-body">
-											<form action="functions.php" method="post" >
-												<div class="row">
-													<div class="col">
-														<label for="">Email:</label>
-														<input type="email" placeholder="Enter Email" name="email" class="form-control" required>
-													</div>
-												</div>
-												</div>
-												<div class="modal-footer">
-													<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-													<button type="submit" name="reset_password" class="btn btn-primary">Send</button>
-												</div>
-											</form>
-										</div>
-									</div>
-								</div>
 
 							</div>
                         </div>

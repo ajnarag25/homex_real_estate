@@ -468,5 +468,63 @@
             header('location:reservation.php');
         }
     }
+
+
+    // forgot password
+    if (isset($_POST['reset_password'])) {
+        $emails = $_POST['email'];
+        $setOTP = rand(0000,9999);
+
+        $sql = "SELECT * FROM user WHERE uemail='$emails'";
+        $result = mysqli_query($conn, $sql);
+        $check = mysqli_num_rows($result);
+        if ($check == 0){
+            $_SESSION['status'] = 'Email is not registered';
+            $_SESSION['status_icon'] = 'error';
+            header('location:login.php');
+        }else{
+            $conn->query("UPDATE user SET otp=$setOTP WHERE uemail='$emails'") or die($conn->error);
+            include 'otp_email.php';
+            header("Location: otp.php");
+        }
+
+    }
+
+    // otp submit
+    if (isset($_POST['otp_submit'])) {
+        $otp = $_POST['otp'];
+        $_SESSION['otp'] = $otp;
+
+        $sql = "SELECT * FROM user WHERE otp='$otp'";
+        $result = mysqli_query($conn, $sql);
+        $check = mysqli_num_rows($result);
+
+        if ($check == 0){
+            $_SESSION['status'] = 'OTP entered is wrong!';
+            $_SESSION['status_icon'] = 'error';
+            header('location:otp.php');
+        }else{
+            header("Location: change_pass.php");
+        }
+    }
+
+    // change password
+    if (isset($_POST['change_pass'])) {
+        $password1 = $_POST['newpass1'];
+        $password2 = $_POST['newpass2'];
+        $get_otp = $_SESSION['otp'];
+        
+        if ($password1 != $password2){
+            $_SESSION['status'] = 'Password does not match!';
+            $_SESSION['status_icon'] = 'error';
+            header('location:change_pass.php');
+        }else{
+            $conn->query("UPDATE user SET upass='".password_hash($password1, PASSWORD_DEFAULT)."' WHERE otp='$get_otp'") or die($conn->error);
+            $_SESSION['status'] = 'Successfully Changed your Password';
+            $_SESSION['status_icon'] = 'success';
+            header('location:login.php');
+        }
+
+    }
     
 ?>
