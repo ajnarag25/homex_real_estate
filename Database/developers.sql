@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 02, 2024 at 03:38 PM
+-- Generation Time: Jan 29, 2024 at 02:35 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -137,7 +137,7 @@ CREATE TABLE `property` (
   `kitchen` int(50) NOT NULL,
   `hall` int(50) NOT NULL,
   `floor` varchar(50) NOT NULL,
-  `size` int(50) NOT NULL,
+  `size` float NOT NULL,
   `price` int(50) NOT NULL,
   `region` varchar(255) NOT NULL,
   `province` varchar(255) NOT NULL,
@@ -205,11 +205,13 @@ CREATE TABLE `reservation` (
   `status` varchar(255) NOT NULL,
   `utype` varchar(255) NOT NULL,
   `message` text NOT NULL,
+  `reply` text NOT NULL,
   `company_id` text NOT NULL,
   `payslip` text NOT NULL,
-  `discount` int(11) NOT NULL,
+  `discount` float NOT NULL,
   `computation` text NOT NULL,
-  `tag_stat` varchar(255) NOT NULL
+  `tag_stat` varchar(255) NOT NULL,
+  `reservation_fee` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -229,7 +231,8 @@ CREATE TABLE `sched_book` (
   `phone` varchar(55) NOT NULL,
   `date_sched` date NOT NULL,
   `time_sched` time NOT NULL,
-  `message` text NOT NULL
+  `message` text NOT NULL,
+  `reply` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -248,7 +251,8 @@ CREATE TABLE `user` (
   `utype` varchar(50) NOT NULL,
   `uimage` varchar(300) NOT NULL,
   `ustatus` varchar(50) NOT NULL,
-  `idnum` varchar(255) NOT NULL
+  `idnum` varchar(255) NOT NULL,
+  `otp` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -353,7 +357,7 @@ ALTER TABLE `contact`
 -- AUTO_INCREMENT for table `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `fid` int(50) NOT NULL AUTO_INCREMENT;
+  MODIFY `fid` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `inquire`
