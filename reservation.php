@@ -132,7 +132,7 @@ if(!isset($_SESSION['uemail']))
                             while ($row = mysqli_fetch_array($result)) {
 							?>
                             <tr>
-                                <td class="text-capitalize"><?php echo $row['title'];?></td>				
+                                <td class="text-capitalize"><a href="propertydetail.php?pid=<?php echo $row['0'];?>"><?php echo $row['title'];?></a></td>				
                                 <td class="text-capitalize"><?php echo $row['type'];?></td>
                                 <!-- <td class="text-capitalize">For <?php echo $row['pstatus'];?></td> -->
                                 <td class="text-capitalize"><?php echo $row['stype'];?></td>

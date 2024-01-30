@@ -120,26 +120,12 @@ if(!isset($_SESSION['uemail']))
 						
 							<?php 
 							$uid=$_SESSION['get_data']['uid'];
-							$query=mysqli_query($conn,"SELECT pt.title, pt.region, pt.price, pt.type, pt.pstatus, pt.stype, it.date_inquired FROM PROPERTY pt JOIN INQUIRE it ON pt.pid = it.property_id WHERE it.uid = '$uid';");
+							$query=mysqli_query($conn,"SELECT pt.title, pt.region, pt.price, pt.type, pt.pstatus, pt.stype, it.date_inquired, pt.pid FROM PROPERTY pt JOIN INQUIRE it ON pt.pid = it.property_id WHERE it.uid = '$uid';");
 								while($row=mysqli_fetch_array($query))
 								{
 							?>
                             <tr>
-                                <td>
-                                    <div class="property-info d-table">
-                                        <h5 class="text-secondary text-capitalize"><?php echo $row['0'];?></h5>
-                                        <span class="font-14 text-capitalize"><i class="fas fa-map-marker-alt text-primary font-13"></i>&nbsp; <?php echo $row['1'];?></span>
-                                        <div class="price mt-3">
-											<span class="text-primary">
-                                                P&nbsp;
-                                                <?php 
-                                                    $formattedNumber = number_format($row['price'], 2, '.', ',');
-                                                    echo $formattedNumber;
-                                                ?>
-                                            </span>
-										</div>
-                                    </div>
-								</td>
+                                <td class="text-capitalize"><a href="propertydetail.php?pid=<?php echo $row['7'];?>"><?php echo $row['0'];?></a></td>
                                 <td><?php echo $row['3'];?></td>
                                 <td class="text-capitalize"><?php echo $row['4'];?></td>
                                 <td class="text-capitalize"><?php echo $row['5'];?></td>
