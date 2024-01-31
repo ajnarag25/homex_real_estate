@@ -13,8 +13,72 @@ if(!isset($_SESSION['uemail']))
 
 $error="";
 $msg="";
-if(isset($_POST['add']))
-{
+// if(isset($_POST['add']))
+// {
+//     $pid = $_REQUEST['id'];
+    
+//     $title = $_POST['title'];
+//     $content = $_POST['content'];
+//     $ptype = $_POST['ptype'];
+//     $stype = $_POST['stype'];
+//     $bath = $_POST['bath'];
+//     $kitc = $_POST['kitc'];
+//     $pstatus = $_POST['pstatus'];
+//     $bed = $_POST['bed'];
+//     $balc = $_POST['balc'];
+//     $hall = $_POST['hall'];
+//     $price = $_POST['price'];
+//     $region = $_POST['region'];
+//     $province = $_POST['province'];
+//     $city = $_POST['city'];
+//     $barangay = $_POST['barangay'];
+//     $floor = $_POST['floor'];
+//     $asize = $_POST['asize'];
+//     $status = $_POST['status'];
+//     // $uid = $_POST['uid'];
+//     $aimage = $_FILES['aimage']['name'];
+//     $aimage2 = $_FILES['aimage2']['name'];
+//     $aimage4 = $_FILES['aimage4']['name'];
+//     $fimage1 = $_FILES['fimage1']['name'];
+//     $aimage1 = $_FILES['aimage1']['name'];
+//     $aimage3 = $_FILES['aimage3']['name'];
+//     $fimage = $_FILES['fimage']['name'];
+//     $fimage2 = $_FILES['fimage2']['name'];
+
+//     move_uploaded_file($_FILES['aimage']['tmp_name'], "property/$aimage");
+//     move_uploaded_file($_FILES['aimage1']['tmp_name'], "property/$aimage1");
+//     move_uploaded_file($_FILES['aimage2']['tmp_name'], "property/$aimage2");
+//     move_uploaded_file($_FILES['aimage3']['tmp_name'], "property/$aimage3");
+//     move_uploaded_file($_FILES['aimage4']['tmp_name'], "property/$aimage4");
+
+//     move_uploaded_file($_FILES['fimage']['tmp_name'], "property/$fimage");
+//     move_uploaded_file($_FILES['fimage1']['tmp_name'], "property/$fimage1");
+//     move_uploaded_file($_FILES['fimage2']['tmp_name'], "property/$fimage2");
+
+//     $sql = "UPDATE property SET title= '{$title}', pcontent= '{$content}', type='{$ptype}', stype='{$stype}',
+//     bedroom='{$bed}', bathroom='{$bath}', balcony='{$balc}', kitchen='{$kitc}', hall='{$hall}', floor='{$floor}', 
+//     size='{$asize}', price='{$price}', region='{$region}', city='{$city}', province='{$province}', 
+//     pimage='{$aimage}', pimage1='{$aimage1}', pimage2='{$aimage2}', pimage3='{$aimage3}', pimage4='{$aimage4}',
+//     status='{$status}', mapimage='{$fimage}', topmapimage='{$fimage1}', groundmapimage='{$fimage2}', 
+//     totalfloor='{$floor}' WHERE pid = {$pid}";
+
+//     $result = mysqli_query($conn, $sql);
+
+//     if($result)
+//     {
+//         $_SESSION['status'] = 'Property Successfully Updated';
+//         $_SESSION['status_icon'] = 'success';
+//         header('location:featureadmin.php');
+//     }
+//     else
+//     {
+// 		$_SESSION['status'] = 'An Error Occured!';
+//         $_SESSION['status_icon'] = 'success';
+//         header('location:featureadmin.php');
+//     }
+// }	
+
+if(isset($_POST['add'])) {
     $pid = $_REQUEST['id'];
     
     $title = $_POST['title'];
@@ -36,31 +100,43 @@ if(isset($_POST['add']))
     $asize = $_POST['asize'];
     $status = $_POST['status'];
     // $uid = $_POST['uid'];
-    $aimage = $_FILES['aimage']['name'];
-    $aimage2 = $_FILES['aimage2']['name'];
-    $aimage4 = $_FILES['aimage4']['name'];
-    $fimage1 = $_FILES['fimage1']['name'];
-    $aimage1 = $_FILES['aimage1']['name'];
-    $aimage3 = $_FILES['aimage3']['name'];
-    $fimage = $_FILES['fimage']['name'];
-    $fimage2 = $_FILES['fimage2']['name'];
+    $aimage = $_FILES['aimage']['name'] ? $_FILES['aimage']['name'] : '';
+    $aimage1 = $_FILES['aimage1']['name'] ? $_FILES['aimage1']['name'] : '';
+    $aimage2 = $_FILES['aimage2']['name'] ? $_FILES['aimage2']['name'] : '';
+    $aimage3 = $_FILES['aimage3']['name'] ? $_FILES['aimage3']['name'] : '';
+    $aimage4 = $_FILES['aimage4']['name'] ? $_FILES['aimage4']['name'] : '';
+    $fimage = $_FILES['fimage']['name'] ? $_FILES['fimage']['name'] : '';
+    $fimage1 = $_FILES['fimage1']['name'] ? $_FILES['fimage1']['name'] : '';
+    $fimage2 = $_FILES['fimage2']['name'] ? $_FILES['fimage2']['name'] : '';
 
-    move_uploaded_file($_FILES['aimage']['tmp_name'], "property/$aimage");
-    move_uploaded_file($_FILES['aimage1']['tmp_name'], "property/$aimage1");
-    move_uploaded_file($_FILES['aimage2']['tmp_name'], "property/$aimage2");
-    move_uploaded_file($_FILES['aimage3']['tmp_name'], "property/$aimage3");
-    move_uploaded_file($_FILES['aimage4']['tmp_name'], "property/$aimage4");
+    // Move uploaded files
+    if($aimage) move_uploaded_file($_FILES['aimage']['tmp_name'], "property/$aimage");
+    if($aimage1) move_uploaded_file($_FILES['aimage1']['tmp_name'], "property/$aimage1");
+    if($aimage2) move_uploaded_file($_FILES['aimage2']['tmp_name'], "property/$aimage2");
+    if($aimage3) move_uploaded_file($_FILES['aimage3']['tmp_name'], "property/$aimage3");
+    if($aimage4) move_uploaded_file($_FILES['aimage4']['tmp_name'], "property/$aimage4");
+    if($fimage) move_uploaded_file($_FILES['fimage']['tmp_name'], "property/$fimage");
+    if($fimage1) move_uploaded_file($_FILES['fimage1']['tmp_name'], "property/$fimage1");
+    if($fimage2) move_uploaded_file($_FILES['fimage2']['tmp_name'], "property/$fimage2");
 
-    move_uploaded_file($_FILES['fimage']['tmp_name'], "property/$fimage");
-    move_uploaded_file($_FILES['fimage1']['tmp_name'], "property/$fimage1");
-    move_uploaded_file($_FILES['fimage2']['tmp_name'], "property/$fimage2");
-
+    // Prepare SQL query
     $sql = "UPDATE property SET title= '{$title}', pcontent= '{$content}', type='{$ptype}', stype='{$stype}',
-    bedroom='{$bed}', bathroom='{$bath}', balcony='{$balc}', kitchen='{$kitc}', hall='{$hall}', floor='{$floor}', 
-    size='{$asize}', price='{$price}', region='{$region}', city='{$city}', province='{$province}', 
-    pimage='{$aimage}', pimage1='{$aimage1}', pimage2='{$aimage2}', pimage3='{$aimage3}', pimage4='{$aimage4}',
-    status='{$status}', mapimage='{$fimage}', topmapimage='{$fimage1}', groundmapimage='{$fimage2}', 
-    totalfloor='{$floor}' WHERE pid = {$pid}";
+            bedroom='{$bed}', bathroom='{$bath}', balcony='{$balc}', kitchen='{$kitc}', hall='{$hall}', floor='{$floor}', 
+            size='{$asize}', price='{$price}', region='{$region}', city='{$city}', province='{$province}', 
+            status='{$status}'";
+
+    // Append image fields if they have values
+    if($aimage) $sql .= ", pimage='{$aimage}'";
+    if($aimage1) $sql .= ", pimage1='{$aimage1}'";
+    if($aimage2) $sql .= ", pimage2='{$aimage2}'";
+    if($aimage3) $sql .= ", pimage3='{$aimage3}'";
+    if($aimage4) $sql .= ", pimage4='{$aimage4}'";
+    if($fimage) $sql .= ", mapimage='{$fimage}'";
+    if($fimage1) $sql .= ", topmapimage='{$fimage1}'";
+    if($fimage2) $sql .= ", groundmapimage='{$fimage2}'";
+
+    // Complete the SQL query
+    $sql .= " WHERE pid = {$pid}";
 
     $result = mysqli_query($conn, $sql);
 
@@ -68,15 +144,16 @@ if(isset($_POST['add']))
     {
         $_SESSION['status'] = 'Property Successfully Updated';
         $_SESSION['status_icon'] = 'success';
-        header('location:featureadmin.php');
+        header('location: featureadmin.php');
     }
     else
     {
-		$_SESSION['status'] = 'An Error Occured!';
-        $_SESSION['status_icon'] = 'success';
-        header('location:featureadmin.php');
+        $_SESSION['status'] = 'An Error Occurred!';
+        $_SESSION['status_icon'] = 'error';
+        header('location: featureadmin.php');
     }
-}				
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
