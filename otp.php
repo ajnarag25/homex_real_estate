@@ -2,11 +2,7 @@
 ini_set('session.cache_limiter','public');
 session_cache_limiter(false);
 session_start();
-include("config.php");
-if(!isset($_SESSION['uemail']))
-{
-	header("location:login.php");
-}								
+include("config.php");					
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,7 +34,7 @@ if(!isset($_SESSION['uemail']))
 <link rel="stylesheet" type="text/css" href="fonts/flaticon/flaticon.css">
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <link rel="stylesheet" type="text/css" href="css/login.css">
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
+
 <!--	Title
 	=========================================================-->
 <title>Home Dreamers Realty and Development Corporation</title>
@@ -68,13 +64,13 @@ if(!isset($_SESSION['uemail']))
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
-                        <h2 class="page-name float-left text-white text-uppercase mt-1 mb-0"><b>Inquire History</b></h2>
+                        <h2 class="page-name float-left text-white text-uppercase mt-1 mb-0"><b>One Time Password</b></h2>
                     </div>
                     <div class="col-md-6">
                         <nav aria-label="breadcrumb" class="float-left float-md-right">
                             <ol class="breadcrumb bg-transparent m-0 p-0">
                                 <li class="breadcrumb-item text-white"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Inquire History</li>
+                                <li class="breadcrumb-item active">OTP</li>
                             </ol>
                         </nav>
                     </div>
@@ -82,62 +78,34 @@ if(!isset($_SESSION['uemail']))
             </div>
         </div>
          <!--	Banner   --->
-		 
-		 
-		<!--	Submit property   -->
-        <div class="full-row bg-gray">
-            <div class="container">
-                    <div class="row mb-5">
-						<div class="col-lg-12">
-							<h2 class="text-secondary double-down-line text-center">Inquire History</h2>
-							<?php 
-								if(isset($_GET['msg']))	
-								echo $_GET['msg'];	
-							?>
+
+        <div class="page-wrappers login-body full-row bg-gray">
+            <div class="login-wrapper">
+            	<div class="container">
+                	<div class="loginbox">
+                        <div class="login-right">
+							<div class="login-right-wrap">
+                                <h3 class="text-center">OTP Verify</h3>
+								<p class="account-subtitle">Kindly check your email</p>
+								
+								<!-- Form -->
+								<form method="post" action="functions.php">
+									<div class="form-group">
+										<input class="form-control" type="number" name="otp" placeholder="Enter OTP" required>
+									</div>
+									<div class="form-group">
+										<button class="btn btn-primary btn-block" name="otp_submit" type="submit">Submit</button>
+									</div>
+								</form>
+								
+
+							</div>
                         </div>
-					</div>
-                    
-					<table class="items-list col-lg-12" style="border-collapse:inherit;" id="history">
-                        <thead>
-                             <tr  class="bg-primary">
-                                <!-- <th class="text-white font-weight-bolder">Properties</th>
-                                <th class="text-white font-weight-bolder">BHK</th>
-                                <th class="text-white font-weight-bolder">Reason</th>
-                                <th class="text-white font-weight-bolder">Added Date</th>
-								<th class="text-white font-weight-bolder">Status</th>
-                                <th class="text-white font-weight-bolder">Update</th>
-								<th class="text-white font-weight-bolder">Delete</th> -->
-                                <th class="text-white font-weight-bolder">Property Title</th>
-                                <th class="text-white font-weight-bolder">Property Type</th>
-                                <th class="text-white font-weight-bolder">Property Status</th>
-                                <th class="text-white font-weight-bolder">Sale Type</th>
-                                <th class="text-white font-weight-bolder">Date Inquired</th>
-                                
-                            
-                             </tr>
-                        </thead>
-                        <tbody>
-						
-							<?php 
-							$uid=$_SESSION['get_data']['uid'];
-							$query=mysqli_query($conn,"SELECT pt.title, pt.region, pt.price, pt.type, pt.pstatus, pt.stype, it.date_inquired, pt.pid FROM PROPERTY pt JOIN INQUIRE it ON pt.pid = it.property_id WHERE it.uid = '$uid';");
-								while($row=mysqli_fetch_array($query))
-								{
-							?>
-                            <tr>
-                                <td class="text-capitalize"><a href="propertydetail.php?pid=<?php echo $row['7'];?>"><?php echo $row['0'];?></a></td>
-                                <td><?php echo $row['3'];?></td>
-                                <td class="text-capitalize"><?php echo $row['4'];?></td>
-                                <td class="text-capitalize"><?php echo $row['5'];?></td>
-								<td class="text-capitalize"><?php echo $row['6'];?></td>
-                            </tr>
-							<?php } ?>
-							
-                        </tbody>
-                    </table>            
+                    </div>
+                </div>
             </div>
         </div>
-	<!--	Submit property   -->
+	<!--	login  -->
         
         
         <!--	Footer   start-->
@@ -168,15 +136,11 @@ if(!isset($_SESSION['uemail']))
 <script src="js/jquery.slider.js"></script> 
 <script src="js/wow.js"></script> 
 <script src="js/custom.js"></script>
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
-<script>
-    $('#history').DataTable()
-</script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <!-- Validation Messages -->
 <?php 
-    if (isset($_SESSION['status']) && $_SESSION['status'] !='')
-    {
+			if (isset($_SESSION['status']) && $_SESSION['status'] !='')
+			{
 		?>
 		<script>
 			$(document).ready(function(){
@@ -191,9 +155,9 @@ if(!isset($_SESSION['uemail']))
 		</script>
 		
 		<?php
-    }else{
-        unset($_SESSION['status']);
-    }
-    ?>
+		}else{
+			unset($_SESSION['status']);
+		}
+		?>
 </body>
 </html>

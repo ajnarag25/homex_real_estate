@@ -113,8 +113,40 @@ include("config.php");
 								</div> -->
 								<!-- /Social Login -->
 								
-								<div class="text-center dont-have">Don't have an account? <a href="register.php">Register</a></div>
-								
+								<div class="text-center dont-have">
+									Don't have an account? <a href="register.php">Register</a>
+									<br>
+									Forgot Password? <a href="" data-toggle="modal" data-target="#forgot">Reset</a>
+								</div>
+
+								<!-- Modal Forgor Password-->
+								<div class="modal fade" id="forgot" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+									<div class="modal-dialog " role="document">
+										<div class="modal-content">
+											<div class="modal-header">
+												<h5 class="modal-title" id="exampleModalLabel">Forgot Password</h5>
+												<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+												</button>
+											</div>
+										<div class="modal-body">
+											<form action="functions.php" method="post" >
+												<div class="row">
+													<div class="col">
+														<label for="">Email:</label>
+														<input type="email" placeholder="Enter Email" name="email" class="form-control" required>
+													</div>
+												</div>
+												</div>
+												<div class="modal-footer">
+													<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+													<button type="submit" name="reset_password" class="btn btn-primary">Send</button>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+
 							</div>
                         </div>
                     </div>

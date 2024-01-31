@@ -415,5 +415,116 @@
             }
         }
     }
+
+
+    // reply message sched
+    if (isset($_POST['reply_msg_sched'])){
+        $id = $_POST['uid'];
+        $reply = $_POST['reply'];
+
+        if ($id != ''){
+            $conn->query("UPDATE sched_book SET reply='$reply' WHERE id='$id'") or die($conn->error);
+            $_SESSION['status'] = 'Successfully Send your Message';
+            $_SESSION['status_icon'] = 'success';
+            header('location:schedule.php');
+        }else{
+            $_SESSION['status'] = 'An Error Occured!';
+            $_SESSION['status_icon'] = 'danger';
+            header('location:schedule.php');
+        }
+    }
+
+    // rechedule book for tripping
+    if (isset($_POST['reched_book'])){
+        $id = $_POST['uid'];
+        $date = $_POST['date_sched'];
+        $time = $_POST['time_sched'];
+
+        if ($id != ''){
+            $conn->query("UPDATE sched_book SET date_sched='$date', time_sched='$time' WHERE id='$id'") or die($conn->error);
+            $_SESSION['status'] = 'Successfully Rescheduled your Tripping';
+            $_SESSION['status_icon'] = 'success';
+            header('location:schedule.php');
+        }else{
+            $_SESSION['status'] = 'An Error Occured!';
+            $_SESSION['status_icon'] = 'danger';
+            header('location:schedule.php');
+        }
+    }
+
+    // reply message reserve
+    if (isset($_POST['reply_msg_reserve'])){
+        $id = $_POST['uid'];
+        $reply = $_POST['reply'];
+
+        if ($id != ''){
+            $conn->query("UPDATE reservation SET reply='$reply' WHERE id='$id'") or die($conn->error);
+            $_SESSION['status'] = 'Successfully Send your Message';
+            $_SESSION['status_icon'] = 'success';
+            header('location:reservation.php');
+        }else{
+            $_SESSION['status'] = 'An Error Occured!';
+            $_SESSION['status_icon'] = 'danger';
+            header('location:reservation.php');
+        }
+    }
+
+
+    // forgot password
+    if (isset($_POST['reset_password'])) {
+        $emails = $_POST['email'];
+        $setOTP = rand(0000,9999);
+
+        $sql = "SELECT * FROM user WHERE uemail='$emails'";
+        $result = mysqli_query($conn, $sql);
+        $check = mysqli_num_rows($result);
+        if ($check == 0){
+            $_SESSION['status'] = 'Email is not registered';
+            $_SESSION['status_icon'] = 'error';
+            header('location:login.php');
+        }else{
+            $conn->query("UPDATE user SET otp=$setOTP WHERE uemail='$emails'") or die($conn->error);
+            include 'otp_email.php';
+            header("Location: otp.php");
+        }
+
+    }
+
+    // otp submit
+    if (isset($_POST['otp_submit'])) {
+        $otp = $_POST['otp'];
+        $_SESSION['otp'] = $otp;
+
+        $sql = "SELECT * FROM user WHERE otp='$otp'";
+        $result = mysqli_query($conn, $sql);
+        $check = mysqli_num_rows($result);
+
+        if ($check == 0){
+            $_SESSION['status'] = 'OTP entered is wrong!';
+            $_SESSION['status_icon'] = 'error';
+            header('location:otp.php');
+        }else{
+            header("Location: change_pass.php");
+        }
+    }
+
+    // change password
+    if (isset($_POST['change_pass'])) {
+        $password1 = $_POST['newpass1'];
+        $password2 = $_POST['newpass2'];
+        $get_otp = $_SESSION['otp'];
+        
+        if ($password1 != $password2){
+            $_SESSION['status'] = 'Password does not match!';
+            $_SESSION['status_icon'] = 'error';
+            header('location:change_pass.php');
+        }else{
+            $conn->query("UPDATE user SET upass='".password_hash($password1, PASSWORD_DEFAULT)."' WHERE otp='$get_otp'") or die($conn->error);
+            $_SESSION['status'] = 'Successfully Changed your Password';
+            $_SESSION['status_icon'] = 'success';
+            header('location:login.php');
+        }
+
+    }
     
 ?>

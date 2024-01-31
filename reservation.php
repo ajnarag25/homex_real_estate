@@ -132,7 +132,7 @@ if(!isset($_SESSION['uemail']))
                             while ($row = mysqli_fetch_array($result)) {
 							?>
                             <tr>
-                                <td class="text-capitalize"><?php echo $row['title'];?></td>				
+                                <td class="text-capitalize"><a href="propertydetail.php?pid=<?php echo $row['0'];?>"><?php echo $row['title'];?></a></td>				
                                 <td class="text-capitalize"><?php echo $row['type'];?></td>
                                 <!-- <td class="text-capitalize">For <?php echo $row['pstatus'];?></td> -->
                                 <td class="text-capitalize"><?php echo $row['stype'];?></td>
@@ -165,17 +165,42 @@ if(!isset($_SESSION['uemail']))
                                                 <div class="modal-body">
                                                     <ul class="text-center">
                                                     <label for="">User Information:</label>
+                                                        <input type="hidden" name="uid" value="<?php echo $row['id'] ?>"> 
                                                         <li>Name: <?php echo $row['name'];?></li>
                                                         <li>Email: <?php echo $row['email'];?></li>
                                                         <li>Contact No: <?php echo $row['phone'];?></li>
                                                     </ul>
                                                     <hr>
-                                                    <label for="">Agent Message:</label>
-                                                    <textarea class="form-control" name="" id="" cols="10" rows="5" readonly><?php echo $row['message'] ?></textarea>
-                                                    <hr>
-                                                    <label for="">Discount:</label>
-                                                    <input class="form-control" type="text" value="<?php echo $row['discount'] ?>%" readonly>
-                                                    <hr>
+
+                                                    <?php 
+                                                        if($row['message'] == ''){
+                                                            ?>
+                                                            <label for="">Agent Message:</label>
+                                                            <textarea class="form-control" name="" id="" cols="5" rows="3" readonly><?php echo $row['message'] ?></textarea>
+                                                            <hr>
+                                                            <label for="">Discount: </label>
+                                                            <input class="form-control" type="text" value="<?php echo $row['discount'] ?>%" readonly>
+                                                        <?php    
+                                                        }else{
+                                                            ?>
+                                                            <label for="">Agent Message:</label>
+                                                            <textarea class="form-control" name="" id="" cols="5" rows="3" readonly><?php echo $row['message'] ?></textarea>
+                                                            
+                                                            <hr>
+                                                            <label for="">Discount: </label>
+                                                            <input class="form-control" type="text" value="<?php echo $row['discount'] ?>%" readonly>
+
+                                                            <hr>
+                                                            <label for="">Reply:</label>
+                                                            <textarea class="form-control" name="reply" id="" cols="5" rows="3" required></textarea>
+
+                                                            <br>
+                                                                                                
+                                                            <button type="submit" class="btn btn-success w-100" name="reply_msg_reserve">Reply</button>
+                                                        <?php
+                                                        }
+                                                    ?>
+                                                    <!-- <hr>
                                                     <div class="text-center">
                                                     <?php 
                                                         if ($row['computation']){
@@ -189,7 +214,7 @@ if(!isset($_SESSION['uemail']))
                                                         }
                                                     ?>
                                             
-                                                    </div>
+                                                    </div> -->
                                                 </div>
                                         
                                                 <div class="modal-footer">
