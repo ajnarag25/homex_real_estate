@@ -57,7 +57,7 @@ if(isset($_POST['add'])) {
     if($fimage2) move_uploaded_file($_FILES['fimage2']['tmp_name'], "property/$fimage2");
 
     // Prepare SQL query
-    $sql = "UPDATE property SET title='{$title}', pcontent='{$content}', type='{$ptype}', stype='{$stype}',
+    $sql = "UPDATE property SET title='{$title}', pcontent='{$content}', pstatus='{$pstatus}', type='{$ptype}', stype='{$stype}',
             bedroom='{$bed}', bathroom='{$bath}', balcony='{$balc}', kitchen='{$kitc}', hall='{$hall}', floor='{$floor}', 
             size='{$asize}', price='{$price}', region='{$region}', city='{$city}', province='{$province}', 
             uid='{$uid}', status='{$status}'";
@@ -183,7 +183,7 @@ if(isset($_POST['add'])) {
 											<label class="col-lg-3 col-form-label">Property Type</label>
 											<div class="col-lg-9">
 												<select class="form-control"  name="ptype">
-													<option value="<?php echo $row['3'] ?>" selected><?php echo $row['3'] ?></option>
+													<option value="<?php echo $row['3'] ?>" selected></option>
 													<option value="bungalow">Bungalow</option>
 													<option value="commercial">Commercial</option>
 													<option value="condominium">Condominium</option>
@@ -201,7 +201,7 @@ if(isset($_POST['add'])) {
 											<label class="col-lg-3 col-form-label">Selling Type</label>
 											<div class="col-lg-9">
 												<select class="form-control"  name="stype">
-													<option value="<?php echo $row['5'] ?>" selected><?php echo $row['5'] ?></option>
+													<option value="<?php echo $row['5'] ?>" selected></option>
 													<option value="rent">Rent</option>
 													<option value="sale">Sale</option>
 												</select>
@@ -226,7 +226,7 @@ if(isset($_POST['add'])) {
 											<label class="col-lg-3 col-form-label">Status</label>
 											<div class="col-lg-9">
 												<select class="form-control"  name="pstatus">
-													<option value="<?php echo $row['4'] ?>" selected><?php echo $row['4'] ?></option>
+													<option value="<?php echo $row['4'] ?>" selected></option>
 													<option value="new">New</option>
 													<option value="pre-selling">Pre-Selling</option>
 													<option value="pre-owned">Pre-Owned</option>
@@ -369,22 +369,22 @@ if(isset($_POST['add'])) {
 												<div class="form-group row">
 													<label class="col-lg-3 col-form-label">Image</label>
 													<div class="col-lg-9">
-														<input class="form-control" name="aimage" type="file" >
+														<input class="form-control" name="aimage" type="file">
 														<img src="property/<?php echo $row['19'];?>" alt="pimage" height="150" width="180">
 													</div>
 												</div>
 												<div class="form-group row">
 													<label class="col-lg-3 col-form-label">Image 2</label>
 													<div class="col-lg-9">
-														<input class="form-control" name="aimage2" type="file" >
-														<img src="property/<?php echo $row['20'];?>" alt="pimage" height="150" width="180">
+														<input class="form-control" name="aimage2" type="file">
+														<img src="property/<?php echo $row['21'];?>" alt="pimage" height="150" width="180">
 													</div>
 												</div>
 												<div class="form-group row">
 													<label class="col-lg-3 col-form-label">Image 4</label>
 													<div class="col-lg-9">
 														<input class="form-control" name="aimage4" type="file">
-														<img src="property/<?php echo $row['21'];?>" alt="pimage" height="150" width="180">
+														<img src="property/<?php echo $row['23'];?>" alt="pimage" height="150" width="180">
 													</div>
 												</div>
 
@@ -392,7 +392,7 @@ if(isset($_POST['add'])) {
 													<label class="col-lg-3 col-form-label">Basement Floor Plan Image</label>
 													<div class="col-lg-9">
 														<input class="form-control" name="fimage1" type="file">
-														<img src="property/<?php echo $row['26'];?>" alt="pimage" height="150" width="180">
+														<img src="property/<?php echo $row['27'];?>" alt="pimage" height="150" width="180">
 													</div>
 												</div>
 											</div>
@@ -401,15 +401,15 @@ if(isset($_POST['add'])) {
 												<div class="form-group row">
 													<label class="col-lg-3 col-form-label">Image 1</label>
 													<div class="col-lg-9">
-														<input class="form-control" name="aimage1" type="file" >
-														<img src="property/<?php echo $row['19'];?>" alt="pimage" height="150" width="180">
+														<input class="form-control" name="aimage1" type="file">
+														<img src="property/<?php echo $row['20'];?>" alt="pimage" height="150" width="180">
 													</div>
 												</div>
 												<div class="form-group row">
 													<label class="col-lg-3 col-form-label">image 3</label>
 													<div class="col-lg-9">
-														<input class="form-control" name="aimage3" type="file" >
-														<img src="property/<?php echo $row['21'];?>" alt="pimage" height="150" width="180">
+														<input class="form-control" name="aimage3" type="file">
+														<img src="property/<?php echo $row['22'];?>" alt="pimage" height="150" width="180">
 													</div>
 												</div>
 												<div class="form-group row">
@@ -423,7 +423,7 @@ if(isset($_POST['add'])) {
 													<label class="col-lg-3 col-form-label">Ground Floor Plan Image</label>
 													<div class="col-lg-9">
 														<input class="form-control" name="fimage2" type="file">
-														<img src="property/<?php echo $row['27'];?>" alt="pimage" height="150" width="180">
+														<img src="property/<?php echo $row['28'];?>" alt="pimage" height="150" width="180">
 													</div>
 												</div>
 											</div>
