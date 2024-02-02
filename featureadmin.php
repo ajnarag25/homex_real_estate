@@ -124,10 +124,10 @@ if(!isset($_SESSION['uemail']))
 								{
 							?>
                             <tr>
-                                <td class="text-capitalize"><?php echo $row['1'];?></td>
+                                <td class="text-capitalize"><a href="propertydetail.php?pid=<?php echo $row['0'];?>"><?php echo $row['1'];?></a></td>
                                 <td><?php echo $row['3'];?></td>
-                                <td class="text-capitalize">For <?php echo $row['4'];?></td>
-                                <td class="text-capitalize">For <?php echo $row['5'];?></td>
+                                <td class="text-capitalize"><?php echo $row['4'];?></td>
+                                <td class="text-capitalize"><?php echo $row['5'];?></td>
 								<td class="text-capitalize"><?php echo $row['date'];?></td>
                                 <td>
                                     <a class="btn btn-primary" href="submitpropertyupdate.php?id=<?php echo $row['0'];?>">Update</a>

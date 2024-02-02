@@ -107,8 +107,8 @@ if(!isset($_SESSION['uemail']))
 								<th class="text-white font-weight-bolder">Status</th>
                                 <th class="text-white font-weight-bolder">Update</th>
 								<th class="text-white font-weight-bolder">Delete</th> -->
-                                <th class="text-white font-weight-bolder">Customer Name</th>
                                 <th class="text-white font-weight-bolder">Property Title</th>
+                                <th class="text-white font-weight-bolder">Customer Name</th>
                                 <th class="text-white font-weight-bolder">Property Type</th>
                                 <!-- <th class="text-white font-weight-bolder">Property Status</th> -->
                                 <th class="text-white font-weight-bolder">Sale Type</th>
@@ -129,8 +129,8 @@ if(!isset($_SESSION['uemail']))
                             while ($row = mysqli_fetch_array($result)) {
 							?>
                             <tr>
-                                <td class="text-capitalize"><?php echo $row['username'];?></td>	
-                                <td class="text-capitalize"><?php echo $row['title'];?></td>				
+                                <td class="text-capitalize"><a href="propertydetail.php?pid=<?php echo $row['property_id'];?>"><?php echo $row['title'];?></a></td>	
+                                <td class="text-capitalize"><?php echo $row['username'];?></td>				
                                 <td class="text-capitalize"><?php echo $row['type'];?></td>
                                 <!-- <td class="text-capitalize">For <?php echo $row['pstatus'];?></td> -->
                                 <td class="text-capitalize">For <?php echo $row['stype'];?></td>
