@@ -141,7 +141,15 @@ if(!isset($_SESSION['uemail']))
                                     ?>
                                 </td>
                                 <td class="text-capitalize"><?php echo $row['date_sched'];?></td>
-								<td class="text-capitalize"><?php echo $row['time_sched'];?></td>
+								<td class="text-capitalize">
+                                    <?php 
+                                        $time_sched = $row['time_sched'];
+                                        $time = DateTime::createFromFormat('H:i:s', $time_sched);
+                                        $formatted_time = $time->format('h:i A');
+                                        
+                                        echo $formatted_time;
+                                    ?>
+                                </td>
                                 <td class="text-capitalize">
                                     <!-- <button class="btn btn-secondary w-100" data-toggle="modal" data-target="#view<?php echo $row['id']; ?>">View</button> -->
                                     <button class="btn btn-primary w-100" data-toggle="modal" data-target="#compose<?php echo $row['id']; ?>">Compose</button>

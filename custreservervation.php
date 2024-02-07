@@ -114,20 +114,20 @@ if(!isset($_SESSION['uemail']))
                                 <th class="text-white font-weight-bolder">Sale Type</th>
                                 <th class="text-white font-weight-bolder">Property Price</th>
                                 <!-- <th class="text-white font-weight-bolder">Payment Method</th> -->
-                                <th class="text-white font-weight-bolder">Date Reserved</th>
+                                <th class="text-white font-weight-bolder">Date/Time Reserved</th>
                                 <th class="text-white font-weight-bolder">Action</th>
                              </tr>
                         </thead>
                         <tbody>
 						
 							<?php 
-							$uid=$_SESSION['get_data']['uid'];
-                    
-                            $query = "SELECT p.*, r.* FROM property AS p
-                            INNER JOIN reservation AS r ON p.pid = r.property_id WHERE admin_agent_id = '$uid'
-                            ";
-                            $result = mysqli_query($conn, $query);
-                            while ($row = mysqli_fetch_array($result)) {
+                                $uid=$_SESSION['get_data']['uid'];
+                        
+                                $query = "SELECT p.*, r.* FROM property AS p
+                                INNER JOIN reservation AS r ON p.pid = r.property_id WHERE admin_agent_id = '$uid'
+                                ";
+                                $result = mysqli_query($conn, $query);
+                                while ($row = mysqli_fetch_array($result)) {
 							?>
                             <tr>
                                 <td class="text-capitalize"><a href="propertydetail.php?pid=<?php echo $row['property_id'];?>"><?php echo $row['title'];?></a></td>		
@@ -143,7 +143,24 @@ if(!isset($_SESSION['uemail']))
                                 </td>
                                 <!-- <td class="text-capitalize"><?php echo $row['payment_method'];?></td> -->
 
-								<td class="text-capitalize"><?php echo $row['date_reserved'];?></td>
+								<td class="text-capitalize">
+                                    <?php 
+                                        
+                                        $date_time_parts = explode(' ', $row['date_reserved']);
+
+                                        // Extract the date part
+                                        $date_part = $date_time_parts[0];
+                                        $time_part = $date_time_parts[1];
+
+                                        $time_sched = $time_part;
+                                        $time = DateTime::createFromFormat('H:i:s', $time_sched);
+                                        $formatted_time = $time->format('h:i A');
+                                        
+                                        echo $date_part . ' '.$formatted_time;
+                                        
+                                    ?>
+                                
+                                </td>
                                 <td class="text-capitalize">
                                     <button class="btn btn-secondary w-100" data-toggle="modal" data-target="#view<?php echo $row['id']; ?>">View</button>
                                     <button class="btn btn-primary w-100" data-toggle="modal" data-target="#compose<?php echo $row['id']; ?>">Compose</button>
