@@ -118,11 +118,11 @@ if(!isset($_SESSION['uemail']))
                         </thead>
                         <tbody>
 							<?php 
-							$uid=$_SESSION['get_data']['uid'];
+                                $uid=$_SESSION['get_data']['uid'];
 
-							$query=mysqli_query($conn,"SELECT * FROM inquire WHERE admin_agent_id = '$uid' and utype = 'agent' or utype = '';");
-								while($row=mysqli_fetch_array($query))
-								{
+                                $query=mysqli_query($conn,"SELECT * FROM inquire WHERE admin_agent_id = '$uid' AND (utype = 'agent' OR utype = '');");
+                                while($row=mysqli_fetch_array($query))
+                                {
 							?>
                             <tr>
                                 

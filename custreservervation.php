@@ -124,7 +124,7 @@ if(!isset($_SESSION['uemail']))
 							$uid=$_SESSION['get_data']['uid'];
                     
                             $query = "SELECT p.*, r.* FROM property AS p
-                            INNER JOIN reservation AS r ON p.pid = r.property_id
+                            INNER JOIN reservation AS r ON p.pid = r.property_id WHERE admin_agent_id = '$uid'
                             ";
                             $result = mysqli_query($conn, $query);
                             while ($row = mysqli_fetch_array($result)) {

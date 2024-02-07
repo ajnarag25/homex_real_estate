@@ -123,7 +123,7 @@ if(!isset($_SESSION['uemail']))
 							<?php 
 							$uid=$_SESSION['get_data']['uid'];
                             $query = "SELECT p.*, s.* FROM property AS p
-                            INNER JOIN sched_book AS s ON p.pid = s.property_id
+                            INNER JOIN sched_book AS s ON p.pid = s.property_id WHERE admin_agent_id = '$uid'
                             ";
                             $result = mysqli_query($conn, $query);
                             while ($row = mysqli_fetch_array($result)) {
