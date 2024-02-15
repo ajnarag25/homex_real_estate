@@ -496,16 +496,16 @@ include("config.php");
 
                                                             // Calculate Amount and Income Requirement for each term
                                                             $amount_5_years = $factor_rate_5_years * $selling_price;
-                                                            $income_requirement_5_years = $factor_rate_5_years * $selling_price * 3;
+                                                            $income_requirement_5_years = ($factor_rate_5_years * $selling_price) / 0.33;
 
                                                             $amount_10_years = $factor_rate_10_years * $selling_price;
-                                                            $income_requirement_10_years = $factor_rate_10_years * $selling_price * 3;
+                                                            $income_requirement_10_years = ($factor_rate_10_years * $selling_price) / 0.33;
 
                                                             $amount_15_years = $factor_rate_15_years * $selling_price;
-                                                            $income_requirement_15_years = $factor_rate_15_years * $selling_price * 3;
+                                                            $income_requirement_15_years = ($factor_rate_15_years * $selling_price) / 0.33;
 
                                                             $amount_20_years = $factor_rate_20_years * $selling_price;
-                                                            $income_requirement_20_years = $factor_rate_20_years * $selling_price * 3;
+                                                            $income_requirement_20_years = ($factor_rate_20_years * $selling_price) / 0.33;
 
                                                             $factor_pagibig10 = 0.01129130;
                                                             $factor_pagibig20 = 0.00738232;
@@ -513,16 +513,16 @@ include("config.php");
                                                             $factor_pagibig30 = 0.00623870;
 
                                                             $amount_pagibig10 = $factor_pagibig10 * $selling_price;
-                                                            $income_requirement_pagibig10 = $factor_pagibig10 * $selling_price * 3;
+                                                            $income_requirement_pagibig10 = ($factor_pagibig10 * $selling_price) / 0.33;
 
                                                             $amount_pagibig20 = $factor_pagibig20 * $selling_price;
-                                                            $income_requirement_pagibig20 = $factor_pagibig20 * $selling_price * 3;
+                                                            $income_requirement_pagibig20 = ($factor_pagibig20 * $selling_price) / 0.33;
 
                                                             $amount_pagibig25 = $factor_pagibig25 * $selling_price;
-                                                            $income_requirement_pagibig25 = $factor_pagibig25 * $selling_price * 3;
+                                                            $income_requirement_pagibig25 = ($factor_pagibig25 * $selling_price) / 0.33;
 
                                                             $amount_pagibig30 = $factor_pagibig30 * $selling_price;
-                                                            $income_requirement_pagibig30 = $factor_pagibig30 * $selling_price * 3;
+                                                            $income_requirement_pagibig30 = ($factor_pagibig30 * $selling_price) / 0.33;
 
                                                             $tcp80 = $net * 0.80;
 
@@ -532,16 +532,16 @@ include("config.php");
                                                             $factor_inhouse10 = 0.01932557;
 
                                                             $amount_inhouse1 = $factor_inhouse1 * $tcp80;
-                                                            $income_requirement_inhouse1 = $factor_inhouse1 * $tcp80 * 3;
+                                                            $income_requirement_inhouse1 = ($factor_inhouse1 * $tcp80) / 0.33;
 
                                                             $amount_inhouse3 = $factor_inhouse3 * $tcp80;
-                                                            $income_requirement_inhouse3 = $factor_inhouse3 * $tcp80 * 3;
+                                                            $income_requirement_inhouse3 = ($factor_inhouse3 * $tcp80) / 0.33;
 
                                                             $amount_inhouse5 = $factor_inhouse5 * $tcp80;
-                                                            $income_requirement_inhouse5 = $factor_inhouse5 * $tcp80 * 3;
+                                                            $income_requirement_inhouse5 = ($factor_inhouse5 * $tcp80) / 0.33;
 
                                                             $amount_inhouse10 = $factor_inhouse10 * $tcp80;
-                                                            $income_requirement_inhouse10 = $factor_inhouse10 * $tcp80 * 3;
+                                                            $income_requirement_inhouse10 = ($factor_inhouse10 * $tcp80) / 0.33;
 
                                                         ?>
                                                         <table class="table">
@@ -764,16 +764,16 @@ include("config.php");
 
                                                             // Calculate Amount and Income Requirement for each term
                                                             $amount_5_years = $factor_rate_5_years * $selling_price;
-                                                            $income_requirement_5_years = $factor_rate_5_years * $selling_price * 3;
+                                                            $income_requirement_5_years = ($factor_rate_5_years * $selling_price) / 0.33;
 
                                                             $amount_10_years = $factor_rate_10_years * $selling_price;
-                                                            $income_requirement_10_years = $factor_rate_10_years * $selling_price * 3;
+                                                            $income_requirement_10_years = ($factor_rate_10_years * $selling_price) / 0.33;
 
                                                             $amount_15_years = $factor_rate_15_years * $selling_price;
-                                                            $income_requirement_15_years = $factor_rate_15_years * $selling_price * 3;
+                                                            $income_requirement_15_years = ($factor_rate_15_years * $selling_price) / 0.33;
 
                                                             $amount_20_years = $factor_rate_20_years * $selling_price;
-                                                            $income_requirement_20_years = $factor_rate_20_years * $selling_price * 3;
+                                                            $income_requirement_20_years = ($factor_rate_20_years * $selling_price) / 0.33;
 
                                                             $factor_pagibig10 = 0.01129130;
                                                             $factor_pagibig20 = 0.00738232;
@@ -781,16 +781,16 @@ include("config.php");
                                                             $factor_pagibig30 = 0.00623870;
 
                                                             $amount_pagibig10 = $factor_pagibig10 * $selling_price;
-                                                            $income_requirement_pagibig10 = $factor_pagibig10 * $selling_price * 3;
+                                                            $income_requirement_pagibig10 = ($factor_pagibig10 * $selling_price) / 0.33;
 
                                                             $amount_pagibig20 = $factor_pagibig20 * $selling_price;
-                                                            $income_requirement_pagibig20 = $factor_pagibig20 * $selling_price * 3;
+                                                            $income_requirement_pagibig20 = ($factor_pagibig20 * $selling_price) / 0.33;
 
                                                             $amount_pagibig25 = $factor_pagibig25 * $selling_price;
-                                                            $income_requirement_pagibig25 = $factor_pagibig25 * $selling_price * 3;
+                                                            $income_requirement_pagibig25 = ($factor_pagibig25 * $selling_price) / 0.33;
 
                                                             $amount_pagibig30 = $factor_pagibig30 * $selling_price;
-                                                            $income_requirement_pagibig30 = $factor_pagibig30 * $selling_price * 3;
+                                                            $income_requirement_pagibig30 = ($factor_pagibig30 * $selling_price) / 0.33;
 
                                                             $tcp80 = $selling_price * 0.80;
 
@@ -800,16 +800,16 @@ include("config.php");
                                                             $factor_inhouse10 = 0.01932557;
 
                                                             $amount_inhouse1 = $factor_inhouse1 * $tcp80;
-                                                            $income_requirement_inhouse1 = $factor_inhouse1 * $tcp80 * 3;
+                                                            $income_requirement_inhouse1 = ($factor_inhouse1 * $tcp80) / 0.33;
 
                                                             $amount_inhouse3 = $factor_inhouse3 * $tcp80;
-                                                            $income_requirement_inhouse3 = $factor_inhouse3 * $tcp80 * 3;
+                                                            $income_requirement_inhouse3 = ($factor_inhouse3 * $tcp80) / 0.33;
 
                                                             $amount_inhouse5 = $factor_inhouse5 * $tcp80;
-                                                            $income_requirement_inhouse5 = $factor_inhouse5 * $tcp80 * 3;
+                                                            $income_requirement_inhouse5 = ($factor_inhouse5 * $tcp80) / 0.33;
 
                                                             $amount_inhouse10 = $factor_inhouse10 * $tcp80;
-                                                            $income_requirement_inhouse10 = $factor_inhouse10 * $tcp80 * 3;
+                                                            $income_requirement_inhouse10 = ($factor_inhouse10 * $tcp80) / 0.33;
 
                                                         ?>
 
@@ -1173,16 +1173,16 @@ include("config.php");
 
                                                             // Calculate Amount and Income Requirement for each term
                                                             $amount_5_years = $factor_rate_5_years * $selling_price;
-                                                            $income_requirement_5_years = $factor_rate_5_years * $selling_price * 3;
+                                                            $income_requirement_5_years = ($factor_rate_5_years * $selling_price) / 0.33;
 
                                                             $amount_10_years = $factor_rate_10_years * $selling_price;
-                                                            $income_requirement_10_years = $factor_rate_10_years * $selling_price * 3;
+                                                            $income_requirement_10_years = ($factor_rate_10_years * $selling_price) / 0.33;
 
                                                             $amount_15_years = $factor_rate_15_years * $selling_price;
-                                                            $income_requirement_15_years = $factor_rate_15_years * $selling_price * 3;
+                                                            $income_requirement_15_years = ($factor_rate_15_years * $selling_price) / 0.33;
 
                                                             $amount_20_years = $factor_rate_20_years * $selling_price;
-                                                            $income_requirement_20_years = $factor_rate_20_years * $selling_price * 3;
+                                                            $income_requirement_20_years = ($factor_rate_20_years * $selling_price) / 0.33;
 
                                                             $factor_pagibig10 = 0.01129130;
                                                             $factor_pagibig20 = 0.00738232;
@@ -1190,16 +1190,16 @@ include("config.php");
                                                             $factor_pagibig30 = 0.00623870;
 
                                                             $amount_pagibig10 = $factor_pagibig10 * $selling_price;
-                                                            $income_requirement_pagibig10 = $factor_pagibig10 * $selling_price * 3;
+                                                            $income_requirement_pagibig10 = ($factor_pagibig10 * $selling_price) / 0.33;
 
                                                             $amount_pagibig20 = $factor_pagibig20 * $selling_price;
-                                                            $income_requirement_pagibig20 = $factor_pagibig20 * $selling_price * 3;
+                                                            $income_requirement_pagibig20 = ($factor_pagibig20 * $selling_price) / 0.33;
 
                                                             $amount_pagibig25 = $factor_pagibig25 * $selling_price;
-                                                            $income_requirement_pagibig25 = $factor_pagibig25 * $selling_price * 3;
+                                                            $income_requirement_pagibig25 = ($factor_pagibig25 * $selling_price) / 0.33;
 
                                                             $amount_pagibig30 = $factor_pagibig30 * $selling_price;
-                                                            $income_requirement_pagibig30 = $factor_pagibig30 * $selling_price * 3;
+                                                            $income_requirement_pagibig30 = ($factor_pagibig30 * $selling_price) / 0.33;
 
                                                             $tcp80 = $net * 0.80;
 
@@ -1209,16 +1209,16 @@ include("config.php");
                                                             $factor_inhouse10 = 0.01932557;
 
                                                             $amount_inhouse1 = $factor_inhouse1 * $tcp80;
-                                                            $income_requirement_inhouse1 = $factor_inhouse1 * $tcp80 * 3;
+                                                            $income_requirement_inhouse1 = ($factor_inhouse1 * $tcp80 ) / 0.33;
 
                                                             $amount_inhouse3 = $factor_inhouse3 * $tcp80;
-                                                            $income_requirement_inhouse3 = $factor_inhouse3 * $tcp80 * 3;
+                                                            $income_requirement_inhouse3 = ($factor_inhouse3 * $tcp80 ) / 0.33;
 
                                                             $amount_inhouse5 = $factor_inhouse5 * $tcp80;
-                                                            $income_requirement_inhouse5 = $factor_inhouse5 * $tcp80 * 3;
+                                                            $income_requirement_inhouse5 = ($factor_inhouse5 * $tcp80 ) / 0.33;
 
                                                             $amount_inhouse10 = $factor_inhouse10 * $tcp80;
-                                                            $income_requirement_inhouse10 = $factor_inhouse10 * $tcp80 * 3;
+                                                            $income_requirement_inhouse10 = ($factor_inhouse10 * $tcp80 ) / 0.33;
 
                                                         ?>
                                                         <table class="table">
