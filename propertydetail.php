@@ -780,17 +780,16 @@ include("config.php");
 
                                                             // Calculate Amount and Income Requirement for each term
                                                             $amount_5_years = $factor_rate_5_years * $selling_price;
-                                                            $income_requirement_5_years = $factor_rate_5_years * $selling_price * 3;
+                                                            $income_requirement_5_years = ($factor_rate_5_years * $selling_price) / 0.33;
 
                                                             $amount_10_years = $factor_rate_10_years * $selling_price;
-                                                            $income_requirement_10_years = $factor_rate_10_years * $selling_price * 3;
+                                                            $income_requirement_10_years = ($factor_rate_10_years * $selling_price) / 0.33;
 
                                                             $amount_15_years = $factor_rate_15_years * $selling_price;
-                                                            $income_requirement_15_years = $factor_rate_15_years * $selling_price * 3;
+                                                            $income_requirement_15_years = ($factor_rate_15_years * $selling_price) / 0.33;
 
                                                             $amount_20_years = $factor_rate_20_years * $selling_price;
-                                                            $income_requirement_20_years = $factor_rate_20_years * $selling_price * 3;
-                                                            
+                                                            $income_requirement_20_years = ($factor_rate_20_years * $selling_price) / 0.33;
 
                                                             $factor_pagibig10 = 0.01129130;
                                                             $factor_pagibig20 = 0.00738232;
@@ -798,27 +797,36 @@ include("config.php");
                                                             $factor_pagibig30 = 0.00623870;
 
                                                             $amount_pagibig10 = $factor_pagibig10 * $selling_price;
-                                                            $income_requirement_pagibig10 = $factor_pagibig10 * $selling_price * 3;
+                                                            $income_requirement_pagibig10 = ($factor_pagibig10 * $selling_price) / 0.33;
 
                                                             $amount_pagibig20 = $factor_pagibig20 * $selling_price;
-                                                            $income_requirement_pagibig20 = $factor_pagibig20 * $selling_price * 3;
+                                                            $income_requirement_pagibig20 = ($factor_pagibig20 * $selling_price) / 0.33;
 
                                                             $amount_pagibig25 = $factor_pagibig25 * $selling_price;
-                                                            $income_requirement_pagibig25 = $factor_pagibig25 * $selling_price * 3;
+                                                            $income_requirement_pagibig25 = ($factor_pagibig25 * $selling_price) / 0.33;
 
                                                             $amount_pagibig30 = $factor_pagibig30 * $selling_price;
-                                                            $income_requirement_pagibig30 = $factor_pagibig30 * $selling_price * 3;
+                                                            $income_requirement_pagibig30 = ($factor_pagibig30 * $selling_price) / 0.33;
+
+                                                            $tcp80 = $net * 0.80;
 
                                                             $factor_inhouse1 = 0.08884879;
                                                             $factor_inhouse3 = 0.03515703;
                                                             $factor_inhouse5 = 0.02539343;
                                                             $factor_inhouse10 = 0.01932557;
 
-                                                            $amount_inhouse1 = $factor_inhouse1 * $selling_price;
-                                                            $amount_inhouse3 = $factor_inhouse3 * $selling_price;
-                                                            $amount_inhouse5 = $factor_inhouse5 * $selling_price;
-                                                            $amount_inhouse10 = $factor_inhouse10 * $selling_price;
-                                          
+                                                            $amount_inhouse1 = $factor_inhouse1 * $tcp80;
+                                                            $income_requirement_inhouse1 = ($factor_inhouse1 * $tcp80) / 0.33;
+
+                                                            $amount_inhouse3 = $factor_inhouse3 * $tcp80;
+                                                            $income_requirement_inhouse3 = ($factor_inhouse3 * $tcp80) / 0.33;
+
+                                                            $amount_inhouse5 = $factor_inhouse5 * $tcp80;
+                                                            $income_requirement_inhouse5 = ($factor_inhouse5 * $tcp80) / 0.33;
+
+                                                            $amount_inhouse10 = $factor_inhouse10 * $tcp80;
+                                                            $income_requirement_inhouse10 = ($factor_inhouse10 * $tcp80) / 0.33;
+
                                                         ?>
                                                         <table class="table">
                                                             <thead>
@@ -909,7 +917,7 @@ include("config.php");
 
                                                         <h5>Estimated Monthly Amortization:</h5>
                                                         <p>(Based only on Net Equity) - <span class="text-primary">In-House Financing</span></p>
-
+                                                        <p>80% TCP Balance: <b><?php echo number_format($tcp80, 2, '.',',')  ?></b></p>
                                                         <table class="table">
                                                             <thead>
                                                                 <tr>
@@ -926,28 +934,28 @@ include("config.php");
                                                                     <td>12.0%</td>
                                                                     <td>0.08884879</td>
                                                                     <td>P <?php echo number_format($amount_inhouse1, 2, '.', ',') ?></td>
-                                                                    <td>P <?php echo number_format($income_requirement_5_years, 2, '.',',') ?></td>
+                                                                    <td>P <?php echo number_format($income_requirement_inhouse1, 2, '.',',') ?></td>
                                                                 </tr>
                                                                 <tr>
                                                                     <th>3</th>
                                                                     <td>16.0%</td>
                                                                     <td>0.03515703</td>
                                                                     <td>P <?php echo number_format($amount_inhouse3, 2, '.', ',') ?></td>
-                                                                    <td>P <?php echo number_format($income_requirement_10_years, 2, '.',',') ?></td>
+                                                                    <td>P <?php echo number_format($income_requirement_inhouse3, 2, '.',',') ?></td>
                                                                 </tr>
                                                                 <tr>
                                                                     <th>5</th>
                                                                     <td>18.0%</td>
                                                                     <td>0.02539343</td>
                                                                     <td>P <?php echo number_format($amount_inhouse5, 2, '.', ',') ?></td>
-                                                                    <td>P <?php echo number_format($income_requirement_15_years, 2, '.',',') ?></td>
+                                                                    <td>P <?php echo number_format($income_requirement_inhouse5, 2, '.',',') ?></td>
                                                                 </tr>
                                                                 <tr>
                                                                     <th>10</th>
                                                                     <td>20.0%</td>
                                                                     <td>0.01932557</td>
                                                                     <td>P <?php echo number_format($amount_inhouse10, 2, '.', ',') ?></td>
-                                                                    <td>P <?php echo number_format($income_requirement_20_years, 2, '.',',') ?></td>
+                                                                    <td>P <?php echo number_format($income_requirement_inhouse10, 2, '.',',') ?></td>
                                                                 </tr>
                                                             </tbody>
                                                         </table>
