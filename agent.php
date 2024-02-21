@@ -92,7 +92,7 @@ include("config.php");
                 <div class="row">
                 <!-- FOR MORE PROJECTS visit: codeastro.com -->
                     <?php 
-							$query=mysqli_query($conn,"SELECT * FROM user WHERE utype='agent'");
+							$query=mysqli_query($conn,"SELECT * FROM user WHERE utype='agent' AND ustatus = 'Verified'");
 								while($row=mysqli_fetch_array($query))
 								{
                             ?>
