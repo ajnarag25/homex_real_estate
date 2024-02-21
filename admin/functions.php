@@ -199,8 +199,12 @@
     if (isset($_POST['assign_agent'])) {
         $pid = $_POST['pid'];
         $agent=$_POST['agent'];
-        $name =$_POST['useragent'];
-        $conn->query("UPDATE PROPERTY SET assign_to = '$agent', user_id = '$agent', user_type = 'agent', useragent='$name' WHERE pid = '$pid'") or die($conn->error);
+
+        $parts = explode(' ', $agent);
+        $agent_id = $parts[0];
+        $agent_name = implode(' ', array_slice($parts, 1)); 
+
+        $conn->query("UPDATE PROPERTY SET assign_to = '$agent', user_id = '$agent_id', user_type = 'agent', useragent='$agent_name' WHERE pid = '$pid'") or die($conn->error);
         $conn->query("UPDATE INQUIRE SET admin_agent_id = '$agent', utype='agent' WHERE property_id = '$pid'") or die($conn->error);
         $_SESSION['status'] = 'Successfully Assigned an Agent!';
         $_SESSION['status_icon'] = 'success';
