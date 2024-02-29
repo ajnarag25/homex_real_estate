@@ -380,7 +380,7 @@ include("config.php");
                                                     <label for="">Upload Inital Requirements:</label>
                                                     <li><b>Photocopy of Company ID (Front & Back)</b> </li>
                                                     <li><input type="file" name="company_id" required></li>
-                                                    <li><b>Payslip ( a must for reservation) </b></li>
+                                                    <li><b>ITR ( a must for reservation) </b></li>
                                                     <li><input type="file" name="payslip" required></li>
                                                     </ul>
                                                 </div>
