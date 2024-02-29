@@ -336,7 +336,7 @@ include("config.php");
                                                     <input type="date" name="date_sched" class="form-control" required>
                                                     <hr>
                                                     <label for="">Time:</label>
-                                                    <input type="time" name="time_sched" class="form-control" required>
+                                                    <input type="time" id="time_sched" name="time_sched" class="form-control" required min="05:00" max="17:00">
                                                 </div>
                                             </div>
                                             </div>
@@ -1553,6 +1553,7 @@ include("config.php");
 <script src="js/wow.js"></script> 
 <script src="js/custom.js"></script> 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="js/time.js"></script>
 <!-- Validation Messages -->
 <?php 
 			if (isset($_SESSION['status']) && $_SESSION['status'] !='')

@@ -175,7 +175,7 @@ if(!isset($_SESSION['uemail']))
                                                     <input type="date" name="date_sched" class="form-control" required>
                                                     <hr>
                                                     <label for="">Time:</label>
-                                                    <input type="time" name="time_sched" class="form-control" required>
+                                                    <input type="time" id="time_sched" name="time_sched" class="form-control" required>
                                                 </div>
                                             </div>
                                             </div>
@@ -276,6 +276,7 @@ if(!isset($_SESSION['uemail']))
 <script src="js/jquery.slider.js"></script> 
 <script src="js/wow.js"></script> 
 <script src="js/custom.js"></script>
+<script src="js/time.js"></script>
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
 <script>
     $('#history').DataTable()
