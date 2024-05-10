@@ -1395,8 +1395,8 @@ include("config.php");
                                 <div class="col">
                                     <ul>
                             
-                                        <li><i class="fas fa-stream text-success"></i> Floors : <b><?php echo $row['11'];?></b> </li>
-                                        <li><i class="fas fa-ruler-combined text-success"></i> Sqm: <b><?php echo $row['12'];?></b></li>
+                                        <li><i class="fas fa-stream text-success"></i> Floor Area : <b><?php echo $row['11'];?></b> </li>
+                                        <li><i class="fas fa-ruler-combined text-success"></i> Lot Area: <b><?php echo $row['12'];?> sq.m.</b></li>
                                         <li><i class="fas fa-warehouse text-success"></i> Hall: <b><?php echo $row['10'];?></b></li>
                                         <li><i class="fas fa-bed text-success"></i> Bedroom: <b><?php echo $row['6'];?></b></li>
                                         <li><i class="fas fa-bath text-success"></i> Bathroom: <b><?php echo $row['7'];?></b></li>
