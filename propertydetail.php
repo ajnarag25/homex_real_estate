@@ -1380,15 +1380,23 @@ include("config.php");
                             <div class="row">
                                 <div class="col">
                                     <ul>
-                                        <li>Region : <b><?php echo $row['14'];?></b> </li>
-                                        <li>Province : <b><?php echo $row['15'];?></b> </li>
-                                        <li>City : <b><?php echo $row['16'];?></b> </li>
-                                        <li>Barangay : <b><?php echo $row['17'];?></b> </li>
+                                        <li class="text-capitalize">Region : <b><?php echo $row['14'];?></b> </li>
+                                        <li class="text-capitalize">Province : <b><?php echo $row['15'];?></b> </li>
+                                        <li class="text-capitalize">City : <b><?php echo $row['16'];?></b> </li>
+                                        <li class="text-capitalize">Barangay : <b><?php echo $row['17'];?></b> </li>
                                     </ul>
                                     <hr>
                                     <ul>
-                                        <li>Type : <b><?php echo $row['3'];?></b> </li>
-                                        <li>Status : <b><?php echo $row['4'];?></b> </li>
+                                        <li class="text-capitalize">Type : <b><?php echo $row['3'];?></b> </li>
+                                        <li class="text-capitalize">Status : 
+                                            <b><?php 
+                                            if($row['4'] == 'rfo'){
+                                                echo 'Ready for Occupation';
+                                            }else{
+                                                echo $row['4'];
+                                            }
+                                            ?></b> 
+                                        </li>
                                       
                                     </ul>
                                 </div>

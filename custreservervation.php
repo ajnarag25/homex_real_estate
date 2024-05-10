@@ -191,7 +191,7 @@ if(!isset($_SESSION['uemail']))
                                                     <ul>
                                                         <label for="">Requirements:</label>
                                                         <li><a href="<?php echo $row['company_id'] ?>" target="_blank">Photocopy of Company ID (Front & Back)</a> </li>
-                                                        <li><a href="<?php echo $row['payslip'] ?>" target="_blank">Payslip</a> </li>
+                                                        <li><a href="<?php echo $row['payslip'] ?>" target="_blank">ITR</a> </li>
                                                     </ul>
                                                 </div>
                                             
