@@ -304,12 +304,12 @@ if(isset($_POST['add'])) {
 														<input type="text" class="form-control" name="asize" required value="<?php echo $row['12']; ?>">
 													</div>
 												</div>
-												<div class="form-group row">
+												<!-- <div class="form-group row">
 													<label class="col-lg-3 col-form-label">Uid</label>
 													<div class="col-lg-9">
 														<input type="text" class="form-control" name="uid" required value="<?php echo $row['24']; ?>">
 													</div>
-												</div>
+												</div> -->
 												<!-- <div class="form-group row">
 													<label class="col-lg-3 col-form-label">Status</label>
 													<div class="col-lg-9">
