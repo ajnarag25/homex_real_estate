@@ -230,7 +230,8 @@ if(isset($_POST['add'])) {
 													<option value="new">New</option>
 													<option value="pre-selling">Pre-Selling</option>
 													<option value="pre-owned">Pre-Owned</option>
-													<option value="rfo">Ready for Occupation</option>
+													<option value="rfor">Ready for Occupation - Refurbished</option>
+													<option value="rfonr">Ready for Occupation - Not Refurbished</option>
 													
 												</select>
 											</div>

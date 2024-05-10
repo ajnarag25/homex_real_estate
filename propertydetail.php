@@ -1390,8 +1390,10 @@ include("config.php");
                                         <li class="text-capitalize">Type : <b><?php echo $row['3'];?></b> </li>
                                         <li class="text-capitalize">Status : 
                                             <b><?php 
-                                            if($row['4'] == 'rfo'){
-                                                echo 'Ready for Occupation';
+                                            if($row['4'] == 'rfor'){
+                                                echo 'Ready for Occupation - Refurbished';
+                                            }elseif($row['4'] == 'rfonr'){
+                                                echo 'Ready for Occupation - Not Refurbished';
                                             }else{
                                                 echo $row['4'];
                                             }
