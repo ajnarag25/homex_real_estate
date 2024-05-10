@@ -12,7 +12,7 @@
     // Check if time is between 5am and 5pm
     if (hours < 5 || hours >= 17) {
         // If not, reset the value
-        this.setCustomValidity('Time must be between 5am and 5pm.');
+        this.setCustomValidity('Time must be between 8am - 5pm.');
     } else {
         this.setCustomValidity('');
     }

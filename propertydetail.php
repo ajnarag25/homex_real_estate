@@ -336,7 +336,7 @@ include("config.php");
                                                     <input type="date" name="date_sched" class="form-control" required>
                                                     <hr>
                                                     <label for="">Time:</label>
-                                                    <input type="time" id="time_sched" name="time_sched" class="form-control" required min="05:00" max="17:00">
+                                                    <input type="time" id="time_sched" name="time_sched" class="form-control" required min="08:00" max="17:00">
                                                 </div>
                                             </div>
                                             </div>
