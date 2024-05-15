@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 29, 2024 at 02:35 PM
+-- Generation Time: May 15, 2024 at 04:16 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -161,7 +161,8 @@ CREATE TABLE `property` (
   `user_type` varchar(255) NOT NULL,
   `user_id` varchar(255) NOT NULL,
   `assign_to` varchar(255) NOT NULL,
-  `is_approved` tinyint(1) NOT NULL
+  `is_approved` tinyint(1) NOT NULL,
+  `floorarea` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------

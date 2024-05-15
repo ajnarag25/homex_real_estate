@@ -29,6 +29,7 @@ if(isset($_POST['add']))
 	$bath=$_POST['bath'];
 	$kitc=$_POST['kitc'];
 	$floor=$_POST['floor'];
+	$floorarea=$_POST['floorarea'];
 	$price=$_POST['price'];
 	$city=$_POST['city'];
 	$asize=$_POST['asize'];
@@ -73,9 +74,9 @@ if(isset($_POST['add']))
 	$user_agent = $_SESSION['auser']['fullname'];
 	$user_id = $_SESSION['auser']['aid'];
 	$user_type = 'admin';
-	$sql="insert into property (title,pcontent,type,pstatus,stype,bedroom,bathroom,balcony,kitchen,hall,floor,size,price,region,province,city,barangay,feature,pimage,pimage1,pimage2,pimage3,pimage4,mapimage,topmapimage,groundmapimage,date,useragent,user_type,user_id)
+	$sql="insert into property (title,pcontent,type,pstatus,stype,bedroom,bathroom,balcony,kitchen,hall,floor,size,price,region,province,city,barangay,feature,pimage,pimage1,pimage2,pimage3,pimage4,mapimage,topmapimage,groundmapimage,date,useragent,user_type,user_id, floorarea)
 	values('$title','$content','$ptype','$pstatus','$stype','$bed','$bath','$balc','$kitc','$hall','$floor','$asize','$price','$region',
-	'$province','$city','$barangay','$feature','$aimage','$aimage1','$aimage2','$aimage3','$aimage4','$fimage','$fimage1','$fimage2','$currentDate','$user_agent','$user_type','$user_id')";
+	'$province','$city','$barangay','$feature','$aimage','$aimage1','$aimage2','$aimage3','$aimage4','$fimage','$fimage1','$fimage2','$currentDate','$user_agent','$user_type','$user_id', '$floorarea')";
 	$result=mysqli_query($conn,$sql);
 	if($result)
 		{
@@ -320,7 +321,13 @@ if(isset($_POST['add']))
 													</div>
 												</div>
 												<div class="form-group row">
-													<label class="col-lg-3 col-form-label">Area Size</label>
+													<label class="col-lg-3 col-form-label">Floor Area</label>
+													<div class="col-lg-9">
+												    <input type="number" class="form-control" inputmode="numeric" min=0 name="floorarea">
+													</div>
+												</div>
+												<div class="form-group row">
+													<label class="col-lg-3 col-form-label">Lot Area</label>
 													<div class="col-lg-9">
 														<input type="text" class="form-control" name="asize"  placeholder="Enter Area Size (in sqrt)">
 													</div>

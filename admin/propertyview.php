@@ -134,7 +134,17 @@ if(!isset($_SESSION['auser']))
                                                     <td><?php echo $row['1']; ?></td>
                                                     <td><?php echo "property description"; ?></td>
                                                     <td><?php echo $row['3']; ?></td>
-                                                    <td><?php echo $row['4']; ?></td>
+                                                    <td>
+                                                        <?php 
+                                                        if($row['4'] == 'rfor'){
+                                                            echo 'Ready for Occupation - Refurbished';
+                                                        }elseif($row['4'] == 'rfonr'){
+                                                            echo 'Ready for Occupation - Not Refurbished';
+                                                        }else{
+                                                            echo $row['4'];
+                                                        }
+                                                        ?>
+                                                    </td>
                                                     <td><?php echo $row['5']; ?></td>
                                                     <td><?php echo $row['11']; ?></td>
                                                     <td><?php echo $row['12']; ?></td>

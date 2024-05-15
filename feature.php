@@ -130,7 +130,17 @@ if(!isset($_SESSION['uemail']))
                             <tr>
                                 <td class="text-capitalize"><a href="propertydetail.php?pid=<?php echo $row['0'];?>"><?php echo $row['1'];?></a></td>
                                 <td><?php echo $row['3'];?></td>
-                                <td class="text-capitalize"><?php echo $row['4'];?></td>
+                                <td class="text-capitalize">
+                                    <?php 
+                                    if($row['4'] == 'rfor'){
+                                        echo 'Ready for Occupation - Refurbished';
+                                    }elseif($row['4'] == 'rfonr'){
+                                        echo 'Ready for Occupation - Not Refurbished';
+                                    }else{
+                                        echo $row['4'];
+                                    }
+                                    ?>
+                                </td>
                                 <td class="text-capitalize"><?php echo $row['5'];?></td>
 								<td class="text-capitalize"><?php echo $row['date'];?></td>
                                 <td>

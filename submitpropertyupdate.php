@@ -99,6 +99,7 @@ if(isset($_POST['add'])) {
     $floor = $_POST['floor'];
     $asize = $_POST['asize'];
     $status = $_POST['status'];
+	$floorarea = $_POST['floorarea'];
     // $uid = $_POST['uid'];
     $aimage = $_FILES['aimage']['name'] ? $_FILES['aimage']['name'] : '';
     $aimage1 = $_FILES['aimage1']['name'] ? $_FILES['aimage1']['name'] : '';
@@ -123,7 +124,7 @@ if(isset($_POST['add'])) {
     $sql = "UPDATE property SET title= '{$title}', pcontent= '{$content}', pstatus='{$pstatus}', type='{$ptype}', stype='{$stype}',
             bedroom='{$bed}', bathroom='{$bath}', balcony='{$balc}', kitchen='{$kitc}', hall='{$hall}', floor='{$floor}', 
             size='{$asize}', price='{$price}', region='{$region}', city='{$city}', province='{$province}', 
-            status='{$status}'";
+            status='{$status}', floorarea='{$floorarea}'";
 
     // Append image fields if they have values
     if($aimage) $sql .= ", pimage='{$aimage}'";
@@ -389,9 +390,21 @@ if(isset($_POST['add'])) {
 													</div>
 												</div>
 												<div class="form-group row">
+													<label class="col-lg-3 col-form-label">Floor Area</label>
+													<div class="col-lg-9">
+												    <input type="text" class="form-control" inputmode="numeric" min=0 name="floorarea" value="<?php echo $row['37'] ?>">
+													</div>
+												</div>
+												<div class="form-group row">
 													<label class="col-lg-3 col-form-label">Area Size</label>
 													<div class="col-lg-9">
 														<input type="text" class="form-control" name="asize" required value="<?php echo $row['12']; ?>">
+													</div>
+												</div>
+												<div class="form-group row">
+													<label class="col-lg-3 col-form-label">Lot Area</label>
+													<div class="col-lg-9">
+												    <input type="text" class="form-control" inputmode="numeric" min=0 name="lotarea" value="<?php echo $row['38'] ?>">
 													</div>
 												</div>
 												<!-- <div class="form-group row">
