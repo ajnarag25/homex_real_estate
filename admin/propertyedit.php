@@ -303,7 +303,7 @@ if(isset($_POST['add'])) {
 												<div class="form-group row">
 													<label class="col-lg-3 col-form-label">Floor Area</label>
 													<div class="col-lg-9">
-												    <input type="text" class="form-control" inputmode="numeric" min=0 name="floorarea" value="<?php echo $row['37'] ?>">
+												    <input type="text" class="form-control" inputmode="decimal" min="0" step="any" name="floorarea" value="<?php echo $row['37'] ?>">
 													</div>
 												</div>
 												<div class="form-group row">

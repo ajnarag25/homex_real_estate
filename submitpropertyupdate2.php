@@ -393,19 +393,13 @@ if(isset($_POST['add'])) {
 												<div class="form-group row">
 													<label class="col-lg-3 col-form-label">Floor Area</label>
 													<div class="col-lg-9">
-												    <input type="text" class="form-control" inputmode="numeric" min=0 name="floorarea" value="<?php echo $row['37'] ?>">
-													</div>
-												</div>
-												<div class="form-group row">
-													<label class="col-lg-3 col-form-label">Area Size</label>
-													<div class="col-lg-9">
-														<input type="text" class="form-control" name="asize" required value="<?php echo $row['12']; ?>">
+												    <input type="text" class="form-control" inputmode="decimal" min="0" step="any" name="floorarea" value="<?php echo $row['37'] ?>">
 													</div>
 												</div>
 												<div class="form-group row">
 													<label class="col-lg-3 col-form-label">Lot Area</label>
 													<div class="col-lg-9">
-												    <input type="text" class="form-control" inputmode="numeric" min=0 name="lotarea" value="<?php echo $row['38'] ?>">
+														<input type="text" class="form-control" name="asize" required value="<?php echo $row['12']; ?>">
 													</div>
 												</div>
 												<!-- <div class="form-group row">

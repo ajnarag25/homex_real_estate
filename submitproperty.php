@@ -346,13 +346,13 @@ if(isset($_POST['add']))
 												<div class="form-group row">
 													<label class="col-lg-3 col-form-label">Floor</label>
 													<div class="col-lg-9">
-												    <input type="number" class="form-control" inputmode="numeric" min=0 name="floor">
+												    <input type="number" class="form-control" inputmode="decimal" min="0" step="any" name="floor">
 													</div>
 												</div>
 												<div class="form-group row">
-													<label class="col-lg-3 col-form-label">Area Size</label>
+													<label class="col-lg-3 col-form-label">Lot Area</label>
 													<div class="col-lg-9">
-														<input type="text" class="form-control" name="asize"  placeholder="Enter Area Size (in sqrt)">
+														<input type="text" class="form-control" name="asize"  placeholder="Enter Lot Area (in sqrt)">
 													</div>
 												</div>
 							

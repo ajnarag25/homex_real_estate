@@ -246,7 +246,7 @@ if(!isset($_SESSION['uemail']))
 													</div>
 												</div>
 												<div class="form-group row">
-													<label class="col-lg-3 col-form-label">Area Size</label>
+													<label class="col-lg-3 col-form-label">Lot Area</label>
 													<div class="col-lg-9">
 														<input type="text" class="form-control" name="asize" required >
 													</div>
