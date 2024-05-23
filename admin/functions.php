@@ -198,8 +198,11 @@
 
     if (isset($_POST['assign_agent'])) {
         $pid = $_POST['pid'];
-        $agent=$_POST['agent'];
-
+        $agent=$_POST['useragent'];
+        
+        echo $pid;
+        echo $agent;
+        exit();
         $parts = explode(' ', $agent);
         $agent_id = $parts[0];
         $agent_name = implode(' ', array_slice($parts, 1)); 

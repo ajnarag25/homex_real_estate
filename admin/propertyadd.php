@@ -317,13 +317,13 @@ if(isset($_POST['add']))
 												<div class="form-group row">
 													<label class="col-lg-3 col-form-label">Floor</label>
 													<div class="col-lg-9">
-												    <input type="number" class="form-control" inputmode="numeric" min=0 name="floor">
+												    <input type="text" class="form-control" inputmode="numeric" min=0 name="floor">
 													</div>
 												</div>
 												<div class="form-group row">
 													<label class="col-lg-3 col-form-label">Floor Area</label>
 													<div class="col-lg-9">
-													<input type="number" class="form-control" inputmode="decimal" min="0" step="any" name="floorarea">
+													<input type="text" class="form-control" inputmode="decimal" min="0" step="any" name="floorarea">
 													</div>
 												</div>
 												<div class="form-group row">

@@ -38,6 +38,7 @@ if(isset($_POST['add']))
 	$barangay=$_POST['barangay'];
 	// $uid=$_POST['uid'];
 	$feature=$_POST['pfeature'];
+	$floorarea = $_POST['floorarea'];
 	// $status=$_POST['status'];
 
 	// $totalfloor=$_POST['totalfl'];
@@ -64,9 +65,9 @@ if(isset($_POST['add']))
 	$user_agent = $_SESSION['get_data']['fname'].' '.$_SESSION['get_data']['lname'];
 	$user_id = $_SESSION['get_data']['uid'];
 	$user_type = 'agent';
-	$sql="insert into property (title,pcontent,type,pstatus,stype,bedroom,bathroom,balcony,kitchen,hall,floor,size,price,region,province,city,barangay,feature,pimage,pimage1,pimage2,pimage3,pimage4,mapimage,topmapimage,groundmapimage,date,useragent,user_type,user_id)
+	$sql="insert into property (title,pcontent,type,pstatus,stype,bedroom,bathroom,balcony,kitchen,hall,floor,size,price,region,province,city,barangay,feature,pimage,pimage1,pimage2,pimage3,pimage4,mapimage,topmapimage,groundmapimage,date,useragent,user_type,user_id, floorarea)
 	values('$title','$content','$ptype','$pstatus','$stype','$bed','$bath','$balc','$kitc','$hall','$floor','$asize','$price','$region',
-	'$province','$city','$barangay','$feature','$aimage','$aimage1','$aimage2','$aimage3','$aimage4','$fimage','$fimage1','$fimage2','$currentDate','$user_agent','$user_type','$user_id')";
+	'$province','$city','$barangay','$feature','$aimage','$aimage1','$aimage2','$aimage3','$aimage4','$fimage','$fimage1','$fimage2','$currentDate','$user_agent','$user_type','$user_id', $floorarea)";
 	$result=mysqli_query($conn,$sql);
 	if($result)
 		{
@@ -255,7 +256,8 @@ if(isset($_POST['add']))
 															<option value="new">New</option>
 															<option value="pre-selling">Pre-Selling</option>
 															<option value="pre-owned">Pre-Owned</option>
-															<option value="rfo">Ready for Occupation</option>
+															<option value="rfor">Ready for Occupation - Refurbished</option>
+															<option value="rfonr">Ready for Occupation - Not Refurbished</option>
 															
 														</select>
 													</div>
@@ -346,7 +348,13 @@ if(isset($_POST['add']))
 												<div class="form-group row">
 													<label class="col-lg-3 col-form-label">Floor</label>
 													<div class="col-lg-9">
-												    <input type="number" class="form-control" inputmode="decimal" min="0" step="any" name="floor">
+												    <input type="text" class="form-control" inputmode="decimal" min="0" step="any" name="floor">
+													</div>
+												</div>
+												<div class="form-group row">
+													<label class="col-lg-3 col-form-label">Floor Area</label>
+													<div class="col-lg-9">
+												    <input type="text" class="form-control" inputmode="decimal" min="0" step="any" name="floorarea">
 													</div>
 												</div>
 												<div class="form-group row">
