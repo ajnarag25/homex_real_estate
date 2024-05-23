@@ -204,7 +204,7 @@ if(!isset($_SESSION['auser']))
                                                                     while($rowagent=mysqli_fetch_row($queryagent)){
                                                                 ?>
                                                                                     
-                                                                <option value='<?php echo $rowagent[0]?>'> <?php echo $rowagent[1]?> <?php echo $rowagent[2]?> </option>
+                                                                <option value='<?php echo $rowagent[1]?> <?php echo $rowagent[2]?>'> <?php echo $rowagent[1]?> <?php echo $rowagent[2]?> </option>
                                                                 <?php 
                                                                     }
                                                                 ?>
