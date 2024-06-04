@@ -193,7 +193,8 @@ if(!isset($_SESSION['auser']))
                                                                     $queryagent=mysqli_query($conn,"SELECT * FROM USER WHERE utype = 'agent'");
                                                                     while($rowagent=mysqli_fetch_row($queryagent)){
                                                                 ?>
-                                                                 <input type="hidden" value="<?php echo $rowagent[1]?> <?php echo $rowagent[2]?>" name="useragent">
+                                                                 <!-- <input type="hidden" value="<?php echo $rowagent[1]?> <?php echo $rowagent[2]?>" name="useragent"> -->
+                                                                 <input type="hidden" value="<?php echo $rowagent[0]?>" name="useragent_id">
                                                                     <?php 
                                                                     }
                                                                 ?>

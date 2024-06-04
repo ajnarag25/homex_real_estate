@@ -119,7 +119,9 @@ if(!isset($_SESSION['uemail']))
 
 							<?php 
 							$uid=$_SESSION['get_data']['uid'];
-							$query=mysqli_query($conn,"SELECT * FROM `property` WHERE assign_to='$uid'");
+                            $agent_name = $_SESSION['get_data']['fname']. ' ' . $_SESSION['get_data']['lname'];
+            
+							$query=mysqli_query($conn,"SELECT * FROM `property` WHERE assign_to='$agent_name'");
 								while($row=mysqli_fetch_array($query))
 								{
 							?>
