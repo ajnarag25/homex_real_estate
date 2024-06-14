@@ -199,7 +199,7 @@
     if (isset($_POST['assign_agent'])) {
         $pid = $_POST['pid'];
         $agent=$_POST['agent'];
-        $check_id = $_POST['useragent'];
+        $check_id = $_POST['useragent_id'];
 
         $parts = explode(' ', $agent);
         $agent_id = $parts[0];
