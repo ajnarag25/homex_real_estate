@@ -111,7 +111,10 @@ if(!isset($_SESSION['auser']))
                                                     <td><?php echo $row['3']; ?></td>
                                                     <td><?php echo $row['4']; ?></td>
 													<td><?php echo $row['5']; ?></td>
-                                                    <td><a href="contactdelete.php?id=<?php echo $row['0']; ?>">Delete</a></td>
+													<form action="functions.php" method="POST">
+														<input type="hidden" value="<?php echo $row['0'] ?>" name="id">
+														<td><button class="btn btn-primary" name="contactdel">Delete</button></td>
+													</form>
                                                 </tr>
                                                 <?php
 												$cnt=$cnt+1;

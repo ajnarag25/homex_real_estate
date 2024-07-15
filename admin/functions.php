@@ -213,5 +213,56 @@
         
     }
 
+    // feedback delete
+    if (isset($_POST['feedbackdel'])) {
+        $fid = $_POST['id'];
+        $sql = "DELETE FROM feedback WHERE fid = {$fid}";
+        $result = mysqli_query($conn, $sql);
+        if($result == true)
+        {
+            $msg="<p class='alert alert-success'>Feedback Deleted</p>";
+            header("Location:feedbackview.php?msg=$msg");
+        }
+        else{
+            $msg="<p class='alert alert-warning'>Feedback Not Deleted</p>";
+            header("Location:feedbackview.php?msg=$msg");
+        }
+        mysqli_close($conn);
+    }
+
+    // contact delete
+    if (isset($_POST['contactdel'])) {
+        $cid = $_POST['id'];
+        $sql = "DELETE FROM contact WHERE cid = {$cid}";
+        $result = mysqli_query($conn, $sql);
+        if($result == true)
+        {
+            $msg="<p class='alert alert-success'>Contact Deleted</p>";
+            header("Location:contactview.php?msg=$msg");
+        }
+        else{
+            $msg="<p class='alert alert-warning'>Contact Not Deleted</p>";
+            header("Location:contactview.php?msg=$msg");
+        }
+        mysqli_close($conn);
+    }
+
+    // property delete
+    if (isset($_POST['propertydel'])) {
+        $pid = $_GET['id'];
+        $sql = "DELETE FROM property WHERE pid = {$pid}";
+        $result = mysqli_query($conn, $sql);
+        if($result == true)
+        {
+            $msg="<p class='alert alert-success'>Property Deleted</p>";
+            header("Location:propertyview.php?msg=$msg");
+        }
+        else{
+            $msg="<p class='alert alert-warning'>Property Not Deleted</p>";
+            header("Location:propertyview.php?msg=$msg");
+        }
+        mysqli_close($conn);
+    }
+
 
 ?>
